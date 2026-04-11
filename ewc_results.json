@@ -1,0 +1,29 @@
+{
+  "lambda_0": {
+    "task_a_before": 0.006022025365382433,
+    "task_a_after": 0.4869760274887085,
+    "task_b_after": 0.01672341115772724,
+    "degradation": 80.86582137101024
+  },
+  "lambda_10000": {
+    "task_a_before": 0.006022025365382433,
+    "task_a_after": 0.1526181697845459,
+    "task_b_after": 0.12804751098155975,
+    "degradation": 25.343328950733135,
+    "forgetting_reduction_vs_0": 3.1908129168118204
+  },
+  "lambda_50000": {
+    "task_a_before": 0.006022025365382433,
+    "task_a_after": 0.022623559460043907,
+    "task_b_after": 0.3574901819229126,
+    "degradation": 3.756802419015912,
+    "forgetting_reduction_vs_0": 21.52517283360164
+  },
+  "lambda_100000": {
+    "task_a_before": 0.006022025365382433,
+    "task_a_after": 0.010672427713871002,
+    "task_b_after": 0.4287828505039215,
+    "degradation": 1.7722322750783104,
+    "forgetting_reduction_vs_0": 45.62935824393391
+  }
+}

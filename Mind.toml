@@ -1,0 +1,9 @@
+[package]
+name = "fim-onsager-experiment"
+version = "0.1.0"
+edition = "2026"
+license = "STARGA-Commercial"
+
+[build]
+entry = "experiment_training.mind"
+target = "native"

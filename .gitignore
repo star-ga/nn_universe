@@ -1,0 +1,7 @@
+target/
+__pycache__/
+*.o
+*.so
+!runtime/libmind_cuda_linux-x64.so
+*.pyc
+runtime/target/

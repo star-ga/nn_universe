@@ -1,0 +1,21 @@
+// FIM-Onsager Full Training Experiment — Pure MIND
+// Self-prediction: w converges from 0.5 to 1.0
+// Same workload as Python reference
+
+let w = 0.5
+let lr = 0.01
+let x = 1.0
+let y = 0.0
+let error = 0.0
+let grad = 0.0
+let loss = 0.0
+
+for step in 0..50000 {
+    y = w * x
+    error = y - x
+    grad = error * x
+    w = w - lr * grad
+    loss = error * error * 0.5
+}
+
+w
