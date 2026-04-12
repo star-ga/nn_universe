@@ -4,6 +4,8 @@ Computational validation of three predictions from the neural-network cosmology 
 
 > **"The Universe as a Self-Organizing Neural Network"**
 > Nikolai Nedovodin, STARGA Inc., 2026.
+>
+> **[Read the paper (PDF)](Universe_Neural_Network_V1.0.pdf)**
 
 ## Run
 
