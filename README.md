@@ -89,6 +89,18 @@ Symmetry breaking intensifies with scale. FIM hierarchy persists at every scale 
 | `ewc_results.json` | EWC results across λ values |
 | `scaling_results.json` | Width sweep results + power-law fits |
 
+## Roadmap
+
+| Phase | Description | Status |
+|-------|-------------|--------|
+| **V1.0** | 296K-param toy experiment + 7-scale sweep (1.9K → 201M) | **Done** |
+| **V1.1** | NTK continuum limit proof for L-layer ReLU FC networks (Appendix A Step 6 → theorem for restricted class) | Planned |
+| **V1.2** | 10⁹–10¹⁰ param scaling runs on H200 cluster (extend sweep to 7+ orders of magnitude) | Planned |
+| **V2.0** | Lattice-embedded subclass: discrete FIM → smooth metric via Cauchy refinement (numerical + analytical) | Research |
+| **V2.1** | Quantum error correction connection: geometry-aware neural decoders (Cascade, arXiv:2604.08358) exhibit emergent spectral hierarchy in learned weights — same phenomenon as §11.4 FIM tiers. Investigate whether QEC decoder weight spectra follow the SV ~ N^α power law | Research |
+| **V3.0** | 10¹² param scaling (requires 64+ GPU cluster) | Future |
+| **V3.1** | Observational predictions: α-drift correlation with galactic information density (§9.1) | Future |
+
 ## Requirements
 
 - [MIND compiler](https://github.com/star-ga/mind) v0.2.3+
