@@ -1,0 +1,43 @@
+{
+  "config": {
+    "d": 2,
+    "domain": 4.0,
+    "sigma": 0.5,
+    "levels": 4,
+    "eval_density": 121,
+    "freq": 1.0,
+    "out": "/home/n/nn_universe/experiments/v2_0_lattice/lattice_analytic_results.json"
+  },
+  "continuum_reference": 2.4768594005884927,
+  "levels": [
+    {
+      "level": 0,
+      "spacing": 1.0,
+      "bilinear_form": 2.521972909182539,
+      "abs_err": 0.04511350859404617,
+      "rel_err": 0.018213996556820045
+    },
+    {
+      "level": 1,
+      "spacing": 0.5,
+      "bilinear_form": 2.488743285375701,
+      "abs_err": 0.011883884787208476,
+      "rel_err": 0.004797965029579357
+    },
+    {
+      "level": 2,
+      "spacing": 0.25,
+      "bilinear_form": 2.483216034594665,
+      "abs_err": 0.006356634006172257,
+      "rel_err": 0.0025664088985680594
+    },
+    {
+      "level": 3,
+      "spacing": 0.125,
+      "bilinear_form": 2.4797263622653185,
+      "abs_err": 0.0028669616768257633,
+      "rel_err": 0.0011574987567500132
+    }
+  ],
+  "observed_convergence_rate": 1.2830566495669173
+}

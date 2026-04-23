@@ -1,0 +1,61 @@
+{
+  "config": {
+    "width": 256,
+    "dim": 32,
+    "steps": 15000,
+    "batch": 128,
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "out": "/home/n/nn_universe/experiments/v1_2_scaling/seed_robustness_results.json"
+  },
+  "results": [
+    {
+      "seed": 0,
+      "max_sv_ratio": 30491.7,
+      "fim_tier1_tier3": 354.1,
+      "train_time": 57.9
+    },
+    {
+      "seed": 1,
+      "max_sv_ratio": 13003.0,
+      "fim_tier1_tier3": 416.8,
+      "train_time": 54.7
+    },
+    {
+      "seed": 2,
+      "max_sv_ratio": 66397.9,
+      "fim_tier1_tier3": 416.0,
+      "train_time": 57.1
+    },
+    {
+      "seed": 3,
+      "max_sv_ratio": 2956.7,
+      "fim_tier1_tier3": 435.2,
+      "train_time": 56.1
+    },
+    {
+      "seed": 4,
+      "max_sv_ratio": 6326.5,
+      "fim_tier1_tier3": 354.4,
+      "train_time": 54.8
+    },
+    {
+      "seed": 5,
+      "max_sv_ratio": 1739.4,
+      "fim_tier1_tier3": 447.8,
+      "train_time": 57.9
+    }
+  ],
+  "sv_mean": 20152.53333333333,
+  "sv_std": 24990.18804768517,
+  "sv_cv": 1.2400519395916398,
+  "fim_mean": 404.05,
+  "fim_std": 40.372948864307645,
+  "fim_cv": 0.0999206753231225
+}

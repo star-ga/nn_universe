@@ -1,0 +1,68 @@
+{
+  "config": {
+    "width": 256,
+    "dim": 32,
+    "depths": [
+      2,
+      3,
+      5,
+      8,
+      12,
+      20
+    ],
+    "steps": 15000,
+    "batch": 128,
+    "seed": 42,
+    "out": "/home/n/nn_universe/experiments/v1_2_scaling/depth_sweep_results.json"
+  },
+  "results": [
+    {
+      "depth": 2,
+      "width": 256,
+      "params": 82464,
+      "max_sv_ratio": 1347.7,
+      "fim_tier1_tier3": 63.6,
+      "train_time": 41.2
+    },
+    {
+      "depth": 3,
+      "width": 256,
+      "params": 148256,
+      "max_sv_ratio": 36800.7,
+      "fim_tier1_tier3": 98.4,
+      "train_time": 49.2
+    },
+    {
+      "depth": 5,
+      "width": 256,
+      "params": 279840,
+      "max_sv_ratio": 8793.6,
+      "fim_tier1_tier3": 765.7,
+      "train_time": 64.3
+    },
+    {
+      "depth": 8,
+      "width": 256,
+      "params": 477216,
+      "max_sv_ratio": 4144.1,
+      "fim_tier1_tier3": 8170917.1,
+      "train_time": 86.6
+    },
+    {
+      "depth": 12,
+      "width": 256,
+      "params": 740384,
+      "max_sv_ratio": 2979.0,
+      "fim_tier1_tier3": 581593576498562.5,
+      "train_time": 117.7
+    },
+    {
+      "depth": 20,
+      "width": 256,
+      "params": 1266720,
+      "max_sv_ratio": 53629.4,
+      "fim_tier1_tier3": 345229477716202.4,
+      "train_time": 178.5
+    }
+  ]
+}
