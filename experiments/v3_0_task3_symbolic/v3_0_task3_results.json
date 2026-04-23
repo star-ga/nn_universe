@@ -1,0 +1,182 @@
+{
+  "config": {
+    "widths": [
+      32,
+      64,
+      128,
+      256,
+      512,
+      1024
+    ],
+    "degree": 8,
+    "n_evals": 16,
+    "steps": 20000,
+    "batch": 128,
+    "seed": 42,
+    "fim_samples": 300,
+    "out": "/workspace/v3_0_task3_results.json"
+  },
+  "device": "cuda",
+  "results": [
+    {
+      "width": 32,
+      "n_params": 5544,
+      "degree": 8,
+      "n_evals": 16,
+      "max_sv_ratio": 8345.1,
+      "fim_tier1_tier3": 63.2,
+      "final_loss": 0.683975,
+      "train_time": 70.6,
+      "seed": 42,
+      "sv_stats": [
+        {
+          "layer": "net.0.weight",
+          "shape": [
+            32,
+            32
+          ],
+          "top3_sv": [
+            1.9198,
+            1.7323,
+            1.5904
+          ],
+          "sv_ratio": 8345.07,
+          "sv_std": 0.5491
+        },
+        {
+          "layer": "net.2.weight",
+          "shape": [
+            32,
+            32
+          ],
+          "top3_sv": [
+            2.1861,
+            1.8427,
+            1.7142
+          ],
+          "sv_ratio": 386.33,
+          "sv_std": 0.5763
+        },
+        {
+          "layer": "net.4.weight",
+          "shape": [
+            32,
+            32
+          ],
+          "top3_sv": [
+            2.4853,
+            2.1106,
+            1.892
+          ],
+          "sv_ratio": 354.4,
+          "sv_std": 0.6227
+        },
+        {
+          "layer": "net.6.weight",
+          "shape": [
+            32,
+            32
+          ],
+          "top3_sv": [
+            2.6932,
+            2.2611,
+            1.9974
+          ],
+          "sv_ratio": 110.17,
+          "sv_std": 0.6721
+        },
+        {
+          "layer": "net.8.weight",
+          "shape": [
+            32,
+            32
+          ],
+          "top3_sv": [
+            2.9655,
+            2.1149,
+            1.8501
+          ],
+          "sv_ratio": 217.33,
+          "sv_std": 0.6541
+        },
+        {
+          "layer": "net.10.weight",
+          "shape": [
+            8,
+            32
+          ],
+          "top3_sv": [
+            1.8699,
+            1.4752,
+            1.225
+          ],
+          "sv_ratio": 8.01,
+          "sv_std": 0.5854
+        }
+      ]
+    },
+    {
+      "width": 64,
+      "n_params": 19272,
+      "degree": 8,
+      "n_evals": 16,
+      "max_sv_ratio": 1768.0,
+      "fim_tier1_tier3": 226.6,
+      "final_loss": 0.625779,
+      "train_time": 73.6,
+      "seed": 42
+    },
+    {
+      "width": 128,
+      "n_params": 71304,
+      "degree": 8,
+      "n_evals": 16,
+      "max_sv_ratio": 1624.2,
+      "fim_tier1_tier3": 415.5,
+      "final_loss": 0.572781,
+      "train_time": 71.2,
+      "seed": 42
+    },
+    {
+      "width": 256,
+      "n_params": 273672,
+      "degree": 8,
+      "n_evals": 16,
+      "max_sv_ratio": 9016.1,
+      "fim_tier1_tier3": 3752.7,
+      "final_loss": 0.551835,
+      "train_time": 67.8,
+      "seed": 42
+    },
+    {
+      "width": 512,
+      "n_params": 1071624,
+      "degree": 8,
+      "n_evals": 16,
+      "max_sv_ratio": 43782.4,
+      "fim_tier1_tier3": 217907.5,
+      "final_loss": 0.527331,
+      "train_time": 66.4,
+      "seed": 42
+    },
+    {
+      "width": 1024,
+      "n_params": 4240392,
+      "degree": 8,
+      "n_evals": 16,
+      "max_sv_ratio": 141832.8,
+      "fim_tier1_tier3": 399482.8,
+      "final_loss": 0.525678,
+      "train_time": 72.0,
+      "seed": 42
+    }
+  ],
+  "sv_power_law": {
+    "exponent": 0.555,
+    "r_squared": 0.614
+  },
+  "fim_power_law": {
+    "exponent": 1.432,
+    "r_squared": 0.941
+  }
+}
