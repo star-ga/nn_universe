@@ -96,10 +96,23 @@ FIM T1/T3 at width 256: cosmology = 637×, QEC = 850,866× (three orders of magn
 **Width sweep** (32–1024, Adam optimizer):
 - QEC SV power law: $N^{0.807}$, $R^2 = 0.89$
 - QEC FIM T1/T3 power law: $N^{1.386}$, $R^2 = 0.93$ (super-linear)
-- Cosmology V1.2 SV power law: $N^{0.566}$, $R^2 = 0.84$
+- Cosmology V1.2 SV power law: $N^{0.566}$, $R^2 = 0.84$ (corrected by V3.0 to $N^{0.516}$)
 - Cosmology V1.2 FIM T1/T3 power law: approx flat across 5 decades
 
-**Key finding:** the spectral hierarchy (SV power law + FIM tier structure) appears in both tasks — universality. The exponents differ sharply (SV: 0.566 vs 0.807; FIM: 0 vs 1.386), indicating the power-law *form* is universal but the *parameters* are task-dependent. The QEC task produces both a steeper SV exponent and a super-linearly scaling FIM hierarchy, consistent with the hypothesis that more structured tasks drive sharper Tier-1 / Tier-3 distinction.
+### 2.4 V3.0 Task-3 — Symbolic Regression Universality (Naestro Tier-1 item 1)
+
+Third task: symbolic regression of degree-8 random polynomials at the V1.0/V2.1 architecture:
+- SV power law: $N^{0.555}$, $R^2 = 0.614$
+- FIM T1/T3 power law: $N^{1.432}$, $R^2 = 0.941$ (super-linear)
+- Completes the 3-task universality check:
+
+| Task | SV exponent | FIM exponent |
+|------|-------------|--------------|
+| Cosmology self-prediction | 0.516 | ≈ 0 |
+| QEC toric-code decoding | 0.807 | 1.386 |
+| Symbolic regression | 0.555 | 1.432 |
+
+**Power-law FORM holds across all three tasks.** Exponents are task-dependent but the form is invariant. The FIM-tier exponent is super-linear and large for the two structured tasks (QEC, symbolic) and ≈0 for the unstructured task (self-prediction of Gaussian noise), consistent with the hypothesis that structured objectives drive sharper Tier-1 distinction.
 
 ### 2.4 V3.1 — Mock Observational Pipeline
 
