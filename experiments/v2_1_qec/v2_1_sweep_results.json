@@ -1,0 +1,96 @@
+{
+  "device": "cuda",
+  "gpu": "NVIDIA GeForce RTX 3080",
+  "config": {
+    "widths": [
+      32,
+      64,
+      128,
+      256,
+      512,
+      1024
+    ],
+    "L": 5,
+    "p": 0.05,
+    "steps": 15000,
+    "batch": 128,
+    "seed": 42,
+    "out": "experiments/v2_1_qec/v2_1_sweep_results_patched.json"
+  },
+  "results": [
+    {
+      "width": 32,
+      "n_params": 6706,
+      "L": 5,
+      "p": 0.05,
+      "max_sv_ratio": 567.5,
+      "fim_tier1_tier3": 92.5,
+      "final_loss": 0.100515,
+      "train_time": 78.7,
+      "seed": 42
+    },
+    {
+      "width": 64,
+      "n_params": 21554,
+      "L": 5,
+      "p": 0.05,
+      "max_sv_ratio": 1045.2,
+      "fim_tier1_tier3": 201.4,
+      "final_loss": 0.071288,
+      "train_time": 79.1,
+      "seed": 42
+    },
+    {
+      "width": 128,
+      "n_params": 75826,
+      "L": 5,
+      "p": 0.05,
+      "max_sv_ratio": 6191.1,
+      "fim_tier1_tier3": 420.8,
+      "final_loss": 0.056881,
+      "train_time": 76.7,
+      "seed": 42
+    },
+    {
+      "width": 256,
+      "n_params": 282674,
+      "L": 5,
+      "p": 0.05,
+      "max_sv_ratio": 36094.1,
+      "fim_tier1_tier3": 1762.3,
+      "final_loss": 0.04517,
+      "train_time": 80.0,
+      "seed": 42
+    },
+    {
+      "width": 512,
+      "n_params": 1089586,
+      "L": 5,
+      "p": 0.05,
+      "max_sv_ratio": 70289.7,
+      "fim_tier1_tier3": 46206.2,
+      "final_loss": 0.041288,
+      "train_time": 77.2,
+      "seed": 42
+    },
+    {
+      "width": 1024,
+      "n_params": 4276274,
+      "L": 5,
+      "p": 0.05,
+      "max_sv_ratio": 50250.6,
+      "fim_tier1_tier3": 704389.4,
+      "final_loss": 0.038971,
+      "train_time": 79.3,
+      "seed": 42
+    }
+  ],
+  "sv_power_law": {
+    "exponent": 0.807,
+    "r_squared": 0.89
+  },
+  "fim_power_law": {
+    "exponent": 1.386,
+    "r_squared": 0.93
+  }
+}
