@@ -1,0 +1,213 @@
+{
+  "config": {
+    "n_seeds": 20
+  },
+  "results": [
+    {
+      "seed": 42,
+      "width": 4096,
+      "params": 50610208,
+      "max_sv_ratio": 1633719.0,
+      "fim_tier1_tier3": 261.5,
+      "train_time": 81.4,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 43,
+      "width": 4096,
+      "params": 50610208,
+      "max_sv_ratio": 120653.8,
+      "fim_tier1_tier3": 263.6,
+      "train_time": 72.3,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 44,
+      "width": 4096,
+      "params": 50610208,
+      "max_sv_ratio": 92620.4,
+      "fim_tier1_tier3": 262.5,
+      "train_time": 84.6,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 45,
+      "width": 4096,
+      "params": 50610208,
+      "max_sv_ratio": 200393.3,
+      "fim_tier1_tier3": 268.1,
+      "train_time": 84.2,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 46,
+      "width": 4096,
+      "params": 50610208,
+      "max_sv_ratio": 15834.7,
+      "fim_tier1_tier3": 259.1,
+      "train_time": 86.3,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 47,
+      "width": 4096,
+      "params": 50610208,
+      "max_sv_ratio": 18242.9,
+      "fim_tier1_tier3": 257.4,
+      "train_time": 84.9,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 48,
+      "width": 4096,
+      "params": 50610208,
+      "max_sv_ratio": 15504.5,
+      "fim_tier1_tier3": 248.3,
+      "train_time": 76.8,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 49,
+      "width": 4096,
+      "params": 50610208,
+      "max_sv_ratio": 18487.5,
+      "fim_tier1_tier3": 267.2,
+      "train_time": 84.5,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 50,
+      "width": 4096,
+      "params": 50610208,
+      "max_sv_ratio": 9685.8,
+      "fim_tier1_tier3": 255.4,
+      "train_time": 85.0,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 51,
+      "width": 4096,
+      "params": 50610208,
+      "max_sv_ratio": 43503.4,
+      "fim_tier1_tier3": 247.1,
+      "train_time": 54.5,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 52,
+      "width": 4096,
+      "params": 50610208,
+      "max_sv_ratio": 255696.2,
+      "fim_tier1_tier3": 252.7,
+      "train_time": 64.7,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 53,
+      "width": 4096,
+      "params": 50610208,
+      "max_sv_ratio": 16902.1,
+      "fim_tier1_tier3": 250.2,
+      "train_time": 86.7,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 54,
+      "width": 4096,
+      "params": 50610208,
+      "max_sv_ratio": 2675804.0,
+      "fim_tier1_tier3": 249.8,
+      "train_time": 82.3,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 55,
+      "width": 4096,
+      "params": 50610208,
+      "max_sv_ratio": 41916.4,
+      "fim_tier1_tier3": 271.4,
+      "train_time": 84.3,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 56,
+      "width": 4096,
+      "params": 50610208,
+      "max_sv_ratio": 57664.3,
+      "fim_tier1_tier3": 257.5,
+      "train_time": 79.7,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 57,
+      "width": 4096,
+      "params": 50610208,
+      "max_sv_ratio": 25666.2,
+      "fim_tier1_tier3": 256.5,
+      "train_time": 86.9,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 58,
+      "width": 4096,
+      "params": 50610208,
+      "max_sv_ratio": 58476.1,
+      "fim_tier1_tier3": 257.1,
+      "train_time": 85.1,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 59,
+      "width": 4096,
+      "params": 50610208,
+      "max_sv_ratio": 22192.3,
+      "fim_tier1_tier3": 255.2,
+      "train_time": 84.2,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 60,
+      "width": 4096,
+      "params": 50610208,
+      "max_sv_ratio": 48768.3,
+      "fim_tier1_tier3": 253.0,
+      "train_time": 84.6,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 61,
+      "width": 4096,
+      "params": 50610208,
+      "max_sv_ratio": 11471.5,
+      "fim_tier1_tier3": 245.1,
+      "train_time": 77.8,
+      "bf16": true,
+      "grad_ckpt": true
+    }
+  ],
+  "sv_mean": 269160.13499999995,
+  "sv_std": 669811.274119521,
+  "sv_cv": 2.488523325044109,
+  "fim_mean": 256.935,
+  "fim_std": 7.208713659979772,
+  "fim_cv": 0.028056565512599572
+}
