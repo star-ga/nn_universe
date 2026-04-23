@@ -13,14 +13,14 @@ Companion numerics for `docs/v2_0_lattice_embedded.md`.
 
 From `lattice_analytic.py` with `d=2`, four refinement levels:
 
-| Level | Spacing $a$ | u^T G u | |err| | rel_err |
-|-------|-------------|---------|------|---------|
+| Level | Spacing $a$ | $u^{T} G u$ | abs err | rel err |
+|-------|-------------|-------------|---------|---------|
 | 0 | 1.0000 | 2.5220e+00 | 4.51e-02 | 1.82e-02 |
 | 1 | 0.5000 | 2.4887e+00 | 1.19e-02 | 4.80e-03 |
 | 2 | 0.2500 | 2.4832e+00 | 6.36e-03 | 2.57e-03 |
 | 3 | 0.1250 | 2.4797e+00 | 2.87e-03 | 1.16e-03 |
 
-Observed convergence rate: $|err| \sim a^{1.28}$ — sub-quadratic, consistent with theorem's $O(a^2)$ prediction modulo finite-density reference integration.
+Observed convergence rate: abs err $\sim a^{1.28}$ — sub-quadratic, consistent with theorem's $O(a^2)$ prediction modulo finite-density reference integration.
 
 ## Historical Files
 
