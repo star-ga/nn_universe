@@ -1,0 +1,29 @@
+[project]
+name = "nn_universe"
+version = "1.2.0"
+description = "FIM-Onsager cosmology computational validation — STARGA, Inc."
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.26",
+    "torch>=2.1",
+    "scipy>=1.11",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "unit: fast self-contained tests",
+    "integration: tests that exercise full training loops",
+    "slow: tests that take more than 30 seconds",
+]
+addopts = "-v --tb=short"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"

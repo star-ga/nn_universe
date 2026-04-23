@@ -5,3 +5,11 @@ __pycache__/
 !runtime/libmind_cuda_linux-x64.so
 *.pyc
 runtime/target/
+*.log
+.pytest_cache/
+.ruff_cache/
+# Keep generated results JSON in-tree (they *are* the deliverable), but ignore
+# purely-local working outputs
+/tmp/
+# claude-mem / local assistant artifacts
+AGENTS.md
