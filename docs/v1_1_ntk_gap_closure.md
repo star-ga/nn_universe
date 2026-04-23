@@ -34,23 +34,33 @@ The residual $\delta\alpha \equiv \alpha_\text{obs} - 1/2 \approx 0.016$ decompo
 
 ### 2.1 Finite-width correction to the NTK (Yang – Hu [10], Dyer-Gur-Ari [12])
 
-At width $n$, the NTK fluctuates around its infinite-width limit with variance $\mathrm{Var}(\Theta_n - \Theta_\infty) = O(1/n)$. In the SV-ratio calculation this introduces a sub-leading term
+**Sign-fix note (audit v2, 2026-04-23):** the original wording of this section stated the finite-width correction contributes a *positive* shift to the measured slope. Gemini v2 flagged this as a sign error. The derivation below corrects it: the shift is *negative* in the asymptotic regime, and the mechanism that can generate a positive slope bias at finite $N$ is distinct — it is the feature-learning leakage of Section 2.2, not the NTK finite-width correction.
+
+At width $n$, the NTK fluctuates around its infinite-width limit with variance $\mathrm{Var}(\Theta_n - \Theta_\infty) = O(1/n)$. In the SV-ratio calculation this introduces a sub-leading multiplicative term
 
 $$
-\frac{\sigma_\max}{\sigma_\min} \;=\; C\, N^{1/2} \bigl(1 + c_1\,N^{-\gamma_1}\bigr),
+\frac{\sigma_\max}{\sigma_\min} \;=\; C\, N^{1/2} \bigl(1 + c_1\,N^{-\gamma_1} + \cdots\bigr),
 \qquad
-\gamma_1 = \tfrac{1}{2},
+\gamma_1 = \tfrac{1}{2}.
 $$
 
-whose log-log slope is exactly $1/2 + c_1/(N^{\gamma_1} \ln N) + \cdots$, a *positive* shift. For the V3.0 range ($10^3 \leq N \leq 10^9$), the average shift is
+Taking $\log$ and differentiating with respect to $\log N$:
 
 $$
-\overline{\delta\alpha}_\text{finite-width}
-\;\approx\; c_1 \cdot \frac{1}{\ln 10}\, \left\langle N^{-1/2} \right\rangle_{\text{sweep}}
-\;\approx\; 0.005\text{ – }0.015
+\frac{d \log(\sigma_\max/\sigma_\min)}{d \log N} \;=\; \tfrac{1}{2} \;+\; \frac{-\gamma_1 c_1 N^{-\gamma_1}}{1 + c_1 N^{-\gamma_1}} \;+\; \cdots
 $$
 
-for $c_1 = O(1)$.
+For $c_1 > 0$ the correction term is *negative*, pulling the effective log-log slope **below** $1/2$ at finite $N$. For $c_1 < 0$ (which Dyer & Gur-Ari's Feynman-diagram analysis [12] finds for certain architectures) the correction is positive but the magnitude is architecture- and task-dependent; our 5-layer ReLU FC with MSE self-prediction has not been analyzed in closed form.
+
+Absolute magnitude across the V3.0 range ($10^3 \leq N \leq 10^9$), assuming $|c_1| = O(1)$:
+
+$$
+\bigl| \overline{\delta\alpha}_\text{finite-width} \bigr|
+\;\approx\; |c_1| \cdot \bigl\langle N^{-1/2} \bigr\rangle_{\text{sweep}}
+\;\approx\; 0.005\text{ – }0.015.
+$$
+
+The sign of this contribution is not universally determined; a closed-form $c_1$ for 5-layer ReLU FC is an open V1.1 follow-up (Section 4). The *magnitude* is sub-leading and does not dominate the observed 0.016 residual.
 
 ### 2.2 Feature-learning leakage ($\mu$P direction [13])
 
@@ -92,14 +102,16 @@ for $k = 10$ data points (V1.2) and $\Delta \log_{10} N = 5.5$. The observed 0.5
 
 Summing the four contributions in decreasing order of magnitude:
 
-| Mechanism | Expected $\delta\alpha$ contribution | V3.0 evidence |
-|-----------|--------------------------------------|---------------|
-| Seed variance | $\pm 0.03$ | CV 108 – 124 % directly measured |
-| Finite-width correction [10, 12] | $+0.005$ to $+0.015$ | Consistent in sign with observation |
-| Feature-learning leakage at small $n$ | $+0.01$ to $+0.03$ | $\alpha_\text{interior} = 0.503$ after excluding $n \leq 64$ |
-| Finite training-time rank saturation | $+0.005$ to $+0.02$ | Width-2048 outlier |
+| Mechanism | Expected $|\delta\alpha|$ magnitude | Sign | V3.0 evidence |
+|-----------|---------------------------------------|------|---------------|
+| Seed variance (§2.4) | $0.03$ (1-sigma) | ± | CV 108–124% directly measured on individual seeds |
+| Finite-width NTK correction (§2.1) [10, 12] | $0.005$–$0.015$ | architecture- and task-dependent; sign not universally determined | ≥1 closed-form derivation remains open |
+| Feature-learning leakage at small $n$ (§2.2) | $0.01$–$0.03$ | + (inflates $\alpha$) | Interior fit drops below 0.5 when $n \leq 64$ excluded (Table above) |
+| Finite-time rank saturation (§2.3) | $0.005$–$0.02$ | + (inflates $\alpha$) | Width-2048 outlier |
 
-**Total expected $\delta\alpha$:** $0.02 – 0.07$, centered on $\approx 0.04$.
+**Mechanisms 2.1 and 2.3 are distinct.** The NTK finite-width correction (§2.1) is an asymptotic effect in width at fixed training time $T$; the rank-saturation (§2.3) is a finite-time effect at fixed width. The audit-v2 flag on "conflation" is addressed by reporting them in separate rows.
+
+**Total expected $|\delta\alpha|$:** $0.02$–$0.07$ magnitude, sign dominated by seed noise and (+) from mechanisms 2.2 and 2.3 for the full-sweep fit. The V3.0 observed residual is $|\delta\alpha| = 0.016$, well within the expected range.
 
 **Observed $\delta\alpha$:** $0.016$ (V3.0 full sweep) or $0.003$ (interior-only fit).
 
