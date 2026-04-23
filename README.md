@@ -119,7 +119,32 @@ Original SV power law: SV ~ $N^{0.47}$, $R^2 = 0.935$ (6 widths)
 | SV ratio | 693,247 | 752,778 | 108.6% |
 | FIM T1/T3 | 218.5 | 4.04 | **1.85%** |
 
-Compared to width=256 (CV 124% / 10%): **FIM tier stability improves five-fold with scale**. The SV ratio remains an order-of-magnitude noisy observable; the FIM tier hierarchy is the *scale-invariant, seed-stable, load-bearing* empirical anchor of the V1.0–V3.0 program.
+### V3.0 Tier-1 item 2 — 20-seed robustness at large N
+
+Full 20-seed sweep at widths 1024 and 4096 (`experiments/v1_2_scaling/robustness/`):
+
+| Width | Params | n_seeds | SV mean / std / CV | FIM mean / std / CV |
+|-------|--------|---------|---------------------|----------------------|
+| 256 | 214k | 6 | 20,152 / 24,990 / 124% | 404 / 40 / 10% |
+| 1,024 | 3.2M | 20 | 20,448 / 13,457 / 66% | **329 / 16 / 4.96%** |
+| 4,096 | 50M | 20 | 269,160 / 669,811 / 249% | **257 / 7 / 2.81%** |
+| 14,000 | 589M | 5 | 693,247 / 752,778 / 109% | **219 / 4 / 1.85%** |
+
+**FIM tier CV improves monotonically with N: 10% → 5% → 2.8% → 1.85%.** The FIM tier structure is the *scale-invariant, seed-stable, load-bearing* empirical anchor of the V1.0–V3.0 program. The SV ratio remains an order-of-magnitude noisy observable with non-monotone CV in N.
+
+### V3.0 Tier-1 item 4 — CNN + Transformer architecture baselines
+
+All three architectures trained on the same 32×32×3 Gaussian-noise self-prediction autoencoder task at comparable parameter counts (`experiments/v3_0_arch_baselines/`):
+
+| Arch | Params | SV ratio | FIM T1/T3 | Final MSE (trivial=1.0) |
+|------|--------|----------|-----------|-------------------------|
+| MLP (5-layer 256-neuron ReLU) | 1.84M | 1,674× | **2,808×** | 0.964 |
+| SmallCNN (4-block enc/dec) | 1.38M | 60× | **2,312×** | 0.488 |
+| SmallViT (patch=4, d=192, depth=4) | 1.81M | 1,378× | **121,670×** | 0.0001 |
+
+**FIM tier hierarchy appears in all three architectures.** The ratio is in the thousands to hundreds-of-thousands across MLP, CNN, and ViT at matched parameter count. The ViT, which is the only architecture able to actually learn the autoencoder task (loss 10⁻⁴ vs ~0.5–1.0 for MLP/CNN on pure Gaussian noise), develops the deepest hierarchy (121,670×). The SV ratio differs dramatically by architecture (CNN's filter tensors are intrinsically low-rank and give SV~60×), but the FIM tier structure is robust to architecture.
+
+**Naestro Tier-1 items 1, 2, 3, 4 all ✅ closed.**
 
 ### V1.2 Depth Sweep (width=256, 6 depths)
 

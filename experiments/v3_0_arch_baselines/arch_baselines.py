@@ -48,10 +48,16 @@ from analyze import fim_diagonal, tier_partition  # noqa: E402
 # ------------------------------------------------------------------
 
 class MLPCtrl(nn.Module):
-    """V1.0-style 5-layer 256-neuron ReLU autoencoder."""
+    """V1.0-style 5-layer 256-neuron ReLU autoencoder.
 
-    def __init__(self, in_dim: int, width: int = 256, layers: int = 5):
+    Accepts either flat (B, in_dim) or image-shape (B, C, H, W) input;
+    flattens/restores internally so all three architectures can share
+    the same training loop and sample_loss callback.
+    """
+
+    def __init__(self, in_dim: int = 3 * 32 * 32, width: int = 256, layers: int = 5):
         super().__init__()
+        self.in_dim = in_dim
         mods: list[nn.Module] = [nn.Linear(in_dim, width), nn.ReLU()]
         for _ in range(layers - 1):
             mods += [nn.Linear(width, width), nn.ReLU()]
@@ -59,7 +65,9 @@ class MLPCtrl(nn.Module):
         self.net = nn.Sequential(*mods)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        return self.net(x)
+        shape = x.shape
+        y = self.net(x.reshape(shape[0], -1))
+        return y.reshape(shape)
 
 
 class SmallCNN(nn.Module):
@@ -238,21 +246,7 @@ def run_arch(name: str, device: torch.device, seed: int, steps: int, batch: int,
     final_loss = train_one(model, batch=batch, steps=steps, device=device)
     train_time = time.time() - t0
 
-    def reshape_fwd(x: torch.Tensor) -> torch.Tensor:
-        return x.reshape(x.shape[0], -1) if name == "mlp" else x
-
-    def unshape_back(y: torch.Tensor) -> torch.Tensor:
-        return y.reshape(-1, 3, 32, 32) if name == "mlp" else y
-
-    class Wrap(nn.Module):
-        def __init__(self, m): super().__init__(); self.m = m
-        def forward(self, x):
-            if name == "mlp":
-                return unshape_back(self.m(reshape_fwd(x)))
-            return self.m(x)
-
-    wrapped = Wrap(model)
-    out = analyze_arch(name, wrapped, batch=batch, fim_samples=fim_samples, device=device)
+    out = analyze_arch(name, model, batch=batch, fim_samples=fim_samples, device=device)
     out["train_time"] = round(train_time, 1)
     out["final_loss"] = round(final_loss, 6)
     return out
