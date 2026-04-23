@@ -18,10 +18,17 @@
 
 ## 1. Goal
 
-Extend the V1.0/V1.2 width-sweep power-law fit (SV $\sim N^{0.47}$, $R^2 = 0.935$)
-by two additional orders of magnitude: widths producing $10^{11}$–$10^{12}$ parameter
-counts. This is the empirical test of the V1.1 NTK continuum-limit theorem at a scale
-where finite-width corrections have measurably decayed.
+Extend the V1.2 width-sweep power-law fit (SV $\sim N^{0.566}$, $R^2 = 0.84$ over 10 widths;
+V1.0 was SV $\sim N^{0.47}$, $R^2 = 0.935$ over 6 widths) by two additional orders of
+magnitude: widths producing $10^{11}$–$10^{12}$ parameter counts. This is the empirical
+test of the V1.1 NTK continuum-limit theorem at a scale where finite-width corrections
+have measurably decayed.
+
+In parallel, V3.0 should also establish the **FIM T1/T3 scaling**, which (per V2.1 QEC
+results, $\text{T1/T3} \sim N^{1.386}$, $R^2 = 0.93$) is a more robust observable than
+the SV ratio. On the cosmology task the FIM scaling is currently flat across 5 decades;
+V3.0 should confirm whether this flatness persists into the cluster-scale regime or
+whether a crossover appears.
 
 ## 2. Architecture
 

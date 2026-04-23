@@ -81,14 +81,23 @@
       "max_sv_ratio": 59364.2,
       "fim_tier1_tier3": 452.7,
       "train_time": 450.7
+    },
+    {
+      "width": 14000,
+      "params": 588952032,
+      "max_sv_ratio": 91946.1,
+      "fim_tier1_tier3": 224.0,
+      "train_time": 113.5,
+      "bf16": true,
+      "grad_ckpt": true
     }
   ],
   "sv_power_law": {
-    "exponent": 0.566,
-    "r_squared": 0.84
+    "exponent": 0.508,
+    "r_squared": 0.822
   },
   "fim_power_law": {
-    "exponent": 0.02,
-    "r_squared": 0.031
+    "exponent": 0.001,
+    "r_squared": 0.0
   }
 }

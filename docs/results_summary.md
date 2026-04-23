@@ -29,7 +29,8 @@ _Auto-generated from JSON outputs in the repository. Do not edit manually._
 | 2048 | 12,722,208 | 554885.2x | 378.7x |
 | 4096 | 50,610,208 | 77169.1x | 416.9x |
 | 8192 | 201,883,680 | 59364.2x | 452.7x |
-**SV power law:** $N^{0.566}$, $R^2 = 0.84$. **FIM power law:** $N^{0.02}$, $R^2 = 0.031$.
+| 14000 | 588,952,032 | 91946.1x | 224.0x |
+**SV power law:** $N^{0.508}$, $R^2 = 0.822$. **FIM power law:** $N^{0.001}$, $R^2 = 0.0$.
 
 ### V1.2 Seed Robustness (width=256)
 
@@ -57,13 +58,13 @@ _Auto-generated from JSON outputs in the repository. Do not edit manually._
 
 ### V2.0 Lattice Cauchy Convergence
 
-| Level | Spacing $a$ | u^T G u | |err| | rel_err |
-|-------|-------------|---------|------|---------|
+| Level | Spacing $a$ | $u^{T} G u$ | abs err | rel err |
+|-------|-------------|-------------|---------|---------|
 | 0 | 1.0000 | 2.5220e+00 | 4.51e-02 | 1.82e-02 |
 | 1 | 0.5000 | 2.4887e+00 | 1.19e-02 | 4.80e-03 |
 | 2 | 0.2500 | 2.4832e+00 | 6.36e-03 | 2.57e-03 |
 | 3 | 0.1250 | 2.4797e+00 | 2.87e-03 | 1.16e-03 |
-**Observed convergence rate:** $|err| \sim a^{1.283}$ (theoretical: $O(a^2)$).
+**Observed convergence rate:** abs err $\sim a^{1.283}$ (theoretical: $O(a^2)$).
 
 ### V2.1 QEC Decoder Width Sweep
 

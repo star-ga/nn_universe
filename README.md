@@ -15,9 +15,38 @@ Computational + analytical validation of the STARGA neural-network cosmology fra
 | **V1.1** | NTK continuum limit — rigorous theorem for $L$-layer ReLU FC networks | **Done** ([doc](docs/v1_1_ntk_continuum_limit.md)) |
 | **V1.2** | Extended scaling: 10 widths, seed-robustness, depth sweep, H200 recipe | **Done** ([script](experiments/v1_2_scaling/), [results](scaling_results.json)) |
 | **V2.0** | Lattice-embedded subclass: Cauchy-refinement theorem + numerical demo | **Done** ([theory](docs/v2_0_lattice_embedded.md), [numerics](experiments/v2_0_lattice/)) |
-| **V2.1** | QEC decoder spectral analysis — universality test across tasks | **Done** ([experiment](experiments/v2_1_qec/), results below) |
-| **V3.0** | $10^{12}$-param scaling recipe (multi-GPU cluster) | **Recipe** ([doc](docs/v3_0_cluster_recipe.md)) |
-| **V3.1** | Observational: α-drift × information density | **Prediction + mock pipeline** ([doc](docs/v3_1_alpha_drift_prediction.md), [mock](experiments/v3_1_alpha/)) |
+| **V2.1** | QEC decoder spectral analysis — universality test across 2 tasks | **Done** ([experiment](experiments/v2_1_qec/), results below) |
+| **V3.0** | 10^10–10^12 param cluster runs (Tier-1 hardening) | **Recipe + in-flight 10^10 run** ([doc](docs/v3_0_cluster_recipe.md)) |
+| **V3.1** | Observational: α-drift × information density (ELT-HIRES target ~2028) | **Prediction + mock pipeline** ([doc](docs/v3_1_alpha_drift_prediction.md), [mock](experiments/v3_1_alpha/)) |
+| **V4.0** | Uniqueness test — FIM tier hierarchy vs 5 non-NN parameterized systems | **Done** ([experiment](experiments/v4_0_uniqueness/)) |
+
+### Proof Ladder (honest framing; from Naestro, 2026-04-23)
+
+The universe-as-neural-network claim is **not** fully proveable by empirical science. What can be done:
+
+**Tier 1 — H200-scope (what V3.0 cluster runs actually accomplish):**
+
+1. FIM tier universality across ≥3 genuinely different tasks (cosmology + QEC done; add symbolic regression *or* protein folding).
+2. Seed variance at large N: 20+ seeds at widths 1k–100k, report CV(tier ratio) as a function of N.
+3. Continuum-limit proof closure: either tighten NTK bound to match N^0.566, or explain the 0.5 → 0.566 gap.
+4. Convolutional + transformer baselines (ResNet-50, ViT-Tiny, GPT-2-small) to rule out the "MLP artifact" critique.
+
+**Tier 2 — 12–24 months + external infrastructure (out of H200 scope):**
+
+5. α-drift at ELT-HIRES detection floor (first light ~2028).
+6. Cluster-core amplification calculation (sub-5-year falsifier if effect is detectable in a cluster potential).
+7. Cosmological-constant prediction from FIM hierarchy (Λ ≈ 10^{-122} in Planck units).
+8. Dark-sector ratio: 5:1 baryon:DM mass prediction from FIM tier structure.
+
+**Tier 3 — actual proof criteria (physics, not philosophy):**
+
+9. Emergent 4D spacetime with Lorentz signature from FIM geometry under dynamical flow.
+10. Emergent quantum mechanics with Bell violation arising from info-geometric structure.
+11. Falsifiable GR deviation at identified scale (Planck, cosmological, or horizon).
+
+**Tier 4 — honest endpoint:** full proof is *not attainable*. The realistic target is predictive advantage + ontological economy + falsifiable consequences surviving ~30 years.
+
+V3.0 therefore targets Tier 1 only: multi-task / multi-architecture / 20-seed / large-N FIM tier studies. That's what H200 compute can produce, and it's the next publishable paper.
 
 ## Run
 
@@ -38,6 +67,10 @@ python3 experiments/v2_1_qec/run_sweep.py --widths 32 64 128 256 512 1024
 
 # V3.1 mock α-drift pipeline (no real data; power analysis)
 python3 experiments/v3_1_alpha/mock_pipeline.py
+
+# V4.0 uniqueness test — FIM tier structure vs 5 non-NN substrates
+python3 experiments/v4_0_uniqueness/run_uniqueness.py --seeds 6 --probes 32
+python3 experiments/v4_0_uniqueness/analyze.py
 
 # Tests
 pytest tests/
