@@ -30,7 +30,8 @@ _Auto-generated from JSON outputs in the repository. Do not edit manually._
 | 4096 | 50,610,208 | 77169.1x | 416.9x |
 | 8192 | 201,883,680 | 59364.2x | 452.7x |
 | 14000 | 588,952,032 | 91946.1x | 224.0x |
-**SV power law:** $N^{0.508}$, $R^2 = 0.822$. **FIM power law:** $N^{0.001}$, $R^2 = 0.0$.
+| 22000 | 1,453,496,032 | 602007.6x | 210.2x |
+**SV power law:** $N^{0.516}$, $R^2 = 0.857$. **FIM power law:** $N^{-0.012}$, $R^2 = 0.017$.
 
 ### V1.2 Seed Robustness (width=256)
 

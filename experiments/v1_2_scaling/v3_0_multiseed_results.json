@@ -1,0 +1,30 @@
+{
+  "source": "Runpod A100 SXM 80GB community cloud, bf16 + grad_ckpt, 10000 steps",
+  "date": "2026-04-23",
+  "runs": [
+    {"width": 14000, "params": 588952032, "seed": 42, "max_sv_ratio": 91946.1, "fim_tier1_tier3": 224.0, "train_time": 113.5, "bf16": true, "grad_ckpt": true},
+    {"width": 14000, "params": 588952032, "seed": 43, "max_sv_ratio": 1845953.2, "fim_tier1_tier3": 220.4, "train_time": 108.7, "bf16": true, "grad_ckpt": true},
+    {"width": 14000, "params": 588952032, "seed": 44, "max_sv_ratio": 1029325.3, "fim_tier1_tier3": 216.0, "train_time": 108.6, "bf16": true, "grad_ckpt": true},
+    {"width": 14000, "params": 588952032, "seed": 45, "max_sv_ratio": 62900.3, "fim_tier1_tier3": 218.8, "train_time": 108.6, "bf16": true, "grad_ckpt": true},
+    {"width": 14000, "params": 588952032, "seed": 46, "max_sv_ratio": 436109.4, "fim_tier1_tier3": 213.5, "train_time": 108.6, "bf16": true, "grad_ckpt": true},
+    {"width": 22000, "params": 1452002432, "seed": 42, "max_sv_ratio": 602007.6, "fim_tier1_tier3": 210.2, "train_time": 253.4, "bf16": true, "grad_ckpt": true}
+  ],
+  "aggregate_width_14000": {
+    "n_seeds": 5,
+    "sv_geomean": 343646.0,
+    "sv_arithmetic_mean": 693247.0,
+    "sv_median": 436109.0,
+    "sv_std": 752778.0,
+    "sv_cv": 1.086,
+    "fim_mean": 218.5,
+    "fim_std": 4.04,
+    "fim_cv": 0.0185
+  },
+  "aggregate_width_22000": {
+    "n_seeds": 1,
+    "sv": 602007.6,
+    "fim": 210.2
+  },
+  "observation": "At 589M params, the SV ratio spans 62,900-1,845,953 across 5 seeds (CV 108.6%), essentially identical to the CV=124% observed at 214k params. The FIM tier1/tier3, by contrast, has CV=1.85% across 5 seeds at 589M, a fivefold improvement over the CV=10% at 214k. The FIM observable becomes MORE stable with scale, reinforcing the V1.2 conclusion that FIM tier structure is the load-bearing empirical quantity.",
+  "notes": "The scaling_results.json file retains only the LAST seed's SV/FIM row for each width because the canonical scaling_experiment_extended.py overwrites rows. The multi-seed dispatcher experiments/v1_2_scaling/multiseed_remote.py writes per-seed outputs and is the recommended tool for future runs."
+}
