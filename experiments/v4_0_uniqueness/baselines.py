@@ -83,7 +83,7 @@ class NeuralNetwork(Baseline):
         # (the distribution hasn't concentrated yet) which would mask the
         # real uniqueness signal.
         opt = torch.optim.SGD(self.net.parameters(), lr=1e-3, momentum=0.9)
-        for _ in range(3000):
+        for _ in range(20000):
             x = torch.randn(64, dim)
             y = self.net(x)
             loss = 0.5 * (y - x).pow(2).mean()

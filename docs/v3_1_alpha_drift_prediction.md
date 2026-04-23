@@ -182,12 +182,12 @@ Laboratory atomic clock comparisons provide the tightest constraint on temporal 
 
 | Measurement | Clock pair | Constraint | Reference |
 |---|---|---|---|
-| Rosenband et al. 2008 | Al$^+$ / Hg$^+$ | $|\dot{\alpha}/\alpha| < 1.6 \times 10^{-17}$ yr$^{-1}$ (1$\sigma$) | Rosenband+2008 |
-| Huntemann et al. 2014 | Yb$^+$ / Cs | $|\dot{\alpha}/\alpha| < 5.2 \times 10^{-17}$ yr$^{-1}$ | Huntemann+2014 |
-| Godun et al. 2014 | Sr / Cs | $|\dot{\alpha}/\alpha| < 5.8 \times 10^{-17}$ yr$^{-1}$ | Godun+2014 |
-| Lange et al. 2021 | Yb$^+$ (E3/M1) | $|\dot{\alpha}/\alpha| < 3.1 \times 10^{-18}$ yr$^{-1}$ (2$\sigma$) | Lange+2021 |
+| Rosenband et al. 2008 | Al$^+$ / Hg$^+$ | $\lvert\dot{\alpha}/\alpha\rvert < 1.6 \times 10^{-17}$ yr$^{-1}$ (1$\sigma$) | Rosenband+2008 |
+| Huntemann et al. 2014 | Yb$^+$ / Cs | $\lvert\dot{\alpha}/\alpha\rvert < 5.2 \times 10^{-17}$ yr$^{-1}$ | Huntemann+2014 |
+| Godun et al. 2014 | Sr / Cs | $\lvert\dot{\alpha}/\alpha\rvert < 5.8 \times 10^{-17}$ yr$^{-1}$ | Godun+2014 |
+| Lange et al. 2021 | Yb$^+$ (E3/M1) | $\lvert\dot{\alpha}/\alpha\rvert < 3.1 \times 10^{-18}$ yr$^{-1}$ (2$\sigma$) | Lange+2021 |
 
-The current state-of-the-art constraint from Lange et al. 2021 is $|\dot{\alpha}/\alpha| < 3.1 \times 10^{-18}$ yr$^{-1}$ at $2\sigma$.
+The current state-of-the-art constraint from Lange et al. 2021 is $\lvert\dot{\alpha}/\alpha\rvert < 3.1 \times 10^{-18}$ yr$^{-1}$ at $2\sigma$.
 
 **Consistency with the prediction.** Earth is located in the Milky Way disk, a moderate-density environment. The theory predicts $|\dot{\alpha}/\alpha| \sim 10^{-18}$ to $10^{-17}$ yr$^{-1}$ at this density. The Lange et al. 2021 upper bound of $3.1 \times 10^{-18}$ yr$^{-1}$ is marginally consistent with but does not confirm the prediction. The theory is not falsified by current clock data, but it is constrained to the lower end of its predicted range at mean cosmic density. A measured value of $|\dot{\alpha}/\alpha| > 10^{-17}$ yr$^{-1}$ at Earth's density would constitute a mild tension; $> 10^{-16}$ yr$^{-1}$ would be strong evidence against the framework. A confirmed null result $|\dot{\alpha}/\alpha| < 10^{-19}$ yr$^{-1}$ over the next decade would falsify the theory if Earth's environment is confirmed to have $\rho_I > \rho_I^{(\mathrm{void})}$.
 
@@ -195,11 +195,11 @@ The current state-of-the-art constraint from Lange et al. 2021 is $|\dot{\alpha}
 
 The physics of hydrogen recombination at $z \approx 1100$ depends sensitively on $\alpha$, through the Rydberg energy $E_1 \propto \alpha^2 m_e c^2$ and the fine-structure splitting. Changes in $\alpha$ at recombination shift the recombination redshift, the sound horizon, and the CMB angular power spectrum.
 
-| Constraint source | $|\Delta\alpha/\alpha|$ at $z \sim 1100$ | Reference |
+| Constraint source | $\lvert\Delta\alpha/\alpha\rvert$ at $z \sim 1100$ | Reference |
 |---|---|---|
 | WMAP 9-year | $< 4 \times 10^{-3}$ | Hinshaw+2013 |
-| Planck 2015 | $|\Delta\alpha/\alpha| = (3.6 \pm 3.7) \times 10^{-3}$ | Planck+2015 (varying constants) |
-| Planck 2018 + BAO | $|\Delta\alpha/\alpha| < 1.8 \times 10^{-3}$ (95% CL) | Hart & Chluba 2020 |
+| Planck 2015 | $\lvert\Delta\alpha/\alpha\rvert = (3.6 \pm 3.7) \times 10^{-3}$ | Planck+2015 (varying constants) |
+| Planck 2018 + BAO | $\lvert\Delta\alpha/\alpha\rvert < 1.8 \times 10^{-3}$ (95% CL) | Hart & Chluba 2020 |
 
 These constraints apply to the mean $\alpha$ at recombination, averaged over the entire last-scattering surface. They do not probe spatial variation or correlation with local density. A fractional variation of $\Delta\alpha/\alpha \sim 10^{-3}$ over the 13.8 Gyr lookback time corresponds to $\dot{\alpha}/\alpha \sim 7 \times 10^{-17}$ yr$^{-1}$, which is consistent with the theory's upper range (cluster cores) applied to an environment of moderate density at $z \sim 1100$.
 
