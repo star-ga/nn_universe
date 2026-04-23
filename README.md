@@ -16,9 +16,17 @@ Computational + analytical validation of the STARGA neural-network cosmology fra
 | **V1.2** | Extended scaling: 10 widths, seed-robustness, depth sweep, H200 recipe | **Done** ([script](experiments/v1_2_scaling/), [results](scaling_results.json)) |
 | **V2.0** | Lattice-embedded subclass: Cauchy-refinement theorem + numerical demo | **Done** ([theory](docs/v2_0_lattice_embedded.md), [numerics](experiments/v2_0_lattice/)) |
 | **V2.1** | QEC decoder spectral analysis — universality test across 2 tasks | **Done** ([experiment](experiments/v2_1_qec/), results below) |
-| **V3.0** | 10^10–10^12 param cluster runs (Tier-1 hardening) | **Recipe + in-flight 10^10 run** ([doc](docs/v3_0_cluster_recipe.md)) |
+| **V3.0** | 10^10–10^12 param cluster runs (Tier-1 hardening) | **Tier-1 items 1-4 closed** ([recipe](docs/v3_0_cluster_recipe.md), [gap closure](docs/v1_1_ntk_gap_closure.md), [task-3](experiments/v3_0_task3_symbolic/), [arch baselines](experiments/v3_0_arch_baselines/)) |
 | **V3.1** | Observational: α-drift × information density (ELT-HIRES target ~2028) | **Prediction + mock pipeline** ([doc](docs/v3_1_alpha_drift_prediction.md), [mock](experiments/v3_1_alpha/)) |
+| **V3.2** | Cosmological-constant prediction Λ ≈ 10^{-122} | **Consistency check** ([doc](docs/v3_2_cosmological_constant.md)) |
+| **V3.3** | Cluster-core α-drift amplification | **Closes Tier-2 item 6 with negative result** ([doc](docs/v3_3_cluster_amplification.md)) |
 | **V4.0** | Uniqueness test — FIM tier hierarchy vs 5 non-NN parameterized systems | **Done** ([experiment](experiments/v4_0_uniqueness/)) |
+
+### Key documents
+
+- [`docs/paper_draft.md`](docs/paper_draft.md) — NeurIPS/ICML workshop draft synthesising V1.1 + V1.2 + V2.1 + V3.0-Tier1 + V4.0.
+- [`docs/multi_llm_audit_v2.md`](docs/multi_llm_audit_v2.md) — post-patch Gemini 3 Pro review: V1.1 7→8, V3.1 6→7, V2.0 8→8, gap-closure 8.
+- [`docs/findings.md`](docs/findings.md) — consolidated findings summary across all phases.
 
 ### Proof Ladder (honest framing; from Naestro, 2026-04-23)
 
