@@ -76,11 +76,17 @@ def v2_0_lattice_table() -> str:
     d = _load("experiments/v2_0_lattice/lattice_analytic_results.json") or {}
     if not d.get("levels"):
         return "_(V2.0 lattice analytic results not present)_"
-    rows = ["| Level | Spacing $a$ | u^T G u | |err| | rel_err |", "|-------|-------------|---------|------|---------|"]
+    # NOTE: avoid `|err|` literal pipes in table cells; use `\|err\|` or the
+    # word "abs err" to keep markdown table parsing happy.
+    rows = [
+        "| Level | Spacing $a$ | $u^{T} G u$ | abs err | rel err |",
+        "|-------|-------------|-------------|---------|---------|",
+    ]
     for r in d["levels"]:
         rows.append(f"| {r['level']} | {r['spacing']:.4f} | {r['bilinear_form']:.4e} | {r['abs_err']:.2e} | {r['rel_err']:.2e} |")
     rate = d.get("observed_convergence_rate", "?")
-    foot = f"\n**Observed convergence rate:** $|err| \\sim a^{{{rate:.3f}}}$ (theoretical: $O(a^2)$)."
+    rate_str = f"{rate:.3f}" if isinstance(rate, (int, float)) else str(rate)
+    foot = f"\n**Observed convergence rate:** abs err $\\sim a^{{{rate_str}}}$ (theoretical: $O(a^2)$)."
     return "### V2.0 Lattice Cauchy Convergence\n\n" + "\n".join(rows) + foot
 
 

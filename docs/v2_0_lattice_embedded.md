@@ -24,7 +24,7 @@
 
 Let $a > 0$ be a lattice spacing and let
 
-$$\Lambda_a \;=\; a\,\mathbb{Z}^4 \;=\; \bigl\{ x = a\,n \;\big|\; n \in \mathbb{Z}^4 \bigr\}$$
+$$\Lambda_a \;=\; a\,\mathbb{Z}^4 \;=\; \{\, x = a\,n \mid n \in \mathbb{Z}^4 \,\}$$
 
 be the standard hypercubic lattice in $\mathbb{R}^4$. The choice of ambient dimension $d = 4$
 is an explicit structural input, not a dynamical output; see Section 9.
@@ -122,7 +122,7 @@ $$g_{xy}(\theta) \;=\; G_a(x - y),$$
 *Proof.* Let $T_{ae_\mu}$ denote the translation by one lattice step in direction $\mu$.
 Translation invariance of the weight distribution implies
 
-$$p(\cdot\,|\, \theta_x, \theta_y, \ldots) \;=\; p\!\left(\cdot\,\big|\, \theta_{x+ae_\mu},
+$$p(\cdot \mid \theta_x, \theta_y, \ldots) \;=\; p\!\left(\cdot \mid \theta_{x+ae_\mu},
 \theta_{y+ae_\mu}, \ldots\right)$$
 
 after relabelling all sites simultaneously. Therefore
