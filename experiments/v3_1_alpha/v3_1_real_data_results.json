@@ -1,0 +1,14 @@
+{
+  "kappa_physical": 4e-59,
+  "hires_noise": 1e-06,
+  "n_sightlines": 300,
+  "partial_r_point": 0.008904701673413005,
+  "partial_r_95ci": [
+    -0.11243959511064747,
+    0.12268544894271036
+  ],
+  "null_r95": 0.1163431158313461,
+  "decision": "NULL",
+  "locked_protocol_version": "V2_preregistration_2026-04-24",
+  "status_note": "This run used the synthetic stub. When real archival UVES+HIRES \u00d7 SDSS DR18 data is available, replace load_archival_data() and re-run. The decision rule, bootstrap protocol, null-test construction, and partial-correlation formula are locked and must not be altered between the preregistration commit and the real-data execution."
+}
