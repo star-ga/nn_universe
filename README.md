@@ -198,22 +198,21 @@ Fourth task: 10-class supervised classification on 1024-d Gaussian inputs with l
 | 512 | 1.58M | 17,358x | 503,865x | 94.5% |
 | 1,024 | 5.26M | 151,280x | 45,512,329x | 94.5% |
 
-**Task-4 SV power law** (6 points): $N^{1.02}$, $R^2 = 0.56$
-**Task-4 FIM power law — clean 4 points (W ≤ 256, no Tier-3 underflow)**: $N^{1.07}$, $R^2 = 0.94$
-**Task-4 FIM power law — all 6 points**: $N^{2.75}$, $R^2 = 0.90$ ← **inflated by Tier-3 underflow at W ≥ 512**, do not use
+**Task-4 SV power law**: $N^{1.02}$ at 300 probes (R²=0.56) → $N^{1.53}$ at 2000 probes (R²=0.94)
+**Task-4 FIM power law**: $N^{2.75}$ at 300 probes (R²=0.90) → $N^{5.55}$ at 2000 probes (R²=0.995) — **the canonical value**
 
-The W=512 and W=1024 rows show FIM T1/T3 of $5 \times 10^5$ and $4.6 \times 10^7$ respectively — these are numerical float32-underflow artifacts in the Tier-3 mean, not physical measurements. The clean 4-point fit ($N^{1.07}$) is the correct headline exponent for Task-4.
+A high-probes verification (W=256/512/1024 at n_probes=2000, RTX 4090, commit 2026-04-24) showed that the 300-probe FIM values at W ≥ 512 are actually *under*-estimates, not over-estimates. At W=1024 the FIM T1/T3 rises from 45M (300 probes) to **326M (2000 probes)**. The exponent gets *steeper* and the fit *cleaner* (R² = 0.995) with more probes. The earlier hypothesis that the high-W FIM values were Tier-3-underflow artifacts was **wrong**; the FIM tier ratio genuinely grows super-quadratically with N for this task. See `experiments/v3_0_task4_vision/v3_0_task4_verify_2000probes.json` for the verified numbers.
 
 ### Final 4-task universality summary
 
-| Task | SV exponent | FIM exponent | Fit range | Interpretation |
-|------|-------------|--------------|-----------|----------------|
-| T1 cosmology self-prediction | 0.516 | ≈ 0 | 12 widths | unstructured (Gaussian noise) |
-| T2 QEC toric-code decoding | 0.807 | 1.386 | 6 widths | lattice-structured |
-| T3 symbolic regression | 0.555 | 1.432 | 6 widths | smooth-function |
-| **T4 supervised classification** | **1.02** | **1.067** (clean 4pt) / 2.748 (6pt w/ underflow) | 4-6 widths | discrete labels |
+| Task | SV exponent (headline at 300 probes) | FIM exponent (headline at 300 probes) | 2000-probe verification (where done) | Probe-count sensitivity |
+|------|----|----|----|----|
+| T1 cosmology self-prediction | 0.516 | ≈ 0 | — | not tested |
+| T2 QEC toric-code decoding | 0.807 | 1.386 | FIM 2.258 @ 3-width subset (R²=1.00) | FIM exp grows with probes |
+| T3 symbolic regression | 0.555 | 1.432 | — | not tested |
+| **T4 supervised classification** | 1.02 | 2.748 | **FIM 5.546 @ 3-width subset (R²=0.995)** | FIM exp grows with probes |
 
-**Corrected headline**: all three structured tasks (T2, T3, T4) have FIM exponents in the 1.0–1.5 band; the apparent T4 exponent of 2.748 was a Tier-3 float32 underflow artifact at W ≥ 512. Cosmology (T1) stays at ≈0 — unstructured task. Naestro Tier-1 item 1 (3-task universality) satisfied; the 4-task universality claim is honest with the caveat that T4 large-width data needs higher `n_probes` (~2000) to be reliable.
+**Revised headline after verification**: the FIM tier exponent for structured tasks is probe-count-sensitive. At n_probes=300 (original runs) the exponents are $\beta \in \{1.386, 1.432, 2.748\}$; at n_probes=2000 the same measurements give larger exponents with higher R², confirming that low-probe measurements *under-estimate* the true ratio at large N (tier-3 values are genuinely very small, not MC-zero). The FIM tier hierarchy grows steeply with N for all structured tasks; the exact exponent is task-dependent but all are super-linear. All headline FIM numbers in this repo should be read as "lower bounds at n_probes=300; true values likely higher." Naestro Tier-1 item 1 (3-task universality) satisfied with 4 tasks.
 
 ### V1.2 Depth Sweep (width=256, 6 depths)
 

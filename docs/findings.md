@@ -110,7 +110,7 @@ Third and fourth tasks added (`experiments/v3_0_task3_symbolic/`, `experiments/v
 | Symbolic regression | 0.555 | 1.432 | 6 widths, clean |
 | Vision classification | 1.02 | **1.067** (clean 4 widths) / 2.748 (6 widths w/ underflow) | T1/T3 underflow at W ≥ 512, use 4-point fit |
 
-**Power-law FORM holds across all four tasks.** Exponents are task-dependent but the three structured-task FIM exponents cluster in the 1.07–1.43 band; cosmology is ≈0 (unstructured). Initial paper-draft headline of $N^{2.748}$ for vision was a Tier-3 float32 underflow artifact that I caught in the v2 audit; the corrected exponent is $N^{1.07}$.
+**Power-law FORM holds across all four tasks.** Exponents are task-dependent and probe-count-sensitive. At n_probes=300 (original runs), all three structured-task FIM exponents are super-linear (QEC 1.386; symbolic 1.432; vision 2.748). At n_probes=2000 (verification re-runs of T2 and T4) the exponents are *steeper* (QEC 2.258 with R²=1.00; vision 5.546 with R²=0.995), meaning the 300-probe values were under-estimates. A transient "underflow artifact" audit conclusion from earlier in the session was wrong: high-probe re-runs show the tier-3 values at large N are genuinely very small, not MC-zero, and MC noise at 300 probes biases the tier-3 mean upward (hence the ratio downward). Cosmology (T1) is ≈0 at 300 probes; not re-verified at 2000 probes.
 
 ### 2.4 V3.1 — Mock Observational Pipeline
 

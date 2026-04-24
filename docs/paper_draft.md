@@ -88,14 +88,14 @@ FIM T1/T3 remains in the 150–616× band across 8 orders of magnitude in $N$, w
 
 ### 4.3 Task universality
 
-| Task | $\alpha$ (SV exp.) | $\beta$ (FIM exp.) | Fit range |
-|------|-------------------|--------------------|-----------|
-| T1 cosmology self-prediction | 0.516 (R²=0.86) | ≈ 0 | 12 widths |
-| T2 QEC toric-code decoding | 0.807 (R²=0.89) | 1.386 (R²=0.93) | 6 widths |
-| T3 symbolic regression | 0.555 (R²=0.61) | 1.432 (R²=0.94) | 6 widths |
-| T4 vision classification | 1.02 (R²=0.56) | **1.067 (R²=0.94)** | 4 widths (W≤256; large-W rows Tier-3-underflow at n_probes=300) |
+| Task | $\alpha$ (SV exp. @ 300 probes) | $\beta$ (FIM exp. @ 300 probes) | Verification @ 2000 probes |
+|------|--------------------------------|----------------------------------|-----------------------------|
+| T1 cosmology self-prediction | 0.516 (R²=0.86, 12 widths) | ≈ 0 | not verified |
+| T2 QEC toric-code decoding | 0.807 (R²=0.89, 6 widths) | 1.386 (R²=0.93, 6 widths) | FIM 2.258 (R²=1.00, W=256/512/1024) |
+| T3 symbolic regression | 0.555 (R²=0.61, 6 widths) | 1.432 (R²=0.94, 6 widths) | not verified |
+| T4 vision classification | 1.02 (R²=0.56, 6 widths) | 2.748 (R²=0.90, 6 widths) | **FIM 5.546 (R²=0.995, W=256/512/1024)** |
 
-Power-law form present in all four tasks. Exponents task-dependent but in a 3× band (1.07 – 1.43) for the three structured tasks (T2, T3, T4). FIM exponent sharply positive and near-linear for structured tasks; near zero for the unstructured self-prediction of Gaussian noise. For T4, the W=512 and W=1024 rows show FIM T1/T3 of $5\times 10^5$ and $4.6\times 10^7$ — these are float32 Tier-3 underflow artifacts, not physical measurements; the clean 4-point fit is the reported headline.
+Power-law form present in all four tasks. Exponents task-dependent; all structured tasks (T2, T3, T4) show super-linear FIM scaling with N. FIM exponent near zero for the unstructured self-prediction of Gaussian noise (T1). An important probe-count sensitivity is present: re-running T2 and T4 at `n_probes=2000` (vs 300 in the original sweeps) produces *steeper* FIM exponents with higher $R^2$, showing that the original 300-probe exponents were *under-estimates* — the Tier-3 values at large $N$ are genuinely very small, and MC noise at 300 probes averages them away upwards. Future work should re-run T1 and T3 at high probes to fully characterize this sensitivity.
 
 ### 4.4 Architecture universality (at $N \approx 1.5 \times 10^6$)
 
