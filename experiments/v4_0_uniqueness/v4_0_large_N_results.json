@@ -1,0 +1,211 @@
+{
+  "baselines": {
+    "random_matrix": {
+      "n_params_target": 10000,
+      "per_seed": [
+        {
+          "seed": 0,
+          "n_params_actual": 9870,
+          "tier_ratio": 103.3,
+          "top1pct_mass": 0.24,
+          "elapsed_s": 0.0
+        },
+        {
+          "seed": 1,
+          "n_params_actual": 9870,
+          "tier_ratio": 106.02,
+          "top1pct_mass": 0.241,
+          "elapsed_s": 0.0
+        },
+        {
+          "seed": 2,
+          "n_params_actual": 9870,
+          "tier_ratio": 104.15,
+          "top1pct_mass": 0.2385,
+          "elapsed_s": 0.0
+        },
+        {
+          "seed": 3,
+          "n_params_actual": 9870,
+          "tier_ratio": 101.88,
+          "top1pct_mass": 0.2364,
+          "elapsed_s": 0.0
+        },
+        {
+          "seed": 4,
+          "n_params_actual": 9870,
+          "tier_ratio": 107.1,
+          "top1pct_mass": 0.2436,
+          "elapsed_s": 0.0
+        },
+        {
+          "seed": 5,
+          "n_params_actual": 9870,
+          "tier_ratio": 102.84,
+          "top1pct_mass": 0.2395,
+          "elapsed_s": 0.0
+        }
+      ],
+      "tier_ratio_mean": 104.21500000000002,
+      "tier_ratio_std": 1.9882429429020976,
+      "tier_ratio_cv": 0.019078279929972627
+    },
+    "ising_chain": {
+      "n_params_target": 10000,
+      "per_seed": [
+        {
+          "seed": 0,
+          "n_params_actual": 10000,
+          "tier_ratio": 2.8,
+          "top1pct_mass": 0.0161,
+          "elapsed_s": 0.1
+        },
+        {
+          "seed": 1,
+          "n_params_actual": 10000,
+          "tier_ratio": 2.6,
+          "top1pct_mass": 0.0156,
+          "elapsed_s": 0.1
+        },
+        {
+          "seed": 2,
+          "n_params_actual": 10000,
+          "tier_ratio": 2.6,
+          "top1pct_mass": 0.0156,
+          "elapsed_s": 0.1
+        },
+        {
+          "seed": 3,
+          "n_params_actual": 10000,
+          "tier_ratio": 2.83,
+          "top1pct_mass": 0.0162,
+          "elapsed_s": 0.1
+        },
+        {
+          "seed": 4,
+          "n_params_actual": 10000,
+          "tier_ratio": 2.7,
+          "top1pct_mass": 0.0158,
+          "elapsed_s": 0.1
+        },
+        {
+          "seed": 5,
+          "n_params_actual": 10000,
+          "tier_ratio": 2.77,
+          "top1pct_mass": 0.016,
+          "elapsed_s": 0.1
+        }
+      ],
+      "tier_ratio_mean": 2.716666666666667,
+      "tier_ratio_std": 0.10013324456276573,
+      "tier_ratio_cv": 0.036858863029238915
+    },
+    "harmonic_chain": {
+      "n_params_target": 10000,
+      "per_seed": [
+        {
+          "seed": 0,
+          "n_params_actual": 10000,
+          "tier_ratio": 5.03,
+          "top1pct_mass": 0.0383,
+          "elapsed_s": 6.2
+        },
+        {
+          "seed": 1,
+          "n_params_actual": 10000,
+          "tier_ratio": 5.05,
+          "top1pct_mass": 0.0385,
+          "elapsed_s": 6.0
+        },
+        {
+          "seed": 2,
+          "n_params_actual": 10000,
+          "tier_ratio": 4.85,
+          "top1pct_mass": 0.0369,
+          "elapsed_s": 6.0
+        },
+        {
+          "seed": 3,
+          "n_params_actual": 10000,
+          "tier_ratio": 4.75,
+          "top1pct_mass": 0.0362,
+          "elapsed_s": 6.1
+        },
+        {
+          "seed": 4,
+          "n_params_actual": 10000,
+          "tier_ratio": 5.04,
+          "top1pct_mass": 0.0386,
+          "elapsed_s": 6.2
+        },
+        {
+          "seed": 5,
+          "n_params_actual": 10000,
+          "tier_ratio": 4.92,
+          "top1pct_mass": 0.0375,
+          "elapsed_s": 6.0
+        }
+      ],
+      "tier_ratio_mean": 4.94,
+      "tier_ratio_std": 0.12231107881136531,
+      "tier_ratio_cv": 0.02475932769460836
+    },
+    "boolean_circuit": {
+      "error": "O(N^2) Python inner loop exceeds per-baseline timeout at N=10000; needs vectorization"
+    },
+    "cellular_automaton": {
+      "error": "O(N^2) Python inner loop exceeds per-baseline timeout at N=10000; needs vectorization"
+    }
+  },
+  "meta": {
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "probes": 32,
+    "target_params": 10000,
+    "per_baseline_timeout": 120.0,
+    "omp_threads": 8,
+    "nn_baseline_skipped": true,
+    "nn_baseline_skipped_reason": "already measured at N=3500 in V4.0 small-N and in V4.1 trained-vs-untrained",
+    "note": "boolean_circuit and cellular_automaton skipped: their O(N^2) Python inner loops require vectorization before they can scale to N=10^4; committed to scaling_experiment_extended in a future pass"
+  },
+  "comparison_vs_V4_0": {
+    "random_matrix": {
+      "V4.0_N": 3003,
+      "V4.0_ratio": 80.8,
+      "V4.1_N": 9870,
+      "V4.1_ratio": 104.2,
+      "scale_factor": 3.3,
+      "ratio_change": 1.29
+    },
+    "ising_chain": {
+      "V4.0_N": 256,
+      "V4.0_ratio": 2.56,
+      "V4.1_N": 10000,
+      "V4.1_ratio": 2.72,
+      "scale_factor": 39,
+      "ratio_change": 1.06
+    },
+    "harmonic_chain": {
+      "V4.0_N": 128,
+      "V4.0_ratio": 3.72,
+      "V4.1_N": 10000,
+      "V4.1_ratio": 4.94,
+      "scale_factor": 78,
+      "ratio_change": 1.33
+    },
+    "neural_network": {
+      "V4.0_N": 3500,
+      "V4.0_ratio": 26449,
+      "V4.1_N": 4240,
+      "V4.1_ratio_trained": 1081,
+      "V4.1_ratio_untrained": 10186
+    }
+  },
+  "verdict": "Non-NN baselines (random matrix, Ising, harmonic) do not develop the 10^3-10^4 tier ratio even when scaled up by 3-78x in N. The \"NN is special\" claim survives the scale-up. Compare: trained NN at N=4240 is 1081x (V4.1 5-seed); untrained NN is 10186x. Both orders of magnitude above the highest non-NN baseline (random matrix 104x at N=9870)."
+}
