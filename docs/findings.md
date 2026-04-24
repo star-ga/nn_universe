@@ -64,7 +64,7 @@ Executable recipe for $10^{10}$–$10^{12}$-param scaling runs on H200 cluster w
 
 **Seed robustness** (width 256, 6 seeds + width 14000 cluster-scale, 5 seeds):
 - Width 256: SV CV = 124%, FIM CV = 10%
-- Width 14000 (589M params): SV CV = 108.6%, **FIM CV = 1.85%** — five-fold improvement with scale
+- Width 14000 (589M params, 20 seeds, canonical fit): SV CV = 108.6%, **FIM CV = 1.51%** — over six-fold improvement with scale
 - FIM tier structure *becomes more stable* with scale; SV ratio remains noisy.
 
 **Key finding:** the SV ratio is a *noisy* observable; the FIM tier hierarchy is the *load-bearing* empirical quantity for the V1.0 claims.
@@ -108,7 +108,7 @@ Third and fourth tasks added (`experiments/v3_0_task3_symbolic/`, `experiments/v
 | Cosmology self-prediction | 0.516 | ≈ 0 | 12 widths, clean |
 | QEC toric-code decoding | 0.807 | 1.386 | 6 widths, Adam, clean |
 | Symbolic regression | 0.555 | 1.432 | 6 widths, clean |
-| Vision classification | 1.02 | **1.067** (clean 4 widths) / 2.748 (6 widths w/ underflow) | T1/T3 underflow at W ≥ 512, use 4-point fit |
+| Vision classification | 1.02 | **2.748** at 300 probes → **5.546** at 2000 probes (canonical) | ~~1.067 "clean 4-width" value [RETRACTED] — verified at 2000 probes, the high-W values are not underflow artifacts; exponent rises, R² reaches 0.995 |
 
 **Power-law FORM holds across all four tasks.** Exponents are task-dependent and probe-count-sensitive for structured tasks; unstructured is probe-insensitive.
 

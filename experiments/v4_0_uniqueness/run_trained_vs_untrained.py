@@ -90,7 +90,9 @@ def main() -> int:
     ap.add_argument("--widths", type=int, nargs="+", default=[32, 64, 128, 256, 512])
     ap.add_argument("--seeds", type=int, nargs="+", default=[0, 1, 2, 3, 4])
     ap.add_argument("--steps", type=int, default=20000)
-    ap.add_argument("--probes", type=int, default=200)
+    ap.add_argument("--probes", type=int, default=2000,
+                    help="FIM probe count. 200 (legacy) risks MC-noise underflow biasing tier-3 low; "
+                         "2000 matches the high-probes verification used for Task-4.")
     ap.add_argument("--dim", type=int, default=16)
     ap.add_argument("--omp-threads", type=int, default=8)
     ap.add_argument("--out", type=str,

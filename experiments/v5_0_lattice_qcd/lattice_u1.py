@@ -79,38 +79,30 @@ def action(theta: np.ndarray, beta: float, d: int) -> float:
 
 
 def grad_action(theta: np.ndarray, beta: float, d: int) -> np.ndarray:
-    """Gradient of the Wilson action w.r.t. each link phase.
+    """Gradient of the Wilson action S = -β Σ_{x,μ<ν} cos(P(x,μ,ν)) w.r.t.
+    each link phase θ(x, μ).
 
-    ∂S/∂theta(x, mu) = β Σ over plaquettes containing this link of
-                      sin(orientation * theta_P).
+    Derivation. With P(x,μ,ν) = θ(x,μ) + θ(x+μ̂,ν) − θ(x+ν̂,μ) − θ(x,ν),
+    P(x,ν,μ) = −P(x,μ,ν). For every ν ≠ μ, θ(x,μ) lies in exactly two
+    plaquettes in the unique unordered (μ,ν) plane: P(x,μ,ν) (coeff +1
+    when μ<ν, coeff −1 when μ>ν by anti-symmetry) and P(x−ν̂,μ,ν) (coeff
+    −1 when μ<ν, coeff +1 when μ>ν). Summing ∂/∂θ(x,μ)[−β cos(P)] in
+    both cases gives the same expression:
 
-    Each link (x, mu) appears in 2(d-1) plaquettes:
-      - (mu, nu) forward:  theta_P(x,mu,nu)         coeff +1
-      - (mu, nu) backward: theta_P(x-nu,mu,nu)     coeff +1 (shift)
-      - (nu, mu) forward:  theta_P(x,nu,mu)         coeff -1
-      - (nu, mu) backward: theta_P(x-nu-ish...)    coeff -1
+        ∂S/∂θ(x,μ) = Σ_{ν≠μ} β [ sin(P(x,μ,ν)) − sin(P(x−ν̂,μ,ν)) ]
 
-    We compute this efficiently in vectorised form.
+    The loop iterates every ordered (μ,ν) with ν≠μ once, so there is no
+    double-counting; the mu<nu vs mu>nu branches carry identical formulas.
     """
     grad = np.zeros_like(theta)
     for mu in range(d):
         for nu in range(d):
             if mu == nu:
                 continue
-            plaq = plaquette_sum(theta, mu, nu)         # (L, L, L, L)
-            sin_fwd = np.sin(plaq)
-            sin_bwd = np.sin(np.roll(plaq, 1, axis=nu))  # plaquette starting at x-nu
-            # Link theta(x, mu) appears in:
-            #  plaq at (x, mu, nu)   coefficient +1  -> +sin_fwd
-            #  plaq at (x-nu, mu, nu) coefficient +1 -> +sin_bwd (same sign from cosine symmetry)
-            # So ∂/∂theta(x, mu) of -β cos(P) = β sin(P); we add two plane contributions.
-            if mu < nu:
-                grad[..., mu] += beta * (sin_fwd + sin_bwd)
-            else:
-                # (mu, nu) with mu > nu — link appears with opposite orientation in the
-                # (nu, mu) plane at the same site. The corresponding sin terms come with
-                # a minus sign in the action derivative.
-                grad[..., mu] -= beta * (sin_fwd + sin_bwd)
+            plaq = plaquette_sum(theta, mu, nu)            # P(x, mu, nu)
+            sin_fwd = np.sin(plaq)                         # sin P(x, mu, nu)
+            sin_bwd = np.sin(np.roll(plaq, 1, axis=nu))    # sin P(x-nu_hat, mu, nu)
+            grad[..., mu] += beta * (sin_fwd - sin_bwd)
     return grad
 
 
@@ -204,6 +196,7 @@ def main() -> int:
     ap.add_argument("--beta", type=float, default=1.0, help="inverse gauge coupling")
     ap.add_argument("--thermalise", type=int, default=200, help="MC sweeps before measurement")
     ap.add_argument("--n-samples", type=int, default=100, help="configurations for FIM average")
+    ap.add_argument("--decorr", type=int, default=20, help="sweeps between measurements")
     ap.add_argument("--step-size", type=float, default=0.6, help="Metropolis proposal step")
     ap.add_argument("--seeds", type=int, nargs="+", default=[0, 1, 2])
     ap.add_argument("--out", type=str,
@@ -218,24 +211,25 @@ def main() -> int:
         print(f"seed={seed}  L={args.L}  d={args.d}  n_links={n_params:,}  beta={args.beta}", flush=True)
 
         # Thermalisation
-        t0 = time.time()
+        t_therm_start = time.time()
         for sweep in range(args.thermalise):
             metropolis_sweep_local(theta, args.beta, args.d, args.step_size, rng)
             if sweep == 0:
-                print(f"  sweep 1 done in {time.time()-t0:.1f}s — estimated thermalisation: {args.thermalise*(time.time()-t0):.1f}s", flush=True)
-        print(f"  thermalised in {time.time()-t0:.1f}s", flush=True)
+                print(f"  sweep 1 done in {time.time()-t_therm_start:.1f}s — estimated thermalisation: {args.thermalise*(time.time()-t_therm_start):.1f}s", flush=True)
+        t_therm = time.time() - t_therm_start
+        print(f"  thermalised in {t_therm:.1f}s", flush=True)
 
         # Measurement
-        t0 = time.time()
+        t_meas_start = time.time()
         fim_diag = np.zeros(n_params, dtype=np.float64)
-        decorr = 5  # sweeps between measurements
+        decorr = args.decorr
         for i in range(args.n_samples):
             for _ in range(decorr):
                 metropolis_sweep_local(theta, args.beta, args.d, args.step_size, rng)
             g = grad_action(theta, args.beta, args.d).ravel()
             fim_diag += g * g
         fim_diag /= args.n_samples
-        t_meas = time.time() - t0
+        t_meas = time.time() - t_meas_start
 
         t1, t3, ratio = tier_ratio(fim_diag)
         print(f"  measured in {t_meas:.1f}s  T1={t1:.4e}  T3={t3:.4e}  T1/T3={ratio:.1f}", flush=True)
@@ -244,7 +238,7 @@ def main() -> int:
             "seed": seed, "L": args.L, "d": args.d, "beta": args.beta,
             "n_params": int(n_params),
             "fim_tier1_mean": t1, "fim_tier3_mean": t3, "fim_tier1_tier3": ratio,
-            "thermalise_s": t0, "measure_s": t_meas,
+            "thermalise_s": t_therm, "measure_s": t_meas,
         })
 
     ratios = np.array([r["fim_tier1_tier3"] for r in results])

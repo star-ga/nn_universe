@@ -172,7 +172,8 @@ def _max_sv_ratio(net: nn.Module) -> float:
 
 def _fim_tier_ratio(net: nn.Module, device: torch.device, dtype: torch.dtype) -> float:
     net.eval()
-    fim_diag: dict[str, torch.Tensor] = {n: torch.zeros_like(p, dtype=torch.float32) for n, p in net.named_parameters()}
+    # Accumulate in float64 to avoid tier-3 underflow (float32 min normal ~1.2e-38).
+    fim_diag: dict[str, torch.Tensor] = {n: torch.zeros_like(p, dtype=torch.float64) for n, p in net.named_parameters()}
     for _ in range(_FIM_SAMPLES):
         x = torch.randn(1, _DIM, device=device, dtype=dtype)
         loss = 0.5 * (net(x) - x).pow(2).mean()
@@ -180,7 +181,7 @@ def _fim_tier_ratio(net: nn.Module, device: torch.device, dtype: torch.dtype) ->
         loss.backward()
         for n, p in net.named_parameters():
             if p.grad is not None:
-                fim_diag[n] += p.grad.data.float() ** 2
+                fim_diag[n] += p.grad.data.double() ** 2
     for n in fim_diag:
         fim_diag[n] /= _FIM_SAMPLES
     all_fim = torch.cat([v.flatten() for v in fim_diag.values()]).cpu().numpy()
