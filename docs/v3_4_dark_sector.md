@@ -43,6 +43,8 @@ where $\rho_t$ is the tier-$t$ energy density (proportional to $f_t \cdot N_{\rm
 
 ### 2.1 Tier-averaged energy contribution
 
+**Handwave flag (audit, 2026-04-24):** The per-mode energy weighting $\sqrt{\lambda_t}$ used below is an equipartition heuristic, not a derivation. Properly deriving the effective vacuum-energy contribution of each FIM mode requires: (a) specifying the full classical Hamiltonian of the NN parameter manifold (we have only the FIM, not the kinetic + potential decomposition); (b) showing that the classical stationary point is what contributes to vacuum energy at cosmological time scales. Both steps are skipped here. Treat the $\sqrt{\lambda_t}$ ansatz as one of several possible choices, not the derived one.
+
 In the NTK continuum limit (V1.1), each tier contributes to the total action per mode:
 
 - Tier 1: $\overline{\lambda_1 \theta^2} \sim \lambda_1 \cdot \theta_*^2$ where $\theta_*$ is the stable fixed point; potential-dominated.

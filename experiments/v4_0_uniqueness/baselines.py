@@ -345,28 +345,50 @@ class BooleanCircuit(Baseline):
             state[self.n_inputs + g] = probs[0] * andv + probs[1] * orv + probs[2] * xorv
         return state[-1:]
 
+    def _forward_batch(self, inputs: np.ndarray, W: np.ndarray) -> np.ndarray:
+        """Evaluate circuit on BATCH of inputs. inputs shape (B, n_inputs).
+
+        Vectorised over a batch dimension. Still a Python loop over gates
+        (inherent to the feed-forward sequencing), but each gate step is a
+        numpy vector op over all B inputs simultaneously.
+        """
+        B = inputs.shape[0]
+        state = np.zeros((B, self.n_inputs + self.n_gates), dtype=np.float32)
+        state[:, : self.n_inputs] = inputs
+        for g in range(self.n_gates):
+            a = state[:, self.wire[g, 0]]
+            b = state[:, self.wire[g, 1]]
+            logits = W[g]
+            probs = np.exp(logits - logits.max())
+            probs /= probs.sum()
+            andv = a * b
+            orv = a + b - a * b
+            xorv = a + b - 2 * a * b
+            state[:, self.n_inputs + g] = probs[0] * andv + probs[1] * orv + probs[2] * xorv
+        return state[:, -1:]
+
     def parameter_importance(self, n_probes: int) -> np.ndarray:
         """Gradient of mean output w.r.t. logits via analytic softmax.
 
-        For each gate g, dOutput / dW[g, k] depends on where gate g is routed
-        downstream. We compute this by finite differences with n_probes random
-        input vectors, averaged.
+        For each gate g × logit k we compute the finite-difference gradient
+        over a batch of n_probes random inputs at once. The Python loop is
+        over gates × logits (3N iterations) rather than gates × logits × probes,
+        reducing wall-clock by n_probes×.
         """
         eps = 1e-2
         base_W = self.W.copy()
+        n_batch = max(1, n_probes)
+        xs = self.rng.uniform(0, 1, size=(n_batch, self.n_inputs)).astype(np.float32)
+        base_y = self._forward_batch(xs, base_W)  # (B, 1)
         imp = np.zeros((self.n_gates, 3), dtype=np.float32)
-        for _ in range(max(1, n_probes)):
-            x = self.rng.uniform(0, 1, size=self.n_inputs).astype(np.float32)
-            base_y = self._forward(x, base_W)
-            for g in range(self.n_gates):
-                for k in range(3):
-                    W_pert = base_W.copy()
-                    W_pert[g, k] += eps
-                    y = self._forward(x, W_pert)
-                    if np.isfinite(y).all():
-                        diff = float(y[0] - base_y[0]) / eps
-                        imp[g, k] += diff * diff
-        imp /= max(1, n_probes)
+        for g in range(self.n_gates):
+            for k in range(3):
+                W_pert = base_W.copy()
+                W_pert[g, k] += eps
+                y = self._forward_batch(xs, W_pert)  # (B, 1)
+                diff = (y - base_y).flatten() / eps  # (B,)
+                if np.isfinite(diff).all():
+                    imp[g, k] = float(np.mean(diff * diff))
         return imp.flatten()
 
 
@@ -408,24 +430,41 @@ class CellularAutomaton(Baseline):
         return s
 
     def parameter_importance(self, n_probes: int) -> np.ndarray:
-        """Influence = Hamming distance after n_steps, averaged over probes."""
+        """Influence = Hamming distance after n_steps, averaged over probes.
+
+        Vectorised: we build a batch of N perturbed states (one per single-bit
+        flip) and evolve them all simultaneously via numpy ops that take an
+        extra leading batch axis. Avoids the O(N^2) Python inner loop.
+        """
         base = self.state.copy()
-        # Probes = random different evolution horizons (different mental
-        # "observers" of the same CA). This broadens the importance measure
-        # so it is not horizon-specific.
         horizons = sorted({max(8, int(self.n_steps * (0.25 + 0.75 * self.rng.random())))
                             for _ in range(max(1, n_probes))})
         imp = np.zeros(self.N, dtype=np.float32)
+
+        # Build the batch of perturbed states once: shape (N, N).
+        # perturbed[i] is `base` with bit i flipped.
+        perturbed = np.tile(base, (self.N, 1))
+        idx = np.arange(self.N)
+        perturbed[idx, idx] = 1 - perturbed[idx, idx]
+
         for h in horizons:
-            saved_n_steps = self.n_steps
-            self.n_steps = h
-            base_evolved = self._evolve(base)
-            for i in range(self.N):
-                perturbed = base.copy()
-                perturbed[i] = 1 - perturbed[i]
-                evolved = self._evolve(perturbed)
-                imp[i] += float(np.sum(evolved != base_evolved))
-            self.n_steps = saved_n_steps
+            base_ev = base.copy()
+            pert_ev = perturbed.copy()  # (N, N)
+            for _ in range(h):
+                # rule110 step applied to each row of a 2D array
+                left = np.roll(base_ev, 1)
+                right = np.roll(base_ev, -1)
+                pattern = (left << 2) | (base_ev << 1) | right
+                base_ev = ((110 >> pattern) & 1).astype(np.int8)
+
+                left_p = np.roll(pert_ev, 1, axis=1)
+                right_p = np.roll(pert_ev, -1, axis=1)
+                pattern_p = (left_p << 2) | (pert_ev << 1) | right_p
+                pert_ev = ((110 >> pattern_p) & 1).astype(np.int8)
+
+            # Hamming distance per row: pert_ev (N, N) vs base_ev (N,)
+            diffs = np.sum(pert_ev != base_ev[None, :], axis=1)
+            imp += diffs.astype(np.float32)
         imp /= len(horizons)
         # Square it so the units match other baselines (gradient-squared)
         return imp ** 2
