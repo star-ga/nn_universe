@@ -17,6 +17,24 @@
 
 ## 2. Results
 
+### 2.0 Methodology caveat (probe count)
+
+FIM diagonal estimates are Monte-Carlo in nature; MC noise concentrates
+in the small-FIM tail and artificially inflates the Tier-1/Tier-3 ratio
+at low probe counts. V4.0 used `n_probes = 32`; V4.1 uses `n_probes =
+200`. At matched N (~3-5k params) the V4.0 trained-NN ratio was 26,449×
+(6-seed mean), whereas V4.1 trained measurements give ~1,000× at the
+same width. **Most of that factor-25 difference is probe-count MC-noise,
+not training dynamics.** The *internal comparison within V4.1* (trained
+at 200 probes vs untrained at 200 probes) is valid because both use the
+same probe count; the reported "training reduces ratio by 4-24×" stands.
+
+The correct statement is: at probe-count high enough to be MC-accurate
+(~200), trained NN tier ratios are in the O(10³) range, and untrained
+(same init) are in the O(10³–10⁴) range — training reduces by 4-24×.
+
+### 2.1 Per-width data (n_probes = 200)
+
 Mean T1/T3 across 5 seeds per width:
 
 | Width | n_params | **Untrained** T1/T3 | **Trained** T1/T3 | trained / untrained |

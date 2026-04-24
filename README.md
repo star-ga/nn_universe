@@ -174,6 +174,8 @@ A follow-up experiment (`experiments/v4_0_uniqueness/run_trained_vs_untrained.py
 
 **Training does NOT create the FIM tier hierarchy — it partially dissipates it.** Untrained Kaiming-initialized networks already exhibit tier ratios of 10³–10⁴. Training smooths the FIM spectrum by a factor of 4-24× depending on width. The hierarchy is a property of **layered non-linear architectures with i.i.d. Gaussian weight initialization**, not of gradient descent dynamics.
 
+**Probe-count caveat.** V4.0 used `n_probes = 32`; V4.1 uses `n_probes = 200`. MC noise at low probe counts inflates Tier-3 zeros and thus the T1/T3 ratio; most of the factor-25 difference between V4.0's headline (26,449× at 3500 params) and V4.1's value (1,081× at 4,240 params) is probe-count accuracy, not training. Internal V4.1 comparison (trained vs untrained at same probes) is valid; the 4-24× reduction from training stands.
+
 **Reinterpretation of V1.0 and V4.0:**
 
 - V1.0's "physical constants = Tier-1 FIM parameters that training locks in" — **rejected**. Training *dissipates* the hierarchy, not locks it.
