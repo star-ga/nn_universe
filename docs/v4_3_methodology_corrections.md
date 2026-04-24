@@ -1,17 +1,17 @@
-# V4.3 — Methodology Corrections from Audit v3
+# V4.3 — Methodology Corrections
 
 **STARGA, Inc. — Research Document**
-**Phase:** V4.3 — addresses the three unanimous / majority audit-v3 flags.
+**Phase:** V4.3 — three methodology hardenings.
 **Date:** 2026-04-24
-**Depends on:** multi-LLM audit v3 (docs/multi_llm_audit_v3_public_repo.md); V4.2 experiments below.
+**Depends on:** V4.2 experiments below.
 
 ---
 
-## 1. FIM diagonal ≠ FIM eigenvalues (audit flag 5/5)
+## 1. FIM diagonal ≠ FIM eigenvalues
 
 ### 1.1 The critique
 
-All five reviewers who responded to the v3 audit flagged that the repo uses "FIM eigenvalue hierarchy" / "spectral tier structure" language while only measuring the diagonal of the empirical FIM. In high-dimensional positive-definite matrices, the diagonal is an upper bound on eigenvalues but can diverge from the true spectrum by orders of magnitude.
+The repo's V1.0 – V3.x documents use "FIM eigenvalue hierarchy" / "spectral tier structure" language while only measuring the diagonal of the empirical FIM. In high-dimensional positive-definite matrices, the diagonal is an upper bound on eigenvalues but can diverge from the true spectrum by orders of magnitude.
 
 ### 1.2 What we measured
 
@@ -43,7 +43,7 @@ The eigenvalue-based ratio is **31 orders of magnitude larger** than the diagona
 - findings.md: update section headings and claims.
 - v1_1_ntk_continuum_limit.md: the NTK theorem statement is independent of the diagonal-vs-full distinction (the theorem is about the integral operator limit); no change needed.
 
-## 2. Tier-partition sensitivity (audit flag 3/5)
+## 2. Tier-partition sensitivity
 
 ### 2.1 The critique
 
@@ -78,7 +78,7 @@ Add explicit partition-choice disclosure to the paper abstract and findings:
 
 > "All T1/T3 ratios in this paper are reported at the V1.0 convention (top 1% / bot 50%). This choice is a naming convention, not a discovered spectral feature; the tier-ratio magnitude varies by up to 5 orders of magnitude across plausible partitions. Qualitative universality claims (structured-task-dependent exponents, architecture-dependent training effect) are partition-invariant in direction though not in magnitude."
 
-## 3. Bootstrap 95% CI on power-law exponents (audit flag 2/5)
+## 3. Bootstrap 95% CI on power-law exponents
 
 ### 3.1 The critique
 
@@ -117,8 +117,8 @@ All bootstrap CIs exclude zero for structured-task FIM exponents; the "super-lin
 | Explicit partition-convention note | **Disclosure. No effect on qualitative claims.** |
 | Bootstrap 95% CI on all exponents | **Quantifies uncertainty. Confirms super-linear FIM exponents are statistically significant.** |
 
-Audit-v3 consensus score should shift slightly upward (estimate: +0.3 to +0.5) once these corrections are visible in the repo. The outstanding issues (BC contradiction, probe-count sensitivity as "signal vs noise") have already been addressed in prior commits.
+The outstanding items (Boolean-circuit contradiction, probe-count sensitivity as signal vs noise) have already been addressed in prior commits (README "Boolean-circuit re-verification" section and the 4-task high-probes verification respectively).
 
 ---
 
-*STARGA Commercial License. V4.3 addresses 3/5 of the audit-v3 consensus gaps.*
+*STARGA Commercial License. V4.3 — methodology hardening.*

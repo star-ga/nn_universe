@@ -1,8 +1,8 @@
 """V4.3 — tier-partition sensitivity.
 
-Multi-LLM audit v3 flag (3/5 reviewers): the 1% / 49% / 50% tier
-partition is arbitrary with no spectral-gap justification. Here we
-vary the partition and report how the reported ratios move.
+The 1% / 49% / 50% tier partition used since V1.0 is a naming
+convention with no spectral-gap justification. Here we vary the
+partition and report how the reported ratios move.
 
 Re-computes the FIM diagonal on a small MLP (width 16, ~1400 params,
 200 per-sample gradient probes) and measures T1/T3 ratios at six

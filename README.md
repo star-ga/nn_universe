@@ -21,11 +21,16 @@ Computational + analytical validation of the STARGA neural-network cosmology fra
 | **V3.2** | Cosmological-constant prediction Λ ≈ 10^{-122} | **Consistency check** ([doc](docs/v3_2_cosmological_constant.md)) |
 | **V3.3** | Cluster-core α-drift amplification | **Closes Tier-2 item 6 with negative result** ([doc](docs/v3_3_cluster_amplification.md)) |
 | **V4.0** | Uniqueness test — FIM tier hierarchy vs 5 non-NN parameterized systems | **Done** ([experiment](experiments/v4_0_uniqueness/)) |
+| **V4.1** | Trained-vs-untrained: hierarchy is init-induced, training dissipates 4–24× | **Done** ([doc](docs/v4_1_init_vs_learning.md), [experiment](experiments/v4_0_uniqueness/run_trained_vs_untrained.py)) |
+| **V4.1.2** | CNN + ViT init-vs-trained (architecture generalisation) | **Done** (README Arch baselines) |
+| **V4.2** | FIM diagonal vs full spectrum (Lanczos on small MLP) | **Done** ([experiment](experiments/v4_2_fim_spectrum_validation/)) |
+| **V4.3** | Tier-partition sensitivity + bootstrap 95% CI on all exponents | **Done** ([doc](docs/v4_3_methodology_corrections.md), [experiments](experiments/v4_3_statistics/)) |
+| **V4.4** | 4 non-deep learners (linear/kernel/logistic/GP) — decisive dichotomy | **Done** ([experiment](experiments/v4_0_uniqueness/learning_baselines.py)) |
+| **V5.0** | U(1) pure-gauge lattice FIM (non-deep, spatially-parallel control) | **Done** ([experiment](experiments/v5_0_lattice_qcd/)) |
 
 ### Key documents
 
 - [`docs/paper_draft.md`](docs/paper_draft.md) — NeurIPS/ICML workshop draft synthesising V1.1 + V1.2 + V2.1 + V3.0-Tier1 + V4.0.
-- [`docs/multi_llm_audit_v2.md`](docs/multi_llm_audit_v2.md) — post-patch Gemini 3 Pro review: V1.1 7→8, V3.1 6→7, V2.0 8→8, gap-closure 8.
 - [`docs/findings.md`](docs/findings.md) — consolidated findings summary across all phases.
 
 ### Proof Ladder (honest framing; from Naestro, 2026-04-23)
@@ -161,34 +166,64 @@ All three architectures trained on the same 32×32×3 Gaussian-noise self-predic
 
 **Naestro Tier-1 items 1, 2, 3, 4 all ✅ closed.**
 
-## V5.0 — Lattice U(1) gauge + V4.0 learning-baseline dichotomy (2026-04-24)
+## V5.0 — The signature is deep layered sequential computation (2026-04-24)
 
-The universality class is now empirically characterised across 10 systems
-via a single consistent measurement protocol (FIM diagonal, top 1% / bot 50%
-tier partition):
+The universality class is now empirically characterised across 10 systems via
+a single consistent measurement protocol (FIM diagonal, top-1% / bottom-50%
+tier partition). All numbers are mean T1/T3 over 3–5 seeds.
 
 | System | Type | T1/T3 |
 |--------|------|-------|
 | Trained NN (MLP, CNN, ViT) | Deep layered sequential | **O(10²–10⁴)** |
-| Boolean circuit (random gates) | Layered sequential (non-learning) | **O(10⁷–10⁸)** |
+| Boolean circuit (random gates) | **Layered sequential — not neural, not trained, not probabilistic** | **O(10⁷–10⁸)** |
 | Untrained NN (Kaiming init) | Deep layered sequential | **O(10³–10⁴)** |
-| **Linear regression** | Shallow learner | **1.10** |
-| **Kernel ridge regression** | Shallow learner | **1.42** |
-| **Logistic regression** | 1-layer softmax learner | **3.14** |
-| **Gaussian process** | Non-parametric learner | **5.37** |
-| **U(1) lattice gauge (L=8)** | Spatially-parallel QFT | **2.0** |
+| Linear regression | Shallow learner | **1.10** |
+| Kernel ridge regression | Shallow learner | **1.42** |
+| Logistic regression | 1-layer softmax learner | **3.14** |
+| Gaussian process regression | Non-parametric learner | **5.37** |
+| U(1) lattice gauge (L=8) | Spatially-parallel QFT | **2.0** |
 | Ising chain | 1D dynamical system | 2.6 |
 | Harmonic oscillator chain | 1D dynamical system | 5.0 |
 | Cellular automaton (Rule 110) | Sequential but shallow | 3.8 |
 | Random matrix (GOE) | Unstructured | 104 |
 
-**Sharp empirical dichotomy**: deep layered sequential computation (≥4 hidden layers, trained OR untrained, NN OR boolean circuit) produces tier ratios of 10³ or more. Everything else — shallow learners, lattice gauge theory, 1D dynamical systems, matrix ensembles — sits in the 1–5 band. Random matrices give ~100, which is still 10× below the lowest NN measurement.
+**Sharp empirical dichotomy.** Deep layered sequential computation (≥4 hidden
+layers, trained OR untrained, NN OR boolean circuit) produces tier ratios of
+10³ or more. Everything else — four genuine shallow learners (linear / kernel
+ridge / logistic / GP, all of which learn and generalise), lattice gauge
+theory, 1D dynamical systems, matrix ensembles — sits in the 1–5 band.
+Random matrices give ~100, still 10× below the lowest NN measurement.
 
-**What this means for the cosmological framing**: the FIM tier hierarchy is **specifically a signature of deep layered sequential computation**. If the universe's substrate is a spatially-parallel quantum field (as lattice QFT suggests), it would NOT exhibit this hierarchy and the FIM-Onsager framework doesn't apply. If the substrate is something deep-network-like (Wheeler–It-from-bit, Vanchurin neural-network cosmology, etc.), the hierarchy is a genuine structural signature. The V1.0–V4.1 empirical work does not distinguish these; it only establishes that **if** the substrate is layered-sequential, the hierarchy is a robust consequence.
+**Three sharp claims, in order of strength.**
 
-## Audit v3 correction — Boolean circuit re-verification (2026-04-24)
+1. **The signature tracks depth + compositionality, not optimisation.** Four
+   parameterised learners — linear regression, kernel ridge, logistic
+   regression, Gaussian processes — all fit data and all generalise, yet
+   none develop a tier hierarchy above 5×. *Learning* is not what produces
+   the signature; *deep layered sequential composition* is.
 
-The multi-LLM audit v3 (Gemini + Grok + Mistral + DeepSeek + Zhipu) flagged that the V4.0 "NN is unique" claim is undermined by the boolean-circuit control, which V4.0 had reported as "underflow-affected" at 50M× tier ratio. Re-verified with vectorized code + higher probe counts (2026-04-24):
+2. **The boolean-circuit data point is the most important row of the
+   table.** Boolean circuits are not neural, not probabilistic, not
+   trained, and have no gradients at all. They *are* layered and
+   sequentially composed. Their inclusion in the deep-NN band tells us the
+   signature does not require neurons, real-valued weights, or gradient
+   descent. The universality class is **layered recursive composition as a
+   computational primitive**, not neural networks specifically.
+
+3. **If the universe's substrate is a spatially-parallel quantum field (as
+   lattice QFT suggests), it does not exhibit this hierarchy and the
+   FIM-Onsager framework does not apply.** If the substrate is layered-
+   sequential (Wheeler–It-from-bit, Vanchurin-style neural cosmology,
+   Page–Wootters internal-reference constructions, or any other layered
+   recursive computation), the hierarchy is a structural consequence that
+   need not be put in by hand. V1.0–V4.1 empirical work does not
+   distinguish these hypotheses; it only establishes that **if** the
+   substrate is deep-layered-sequential, the FIM tier hierarchy is a robust
+   consequence.
+
+## Boolean-circuit re-verification (2026-04-24)
+
+The V4.0 "NN is unique" claim is undermined by the boolean-circuit control, which V4.0 had reported as "underflow-affected" at 50M× tier ratio. Re-verified with vectorized code + higher probe counts (2026-04-24):
 
 | Config | BC T1/T3 | Seeds |
 |--------|----------|-------|
@@ -372,18 +407,6 @@ Mock pipeline at `experiments/v3_1_alpha/mock_pipeline.py` verifies that the sta
 - `plots/sv_scaling_comparison.png` — cosmology vs QEC SV scaling on the same architecture
 - `plots/v2_0_cauchy_convergence.png` — V2.0 lattice-refinement convergence of u^T G_a u
 - `plots/v3_1_roc.png` — V3.1 mock pipeline ROC (strong-signal validation)
-
-## Multi-LLM Audit
-
-A peer-review-style audit by Google Gemini 3 Pro produced:
-
-| Document | Score (0–10) | Overclaim risk |
-|----------|--------------|----------------|
-| V1.1 NTK continuum limit | 7 | moderate |
-| V2.0 Lattice Cauchy refinement | 8 | minor |
-| V3.1 α-drift prediction | 6 | moderate |
-
-Full report at `docs/multi_llm_audit_report.md`. Flagged critical issues (NTK bound vs. observed exponent, metric non-degeneracy requirement for Lovelock, Bekenstein-bound scaling limitation, κ circularity) have been patched directly into the V1.1/V2.0/V3.1 docs as explicit limitations.
 
 ## Files
 

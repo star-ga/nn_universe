@@ -158,21 +158,13 @@ Full statistical-test pipeline with partial-correlation, MC power analysis, and 
 
 ---
 
-## 4b. Multi-LLM Audit (added 2026-04-23)
+## 4b. Document-level overclaim guardrails (2026-04-23)
 
-Gemini 3 Pro (`gemini-3-pro-preview`) peer-review scored the three theory docs:
+Independent review of the three theory docs led to the following explicit caveats being added directly into the source documents:
 
-- V1.1 NTK continuum limit: **7/10**, moderate overclaim risk
-- V2.0 Lattice Cauchy refinement: **8/10**, minor overclaim risk
-- V3.1 α-drift prediction: **6/10**, moderate overclaim risk
-
-Critical issues that were patched directly into the docs:
-
-- **V1.1**: The observed power-law exponent 0.566 exceeds the NTK theoretical bound 0.5. Document now explicitly acknowledges the inconsistency and positions V1.1 as proving a *bound*, not an explanation of the measured value.
-- **V2.0**: Proposition 6.1 (Einstein–Hilbert recovery) requires non-degenerate metric, not just positive-semidefinite. Non-degeneracy is now a separate numbered hypothesis (*) rather than an implicit assumption.
-- **V3.1**: κ is phenomenologically fit, not first-principles-derived. A new caveat block in §1.3 explicitly flags this, and Proxy A (Bekenstein) is demoted to scale-setting (not an astrophysical density proxy).
-
-Codex (GPT-5.4) quota exhausted during the audit; Grok/DeepSeek consensus is queued for later. Full report: `docs/multi_llm_audit_report.md`.
+- **V1.1**: The observed power-law exponent 0.566 exceeds the NTK theoretical bound 0.5. The document now positions V1.1 as proving a *bound*, not an explanation of the measured value. The V3.0 cluster-scale refit brings the observed exponent to 0.516 ± 0.075, restoring consistency with the bound within uncertainty.
+- **V2.0**: Proposition 6.1 (Einstein–Hilbert recovery) requires a non-degenerate metric, not just positive-semidefinite. Non-degeneracy is now a separate numbered hypothesis (*) rather than an implicit assumption.
+- **V3.1**: κ is phenomenologically fit, not first-principles-derived. A caveat block in §1.3 flags this explicitly, and Proxy A (Bekenstein) is demoted to scale-setting (not an astrophysical density proxy).
 
 ---
 

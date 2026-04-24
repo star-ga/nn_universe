@@ -1,8 +1,8 @@
 """V4.3 — bootstrap 95% CI on all headline power-law exponents.
 
-Addresses multi-LLM audit v3 flag: "no error bars or bootstrap CI on
-power-law exponents across seeds." Uses existing JSON data; no new
-compute.
+Quantifies the uncertainty on each headline exponent using 2000
+bootstrap resamples of the (parameter-count, tier-ratio) points.
+Uses existing JSON data; no new compute.
 
 For each sweep (cosmology V1.2+V3.0, QEC V2.1, symbolic T3, vision T4,
 20-seed robustness at W=1024 and W=4096), bootstraps the width-vs-ratio

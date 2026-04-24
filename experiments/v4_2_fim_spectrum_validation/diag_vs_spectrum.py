@@ -1,10 +1,9 @@
 """V4.2 — validate the FIM-diagonal proxy against the full FIM spectrum.
 
-The multi-LLM audit v3 flagged (5/5 reviewers): the repo uses "FIM
-eigenvalue hierarchy" language throughout, but only measures the
-diagonal of the FIM. In high-dimensional positive-definite matrices
-the diagonal is an upper bound on eigenvalues and can diverge from
-the true spectrum.
+Earlier iterations of the repo described the "FIM eigenvalue
+hierarchy" but only measured the diagonal of the FIM. In
+high-dimensional positive-definite matrices the diagonal is an upper
+bound on eigenvalues and can diverge from the true spectrum.
 
 This experiment measures both at small N (where full-spectrum Lanczos
 is tractable) and reports the agreement. Protocol:
