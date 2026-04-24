@@ -1,0 +1,104 @@
+{
+  "bootstraps": {
+    "cosmology_SV_13widths": {
+      "exponent_point": 0.16776441206858628,
+      "exponent_lo95": -0.38797584690500697,
+      "exponent_hi95": 0.6049350654504368,
+      "r_squared_point": 0.0533229663300796,
+      "r_squared_lo95": 0.00022494154314585957,
+      "r_squared_hi95": 0.9648145923019235,
+      "n_bootstraps": 2000,
+      "n_points": 13
+    },
+    "cosmology_FIM_13widths": {
+      "exponent_point": -0.02047902406938339,
+      "exponent_lo95": -0.06531007960383342,
+      "exponent_hi95": 0.03950746953143898,
+      "r_squared_point": 0.05538251689665141,
+      "r_squared_lo95": 0.00018438954462180469,
+      "r_squared_hi95": 0.6370736506018568,
+      "n_bootstraps": 2000,
+      "n_points": 13
+    },
+    "cosmology_SV_12widths_clean": {
+      "exponent_point": 0.5164592258021758,
+      "exponent_lo95": 0.4072636073848899,
+      "exponent_hi95": 0.6620996148555905,
+      "r_squared_point": 0.8569358833488507,
+      "r_squared_lo95": 0.628877591666182,
+      "r_squared_hi95": 0.980185839317085,
+      "n_bootstraps": 2000,
+      "n_points": 12
+    },
+    "qec_SV_300probes": {
+      "exponent_point": 0.8066471148726838,
+      "exponent_lo95": 0.4620263400514379,
+      "exponent_hi95": 1.202873244781013,
+      "r_squared_point": 0.8898858420146252,
+      "r_squared_lo95": 0.6327709337769558,
+      "r_squared_hi95": 0.9998412411850042,
+      "n_bootstraps": 2000,
+      "n_points": 6
+    },
+    "qec_FIM_300probes": {
+      "exponent_point": 1.3855877675931483,
+      "exponent_lo95": 0.7496032268475512,
+      "exponent_hi95": 1.9624827859389997,
+      "r_squared_point": 0.9297854159121024,
+      "r_squared_lo95": 0.8765396993077594,
+      "r_squared_hi95": 0.9992886076921157,
+      "n_bootstraps": 2000,
+      "n_points": 6
+    },
+    "symbolic_SV_300probes": {
+      "exponent_point": 0.554848078681267,
+      "exponent_lo95": -0.06905262263114444,
+      "exponent_hi95": 1.1239623545653237,
+      "r_squared_point": 0.6143625841142203,
+      "r_squared_lo95": 0.02440182149846181,
+      "r_squared_hi95": 0.9998847772752747,
+      "n_bootstraps": 2000,
+      "n_points": 6
+    },
+    "symbolic_FIM_300probes": {
+      "exponent_point": 1.4321362402273572,
+      "exponent_lo95": 0.9429976407885122,
+      "exponent_hi95": 1.9157795658422434,
+      "r_squared_point": 0.9405727490059931,
+      "r_squared_lo95": 0.8682512963567169,
+      "r_squared_hi95": 0.999951900294477,
+      "n_bootstraps": 2000,
+      "n_points": 6
+    },
+    "vision_SV_300probes": {
+      "exponent_point": 1.0195748827877216,
+      "exponent_lo95": 0.3451564949626619,
+      "exponent_hi95": 2.052798346549633,
+      "r_squared_point": 0.5630544712036425,
+      "r_squared_lo95": 0.1929713355372875,
+      "r_squared_hi95": 0.9963284892038891,
+      "n_bootstraps": 2000,
+      "n_points": 6
+    },
+    "vision_FIM_300probes": {
+      "exponent_point": 2.747746601443598,
+      "exponent_lo95": 1.001909349046885,
+      "exponent_hi95": 3.9997718952593173,
+      "r_squared_point": 0.8980683682158506,
+      "r_squared_lo95": 0.7417807821654536,
+      "r_squared_hi95": 0.9997003737425433,
+      "n_bootstraps": 2000,
+      "n_points": 6
+    },
+    "vision_FIM_2000probes": {
+      "exponent_point": 5.545592141723293,
+      "exponent_lo95": 4.827387869465412,
+      "exponent_hi95": 6.180745000092128,
+      "r_squared_point": 0.9950892110080259,
+      "r_squared_lo95": 0.9950892110080259,
+      "r_squared_hi95": 1.0,
+      "n_bootstraps": 2000,
+      "n_points": 3
+    }
+  }
+}
