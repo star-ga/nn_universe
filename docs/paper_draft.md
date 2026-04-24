@@ -64,7 +64,7 @@ We find: yes (1), increasingly yes with $N$ (2), yes in form across 4 tasks (3),
 
 ### 3.3 Measurements
 
-- Singular-value ratio $\sigma_\max / \sigma_\min$ per interior 2-D weight matrix.
+- Singular-value ratio $\sigma_{\max} / \sigma_{\min}$ per interior 2-D weight matrix.
 - FIM diagonal by per-sample backward: $F_{ii} = \mathbb{E}[(\partial_{\theta_i} \ell)^2]$.
 - Three-tier partition: top 1% ("Tier 1"), 1–50% ("Tier 2"), bottom 50% ("Tier 3"), with reported quantity $F_1 / F_3$.
 - Coefficient of variation (CV) across seeds at fixed architecture and task.
@@ -151,9 +151,9 @@ The dichotomy of §4.5 is quantitatively explained by a published random-matrix-
 > **Theorem (Hanin & Nica 2020, Comm. Math. Phys. 376, 287–322).** For a depth-$L$ fully-connected ReLU network with i.i.d. Gaussian weights and width $n$, as $L, n \to \infty$ the log of the squared gradient norm $\log \|\partial \mathcal{L}/\partial x\|^2$ converges in distribution to a Gaussian with mean $\mu L$ and variance $\sigma^2 L$, where $\mu, \sigma$ depend only on the nonlinearity and weight ensemble.
 
 Applied to the FIM diagonal of a parameter $\theta_i$ in layer $\ell$, the downstream Jacobian chain has length $L - \ell$; so $\log F_{ii}$ is approximately Gaussian with variance $2\sigma^2 (L-\ell)$, i.e. log-normal $F_{ii}$ with depth-linear spread. Log-normal quantile analysis gives
-\[
+$$
 \log(T_1/T_3) \;\approx\; 3.47 \, \sigma \, \sqrt{2 L} \;\propto\; \sqrt{L}.
-\]
+$$
 
 We test this empirically (`experiments/v6_0_depth_mechanism/depth_sweep.py`) with 7 depths $L \in \{2,3,4,6,8,12,20\}$ × 5 seeds on untrained ReLU MLPs at width 64, dim 16, 1000 FIM probes. Observed (seed mean):
 
@@ -277,9 +277,9 @@ chain. Applying Hanin–Nica to the chain of length $L - \ell$ gives
 $\log \|J_{\ell \to L}\|^2 \sim \mathcal{N}(\mu(L-\ell), \sigma^2(L-\ell))$;
 the FIM diagonal is then the sample average of the squared gradient, and
 a further expectation over samples gives
-\[
+$$
 \log F_{ii} \;\sim\; \mathcal{N}\bigl(\mu_0 + 2\mu(L-\ell), \;\; 2\sigma^2(L-\ell)\bigr).
-\]
+$$
 
 A log-normal random variable with parameters $(m, v)$ has $\alpha$-quantile
 $q_\alpha = \exp(m + \sqrt{v} \Phi^{-1}(\alpha))$. The top-1% mean
@@ -287,17 +287,17 @@ $\mathbb{E}[F \mid F > q_{0.99}]$ lies at mean standard-normal score
 $z_{\mathrm{top}} \approx 2.67$ (the mean of the standard-normal distribution
 conditional on being above its 99th percentile), and the bottom-50% mean
 lies at $z_{\mathrm{bot}} \approx -0.80$ (mean below the median). Thus
-\[
+$$
 \frac{T_1}{T_3} \;\approx\; \exp\!\left(\sqrt{v} (z_{\mathrm{top}} - z_{\mathrm{bot}})\right)
 = \exp\!\left(3.47\,\sqrt{v}\right).
-\]
+$$
 
 Substituting the per-layer-averaged Hanin–Nica variance $v = 2\sigma^2 L$
 (averaging $\ell$ over $\{0, \ldots, L-1\}$ gives $v \propto L$ with a
 proportionality fixed by the activation):
-\[
+$$
 \boxed{\; \log(T_1/T_3) \;\approx\; c \,\sigma\, \sqrt{L}, \quad c \approx 3.47\sqrt{2} \approx 4.9. \;}
-\]
+$$
 
 V6.0's measured slope of $11.5$ at $\sigma \approx 1.69$ gives
 $c \approx 11.5 / 1.69 = 6.8$, within 39 % of the derivation's value $c
