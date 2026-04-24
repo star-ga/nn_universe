@@ -7,7 +7,13 @@
 
 ---
 
-> **What changed.** The V1.0 paper and the first V4.0 sweep attributed the three-tier FIM hierarchy to *training dynamics* — parameters that gradient descent "locks in" become Tier-1 "physical constants." The V4.1 sweep below shows that this picture is wrong. The hierarchy is already present at random initialization with tier ratios of 10³–10⁴; training *reduces* it by 4-24× across five widths. The hierarchy is a property of the *architecture + init*, not of learning. The universality-class findings (scale invariance, seed stability, task universality) remain intact, but the mechanistic interpretation is revised.
+> **What changed.** The V1.0 paper and the first V4.0 sweep attributed the three-tier FIM hierarchy to *training dynamics*. V4.1 (this document), V4.1.1 (non-ReLU activations), and V4.1.2 (CNN/ViT) collectively show that:
+>
+> 1. **The hierarchy is present at random Kaiming initialization** in all tested architectures that have *layered sequential* structure (ReLU/GELU/tanh MLPs, CNNs, ViTs).
+> 2. **Training's effect on the hierarchy is not universal.** In MLPs trained on a small-dim self-prediction task (V4.1, V4.1.1), training *dissipates* the hierarchy by 4-24×. In CNNs trained on a larger-dim autoencoder (V4.1.2), training dissipates it by 14,000×. In ViTs trained on the same (V4.1.2), training *sharpens* it by 67×.
+> 3. **The binding factor is learning success.** When training barely moves the weights (unlearnable task, saturated activation, poor architecture fit), hierarchy barely changes. When training succeeds in fitting the task (ViT autoencoder, final loss 10⁻⁴), hierarchy sharpens along the learned feature directions.
+>
+> Revised interpretation: the FIM tier hierarchy is an **architecture-and-init-induced property** at randomness; training either preserves, dissipates, or sharpens it based on how well the network succeeds in fitting the data distribution.
 
 ---
 
