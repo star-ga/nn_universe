@@ -5,6 +5,7 @@
     "beta": 1.0,
     "thermalise": 200,
     "n_samples": 80,
+    "decorr": 20,
     "step_size": 0.6,
     "seeds": [
       0,
@@ -20,11 +21,11 @@
       "d": 4,
       "beta": 1.0,
       "n_params": 16384,
-      "fim_tier1_mean": 3.9553683969252456,
-      "fim_tier3_mean": 1.9776820002950108,
-      "fim_tier1_tier3": 2.000002222973776,
-      "thermalise_s": 1777017512.24154,
-      "measure_s": 101.19617867469788
+      "fim_tier1_mean": 4.9412270010844175,
+      "fim_tier3_mean": 3.0511173200738115,
+      "fim_tier1_tier3": 1.6194811548462125,
+      "thermalise_s": 52.77150058746338,
+      "measure_s": 421.99177265167236
     },
     {
       "seed": 1,
@@ -32,11 +33,11 @@
       "d": 4,
       "beta": 1.0,
       "n_params": 16384,
-      "fim_tier1_mean": 3.9963250973149065,
-      "fim_tier3_mean": 2.0130554293024763,
-      "fim_tier1_tier3": 1.9852037053443845,
-      "thermalise_s": 1777017665.0270753,
-      "measure_s": 114.48025679588318
+      "fim_tier1_mean": 4.91525648227796,
+      "fim_tier3_mean": 3.0497676379492273,
+      "fim_tier1_tier3": 1.6116822872391532,
+      "thermalise_s": 51.81465172767639,
+      "measure_s": 411.7451446056366
     },
     {
       "seed": 2,
@@ -44,17 +45,17 @@
       "d": 4,
       "beta": 1.0,
       "n_params": 16384,
-      "fim_tier1_mean": 4.000747718378523,
-      "fim_tier3_mean": 1.996778779115756,
-      "fim_tier1_tier3": 2.003600879687932,
-      "thermalise_s": 1777017831.4700239,
-      "measure_s": 102.21266412734985
+      "fim_tier1_mean": 5.005499501747932,
+      "fim_tier3_mean": 3.0940547457513183,
+      "fim_tier1_tier3": 1.6177798756215815,
+      "thermalise_s": 52.50445771217346,
+      "measure_s": 426.5808413028717
     }
   ],
   "aggregate": {
-    "tier_ratio_mean": 1.996268936002031,
-    "tier_ratio_std": 0.00975023485187777,
-    "tier_ratio_cv": 0.004884229111637016
+    "tier_ratio_mean": 1.616314439235649,
+    "tier_ratio_std": 0.004100757471372912,
+    "tier_ratio_cv": 0.0025371037787128535
   },
   "comparison_context": {
     "cosmology_NN_trained_W_256": 404,
