@@ -133,23 +133,24 @@ def _max_sv_ratio(net: nn.Module) -> float:
         min_dim = min(m, n)
 
         if min_dim > 4000:
-            # Randomized SVD: top-k and bottom-k singular values.
+            # At this scale, full cusolver SVD is unreliable (V3.0 crash at
+            # width=45000). Compute sigma_max via randomized top-k SVD
+            # (svd_lowrank, k=32) and report ONLY that — do NOT attempt
+            # sigma_min since inverse power iteration converges too slowly
+            # for poorly-conditioned weight matrices at this scale, and
+            # any shortcut gives a misleading ratio (the k-th largest SV
+            # is not sigma_min). Downstream analysis must treat SV ratio
+            # rows at min_dim > 4000 as MISSING, not as real measurements.
             k = min(32, min_dim // 4)
             try:
-                U_top, S_top, _ = torch.svd_lowrank(w, q=k, niter=4)
-                # Bottom SV via SVD of shifted orthogonal complement.
-                # Cheapest proxy: largest SV of the residual W - sum_{i<k} u_i s_i v_i^T.
-                # Even cheaper: Frobenius-norm bound. We report top/approx-bottom as
-                # a lower bound on the true ratio.
+                _, S_top, _ = torch.svd_lowrank(w, q=k, niter=4)
                 sv_hi = float(S_top[0])
-                sv_lo = float(S_top[-1])  # k-th largest; NOT the true smallest
-                # Tag the ratio with a note in the name so downstream can see.
-                ratio = sv_hi / sv_lo if sv_lo > 1e-10 else float("inf")
-                # This is an UNDER-estimate of the true sigma_max/sigma_min; true
-                # ratio is typically 10-100x larger but we avoid the instability.
             except Exception as exc:
-                warnings.warn(f"{name}: randomized SVD failed ({exc}); skipping")
+                warnings.warn(f"{name}: top-k SVD failed ({exc}); skipping")
                 continue
+            # Sentinel: negative ratio means "not measured". Tier-ratio
+            # computation uses max() over rows, so we just skip.
+            continue
         else:
             # Small-enough matrix: full SVD, with CPU fallback for cusolver bugs.
             try:
