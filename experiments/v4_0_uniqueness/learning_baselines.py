@@ -1,9 +1,9 @@
 """V4.0 supplement — non-deep LEARNING baselines.
 
-Addresses the 3/8 audit-v3 flag: V4.0's non-NN controls (Ising chain,
-harmonic oscillator, cellular automaton) are *dynamical* systems, not
-parameterised learners. Proper controls for "NN is unique" need to be
-actual learning systems that aren't deep:
+V4.0's original non-NN controls (Ising chain, harmonic oscillator,
+cellular automaton) are *dynamical* systems, not parameterised
+learners. Proper controls for "NN is unique" need to be actual
+learning systems that aren't deep:
 
 - Linear regression (closed-form fit)
 - Logistic regression (1-layer, sigmoid)
