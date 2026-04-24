@@ -161,6 +161,28 @@ All three architectures trained on the same 32×32×3 Gaussian-noise self-predic
 
 **Naestro Tier-1 items 1, 2, 3, 4 all ✅ closed.**
 
+## V4.1 Re-interpretation: The FIM hierarchy is init-induced, not learning-induced
+
+A follow-up experiment (`experiments/v4_0_uniqueness/run_trained_vs_untrained.py`, 5 widths × 5 seeds, 20k SGD steps, 200 FIM probes) compares trained vs **untrained** NN tier ratios at matched architecture:
+
+| Width | n_params | **Untrained** T1/T3 | Trained T1/T3 | Effect of training |
+|-------|----------|----------------------|----------------|--------------------|
+| 32 | 4,240 | 10,186 | 1,081 | 9.4× **reduction** |
+| 64 | 14,608 | 5,083 | 211 | 24× **reduction** |
+| 128 | 53,776 | 2,914 | 195 | 15× **reduction** |
+| 256 | 205,840 | 1,500 | 349 | 4.3× **reduction** |
+
+**Training does NOT create the FIM tier hierarchy — it partially dissipates it.** Untrained Kaiming-initialized networks already exhibit tier ratios of 10³–10⁴. Training smooths the FIM spectrum by a factor of 4-24× depending on width. The hierarchy is a property of **layered non-linear architectures with i.i.d. Gaussian weight initialization**, not of gradient descent dynamics.
+
+**Reinterpretation of V1.0 and V4.0:**
+
+- V1.0's "physical constants = Tier-1 FIM parameters that training locks in" — **rejected**. Training *dissipates* the hierarchy, not locks it.
+- V4.0's "hierarchy is learning-induced" (NN 26,449× vs Ising 3× vs CA 4×) — **refined**: the contrast is real but its cause is *architectural depth + nonlinearities*, not learning. An untrained NN at the same N would still dominate Ising/CA by 10³×.
+- V1.1 through V3.0 empirical universality findings (scale invariance, seed stability, task/architecture universality, 4-task consistency) are **unaffected** — they are all about *trained* networks and still hold.
+- The cosmological interpretation needs to relocate "physical constants" from "training-locked parameters" to "parameters stable under the architecture's intrinsic init spectrum". This is a meaningful but not catastrophic revision.
+
+See `docs/v4_1_init_vs_learning.md` (in preparation) for the full writeup.
+
 ## V3.0 Task-4 (vision classification): 4-task universality
 
 Fourth task: 10-class supervised classification on 1024-d Gaussian inputs with labels assigned by a fixed random teacher (6 widths, same 5-layer 256-neuron ReLU MLP, Adam, CE loss, 15k steps).
