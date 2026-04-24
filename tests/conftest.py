@@ -17,6 +17,7 @@ BASE_PATHS = (
     "experiments/v1_2_scaling",
     "experiments/v2_0_lattice",
     "experiments/v3_1_alpha",
+    "experiments/v5_0_dichotomy_stats",
 )
 for sub in BASE_PATHS:
     p = str(REPO / sub) if sub else str(REPO)
