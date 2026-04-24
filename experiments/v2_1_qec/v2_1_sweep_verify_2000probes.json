@@ -1,0 +1,60 @@
+{
+  "device": "cuda",
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "config": {
+    "widths": [
+      256,
+      512,
+      1024
+    ],
+    "L": 5,
+    "p": 0.05,
+    "steps": 15000,
+    "batch": 128,
+    "seed": 42,
+    "out": "/workspace/qec_verify.json"
+  },
+  "results": [
+    {
+      "width": 256,
+      "n_params": 282674,
+      "L": 5,
+      "p": 0.05,
+      "max_sv_ratio": 11719.0,
+      "fim_tier1_tier3": 1903.1,
+      "final_loss": 0.044625,
+      "train_time": 51.7,
+      "seed": 42
+    },
+    {
+      "width": 512,
+      "n_params": 1089586,
+      "L": 5,
+      "p": 0.05,
+      "max_sv_ratio": 429054.7,
+      "fim_tier1_tier3": 36017.7,
+      "final_loss": 0.042019,
+      "train_time": 55.0,
+      "seed": 42
+    },
+    {
+      "width": 1024,
+      "n_params": 4276274,
+      "L": 5,
+      "p": 0.05,
+      "max_sv_ratio": 45777.3,
+      "fim_tier1_tier3": 877013.2,
+      "final_loss": 0.039467,
+      "train_time": 55.0,
+      "seed": 42
+    }
+  ],
+  "sv_power_law": {
+    "exponent": 0.497,
+    "r_squared": 0.138
+  },
+  "fim_power_law": {
+    "exponent": 2.258,
+    "r_squared": 1.0
+  }
+}
