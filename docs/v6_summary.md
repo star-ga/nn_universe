@@ -7,7 +7,7 @@
 
 ## 1. The Observation
 
-We measure the Fisher Information Matrix (FIM) diagonal tier ratio $T_1/T_3$ — the mean of the top-1% of parameter sensitivities divided by the mean of the bottom-50% — across 10 parameterised substrates spanning trained neural networks, random boolean circuits, shallow learners, lattice gauge fields, and dynamical systems. The ratio separates into two groups by 2–6 orders of magnitude, with complete rank separation across 93 per-seed observations ($p = 5.1 \times 10^{-17}$, Mann–Whitney $U$, rank-biserial $r = 1.000$).
+We measure the Fisher Information Matrix (FIM) diagonal tier ratio $T_1/T_3$ — the mean of the top-1% of parameter sensitivities divided by the mean of the bottom-50% — across 12 parameterised substrate classes spanning trained / untrained neural networks, random boolean circuits, balanced binary tensor networks, four shallow parameterised learners, U(1) and SU(2) lattice gauge fields, three dynamical-system controls, and a random-matrix ensemble. The ratio separates into two groups by 2–6 orders of magnitude, with complete rank separation across 96 per-seed observations ($p = 1.7 \times 10^{-17}$, Mann–Whitney $U$, rank-biserial $r = 1.000$, $n_{\text{deep}} = 46$, $n_{\text{rest}} = 50$).
 
 This builds directly on prior work showing that deep networks have heavy-tailed FIM spectra (Karakida, Akaho & Amari, AISTATS 2019; Karakida et al., Neural Comp. 2021) and three-level Hessian outlier structure (Papyan, ICML 2019). The V6.0 contribution is (i) extending the measurement to non-neural substrates, (ii) identifying the boundary condition (depth ≥ 4 sequential composition), and (iii) deriving the scaling law from Hanin & Nica (2020).
 
@@ -59,7 +59,7 @@ This three-line derivation predicts: (a) $\mathrm{Var}[\log F_{ii}]$ is linear i
 
 ---
 
-## 4. Empirical Confirmation — Four Experiments, One Theorem
+## 4. Empirical Confirmation — Five Experiments, One Theorem
 
 All four experiments test the same prediction on structurally different substrates. All four pass at $R^2 \geq 0.94$.
 
@@ -69,6 +69,7 @@ All four experiments test the same prediction on structurally different substrat
 | V6.2 trained MLP | Same architecture, 10 000 SGD steps, 6 depths $\times$ 5 seeds | $\log(T_1/T_3) \propto \sqrt{L}$ survives training | 0.936 | PASS |
 | V6.3 boolean circuits | Layered random boolean gates, 5 depths $\times$ 3 seeds | $\log(T_1/T_3) \propto \sqrt{L}$, no neurons, no gradients | 0.980 | PASS |
 | V6.4 transformers | Pre-norm Transformer blocks, 6 depths $\times$ 3 seeds | $\log(T_1/T_3) \propto \sqrt{L}$ with attention + residuals | 0.969 | PASS |
+| V8.0 binary tensor networks | Balanced binary tree, 8 depths $\times$ 5 seeds, tanh tensor at every node | $\log(T_1/T_3) \propto \sqrt{L}$ on a non-neural MERA-like substrate | 0.992 | PASS |
 
 *(Sources: `experiments/v6_0_depth_mechanism/v6_0_depth_sweep.json`, `v6_2_trained_depth_sweep.json`, `v6_3_bc_depth_sweep.json`, `v6_4_transformer_depth_sweep.json`)*
 
