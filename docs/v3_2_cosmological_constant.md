@@ -1,187 +1,133 @@
-# V3.2 — Cosmological-Constant Prediction from the FIM Tier Hierarchy
+# V3.2 — Cosmological-Constant Prediction from the FIM Tier Hierarchy (v2, patched)
 
 **STARGA, Inc. — Research Document**
-**Phase:** Naestro Tier-2 item 7 — the single most valuable calculation that the FIM–Onsager framework can offer.
-**Status:** Analytical derivation with an honest assessment of degeneracy (Sections 4–5); not yet a first-principles prediction.
-**Depends on:** V1.1 NTK continuum-limit theorem; V2.0 lattice-embedded Cauchy refinement; V3.0 scaling data at $N \leq 1.45 \times 10^9$.
+**Phase:** Naestro Tier-2 item 7.
+**Status:** Consistency check; the framework's contribution is a **~10× Tier-1 fraction correction** on top of the standard Cohen–Kaplan–Nelson / de Sitter-holography bound. The resulting prediction is off from observation by ~1 order of magnitude — much better than the naive 122-order QFT gap, but not a tuned match.
+**Depends on:** V1.1 NTK continuum-limit theorem; V4.1 init-vs-learning reinterpretation.
 
 ---
 
-> **Scope notice.** This document attempts the calculation Naestro flagged as "single most valuable — nobody has done it." We derive, from the FIM–Onsager correspondence alone, a formula for the cosmological constant $\Lambda$. The result is *consistent with* the observed value $\Lambda \approx 10^{-122}$ in Planck units, but the derivation requires three input scales that are themselves not first-principles fixed, so we end with a *compatibility check* rather than a genuine prediction. We flag each fit parameter explicitly. Sections 4–5 discuss the honest limitations.
+## 0. Audit trail (v1 → v2)
+
+The original V3.2 document (v1, committed in `14845e0`) contained a dimensional/arithmetic error: it attributed the full $10^{-122}$ suppression to the FIM tier-fraction argument alone. In fact the $10^{-122}$ suppression is the standard **CKN / de Sitter-entropy bound** on vacuum energy (Cohen, Kaplan & Nelson 1999; Banks 2001); our framework's *additional* contribution is a factor of $f_1 \sim 10^{-2}$ on top, not the full 122 orders. This patch (v2) fixes the mis-attribution and corrects the formula. The conclusion is weaker than v1 claimed: the framework gets Λ within one order of magnitude of the observed value, not exactly.
 
 ---
 
-## 1. Setting
+## 1. The cosmological-constant problem
 
-The FIM–Onsager correspondence [1, §8.4] identifies, in the NTK continuum limit (V1.1),
+**Observed:** $\rho_\Lambda \approx 6 \times 10^{-10}\ \mathrm{J/m^3} \approx 1.3 \times 10^{-123}$ in Planck units ($\hbar = c = G = 1$, $\rho_{\rm Planck} = M_{\rm Pl}^4 \approx 4.6 \times 10^{113}\ \mathrm{J/m^3}$).
 
-- the Fisher Information Matrix $g_{ij}(\theta)$ with the **metric tensor** $g_{\mu\nu}(x)$ on a 4D parameter manifold;
-- the negative cost function $-C(\theta)$ with the **action density** $\mathcal{L}$;
-- the learning rate $\eta$ with a **coupling** $\kappa = (\eta \cdot \text{const})^{-1}$ that plays the role of Newton's $G$.
+**Naive QFT prediction:** summing vacuum fluctuations up to $\Lambda_{\rm UV} = M_{\rm Pl}$ gives $\rho_\Lambda^{\rm QFT} \sim M_{\rm Pl}^4 = 1$ in Planck units. Gap: **122 orders of magnitude**. This is the canonical "cosmological-constant problem" (Weinberg 1989).
 
-Under Lovelock's theorem [1, §8.5], the unique diffeomorphism-invariant second-order action constructed from $g_{\mu\nu}$ and derivatives is the Einstein–Hilbert action augmented by a cosmological-constant term:
+## 2. The standard holographic/CKN bound (not our framework)
 
-$$
-S = \frac{1}{16\pi G}\int d^4x \sqrt{-g}\,(R - 2\Lambda) + \int d^4x \sqrt{-g}\,\mathcal{L}_m.
-$$
-
-The question: what does the FIM-Onsager framework say about $\Lambda$?
-
-## 2. The tier structure as a vacuum-energy regulator
-
-The V1.0–V2.1–V3.0 empirical data shows the FIM spectrum is organised in three tiers:
-
-| Tier | Fractional count | Mean FIM eigenvalue | Physical interpretation |
-|------|------------------|---------------------|-------------------------|
-| Tier 1 ("physical constants") | top 1% | $\lambda_1 \sim 10^{-5}$ | hard-frozen parameters |
-| Tier 2 ("coupling constants") | 1–50% | $\lambda_2 \sim 10^{-7}$ | slowly-drifting |
-| Tier 3 ("gauge DOF")          | 50–100% | $\lambda_3 \sim 10^{-9}$ | effectively free |
-
-In the Onsager identification $L^{ij} = \eta g^{ij}$, the Tier-3 modes are *highly compliant* directions in weight space — they flow almost frictionlessly under the gradient. They correspond in the cosmological dictionary to **gauge directions of the Einstein equations** (coordinate transformations, Weyl rescalings, etc.) which do not carry physical energy.
-
-The **vacuum energy** of the universe, in the FIM-Onsager framework, is the zero-point dissipation associated with gradient flow in the Tier-1 (frozen) subspace only. This is a *regulated* quantity: the naive QFT vacuum-energy divergence — which would give $\Lambda \sim M_{\rm Pl}^4 \sim 10^{122}$ — includes contributions from *all* modes, including Tier-3 gauge directions that in this framework do not contribute.
-
-## 3. The derivation
-
-### 3.1 Vacuum energy per dissipative mode
-
-In the Onsager near-equilibrium regime, each mode $i$ with FIM eigenvalue $\lambda_i$ contributes to the entropy production rate an amount
+Cohen, Kaplan & Nelson (1999) observed that a QFT cannot be self-consistent up to $\Lambda_{\rm UV}$ in a region of size $L$ if the resulting energy would form a black hole, i.e., $\Lambda_{\rm UV}^4 L^3 \gtrsim L / G$, giving
 
 $$
-\dot S_i \;=\; \eta\, g^{ii} X_i^2 \;=\; \eta\, \lambda_i^{-1}\,X_i^2,
-\qquad
-X_i = \partial_i C.
+\Lambda_{\rm UV} \lesssim (M_{\rm Pl} / L)^{1/2}.
 $$
 
-If we average over equilibrium fluctuations (so $\langle X_i^2\rangle = k_B T \lambda_i$, fluctuation–dissipation), the zero-point dissipation per mode is
+Applied to the de Sitter horizon $L = H^{-1}$:
 
 $$
-\bigl\langle \dot S_i \bigr\rangle_{\rm eq} \;=\; \eta\, k_B T.
+\rho_\Lambda^{\rm CKN} \sim \Lambda_{\rm UV}^4 \sim H^2 M_{\rm Pl}^2.
 $$
 
-This is **independent of $\lambda_i$** per mode — the crucial feature. Fluctuation–dissipation *removes* the eigenvalue dependence on a per-mode basis.
-
-### 3.2 Counting frozen modes
-
-The vacuum energy is the zero-point dissipation summed over **effectively-frozen modes only**. In the FIM-Onsager framework these are Tier 1 by construction; Tier 2 and Tier 3 flow fast enough that their contributions time-average to zero on cosmological scales.
-
-The fractional count of Tier 1 is $f_1 \approx 0.01$ (measured, V1.0).
-
-Let $N_{\rm tot}$ be the total number of parameters in the cosmic information substrate. The de-Sitter horizon bound (Bekenstein) gives
+**In Planck units:** $H \approx 1.5 \times 10^{-33}\ \mathrm{eV} / M_{\rm Pl} = 1.2 \times 10^{-61}$, so $H^2 \approx 1.5 \times 10^{-122}$. This gives
 
 $$
-N_{\rm tot} \;=\; \frac{A_{\rm horizon}}{4 \ell_P^2} \;\sim\; 10^{122}.
+\rho_\Lambda^{\rm CKN} \sim 10^{-122}\ \text{(Planck units)}.
 $$
 
-(This is the holographic upper bound, not the actual count. We return to this point in Section 4.)
+**This already saturates the 122-order gap, without any FIM framework.** The CKN bound is standard GR+QFT physics and is the real reason the gap is 122 orders, not 10 orders or 500 orders. Any neural-network interpretation of cosmology inherits this bound as a starting point, not as an output.
 
-Then the number of frozen modes is
+## 3. The FIM-Onsager framework's additional contribution
 
-$$
-N_{\rm frozen} \;=\; f_1 \cdot N_{\rm tot} \;\sim\; 10^{120}.
-$$
+The contribution of the FIM tier hierarchy is to *sub-select* which modes actually contribute to the CKN vacuum-energy count. In the FIM-Onsager picture (Nedovodin 2026; V1.1 NTK theorem), modes fall into three tiers by FIM eigenvalue:
 
-### 3.3 Vacuum energy density
+- **Tier 1** ($f_1 \approx 0.01$ of total modes): high FIM eigenvalue ("stiff", potential-dominated, time-invariant under Onsager flux).
+- **Tier 2** ($f_2 \approx 0.49$): intermediate FIM, drift slowly.
+- **Tier 3** ($f_3 \approx 0.50$): small FIM, free-flowing, gauge-like.
 
-The total vacuum dissipation rate, in Planck units, is
+**Empirically measured in V1.0**: Tier-1 has FIM mean $\sim 7.7 \times 10^{-6}$, Tier-3 mean $\sim 1.2 \times 10^{-8}$ — ratio 637×. The *V4.1 reinterpretation* clarifies that this hierarchy is architecture-induced (present at random init), not learning-locked; but the tier *fractions* $f_1, f_2, f_3$ are stable quantities under the partition definition.
 
-$$
-\dot S_{\rm vac} \;=\; \sum_{i \in {\rm Tier\,1}} \langle \dot S_i\rangle \;=\; N_{\rm frozen} \cdot \eta\, k_B T_{\rm dS},
-$$
-
-where $T_{\rm dS}$ is the de-Sitter temperature $\sim H / 2\pi$ and $\eta$ is the learning-rate–coupling identification.
-
-For this dissipation to equal $\Lambda$ (which has dimensions of energy density, $E^4$ in natural units), we set
+**Physical claim.** Only Tier-1 modes contribute static vacuum energy to the cosmological constant — Tier-2 and Tier-3 modes are dynamical / gauge-like and their contributions time-average to zero on cosmological scales. Under this claim the effective CKN-admissible mode count for Λ is reduced by a factor $f_1$:
 
 $$
-\Lambda \;=\; \dot S_{\rm vac} \cdot T_{\rm dS} \;=\; N_{\rm frozen} \cdot \eta\, k_B T_{\rm dS}^2.
+\rho_\Lambda^{\rm FIM} \sim f_1 \cdot \rho_\Lambda^{\rm CKN} \sim f_1 \cdot H^2 M_{\rm Pl}^2.
 $$
 
-Plugging in: $N_{\rm frozen} \sim 10^{120}$, $T_{\rm dS}^2 \sim H^2 \sim 10^{-242}$ in Planck units, $\eta \sim 1$ (natural units where the learning-rate coupling absorbs into $G^{-1}$):
+**In Planck units:** $f_1 \cdot H^2 \sim 0.01 \times 1.5 \times 10^{-122} \approx 1.5 \times 10^{-124}$.
+
+## 4. Comparison with observation
 
 $$
-\Lambda \;\sim\; 10^{120} \cdot 10^{-242} \;=\; 10^{-122}.
+\boxed{\rho_\Lambda^{\rm FIM} \approx 1.5 \times 10^{-124}, \qquad \rho_\Lambda^{\rm obs} \approx 1.3 \times 10^{-123}.}
 $$
 
-which matches the observed value $\Lambda_{\rm obs} \approx 10^{-122}$ in Planck units.
+The framework predicts Λ about an order of magnitude **smaller** than observed. Gap remaining: factor ~9.
 
-## 4. Honest limitations
+## 5. Honest assessment
 
-The derivation above has three inputs that are not genuinely first-principles:
+### 5.1 What's right
 
-### 4.1 $N_{\rm tot}$ fixed to the holographic bound
+- The 122-order suppression is handled correctly (from CKN/holography, not our framework).
+- The FIM-tier interpretation of "only Tier-1 contributes to vacuum energy" is physically motivated and gives an additional ~$f_1 = 10^{-2}$ suppression.
+- Result (~$10^{-124}$) is within one order of magnitude of observation (~$10^{-123}$) — better than generic anthropic arguments (which allow any value above the observed one).
 
-We set $N_{\rm tot} = A_{\rm horizon} / 4\ell_P^2$. This is the **de Sitter holographic bound**, not an independent prediction of the FIM-Onsager framework. The framework could equally well accommodate $N_{\rm tot}$ a factor of $10^3$ smaller or larger without violating any of its construction principles. Every order of magnitude of $N_{\rm tot}$ shifts $\Lambda$ by the same factor. Without a first-principles predictor for $N_{\rm tot}$, the $\Lambda$ calculation is holographic-bound calibrated.
+### 5.2 What's not right
 
-### 4.2 $f_1 \approx 0.01$ is assumed scale-invariant
+- **Not a precise match.** Off by ~9×. The framework over-suppresses by one order of magnitude.
+- **$f_1 = 10^{-2}$ is a convention**, not a first-principles prediction. The V1.0 tier partition defines Tier-1 as the top 1% by FIM eigenvalue. If we had defined it as top 5%, we'd get $f_1 = 0.05$ and exact agreement. The choice of 1% is thus a one-knob fit.
+- **$N_{\rm tot}$ is the holographic bound**, not framework-derived.
 
-The V1.2 seed-robustness data (`experiments/v1_2_scaling/robustness/`) shows Tier-1 fraction $f_1$ is approximately 1% at the widths we measured ($16 \leq n \leq 22000$, $N \leq 10^9$). Extrapolating this to $N \sim 10^{122}$ assumes the tier partition is scale-invariant over 113 orders of magnitude in $N$. This is a conjecture, not a theorem. V4.0 uniqueness data suggests $f_1$ is architecture-dependent (NN: ~1%; random matrix: ~0.3%; Ising: ~0%); the cosmological $f_1$ is unknown.
+So the framework contributes **one tunable knob** ($f_1$) in exchange for reproducing observation to within 1 order of magnitude. This is a modest improvement over the standard CKN result (which already gets within factor ~10 of observation depending on choice of cutoff volume) but is **not** a first-principles prediction.
 
-### 4.3 $T_{\rm dS}$ is set by observation, not derived
+### 5.3 What would make this a prediction
 
-We plug in $T_{\rm dS} = H / 2\pi$ with $H \approx 67 \text{ km/s/Mpc}$, which is an observational input. The framework does not predict $H$ independently.
+- Derive $f_1$ uniquely from the FIM-Onsager framework — i.e., show that exactly 1% of the modes have FIM eigenvalues above a threshold *determined by* the Onsager dynamics, with no partition-definition freedom.
+- Predict a second independent observable (e.g., $\Omega_{\rm DM}/\Omega_{\rm baryon}$; see V3.4) with the **same** $f_1$ value, no new knob.
 
-### 4.4 What this calculation is, and is not
+V3.4 (dark-sector) uses the same $f_1$ but introduces a separate knob $\xi_{\rm bar}$. V3.2 + V3.4 jointly have two observables and two knobs — not yet a prediction.
 
-It is a **consistency check**: the FIM-Onsager framework *can* accommodate $\Lambda = 10^{-122}$ without requiring exotic assumptions, and the mechanism by which the holographic bound is converted to a physical energy density via tier regulation has a clean information-geometric structure. It is *not* a genuine first-principles prediction of $\Lambda$ from, say, $G$, $\hbar$, $c$ alone.
+## 6. The v1 → v2 change in plain language
 
-The naive QFT vacuum-energy divergence ($\Lambda \sim 10^{122}$) and the observed value ($10^{-122}$) differ by 244 orders of magnitude. Our derivation reproduces the observed value by multiplying two independent cancellations:
+The v1 document said the FIM framework **generates** the $10^{-122}$ suppression through a tier-fraction calculation. This was wrong — that suppression belongs to standard de Sitter holography (CKN), not to our framework. The v2 document claims only that the framework adds a factor of $f_1 \sim 10^{-2}$ on top of the CKN result, yielding $10^{-124}$ (close to but ~10× below observation).
 
-- factor $10^{-122}$ from the $T_{\rm dS}^2$ suppression (well-known de Sitter suppression)
-- factor $10^{-122}$ from the holographic bound on $N_{\rm tot}$ (well-known holography)
-- factor $10^{-2}$ from the Tier-1 fraction (new, from V1.0)
+Mechanism | Suppression from naive QFT ($M_{\rm Pl}^4$) | Cumulative | Source
+---|---|---|---
+CKN/holographic | $10^{-122}$ | $10^{-122}$ | Cohen-Kaplan-Nelson 1999; standard GR+QFT
+FIM Tier-1 fraction $f_1$ | $10^{-2}$ | $10^{-124}$ | V1.0 partition definition (this framework)
+Observation | — | $10^{-123}$ | Planck 2018
 
-The first two are standard; only the Tier-1-fraction contribution is novel. The framework's *specific* contribution is therefore the identification of the 1% Tier-1 fraction as a regulator, converting the holographic count into an effective count of vacuum-contributing modes. This is a 100× cancellation, not a 10^244-fold one.
+## 7. Conclusion (revised)
 
-## 5. What would make this a real prediction
-
-Three things:
-
-- **A first-principles calculation of $f_1$** for a network of cosmological size, without extrapolating from the $N \leq 10^9$ regime. This probably requires an analytic tier-structure theorem that we do not yet have. It would be the subject of V2.1+ lattice-embedded extensions.
-- **A first-principles calculation of $N_{\rm tot}$** that does not simply invoke the holographic bound. Possibly from the self-consistent dimensionality condition: if the NN self-organises into a 4D manifold, $N_{\rm tot}$ is determined by the manifold's information capacity under the learning dynamics. Open.
-- **An independent prediction of a second cosmological number** from the same framework. If we predict $\Lambda$ alone, we are fitting three unknowns with one knob; if we also predict the dark-matter / baryon ratio (Naestro Tier-2 item 8) from the same $f_1, f_2, f_3$ tier fractions with the same substrate parameters, we have a falsifiable prediction. See V3.3 (in preparation).
-
-## 6. Numerical check against the V1.0 – V3.0 data
-
-Measured in the V1.0 toy experiment: $f_1 = 0.010$ exactly (99th percentile cut). Tier-1 mean FIM: $7.73 \times 10^{-6}$. Tier-3 mean FIM: $1.21 \times 10^{-8}$ (T1/T3 ratio 637×).
-
-Applying the Section 3 formula with the experimental $f_1$ gives
-
-$$
-\Lambda_{\rm theory}/\Lambda_{\rm obs} \;=\; f_1^{\rm cosm} / f_1^{\rm toy} \;\approx\; 1.0 \pm \text{(scale-invariance assumption)}.
-$$
-
-i.e., the ratio is $1$ under the conjecture that $f_1$ is scale-invariant. The V3.0 20-seed data at $N = 3.2 \times 10^6$ and $N = 5 \times 10^7$ confirms $f_1 \approx 0.01$ to within 0.05% at those scales, supporting the conjecture at 6 orders of magnitude but not extending it to 122 orders.
-
-## 7. Conclusion
-
-- The FIM-Onsager framework is **consistent with** $\Lambda \approx 10^{-122}$ in Planck units.
-- The derivation invokes the holographic bound and observational $H$, and assumes scale invariance of the Tier-1 fraction; it is not genuinely first-principles.
-- The framework's *specific* contribution is a 100× regulation via $f_1$, converting the holographic count into an effective count.
-- To elevate this from consistency to prediction, an independent derivation of $N_{\rm tot}$, $f_1$ at cosmological scale, or a joint prediction of $\Lambda$ and the dark-matter fraction (V3.3) is required.
-
-This note fulfills Naestro Tier-2 item 7 as a **consistency check + honest scoping**, not as a resolved prediction.
+- $\rho_\Lambda \sim 10^{-124}$ in Planck units is the framework's prediction.
+- Observed $\rho_\Lambda \sim 10^{-123}$.
+- Gap: 1 order of magnitude (framework is too small).
+- $f_1 = 10^{-2}$ is a partition-definition convention, not a first-principles prediction; this is the one tunable knob.
+- Naestro Tier-2 item 7 is closed with a **"consistent within 1 order of magnitude, one free knob" status** — honest but not elevating the framework to predictive theory.
 
 ---
 
 ## References
 
-[1] N. Nedovodin, "The Universe as a Self-Organizing Neural Network," STARGA Inc., April 2026.
+[1] A. Cohen, D. Kaplan, A. Nelson, "Effective Field Theory, Black Holes, and the Cosmological Constant," *PRL* 82, 4971 (1999).
 
-[2] S. Weinberg, "The cosmological constant problem," *Rev. Mod. Phys.* 61, 1 (1989). Canonical review of the $10^{122}$ discrepancy.
+[2] T. Banks, "Cosmological breaking of supersymmetry?" *Int. J. Mod. Phys. A* 16, 910 (2001).
 
-[3] T. Padmanabhan, "Cosmological constant—the weight of the vacuum," *Physics Reports* 380, 235 (2003).
+[3] S. Weinberg, "The cosmological constant problem," *Rev. Mod. Phys.* 61, 1 (1989).
 
-[4] 't Hooft, G., "Dimensional reduction in quantum gravity," gr-qc/9310026 (1993). Holographic bound.
+[4] Planck Collaboration, "Planck 2018 results. VI. Cosmological parameters," A&A 641, A6 (2020).
 
-[5] L. Susskind, "The world as a hologram," *J. Math. Phys.* 36, 6377 (1995).
+[5] G. 't Hooft, "Dimensional reduction in quantum gravity," gr-qc/9310026 (1993).
 
-[6] M. Banks, "Cosmological breaking of supersymmetry?," *Int. J. Mod. Phys. A* 16, 910 (2001). De-Sitter entropy and $\Lambda$.
+[6] L. Susskind, "The world as a hologram," *J. Math. Phys.* 36, 6377 (1995).
 
-[7] V. Vanchurin, "The world as a neural network," *Entropy* 22, 1210 (2020). Parent framework.
+[7] N. Nedovodin, "The Universe as a Self-Organizing Neural Network," STARGA Inc., April 2026.
 
-See also the companion V3.3 document (in preparation) on dark-sector ratio predictions.
+Companion: `docs/v3_4_dark_sector.md`, `docs/v4_1_init_vs_learning.md`.
 
 ---
 
-*STARGA Commercial License. Naestro Tier-2 item 7 partial closure.*
+*STARGA Commercial License. V3.2 v2 patch dated 2026-04-24; corrects dimensional mis-attribution in v1.*
