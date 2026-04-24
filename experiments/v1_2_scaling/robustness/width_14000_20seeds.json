@@ -1,0 +1,213 @@
+{
+  "config": {
+    "n_seeds": 20
+  },
+  "results": [
+    {
+      "seed": 42,
+      "width": 14000,
+      "params": 588952032,
+      "max_sv_ratio": 1.1,
+      "fim_tier1_tier3": 223.9,
+      "train_time": 108.6,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 43,
+      "width": 14000,
+      "params": 588952032,
+      "max_sv_ratio": 1.1,
+      "fim_tier1_tier3": 220.4,
+      "train_time": 109.1,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 44,
+      "width": 14000,
+      "params": 588952032,
+      "max_sv_ratio": 1.1,
+      "fim_tier1_tier3": 216.2,
+      "train_time": 108.2,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 45,
+      "width": 14000,
+      "params": 588952032,
+      "max_sv_ratio": 1.1,
+      "fim_tier1_tier3": 218.7,
+      "train_time": 108.3,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 46,
+      "width": 14000,
+      "params": 588952032,
+      "max_sv_ratio": 1.1,
+      "fim_tier1_tier3": 213.5,
+      "train_time": 108.3,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 47,
+      "width": 14000,
+      "params": 588952032,
+      "max_sv_ratio": 1.1,
+      "fim_tier1_tier3": 222.3,
+      "train_time": 108.3,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 48,
+      "width": 14000,
+      "params": 588952032,
+      "max_sv_ratio": 1.1,
+      "fim_tier1_tier3": 216.8,
+      "train_time": 108.3,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 49,
+      "width": 14000,
+      "params": 588952032,
+      "max_sv_ratio": 1.1,
+      "fim_tier1_tier3": 221.1,
+      "train_time": 108.3,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 50,
+      "width": 14000,
+      "params": 588952032,
+      "max_sv_ratio": 1.1,
+      "fim_tier1_tier3": 217.0,
+      "train_time": 108.2,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 51,
+      "width": 14000,
+      "params": 588952032,
+      "max_sv_ratio": 1.1,
+      "fim_tier1_tier3": 218.2,
+      "train_time": 108.5,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 52,
+      "width": 14000,
+      "params": 588952032,
+      "max_sv_ratio": 1.1,
+      "fim_tier1_tier3": 216.6,
+      "train_time": 108.6,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 53,
+      "width": 14000,
+      "params": 588952032,
+      "max_sv_ratio": 1.1,
+      "fim_tier1_tier3": 218.4,
+      "train_time": 108.2,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 54,
+      "width": 14000,
+      "params": 588952032,
+      "max_sv_ratio": 1.1,
+      "fim_tier1_tier3": 217.6,
+      "train_time": 108.3,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 55,
+      "width": 14000,
+      "params": 588952032,
+      "max_sv_ratio": 1.1,
+      "fim_tier1_tier3": 212.5,
+      "train_time": 108.3,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 56,
+      "width": 14000,
+      "params": 588952032,
+      "max_sv_ratio": 1.1,
+      "fim_tier1_tier3": 218.3,
+      "train_time": 108.3,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 57,
+      "width": 14000,
+      "params": 588952032,
+      "max_sv_ratio": 1.1,
+      "fim_tier1_tier3": 210.9,
+      "train_time": 108.3,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 58,
+      "width": 14000,
+      "params": 588952032,
+      "max_sv_ratio": 1.1,
+      "fim_tier1_tier3": 220.8,
+      "train_time": 108.4,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 59,
+      "width": 14000,
+      "params": 588952032,
+      "max_sv_ratio": 1.1,
+      "fim_tier1_tier3": 219.1,
+      "train_time": 108.3,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 60,
+      "width": 14000,
+      "params": 588952032,
+      "max_sv_ratio": 1.1,
+      "fim_tier1_tier3": 219.6,
+      "train_time": 108.7,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "seed": 61,
+      "width": 14000,
+      "params": 588952032,
+      "max_sv_ratio": 1.1,
+      "fim_tier1_tier3": 214.0,
+      "train_time": 108.3,
+      "bf16": true,
+      "grad_ckpt": true
+    }
+  ],
+  "sv_mean": 1.1000000000000003,
+  "sv_std": 2.278129578503827e-16,
+  "sv_cv": 2.071026889548933e-16,
+  "fim_mean": 217.79500000000002,
+  "fim_std": 3.2841685641718734,
+  "fim_cv": 0.015079173370242078
+}

@@ -1,0 +1,92 @@
+{
+  "config": {
+    "widths": [
+      32,
+      64,
+      128,
+      256,
+      512,
+      1024
+    ],
+    "steps": 15000,
+    "batch": 128,
+    "seed": 42,
+    "fim_samples": 300,
+    "in_dim": 1024,
+    "n_classes": 10,
+    "noise": 0.5,
+    "out": "/workspace/phase8/v3_0_task4_results.json"
+  },
+  "device": "cuda",
+  "gpu": "NVIDIA A100-SXM4-80GB",
+  "results": [
+    {
+      "width": 32,
+      "n_params": 37354,
+      "max_sv_ratio": 2888.1,
+      "fim_tier1_tier3": 48.9,
+      "final_loss": 0.091033,
+      "final_acc": 0.961,
+      "train_time": 61.0,
+      "seed": 42
+    },
+    {
+      "width": 64,
+      "n_params": 82890,
+      "max_sv_ratio": 665.3,
+      "fim_tier1_tier3": 231.2,
+      "final_loss": 0.074729,
+      "final_acc": 0.977,
+      "train_time": 61.9,
+      "seed": 42
+    },
+    {
+      "width": 128,
+      "n_params": 198538,
+      "max_sv_ratio": 900.5,
+      "fim_tier1_tier3": 357.0,
+      "final_loss": 0.125189,
+      "final_acc": 0.93,
+      "train_time": 60.0,
+      "seed": 42
+    },
+    {
+      "width": 256,
+      "n_params": 528138,
+      "max_sv_ratio": 211737.5,
+      "fim_tier1_tier3": 998.2,
+      "final_loss": 0.108391,
+      "final_acc": 0.969,
+      "train_time": 63.3,
+      "seed": 42
+    },
+    {
+      "width": 512,
+      "n_params": 1580554,
+      "max_sv_ratio": 17358.4,
+      "fim_tier1_tier3": 503864.6,
+      "final_loss": 0.159736,
+      "final_acc": 0.945,
+      "train_time": 62.3,
+      "seed": 42
+    },
+    {
+      "width": 1024,
+      "n_params": 5258250,
+      "max_sv_ratio": 151279.6,
+      "fim_tier1_tier3": 45512329.3,
+      "final_loss": 0.125293,
+      "final_acc": 0.945,
+      "train_time": 63.3,
+      "seed": 42
+    }
+  ],
+  "sv_power_law": {
+    "exponent": 1.02,
+    "r_squared": 0.563
+  },
+  "fim_power_law": {
+    "exponent": 2.748,
+    "r_squared": 0.898
+  }
+}
