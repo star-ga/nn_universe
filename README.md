@@ -32,6 +32,8 @@ Computational + analytical validation of the STARGA neural-network cosmology fra
 | **V6.1** | Width sweep — confirms Hanin–Nica width-independence (σ depends on activation, not width) | **Done** ([JSON](experiments/v6_0_depth_mechanism/v6_1_width_sweep.json)) |
 | **V6.2** | Trained-NN depth sweep — √L scaling survives training (R²=0.94); dissipation collapses at L≥8 | **Done** ([experiment](experiments/v6_0_depth_mechanism/trained_depth_sweep.py)) |
 | **V6.3** | Layered boolean-circuit depth sweep — substrate-independent √L scaling (R²=0.98 for BCs too) | **Done** ([experiment](experiments/v6_0_depth_mechanism/bc_depth_sweep.py)) |
+| **V6.4** | Transformer depth sweep — attention+residuals preserve √L scaling (R²=0.97) | **Done** ([experiment](experiments/v6_0_depth_mechanism/transformer_depth_sweep.py)) |
+| **V7.0** | SU(2) non-abelian lattice gauge (in progress, L=3, d=4, 972 params, 3 seeds) | **In progress** ([experiment](experiments/v7_0_lattice_su2/)) |
 
 ### Key documents
 
