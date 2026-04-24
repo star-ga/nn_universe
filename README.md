@@ -30,6 +30,7 @@ Computational + analytical validation of the STARGA neural-network cosmology fra
 | **V5.0-stats** | Bootstrap CIs + Mann–Whitney U test on the 10-system dichotomy ($p = 5.1 \times 10^{-17}$, complete rank separation) | **Done** ([stats](experiments/v5_0_dichotomy_stats/)) |
 | **V6.0** | Mechanism — Hanin–Nica log-normal theorem + depth-sweep empirical confirmation (H1 R²=0.91, H2 R²=0.98) | **Done** ([doc](docs/v6_0_mechanism_hanin_nica.md), [experiment](experiments/v6_0_depth_mechanism/)) |
 | **V6.1** | Width sweep — confirms Hanin–Nica width-independence (σ depends on activation, not width) | **Done** ([JSON](experiments/v6_0_depth_mechanism/v6_1_width_sweep.json)) |
+| **V6.2** | Trained-NN depth sweep — √L scaling survives training (R²=0.94); dissipation collapses at L≥8 | **Done** ([experiment](experiments/v6_0_depth_mechanism/trained_depth_sweep.py)) |
 | **V6.3** | Layered boolean-circuit depth sweep — substrate-independent √L scaling (R²=0.98 for BCs too) | **Done** ([experiment](experiments/v6_0_depth_mechanism/bc_depth_sweep.py)) |
 
 ### Key documents

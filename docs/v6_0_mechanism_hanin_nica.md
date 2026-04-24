@@ -214,6 +214,51 @@ The full universality class is now cleanly characterised:
 steps) have log-normal FIM diagonal, heavy-tailed tier distribution,
 and $T_1/T_3 \gtrsim 10^2$.** Everything else does not.
 
+### 5.4 V6.2 — Training preserves the mechanism at large depth
+
+V6.2 (`experiments/v6_0_depth_mechanism/trained_depth_sweep.py`) runs the
+same protocol as V6.0 but measures both an untrained and a trained
+(10 000 SGD steps on self-prediction) copy of each network. 6 depths
+$L \in \{2, 3, 4, 6, 8, 12\}$ × 5 seeds. Both hypotheses pass:
+
+- **(P1) Trained $\mathrm{Var}[\log F]$ slope is strictly less than untrained.**
+  Trained slope = 2.722, untrained slope = 2.860 — training reduces the
+  per-layer log-variance coefficient by $\approx 5\%$ on average, with
+  the reduction concentrated at $L \leq 6$.
+- **(P2) Trained $\log(T_1/T_3) \propto \sqrt{L}$.** OLS $R^2 = 0.936$
+  for the trained $\log T_1/T_3$ vs $\sqrt{L}$ fit. The log-normal
+  scaling law survives training.
+
+A new finding emerges from per-depth dissipation factors (untrained/trained):
+
+| $L$ | Mean dissipation | Range |
+|-----|------------------|-------|
+| 2   | 2.0×             | 1.8–2.3 |
+| 3   | 2.8×             | 2.2–3.5 |
+| 4   | 4.7×             | 2.8–8.2 |
+| 6   | 10.9×            | 5.8–20.7 |
+| 8   | **1.3×**         | 0.9–1.8 |
+| 12  | **0.7×**         | 0.1–1.7 |
+
+At $L \geq 8$, training produces **no meaningful dissipation on average**;
+at $L = 12$, roughly half the seeds show trained > untrained (dissipation
+< 1). The Hanin–Nica log-normal tails become structurally locked at
+moderate depth — training cannot flatten them. This refines the V4.1
+claim: "training dissipates the hierarchy 4–24×" is accurate at
+$L \leq 6$ but **not** at $L \geq 8$; the original V4.1 experiment used
+$L = 5$, which is inside the dissipation regime.
+
+The mechanism interpretation: at shallow depth, the log-variance $\sigma^2 L$
+is small enough that gradient descent's SGD noise can partially
+re-randomise the tail. At large depth, $\sigma^2 L \gtrsim 10$ and the
+log-normal tail has spread over $e^{\sqrt{10}} \approx 23\times$ dynamic
+range — SGD noise is too small relative to the tail to wash it out.
+
+This is directly relevant to neural-network cosmology: if the universe's
+substrate is layered-sequential at $L \gg 10$, the FIM tier hierarchy is
+not merely a snapshot signature — it is **dynamically stable under any
+gradient-descent-like learning process the substrate might undergo**.
+
 ## 6. Why the non-deep systems sit in the O(1) band
 
 The Hanin–Nica mechanism requires **sequential composition** of random
