@@ -1,0 +1,127 @@
+{
+  "device": "cuda",
+  "gpu": "NVIDIA GeForce RTX 3080",
+  "dim": 32,
+  "hidden_layers": 5,
+  "results": [
+    {
+      "width": 16,
+      "params": 1888,
+      "max_sv_ratio": 377.2,
+      "fim_tier1_tier3": 191.0,
+      "train_time": 67.2
+    },
+    {
+      "width": 32,
+      "params": 5280,
+      "max_sv_ratio": 383.4,
+      "fim_tier1_tier3": 502.3,
+      "train_time": 72.6,
+      "bf16": false,
+      "grad_ckpt": false
+    },
+    {
+      "width": 64,
+      "params": 16672,
+      "max_sv_ratio": 1047.6,
+      "fim_tier1_tier3": 615.7,
+      "train_time": 75.0
+    },
+    {
+      "width": 128,
+      "params": 57888,
+      "max_sv_ratio": 2172.0,
+      "fim_tier1_tier3": 370.8,
+      "train_time": 71.4,
+      "bf16": false,
+      "grad_ckpt": false
+    },
+    {
+      "width": 256,
+      "params": 214048,
+      "max_sv_ratio": 9490.6,
+      "fim_tier1_tier3": 144.8,
+      "train_time": 17.6,
+      "bf16": false,
+      "grad_ckpt": false
+    },
+    {
+      "width": 512,
+      "params": 821280,
+      "max_sv_ratio": 9115.1,
+      "fim_tier1_tier3": 241.5,
+      "train_time": 18.0,
+      "bf16": false,
+      "grad_ckpt": false
+    },
+    {
+      "width": 1024,
+      "params": 3215392,
+      "max_sv_ratio": 32228.3,
+      "fim_tier1_tier3": 329.0,
+      "train_time": 18.1,
+      "bf16": false,
+      "grad_ckpt": false
+    },
+    {
+      "width": 2048,
+      "params": 12722208,
+      "max_sv_ratio": 554885.2,
+      "fim_tier1_tier3": 378.7,
+      "train_time": 75.6,
+      "bf16": false,
+      "grad_ckpt": false
+    },
+    {
+      "width": 4096,
+      "params": 50610208,
+      "max_sv_ratio": 77169.1,
+      "fim_tier1_tier3": 416.9,
+      "train_time": 105.2
+    },
+    {
+      "width": 8192,
+      "params": 201883680,
+      "max_sv_ratio": 59364.2,
+      "fim_tier1_tier3": 452.7,
+      "train_time": 450.7
+    },
+    {
+      "width": 14000,
+      "params": 588952032,
+      "max_sv_ratio": 91946.1,
+      "fim_tier1_tier3": 224.0,
+      "train_time": 113.5,
+      "bf16": true,
+      "grad_ckpt": true,
+      "seed": 42
+    },
+    {
+      "width": 22000,
+      "params": 1453496032,
+      "max_sv_ratio": 602007.6,
+      "fim_tier1_tier3": 210.2,
+      "train_time": 253.4,
+      "bf16": true,
+      "grad_ckpt": true
+    },
+    {
+      "width": 45000,
+      "params": 6078060032,
+      "max_sv_ratio": 1.1,
+      "fim_tier1_tier3": 204.4,
+      "train_time": 537.6,
+      "bf16": true,
+      "grad_ckpt": true,
+      "max_sv_ratio_note": "not measured \u2014 stem/head layer only at min_dim>4000"
+    }
+  ],
+  "sv_power_law": {
+    "exponent": 0.168,
+    "r_squared": 0.053
+  },
+  "fim_power_law": {
+    "exponent": -0.02,
+    "r_squared": 0.052
+  }
+}

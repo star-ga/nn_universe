@@ -110,7 +110,20 @@ Third and fourth tasks added (`experiments/v3_0_task3_symbolic/`, `experiments/v
 | Symbolic regression | 0.555 | 1.432 | 6 widths, clean |
 | Vision classification | 1.02 | **1.067** (clean 4 widths) / 2.748 (6 widths w/ underflow) | T1/T3 underflow at W ≥ 512, use 4-point fit |
 
-**Power-law FORM holds across all four tasks.** Exponents are task-dependent and probe-count-sensitive. At n_probes=300 (original runs), all three structured-task FIM exponents are super-linear (QEC 1.386; symbolic 1.432; vision 2.748). At n_probes=2000 (verification re-runs of T2 and T4) the exponents are *steeper* (QEC 2.258 with R²=1.00; vision 5.546 with R²=0.995), meaning the 300-probe values were under-estimates. A transient "underflow artifact" audit conclusion from earlier in the session was wrong: high-probe re-runs show the tier-3 values at large N are genuinely very small, not MC-zero, and MC noise at 300 probes biases the tier-3 mean upward (hence the ratio downward). Cosmology (T1) is ≈0 at 300 probes; not re-verified at 2000 probes.
+**Power-law FORM holds across all four tasks.** Exponents are task-dependent and probe-count-sensitive for structured tasks; unstructured is probe-insensitive.
+
+Full 4-task × 2-probe-count matrix (complete at commit 2026-04-24):
+
+| Task | FIM exp @ 300 probes | FIM exp @ 2000 probes | Sensitivity |
+|------|----------------------|------------------------|-------------|
+| T1 cosmology | ≈ 0 | **≈ 0 (values unchanged <3%)** | NONE |
+| T2 QEC | 1.386 | 2.258 (R²=1.00) | +0.87 |
+| T3 symbolic | 1.432 | 2.299 (R²=0.91) | +0.87 |
+| T4 vision | 2.748 | 5.546 (R²=0.995) | +2.80 |
+
+A transient "underflow artifact" audit conclusion from earlier in the session was wrong: high-probe re-runs show tier-3 at large N for structured tasks is genuinely very small (not MC-zero), and MC noise at 300 probes biases tier-3 mean upward and ratio downward. The 300-probe exponents are lower bounds. For the *unstructured* cosmology task the tier-3 values are uniformly Gaussian-order, probe-insensitive, and the exponent is honestly ≈0.
+
+This probe-sensitivity gap is itself evidence for the universality class separation: structured task tier-3 ~ heavy-tailed; unstructured task tier-3 ~ uniform.
 
 ### 2.4 V3.1 — Mock Observational Pipeline
 

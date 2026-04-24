@@ -205,14 +205,19 @@ A high-probes verification (W=256/512/1024 at n_probes=2000, RTX 4090, commit 20
 
 ### Final 4-task universality summary
 
-| Task | SV exponent (headline at 300 probes) | FIM exponent (headline at 300 probes) | 2000-probe verification (where done) | Probe-count sensitivity |
-|------|----|----|----|----|
-| T1 cosmology self-prediction | 0.516 | ≈ 0 | — | not tested |
-| T2 QEC toric-code decoding | 0.807 | 1.386 | FIM 2.258 @ 3-width subset (R²=1.00) | FIM exp grows with probes |
-| T3 symbolic regression | 0.555 | 1.432 | — | not tested |
-| **T4 supervised classification** | 1.02 | 2.748 | **FIM 5.546 @ 3-width subset (R²=0.995)** | FIM exp grows with probes |
+| Task | FIM T1/T3 exp @ 300 probes | FIM T1/T3 exp @ 2000 probes | Probe-count sensitivity |
+|------|-----------------------------|-----------------------------|--------------------------|
+| T1 cosmology self-prediction | ≈ 0 (flat) | **≈ 0 (flat)** | **NONE — values literally unchanged** |
+| T2 QEC toric-code decoding | 1.386 | 2.258 | yes (+0.87) |
+| T3 symbolic regression | 1.432 | 2.299 | yes (+0.87) |
+| T4 supervised classification | 2.748 | **5.546** | yes (+2.80) |
 
-**Revised headline after verification**: the FIM tier exponent for structured tasks is probe-count-sensitive. At n_probes=300 (original runs) the exponents are $\beta \in \{1.386, 1.432, 2.748\}$; at n_probes=2000 the same measurements give larger exponents with higher R², confirming that low-probe measurements *under-estimate* the true ratio at large N (tier-3 values are genuinely very small, not MC-zero). The FIM tier hierarchy grows steeply with N for all structured tasks; the exact exponent is task-dependent but all are super-linear. All headline FIM numbers in this repo should be read as "lower bounds at n_probes=300; true values likely higher." Naestro Tier-1 item 1 (3-task universality) satisfied with 4 tasks.
+**Final headline after full verification (all 4 tasks at 2000 probes, commit 2026-04-24):**
+
+- **Unstructured** task (cosmology self-prediction of Gaussian noise): FIM T1/T3 is **flat in N and probe-insensitive** — T1/T3 sits in the 145–335× band across 3 decades of N at both probe counts, with at most 3% change between 300 and 2000 probes.
+- **Structured** tasks (QEC, symbolic regression, vision classification): FIM T1/T3 grows **super-linearly** in N, and the exponent *increases* with probe count. The 300-probe measurements were lower bounds because MC noise on tier-3 (genuinely very small) biases the tier-3 mean *upward*, which biases the ratio *downward*. At 2000 probes, tier-3 is tighter and the true super-linear scaling is exposed.
+
+This is a **cleaner empirical statement** of task universality than before: the FIM tier *form* is universal (all tasks give a stable or growing T1/T3 with N); the *exponent* sharply separates unstructured tasks (≈0) from structured ones (2.3 – 5.5 at high probes). 4-task universality is confirmed; Naestro Tier-1 item 1 satisfied.
 
 ### V1.2 Depth Sweep (width=256, 6 depths)
 

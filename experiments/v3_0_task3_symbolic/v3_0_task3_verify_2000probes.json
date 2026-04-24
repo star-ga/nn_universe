@@ -1,0 +1,146 @@
+{
+  "config": {
+    "widths": [
+      256,
+      512,
+      1024
+    ],
+    "degree": 8,
+    "n_evals": 16,
+    "steps": 20000,
+    "batch": 128,
+    "seed": 42,
+    "fim_samples": 2000,
+    "out": "/workspace/t3_verify.json"
+  },
+  "device": "cuda",
+  "results": [
+    {
+      "width": 256,
+      "n_params": 273672,
+      "degree": 8,
+      "n_evals": 16,
+      "max_sv_ratio": 10150.8,
+      "fim_tier1_tier3": 4441.8,
+      "final_loss": 0.550283,
+      "train_time": 32.4,
+      "seed": 42,
+      "sv_stats": [
+        {
+          "layer": "net.0.weight",
+          "shape": [
+            256,
+            32
+          ],
+          "top3_sv": [
+            2.2905,
+            2.2368,
+            2.2238
+          ],
+          "sv_ratio": 6.57,
+          "sv_std": 0.3226
+        },
+        {
+          "layer": "net.2.weight",
+          "shape": [
+            256,
+            256
+          ],
+          "top3_sv": [
+            5.1168,
+            4.82,
+            3.7698
+          ],
+          "sv_ratio": 1741.26,
+          "sv_std": 0.903
+        },
+        {
+          "layer": "net.4.weight",
+          "shape": [
+            256,
+            256
+          ],
+          "top3_sv": [
+            6.6778,
+            5.862,
+            5.3502
+          ],
+          "sv_ratio": 2526.86,
+          "sv_std": 0.9491
+        },
+        {
+          "layer": "net.6.weight",
+          "shape": [
+            256,
+            256
+          ],
+          "top3_sv": [
+            7.2599,
+            6.4456,
+            6.0303
+          ],
+          "sv_ratio": 10150.84,
+          "sv_std": 0.9808
+        },
+        {
+          "layer": "net.8.weight",
+          "shape": [
+            256,
+            256
+          ],
+          "top3_sv": [
+            7.1357,
+            5.6441,
+            5.1597
+          ],
+          "sv_ratio": 4307.24,
+          "sv_std": 0.8932
+        },
+        {
+          "layer": "net.10.weight",
+          "shape": [
+            8,
+            256
+          ],
+          "top3_sv": [
+            1.7993,
+            1.7825,
+            1.4
+          ],
+          "sv_ratio": 5.36,
+          "sv_std": 0.5657
+        }
+      ]
+    },
+    {
+      "width": 512,
+      "n_params": 1071624,
+      "degree": 8,
+      "n_evals": 16,
+      "max_sv_ratio": 10137.8,
+      "fim_tier1_tier3": 582004.4,
+      "final_loss": 0.530649,
+      "train_time": 27.6,
+      "seed": 42
+    },
+    {
+      "width": 1024,
+      "n_params": 4240392,
+      "degree": 8,
+      "n_evals": 16,
+      "max_sv_ratio": 46532096.0,
+      "fim_tier1_tier3": 2427308.0,
+      "final_loss": 0.530067,
+      "train_time": 33.4,
+      "seed": 42
+    }
+  ],
+  "sv_power_law": {
+    "exponent": 3.08,
+    "r_squared": 0.752
+  },
+  "fim_power_law": {
+    "exponent": 2.299,
+    "r_squared": 0.908
+  }
+}
