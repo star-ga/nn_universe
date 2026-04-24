@@ -72,7 +72,7 @@ def measure_sv_ratios(net, device, use_inverse_power_cutoff: int, iters: int):
                 v = v / v.norm().clamp_min(1e-30)
             sigma_max = float((W @ v).norm())
             sigma_min = sigma_min_inverse_power(W, n_iter=iters)
-            method = "inverse_power"
+            method = "power_iter_max__cpu_full_svd_min"
         dt = time.time() - t0
         ratio = sigma_max / max(sigma_min, 1e-30)
         results.append({

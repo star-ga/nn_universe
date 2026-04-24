@@ -1,0 +1,297 @@
+{
+  "config": {
+    "widths": [
+      256,
+      1024,
+      4096,
+      8192
+    ],
+    "dim": 32,
+    "steps": 500,
+    "batch": 64,
+    "seed": 42,
+    "iters": 500,
+    "cutoff": 4000,
+    "device": null,
+    "out": "/home/n/nn_universe/experiments/v1_2_scaling/sigma_min_validation_results.json"
+  },
+  "results": [
+    {
+      "width": 256,
+      "n_params": 214048,
+      "train_s": 4.14188289642334,
+      "max_sv_ratio": 2197.818270836176,
+      "interior_max_sv_ratio": 2197.818270836176,
+      "layers": [
+        {
+          "layer": "stem.weight",
+          "shape": [
+            256,
+            32
+          ],
+          "sigma_max": 2.1292195320129395,
+          "sigma_min": 1.045606017112732,
+          "sv_ratio": 2.0363497313189023,
+          "method": "full_svd",
+          "elapsed_s": 0.01998424530029297
+        },
+        {
+          "layer": "hidden.0.weight",
+          "shape": [
+            256,
+            256
+          ],
+          "sigma_max": 1.1287952661514282,
+          "sigma_min": 0.0005135980900377035,
+          "sv_ratio": 2197.818270836176,
+          "method": "full_svd",
+          "elapsed_s": 0.00960230827331543
+        },
+        {
+          "layer": "hidden.1.weight",
+          "shape": [
+            256,
+            256
+          ],
+          "sigma_max": 1.1386570930480957,
+          "sigma_min": 0.0006346851587295532,
+          "sv_ratio": 1794.0502899537482,
+          "method": "full_svd",
+          "elapsed_s": 0.008783817291259766
+        },
+        {
+          "layer": "hidden.2.weight",
+          "shape": [
+            256,
+            256
+          ],
+          "sigma_max": 1.1734466552734375,
+          "sigma_min": 0.0006177357863634825,
+          "sv_ratio": 1899.5931289351734,
+          "method": "full_svd",
+          "elapsed_s": 0.00856781005859375
+        },
+        {
+          "layer": "head.weight",
+          "shape": [
+            32,
+            256
+          ],
+          "sigma_max": 0.7671471238136292,
+          "sigma_min": 0.38305142521858215,
+          "sv_ratio": 2.002726196295625,
+          "method": "full_svd",
+          "elapsed_s": 0.0011856555938720703
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "n_params": 3215392,
+      "train_s": 4.322575807571411,
+      "max_sv_ratio": 29321.937476922918,
+      "interior_max_sv_ratio": 29321.937476922918,
+      "layers": [
+        {
+          "layer": "stem.weight",
+          "shape": [
+            1024,
+            32
+          ],
+          "sigma_max": 3.717606782913208,
+          "sigma_min": 2.7972354888916016,
+          "sv_ratio": 1.3290288921603457,
+          "method": "full_svd",
+          "elapsed_s": 0.08664441108703613
+        },
+        {
+          "layer": "hidden.0.weight",
+          "shape": [
+            1024,
+            1024
+          ],
+          "sigma_max": 1.1477411985397339,
+          "sigma_min": 0.00012141439947299659,
+          "sv_ratio": 9453.08961310639,
+          "method": "full_svd",
+          "elapsed_s": 0.0759119987487793
+        },
+        {
+          "layer": "hidden.1.weight",
+          "shape": [
+            1024,
+            1024
+          ],
+          "sigma_max": 1.147233486175537,
+          "sigma_min": 3.9125432522268966e-05,
+          "sv_ratio": 29321.937476922918,
+          "method": "full_svd",
+          "elapsed_s": 0.07630729675292969
+        },
+        {
+          "layer": "hidden.2.weight",
+          "shape": [
+            1024,
+            1024
+          ],
+          "sigma_max": 1.1449235677719116,
+          "sigma_min": 4.947481647832319e-05,
+          "sv_ratio": 23141.542491088298,
+          "method": "full_svd",
+          "elapsed_s": 0.06832456588745117
+        },
+        {
+          "layer": "head.weight",
+          "shape": [
+            32,
+            1024
+          ],
+          "sigma_max": 0.6680509448051453,
+          "sigma_min": 0.47638383507728577,
+          "sv_ratio": 1.4023375597888719,
+          "method": "full_svd",
+          "elapsed_s": 0.0007750988006591797
+        }
+      ]
+    },
+    {
+      "width": 4096,
+      "n_params": 50610208,
+      "train_s": 3.8479442596435547,
+      "max_sv_ratio": 405932.9372235914,
+      "interior_max_sv_ratio": 405932.9372235914,
+      "layers": [
+        {
+          "layer": "stem.weight",
+          "shape": [
+            4096,
+            32
+          ],
+          "sigma_max": 7.0355024337768555,
+          "sigma_min": 5.987157344818115,
+          "sv_ratio": 1.175098970777189,
+          "method": "full_svd",
+          "elapsed_s": 0.0014638900756835938
+        },
+        {
+          "layer": "hidden.0.weight",
+          "shape": [
+            4096,
+            4096
+          ],
+          "sigma_max": 1.1438651084899902,
+          "sigma_min": 2.817867198245949e-06,
+          "sv_ratio": 405932.9372235914,
+          "method": "inverse_power",
+          "elapsed_s": 17.033194303512573
+        },
+        {
+          "layer": "hidden.1.weight",
+          "shape": [
+            4096,
+            4096
+          ],
+          "sigma_max": 1.1438924074172974,
+          "sigma_min": 3.853414091281593e-05,
+          "sv_ratio": 29685.16697972769,
+          "method": "inverse_power",
+          "elapsed_s": 16.314056158065796
+        },
+        {
+          "layer": "hidden.2.weight",
+          "shape": [
+            4096,
+            4096
+          ],
+          "sigma_max": 1.145075798034668,
+          "sigma_min": 8.733076356293168e-06,
+          "sv_ratio": 131119.4075624349,
+          "method": "inverse_power",
+          "elapsed_s": 15.453587770462036
+        },
+        {
+          "layer": "head.weight",
+          "shape": [
+            32,
+            4096
+          ],
+          "sigma_max": 0.6237505674362183,
+          "sigma_min": 0.5327641367912292,
+          "sv_ratio": 1.1707818232529479,
+          "method": "full_svd",
+          "elapsed_s": 0.0009970664978027344
+        }
+      ]
+    },
+    {
+      "width": 8192,
+      "n_params": 201883680,
+      "train_s": 4.2816002368927,
+      "max_sv_ratio": 61471.850724842996,
+      "interior_max_sv_ratio": 61471.850724842996,
+      "layers": [
+        {
+          "layer": "stem.weight",
+          "shape": [
+            8192,
+            32
+          ],
+          "sigma_max": 9.761324882507324,
+          "sigma_min": 8.729281425476074,
+          "sv_ratio": 1.1182277677540868,
+          "method": "full_svd",
+          "elapsed_s": 0.0016345977783203125
+        },
+        {
+          "layer": "hidden.0.weight",
+          "shape": [
+            8192,
+            8192
+          ],
+          "sigma_max": 1.13973867893219,
+          "sigma_min": 6.815999950049445e-05,
+          "sv_ratio": 16721.518299364452,
+          "method": "inverse_power",
+          "elapsed_s": 101.18050527572632
+        },
+        {
+          "layer": "hidden.1.weight",
+          "shape": [
+            8192,
+            8192
+          ],
+          "sigma_max": 1.1397278308868408,
+          "sigma_min": 1.8540646124165505e-05,
+          "sv_ratio": 61471.850724842996,
+          "method": "inverse_power",
+          "elapsed_s": 112.16051411628723
+        },
+        {
+          "layer": "hidden.2.weight",
+          "shape": [
+            8192,
+            8192
+          ],
+          "sigma_max": 1.142351746559143,
+          "sigma_min": 2.5730883862706833e-05,
+          "sv_ratio": 44396.133170334484,
+          "method": "inverse_power",
+          "elapsed_s": 99.39226746559143
+        },
+        {
+          "layer": "head.weight",
+          "shape": [
+            32,
+            8192
+          ],
+          "sigma_max": 0.6135401129722595,
+          "sigma_min": 0.5479651093482971,
+          "sv_ratio": 1.1196700346523005,
+          "method": "full_svd",
+          "elapsed_s": 0.0011010169982910156
+        }
+      ]
+    }
+  ],
+  "notes": "\u03c3_min method: full SVD (torch.linalg.svdvals) for min-dim \u2264 cutoff, inverse-power shifted iteration on A^T A for min-dim > cutoff. Full SVD is the ground truth against which inverse-power is validated for widths where both are feasible. For W \u2265 14000, only the inverse-power path is viable on RTX 3080 (\u226410 GB VRAM); W = 45000 still requires H200 cluster due to training memory (5-layer 45000-wide MLP training activations ~45 GB)."
+}

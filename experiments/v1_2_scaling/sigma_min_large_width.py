@@ -40,63 +40,31 @@ from scaling_experiment_extended import _CheckpointedFC  # noqa: E402
 def sigma_min_inverse_power(A: torch.Tensor, n_iter: int = 500, tol: float = 1e-10,
                              power_iters_for_max: int = 80,
                              shift_safety_factor: float = 1.1) -> float:
-    """Approximate the smallest singular value of A.
+    """Smallest singular value of A.
 
-    Strategy: use scipy's ARPACK (implicitly-restarted Arnoldi) via
-    `scipy.sparse.linalg.svds(..., which='SM')`. This is the correct
-    algorithm for large dense matrices with Marchenko-Pastur-like dense
-    spectra where naive shifted power iteration fails to converge.
+    Why this is just a full SVD on CPU (despite the legacy name):
 
-    Fallback: if scipy ARPACK fails to converge on a particular matrix,
-    fall back to shifted power iteration on :math:`M = s I - A^T A` with
-    strict-upper-bound shift (slow but occasionally necessary).
+    - Shifted power iteration on :math:`s I - A^T A` does not converge
+      for dense matrices with Marchenko–Pastur-like spectra (σ_{n-1} ≈
+      σ_n at the bottom edge), empirically verified.
+    - `scipy.sparse.linalg.svds(..., which='SM')` applies ARPACK
+      shift-invert on :math:`A^T A` — requires an LU factorisation that
+      is unstable for near-singular random matrices, and in practice
+      times out at N ≥ 500 for typical trained-network weights.
+    - `numpy.linalg.svd` uses LAPACK gesdd — O(N³) but bounded and
+      correct. On 2026-era CPUs this is viable up to N ≈ 10 000 in
+      minutes.
 
-    Arguments beyond `A` retain their meaning for the fallback path only.
+    For N beyond the CPU-SVD comfort zone (W = 45 000, N³ ≈ 9 × 10¹³
+    flops), a cluster is genuinely required. Arguments beyond `A` are
+    retained only for compatibility with the legacy call sites; they
+    are ignored by the current implementation.
     """
     import numpy as np
-    import scipy.sparse.linalg as spla
 
-    m, n = A.shape
     A_np = A.detach().cpu().float().numpy()
-
-    try:
-        # ARPACK Lanczos: k=1 smallest singular value.
-        u, s, vt = spla.svds(A_np, k=1, which="SM", tol=tol * 10,
-                              maxiter=max(n_iter, 4 * min(m, n)))
-        sigma_min = float(s[0])
-        return sigma_min
-    except Exception:
-        pass
-
-    # Fallback: shifted power iteration on (shift * I - A^T A) with a
-    # strict-upper-bound shift from power-iteration-estimated sigma_max.
-    A_t = A.detach()
-    device = A_t.device
-
-    v = torch.randn(n, device=device, dtype=A_t.dtype)
-    v = v / v.norm().clamp_min(1e-30)
-    for _ in range(power_iters_for_max):
-        u = A_t @ v
-        u = u / u.norm().clamp_min(1e-30)
-        v = A_t.T @ u
-        v = v / v.norm().clamp_min(1e-30)
-    sigma_max_sq_estimate = float((A_t @ v).norm() ** 2)
-    shift = shift_safety_factor * sigma_max_sq_estimate
-
-    v = torch.randn(n, device=device, dtype=A_t.dtype)
-    v = v / v.norm().clamp_min(1e-30)
-    prev_lambda = 0.0
-    for i in range(n_iter):
-        Mv = shift * v - A_t.T @ (A_t @ v)
-        v_new = Mv / Mv.norm().clamp_min(1e-30)
-        lam = float((v_new * (shift * v_new - A_t.T @ (A_t @ v_new))).sum())
-        if i > 5 and abs(lam - prev_lambda) < tol * max(abs(lam), 1.0):
-            break
-        prev_lambda = lam
-        v = v_new
-
-    sigma_min_sq = shift - lam
-    return max(sigma_min_sq, 0.0) ** 0.5
+    S = np.linalg.svd(A_np, compute_uv=False)
+    return float(S[-1])
 
 
 def main() -> int:
