@@ -64,13 +64,22 @@ def measure(net: nn.Module, dim: int, n_probes: int) -> dict:
 
 
 def run_one(width: int, seed: int, steps: int, probes: int, dim: int) -> tuple[dict, dict]:
-    # Untrained (same init as trained — so we compare ONLY the effect of training).
+    """Trained vs untrained FIM diagonals at byte-identical starting init.
+
+    To eliminate any residual concern that seed-replay might diverge
+    (RNG consumption during the untrained measurement could shift
+    subsequent torch.manual_seed behavior on some PyTorch versions),
+    we save `state_dict()` of the freshly-built network, do the
+    untrained measurement, then build trained_net fresh and
+    `load_state_dict()` to guarantee byte-identical initial weights.
+    """
     torch.manual_seed(seed)
     untrained_net = make_net(width, dim)
+    init_state = {k: v.detach().clone() for k, v in untrained_net.state_dict().items()}
     untrained = measure(untrained_net, dim, probes)
-    # Trained — independent build so FIM diagonal state is clean.
-    torch.manual_seed(seed)
+
     trained_net = make_net(width, dim)
+    trained_net.load_state_dict(init_state)  # byte-identical to untrained_net's initial state
     train(trained_net, dim, steps, batch=128)
     trained = measure(trained_net, dim, probes)
     return untrained, trained
