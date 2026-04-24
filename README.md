@@ -29,6 +29,8 @@ Computational + analytical validation of the STARGA neural-network cosmology fra
 | **V5.0** | U(1) pure-gauge lattice FIM (non-deep, spatially-parallel control) | **Done** ([experiment](experiments/v5_0_lattice_qcd/)) |
 | **V5.0-stats** | Bootstrap CIs + Mann–Whitney U test on the 10-system dichotomy ($p = 5.1 \times 10^{-17}$, complete rank separation) | **Done** ([stats](experiments/v5_0_dichotomy_stats/)) |
 | **V6.0** | Mechanism — Hanin–Nica log-normal theorem + depth-sweep empirical confirmation (H1 R²=0.91, H2 R²=0.98) | **Done** ([doc](docs/v6_0_mechanism_hanin_nica.md), [experiment](experiments/v6_0_depth_mechanism/)) |
+| **V6.1** | Width sweep — confirms Hanin–Nica width-independence (σ depends on activation, not width) | **Done** ([JSON](experiments/v6_0_depth_mechanism/v6_1_width_sweep.json)) |
+| **V6.3** | Layered boolean-circuit depth sweep — substrate-independent √L scaling (R²=0.98 for BCs too) | **Done** ([experiment](experiments/v6_0_depth_mechanism/bc_depth_sweep.py)) |
 
 ### Key documents
 
@@ -183,7 +185,7 @@ tier partition). All numbers are mean T1/T3 over 3–5 seeds.
 | Kernel ridge regression | Shallow learner | **1.42** |
 | Logistic regression | 1-layer softmax learner | **3.14** |
 | Gaussian process regression | Non-parametric learner | **1.97** |
-| U(1) lattice gauge (L=8) | Spatially-parallel QFT | **2.0** |
+| U(1) lattice gauge (L=8) | Spatially-parallel QFT | **1.6** |
 | Ising chain | 1D dynamical system | 2.6 |
 | Harmonic oscillator chain | 1D dynamical system | 5.0 |
 | Cellular automaton (Rule 110) | Sequential but shallow | 3.8 |
@@ -228,9 +230,15 @@ deep-sequential observation ranks above every non-deep observation
    two falsifiable predictions of this theorem: $\mathrm{Var}[\log F_{ii}]
    \propto L$ ($R^2 = 0.906$) and $\log(T_1/T_3) \propto \sqrt{L}$
    ($R^2 = 0.983$). At $L{=}20$, observed $T_1/T_3 = 9 \times 10^{15}$,
-   matching the theoretical log-normal-tail prediction. The empirical
-   V5.0 dichotomy is therefore no longer phenomenology — it is a
-   quantitative consequence of a published random-matrix-theory theorem.
+   matching the theoretical log-normal-tail prediction. A width sweep
+   (V6.1) confirms the width-independence predicted by the theorem.
+   A **layered random-gate boolean-circuit depth sweep** (V6.3) shows the
+   same scaling at $R^2 = 0.98$ — the mechanism is substrate-independent
+   within the deep-sequential class. The empirical V5.0 dichotomy is
+   therefore no longer phenomenology — it is a quantitative consequence
+   of a published random-matrix-theory theorem that applies to
+   *any substrate performing deep layered sequential composition*,
+   neural or otherwise.
    See [`docs/v6_0_mechanism_hanin_nica.md`](docs/v6_0_mechanism_hanin_nica.md).
 
 4. **If the universe's substrate is a spatially-parallel quantum field (as
