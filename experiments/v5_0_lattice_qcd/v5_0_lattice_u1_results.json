@@ -1,0 +1,70 @@
+{
+  "config": {
+    "L": 8,
+    "d": 4,
+    "beta": 1.0,
+    "thermalise": 200,
+    "n_samples": 80,
+    "step_size": 0.6,
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "out": "/home/n/nn_universe/experiments/v5_0_lattice_qcd/v5_0_lattice_u1_results.json"
+  },
+  "results": [
+    {
+      "seed": 0,
+      "L": 8,
+      "d": 4,
+      "beta": 1.0,
+      "n_params": 16384,
+      "fim_tier1_mean": 3.9553683969252456,
+      "fim_tier3_mean": 1.9776820002950108,
+      "fim_tier1_tier3": 2.000002222973776,
+      "thermalise_s": 1777017512.24154,
+      "measure_s": 101.19617867469788
+    },
+    {
+      "seed": 1,
+      "L": 8,
+      "d": 4,
+      "beta": 1.0,
+      "n_params": 16384,
+      "fim_tier1_mean": 3.9963250973149065,
+      "fim_tier3_mean": 2.0130554293024763,
+      "fim_tier1_tier3": 1.9852037053443845,
+      "thermalise_s": 1777017665.0270753,
+      "measure_s": 114.48025679588318
+    },
+    {
+      "seed": 2,
+      "L": 8,
+      "d": 4,
+      "beta": 1.0,
+      "n_params": 16384,
+      "fim_tier1_mean": 4.000747718378523,
+      "fim_tier3_mean": 1.996778779115756,
+      "fim_tier1_tier3": 2.003600879687932,
+      "thermalise_s": 1777017831.4700239,
+      "measure_s": 102.21266412734985
+    }
+  ],
+  "aggregate": {
+    "tier_ratio_mean": 1.996268936002031,
+    "tier_ratio_std": 0.00975023485187777,
+    "tier_ratio_cv": 0.004884229111637016
+  },
+  "comparison_context": {
+    "cosmology_NN_trained_W_256": 404,
+    "QEC_NN_trained_W_256": 1762,
+    "untrained_NN_W_256": 1500,
+    "boolean_circuit_N_384": 101000000,
+    "random_matrix_N_3003": 81,
+    "ising_chain_N_256": 2.6,
+    "harmonic_chain_N_128": 3.7,
+    "cellular_automaton_N_128": 3.8
+  },
+  "interpretation_guide": "If T1/T3 is in the O(1-10) range, lattice U(1) gauge theory does NOT exhibit the three-tier hierarchy seen in trained NNs and boolean circuits. The 'layered sequential computation' universality framing (adopted after the V4.0 BC-contradiction audit) is vindicated, and NN universality does NOT extend to known physics via this substrate. If T1/T3 is >1000, the universality class extends to at least U(1) gauge theory, and the FIM-Onsager cosmological framing gains empirical support."
+}
