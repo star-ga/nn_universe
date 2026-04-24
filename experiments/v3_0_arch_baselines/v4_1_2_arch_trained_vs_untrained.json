@@ -1,0 +1,50 @@
+{
+  "config": {
+    "archs": [
+      "mlp",
+      "cnn",
+      "vit"
+    ],
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "steps": 3000,
+    "batch": 128,
+    "probes": 200,
+    "out": "/home/n/nn_universe/experiments/v3_0_arch_baselines/v4_1_2_arch_trained_vs_untrained.json"
+  },
+  "results": [
+    {
+      "arch": "mlp",
+      "n_params": 1839360,
+      "n_seeds": 3,
+      "untrained_mean": 713.5947805504594,
+      "untrained_std": 108.57136939795151,
+      "trained_mean": 3042.429851189018,
+      "trained_std": 1430.419333896194,
+      "training_reduction_factor": 0.23454765284779797
+    },
+    {
+      "arch": "cnn",
+      "n_params": 1378691,
+      "n_seeds": 3,
+      "untrained_mean": 147449756.0823855,
+      "untrained_std": 115120477.88032007,
+      "trained_mean": 10238.572821339694,
+      "trained_std": 13315.769479749477,
+      "training_reduction_factor": 14401.397407172228
+    },
+    {
+      "arch": "vit",
+      "n_params": 1810416,
+      "n_seeds": 3,
+      "untrained_mean": 1870.6556722033095,
+      "untrained_std": 15.583302107061845,
+      "trained_mean": 126452.2379216238,
+      "trained_std": 33660.618136091136,
+      "training_reduction_factor": 0.014793377349025314
+    }
+  ]
+}
