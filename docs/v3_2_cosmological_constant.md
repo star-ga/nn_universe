@@ -43,9 +43,9 @@ $$
 
 ## 3. The FIM-Onsager framework's additional contribution
 
-The contribution of the FIM tier hierarchy is to *sub-select* which modes actually contribute to the CKN vacuum-energy count. In the FIM-Onsager picture (Nedovodin 2026; V1.1 NTK theorem), modes fall into three tiers by FIM eigenvalue:
+The contribution of the FIM tier hierarchy is to *sub-select* which modes actually contribute to the CKN vacuum-energy count. In the FIM-Onsager picture (Nedovodin 2026; V1.1 NTK theorem), modes fall into three tiers by FIM diagonal entry:
 
-- **Tier 1** ($f_1 \approx 0.01$ of total modes): high FIM eigenvalue ("stiff", potential-dominated, time-invariant under Onsager flux).
+- **Tier 1** ($f_1 \approx 0.01$ of total modes): high FIM diagonal entry ("stiff", potential-dominated, time-invariant under Onsager flux).
 - **Tier 2** ($f_2 \approx 0.49$): intermediate FIM, drift slowly.
 - **Tier 3** ($f_3 \approx 0.50$): small FIM, free-flowing, gauge-like.
 
@@ -78,14 +78,14 @@ The framework predicts Λ about an order of magnitude **smaller** than observed.
 ### 5.2 What's not right
 
 - **Not a precise match.** Off by ~9×. The framework over-suppresses by one order of magnitude.
-- **$f_1 = 10^{-2}$ is a convention**, not a first-principles prediction. The V1.0 tier partition defines Tier-1 as the top 1% by FIM eigenvalue. If we had defined it as top 5%, we'd get $f_1 = 0.05$ and exact agreement. The choice of 1% is thus a one-knob fit.
+- **$f_1 = 10^{-2}$ is a convention**, not a first-principles prediction. The V1.0 tier partition defines Tier-1 as the top 1% by FIM diagonal entry. If we had defined it as top 5%, we'd get $f_1 = 0.05$ and exact agreement. The choice of 1% is thus a one-knob fit.
 - **$N_{\rm tot}$ is the holographic bound**, not framework-derived.
 
 So the framework contributes **one tunable knob** ($f_1$) in exchange for reproducing observation to within 1 order of magnitude. This is a modest improvement over the standard CKN result (which already gets within factor ~10 of observation depending on choice of cutoff volume) but is **not** a first-principles prediction.
 
 ### 5.3 What would make this a prediction
 
-- Derive $f_1$ uniquely from the FIM-Onsager framework — i.e., show that exactly 1% of the modes have FIM eigenvalues above a threshold *determined by* the Onsager dynamics, with no partition-definition freedom.
+- Derive $f_1$ uniquely from the FIM-Onsager framework — i.e., show that exactly 1% of the modes have FIM diagonal values above a threshold *determined by* the Onsager dynamics, with no partition-definition freedom.
 - Predict a second independent observable (e.g., $\Omega_{\rm DM}/\Omega_{\rm baryon}$; see V3.4) with the **same** $f_1$ value, no new knob.
 
 V3.4 (dark-sector) uses the same $f_1$ but introduces a separate knob $\xi_{\rm bar}$. V3.2 + V3.4 jointly have two observables and two knobs — not yet a prediction.

@@ -50,9 +50,19 @@
     },
     "u1_lattice": {
       "n_seeds": 3,
-      "point_estimate": 1.9963,
-      "ci_95_low": 1.9852,
-      "ci_95_high": 2.0036,
+      "point_estimate": 1.6163,
+      "ci_95_low": 1.6117,
+      "ci_95_high": 1.6195,
+      "method": "bootstrap",
+      "ci_crosses_threshold_100": false,
+      "above_threshold_1000": false,
+      "group": "rest"
+    },
+    "su2_lattice": {
+      "n_seeds": 3,
+      "point_estimate": 4.846,
+      "ci_95_low": 4.674,
+      "ci_95_high": 4.9593,
       "method": "bootstrap",
       "ci_crosses_threshold_100": false,
       "above_threshold_1000": false,
@@ -61,8 +71,8 @@
     "nn_trained_pooled": {
       "n_seeds": 20,
       "point_estimate": 336.5682,
-      "ci_95_low": 245.6983,
-      "ci_95_high": 471.8782,
+      "ci_95_low": 243.7639,
+      "ci_95_high": 467.7737,
       "method": "bootstrap",
       "ci_crosses_threshold_100": false,
       "above_threshold_1000": false,
@@ -71,8 +81,8 @@
     "nn_untrained_pooled": {
       "n_seeds": 20,
       "point_estimate": 3756.7132,
-      "ci_95_low": 2735.5249,
-      "ci_95_high": 5134.2526,
+      "ci_95_low": 2723.2389,
+      "ci_95_high": 5115.1058,
       "method": "bootstrap",
       "ci_crosses_threshold_100": false,
       "above_threshold_1000": true,
@@ -81,7 +91,7 @@
     "boolean_circuit": {
       "n_seeds": 6,
       "point_estimate": 88440.4333,
-      "ci_95_low": 3780.45,
+      "ci_95_low": 3739.0318,
       "ci_95_high": 4146834.5453,
       "method": "bootstrap",
       "ci_crosses_threshold_100": false,
@@ -91,7 +101,7 @@
     "random_matrix": {
       "n_seeds": 6,
       "point_estimate": 80.7031,
-      "ci_95_low": 77.8121,
+      "ci_95_low": 77.8434,
       "ci_95_high": 83.693,
       "method": "bootstrap",
       "ci_crosses_threshold_100": false,
@@ -101,8 +111,8 @@
     "ising_chain": {
       "n_seeds": 6,
       "point_estimate": 2.5445,
-      "ci_95_low": 2.3462,
-      "ci_95_high": 2.7427,
+      "ci_95_low": 2.3466,
+      "ci_95_high": 2.7438,
       "method": "bootstrap",
       "ci_crosses_threshold_100": false,
       "above_threshold_1000": false,
@@ -111,8 +121,8 @@
     "harmonic_chain": {
       "n_seeds": 6,
       "point_estimate": 3.5707,
-      "ci_95_low": 2.8654,
-      "ci_95_high": 4.4951,
+      "ci_95_low": 2.8677,
+      "ci_95_high": 4.5429,
       "method": "bootstrap",
       "ci_crosses_threshold_100": false,
       "above_threshold_1000": false,
@@ -122,7 +132,7 @@
       "n_seeds": 6,
       "point_estimate": 3.7714,
       "ci_95_low": 3.3252,
-      "ci_95_high": 4.3936,
+      "ci_95_high": 4.4015,
       "method": "bootstrap",
       "ci_crosses_threshold_100": false,
       "above_threshold_1000": false,
@@ -130,11 +140,11 @@
     }
   },
   "mann_whitney": {
-    "statistic": 2162.0,
-    "p_value": 5.0850794837845834e-17,
+    "statistic": 2300.0,
+    "p_value": 1.7219619494666733e-17,
     "effect_size_r": 1.0,
     "n_deep_obs": 46,
-    "n_rest_obs": 47,
+    "n_rest_obs": 50,
     "interpretation": "Reject H0 (deep == rest) at alpha=0.05"
   }
 }

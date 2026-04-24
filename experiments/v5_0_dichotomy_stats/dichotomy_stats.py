@@ -47,6 +47,15 @@ def load_u1():
     d = json.loads(path.read_text())
     return {"u1_lattice": [r["fim_tier1_tier3"] for r in d["results"]]}
 
+
+def load_su2():
+    """SU(2) non-abelian lattice — 3 seeds."""
+    path = BASE / "v7_0_lattice_su2/v7_0_lattice_su2_results.json"
+    if not path.exists():
+        return {}
+    d = json.loads(path.read_text())
+    return {"su2_lattice": [r["fim_tier1_tier3"] for r in d["results"]]}
+
 def load_trained_untrained():
     """Trained & untrained NN across 4 widths — pool all 20 seeds per class."""
     path = BASE / "v4_0_uniqueness/v4_0_trained_vs_untrained.json"
@@ -105,6 +114,7 @@ def build_system_table():
     all_data = {}
     all_data.update(load_baselines())
     all_data.update(load_u1())
+    all_data.update(load_su2())
     all_data.update(load_trained_untrained())
     uniq = load_uniqueness()
 
@@ -112,6 +122,13 @@ def build_system_table():
     # Use only finite non-inf values for the bootstrap; note the issue.
     bc_raw = uniq.pop("boolean_circuit")
     bc_finite = [v for v in bc_raw if np.isfinite(v) and v > 0]
+    # Fail fast rather than silently drop BC from the Mann–Whitney test if
+    # the source data ever has no finite ratios.
+    if len(bc_finite) == 0:
+        raise RuntimeError(
+            "boolean_circuit has zero finite T1/T3 values — MW test would "
+            "silently drop the BC group. Check v4_0_uniqueness_results.json."
+        )
     all_data["boolean_circuit"] = bc_finite
     all_data["boolean_circuit_raw_n"] = len(bc_raw)
     all_data["boolean_circuit_finite_n"] = len(bc_finite)
@@ -136,6 +153,7 @@ REST = {
     "logistic_regression",
     "gaussian_process",
     "u1_lattice",
+    "su2_lattice",
     "ising_chain",
     "harmonic_chain",
     "cellular_automaton",

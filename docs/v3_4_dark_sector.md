@@ -17,7 +17,7 @@
 
 In the FIM-Onsager framework, each parameter $\theta_i$ has:
 
-- **FIM eigenvalue** $\lambda_i$ — local "stiffness" of the loss landscape.
+- **FIM diagonal** $\lambda_i$ (notational shorthand for the per-parameter Fisher-information diagonal $F_{ii}$) — local "stiffness" of the loss landscape.
 - **Onsager flux susceptibility** $L^{ii} = \eta \lambda_i^{-1}$ — how fast $\theta_i$ relaxes.
 - **Energetic weight** in the action density: $\rho_i \propto \lambda_i^{-1} (\partial_\mu \theta_i)^2$ (kinetic) + $\lambda_i \theta_i^2$ (potential).
 

@@ -178,7 +178,7 @@ Full statistical-test pipeline with partial-correlation, MC power analysis, and 
 
 - **V1.2** — 10-width power-law fit has low $R^2$ (0.84) and high seed variance. A $k$-seeded sweep would give error bars; the workstation can do this (GPU-bound, ~1 hour for 3 seeds × 10 widths).
 - **V2.0** — companion NUMERICS currently rely on one receptive-field family (Gaussian). Other lattice-embedded architectures (convolutional, graph-local) would strengthen the subclass claim.
-- **V2.1** — the MLP decoder does not decode well (residual-syndrome error ≈ 0.92 at $p=0.05$ with SGD+momentum; dropped to 0.04 with Adam but still imperfect). A convolutional decoder baseline would be cleaner; depth sweep in progress.
+- **V2.1** — the MLP decoder does not decode well (residual-syndrome error ≈ 0.92 at $p=0.05$ with SGD+momentum; dropped to 0.04 with Adam but still imperfect). A convolutional decoder baseline would be cleaner but is out of scope for the current submission; noted for follow-up work.
 - **V3.0** — actual runs require H200 cluster access; recipe is written but not executed.
 - **V3.1** — real-data test of archival UVES+HIRES × SDSS DR18 remains unperformed (this was always the paper's ask, not this session's scope).
 - **Step 6 (c) — 4D emergence** — remains open at all levels; explicitly flagged in V1.1 and V2.0 docs.
