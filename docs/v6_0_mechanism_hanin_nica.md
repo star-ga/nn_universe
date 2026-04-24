@@ -3,7 +3,7 @@
 **STARGA, Inc. — Research Document**
 **Phase:** V6.0 — mechanism behind V5.0's empirical dichotomy.
 **Date:** 2026-04-24
-**Depends on:** V4.1 (hierarchy is init-induced), V5.0 (10-system dichotomy).
+**Depends on:** V4.1 (hierarchy is init-induced), V5.0 + V7.0 + V8.0 (12-system dichotomy with non-abelian gauge + tensor-network coverage).
 
 ---
 
@@ -15,7 +15,7 @@ boolean circuit) gives a Fisher-information tier ratio $T_1/T_3$ with
 bootstrapped 95 % CI entirely above $10^2$; every other system (four
 shallow learners, lattice gauge, three dynamical systems, random matrices)
 has a 95 % CI entirely below $100$. A one-sided Mann–Whitney $U$ test gives
-$p = 5.1 \times 10^{-17}$ with complete rank separation. What is missing is
+$p = 1.7 \times 10^{-17}$ with complete rank separation. What is missing is
 a *mechanism* that produces this dichotomy from first principles. This
 document provides it.
 

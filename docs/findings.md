@@ -9,23 +9,34 @@
 The FIM three-tier hierarchy, originally a phenomenological observation of
 a 296k-param cosmology toy experiment, now has:
 
-1. **Empirical universality** across 10 parameterised substrates (MLP / CNN /
-   ViT / boolean circuit / lattice U(1) / 4 shallow learners / Ising /
-   harmonic / CA / random matrix). Mann–Whitney $U$ $p = 5.1 \times 10^{-17}$,
-   complete rank separation between deep-sequential and non-deep systems.
-   (V5.0 + V5.0-stats)
+1. **Empirical universality** across 12 parameterised substrate classes
+   (MLP trained / untrained / CNN / ViT / random boolean circuits /
+   binary tensor networks / U(1) abelian lattice / SU(2) non-abelian
+   lattice / 4 shallow learners / Ising / harmonic / CA / random
+   matrix). Mann–Whitney $U$ $p = 1.7 \times 10^{-17}$, complete rank
+   separation between deep-sequential and non-deep systems.
+   (V5.0 + V5.0-stats + V7.0 + V8.0)
 2. **Mechanism-backed theorem** via Hanin & Nica (Comm. Math. Phys. 376, 2020).
    The FIM diagonal is log-normal with $\mathrm{Var}[\log F_{ii}] \propto L$,
    giving $\log(T_1/T_3) \propto \sqrt{L}$. Empirically confirmed at
-   $R^2 = 0.98$ across 7 depths for MLPs (V6.0), $R^2 = 0.98$ for random
-   boolean circuits (V6.3), $R^2 = 0.94$ for SGD-trained MLPs (V6.2), with
-   width-independence confirmed (V6.1).
+   $R^2 \geq 0.94$ across **five independent substrate classes**:
+   untrained MLP $R^2 = 0.98$ (V6.0), trained MLP $R^2 = 0.94$ (V6.2),
+   random boolean circuits $R^2 = 0.98$ (V6.3), transformers $R^2 = 0.97$
+   (V6.4), and balanced binary tensor networks $R^2 = 0.99$ (V8.0 —
+   the empirical bridge to MERA / HaPPY tensor-network cosmology).
+   Width-independence confirmed (V6.1). All four activations (ReLU /
+   GELU / tanh / Swish) pass at $R^2 \geq 0.97$ with σ-prefactor
+   varying as the per-layer Jacobian variance dictates (V6.5).
 3. **Robustness to training** at moderate depth: at $L \geq 8$, training
    cannot flatten the log-normal tails (V6.2). V4.1's "training dissipates"
    claim holds for $L \leq 6$ only.
-4. **Substrate specificity**: lattice U(1) pure-gauge theory at 16 k params
-   gives $T_1/T_3 = 1.6$ (CV 0.3%) — no depth chain, no hierarchy.
-   (V5.0 lattice + V7.0 SU(2) in progress.)
+4. **Substrate specificity**: lattice U(1) gives $T_1/T_3 = 1.62$
+   (CV 0.3 %, V5.0); SU(2) non-abelian gives $T_1/T_3 = 4.85$
+   (CV 3.1 %, V7.0); a U(1) gauge-coupling sweep across 5 β values from
+   0.1 to 5.0 (across the deconfinement crossover) gives $T_1/T_3$
+   = 1.72–1.79 with no structural change at the crossover (V7.1).
+   Spatially-parallel QFT substrates do not exhibit the hierarchy
+   regardless of gauge group, gauge coupling, or abelian/non-abelian status.
 
 The universality class is **deep layered sequential composition** as a
 computational primitive, independent of whether the substrate uses neurons,
