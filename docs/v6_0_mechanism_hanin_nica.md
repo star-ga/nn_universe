@@ -98,7 +98,7 @@ The observed values from the V5.0 dichotomy table:
 | Untrained 5-layer MLP | 5 | 10³ – 10⁴ | 10¹ – 10² |
 | 5-layer ViT, W=192 | 4 blocks | 10⁵ | 10¹ – 10² |
 | Random boolean circuit, N=384 | ~10–40 effective gates | 10⁷ – 10⁸ | 10⁴ – 10⁸ |
-| U(1) lattice gauge (spatially parallel, no chain) | **no sequential chain** | 2.0 | **O(1)** ✓ |
+| U(1) lattice gauge (spatially parallel, no chain) | **no sequential chain** | 1.6 | **O(1)** ✓ |
 | Linear regression (1 layer) | 1 | 1.10 | **O(1)** ✓ |
 | Kernel ridge (1 layer effective) | 1 | 1.42 | **O(1)** ✓ |
 
@@ -255,7 +255,7 @@ For the cosmological programme this refines the substrate specification:
   tier hierarchy is a *structural consequence* — not a new assumption.
 - If the substrate is a spatially-parallel quantum field (standard
   lattice QFT / QCD / QED), the hierarchy does *not* follow — empirically
-  confirmed by our U(1) measurement at T1/T3 = 2.0 ± 0.01.
+  confirmed by our U(1) measurement at T1/T3 = 1.6 ± 0.005.
 
 The V1.0 "FIM–Onsager correspondence" therefore lives or dies with the
 *computational-substrate* question of whether physical reality is
