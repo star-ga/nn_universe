@@ -1,0 +1,149 @@
+{
+  "config": {
+    "activations": [
+      "relu",
+      "gelu",
+      "tanh"
+    ],
+    "widths": [
+      32,
+      64,
+      128,
+      256
+    ],
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "steps": 15000,
+    "probes": 200,
+    "dim": 16,
+    "omp_threads": 8,
+    "out": "/home/n/nn_universe/experiments/v4_0_uniqueness/v4_0_nonrelu_results.json"
+  },
+  "results": [
+    {
+      "activation": "relu",
+      "width": 32,
+      "n_params": 4240,
+      "untrained_mean": 10185.6368521554,
+      "untrained_std": 4400.68503137975,
+      "trained_mean": 987.7218249284745,
+      "trained_std": 427.62325953106586,
+      "training_reduction": 10.312252493654263
+    },
+    {
+      "activation": "relu",
+      "width": 64,
+      "n_params": 14608,
+      "untrained_mean": 5082.641564993106,
+      "untrained_std": 1574.2876310376607,
+      "trained_mean": 392.4770206403382,
+      "trained_std": 102.77585808322372,
+      "training_reduction": 12.950163443201392
+    },
+    {
+      "activation": "relu",
+      "width": 128,
+      "n_params": 53776,
+      "untrained_mean": 2913.9189972742724,
+      "untrained_std": 390.4529352649839,
+      "trained_mean": 182.62948270780367,
+      "trained_std": 20.08532904744505,
+      "training_reduction": 15.955359200881983
+    },
+    {
+      "activation": "relu",
+      "width": 256,
+      "n_params": 205840,
+      "untrained_mean": 1499.8232993742747,
+      "untrained_std": 240.93648636508397,
+      "trained_mean": 332.98191961176417,
+      "trained_std": 76.07301348854263,
+      "training_reduction": 4.504218430607205
+    },
+    {
+      "activation": "gelu",
+      "width": 32,
+      "n_params": 4240,
+      "untrained_mean": 13320.836482687348,
+      "untrained_std": 2260.9347365109047,
+      "trained_mean": 2670.201931637958,
+      "trained_std": 1619.6260056588878,
+      "training_reduction": 4.988700039819111
+    },
+    {
+      "activation": "gelu",
+      "width": 64,
+      "n_params": 14608,
+      "untrained_mean": 8438.509959111336,
+      "untrained_std": 448.70740955946445,
+      "trained_mean": 1041.8604014192483,
+      "trained_std": 222.53992334770587,
+      "training_reduction": 8.099463179151627
+    },
+    {
+      "activation": "gelu",
+      "width": 128,
+      "n_params": 53776,
+      "untrained_mean": 4995.331446894945,
+      "untrained_std": 295.27752785232695,
+      "trained_mean": 558.6637149295871,
+      "trained_std": 114.45749205945407,
+      "training_reduction": 8.941571312761107
+    },
+    {
+      "activation": "gelu",
+      "width": 256,
+      "n_params": 205840,
+      "untrained_mean": 2954.2830520308025,
+      "untrained_std": 87.23164784792188,
+      "trained_mean": 579.096292754982,
+      "trained_std": 97.46512961414327,
+      "training_reduction": 5.1015402602150175
+    },
+    {
+      "activation": "tanh",
+      "width": 32,
+      "n_params": 4240,
+      "untrained_mean": 197.58111750493904,
+      "untrained_std": 22.43714486354054,
+      "trained_mean": 39.254022678429024,
+      "trained_std": 8.622700016077054,
+      "training_reduction": 5.033397955759432
+    },
+    {
+      "activation": "tanh",
+      "width": 64,
+      "n_params": 14608,
+      "untrained_mean": 131.49838174620277,
+      "untrained_std": 5.588484543845991,
+      "trained_mean": 11.960589644587916,
+      "trained_std": 0.24529533736903322,
+      "training_reduction": 10.994305937559263
+    },
+    {
+      "activation": "tanh",
+      "width": 128,
+      "n_params": 53776,
+      "untrained_mean": 89.74011913218628,
+      "untrained_std": 1.7425006323056922,
+      "trained_mean": 22.99999008900561,
+      "trained_std": 1.7880980286589676,
+      "training_reduction": 3.901745991407344
+    },
+    {
+      "activation": "tanh",
+      "width": 256,
+      "n_params": 205840,
+      "untrained_mean": 72.8627132425634,
+      "untrained_std": 1.670193072792482,
+      "trained_mean": 41.958706712962694,
+      "trained_std": 0.5701159539627303,
+      "training_reduction": 1.7365338198103528
+    }
+  ]
+}
