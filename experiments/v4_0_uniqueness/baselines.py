@@ -165,9 +165,10 @@ class RandomMatrix(Baseline):
 class IsingChain(Baseline):
     """Mean-field 1D Ising. Parameters = local fields h_i (i = 1..N).
 
-    Importance(i) = |chi_ii| = d<s_i> / d h_i = beta * (1 - <s_i>^2).
-    Under a Gaussian random field ensemble this produces a heavy-tailed
-    importance distribution by construction.
+    Importance(i) = chi_ii^2, where chi_ii = d<s_i> / d h_i = beta * (1 - <s_i>^2)
+    is the local linear susceptibility. The squaring matches the FIM-diagonal
+    convention (gradient^2) used by all other baselines; the linear susceptibility
+    itself is the analogue of the gradient, not of the FIM diagonal.
     """
 
     name = "ising_chain"
@@ -400,11 +401,15 @@ class BooleanCircuit(Baseline):
 class CellularAutomaton(Baseline):
     """Rule-110 elementary CA. Parameters = initial-cell states s_i ∈ {0,1}.
 
-    Importance(i) = Hamming-divergence rate when cell i is flipped. Under
-    Rule-110's glider dynamics, a well-known result is that most cells have
-    O(1) light-cone influence but a small fraction of cells launch gliders
-    and have linear-in-t influence — a structural hierarchy not unlike a
-    three-tier FIM.
+    Base importance (before squaring) = Hamming-divergence rate when cell i
+    is flipped. We then square this quantity (parameter_importance line ~470)
+    so the reported distribution lives in the same "gradient-squared" units
+    as every other baseline — this lets tier ratios be compared across
+    systems on one axis. The base Hamming count is the FIM-gradient analog;
+    its square is the FIM-diagonal analog. Under Rule-110's glider dynamics,
+    most cells have O(1) light-cone influence while a small fraction launch
+    gliders with linear-in-t influence — a structural hierarchy not unlike
+    a three-tier FIM.
     """
 
     name = "cellular_automaton"

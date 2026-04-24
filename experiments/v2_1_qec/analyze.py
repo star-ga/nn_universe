@@ -50,8 +50,11 @@ def fim_diagonal(
     `loss_fn` should return a scalar loss computed on a *single fresh sample*
     per call (caller is responsible for sampling).
     """
+    # Accumulate in float64: single-sample gradient² for tier-3 params can be
+    # O(1e-40) and underflow float32 (min normal ~1.2e-38). Underflow inflates
+    # t3_mean and thus suppresses the reported T1/T3 ratio.
     fim: dict[str, torch.Tensor] = {
-        n: torch.zeros_like(p, dtype=torch.float32) for n, p in net.named_parameters()
+        n: torch.zeros_like(p, dtype=torch.float64) for n, p in net.named_parameters()
     }
     for _ in range(n_samples):
         loss = loss_fn()
@@ -59,7 +62,7 @@ def fim_diagonal(
         loss.backward()
         for name, p in net.named_parameters():
             if p.grad is not None:
-                fim[name] += p.grad.data.float() ** 2
+                fim[name] += p.grad.data.double() ** 2
     for name in fim:
         fim[name] /= n_samples
     return fim

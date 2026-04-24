@@ -144,27 +144,27 @@ def logistic_regression_fim(d: int, n_classes: int, n_train: int, rng: np.random
 
 
 # ---------------------------------------------------------------------------
-# Baseline 4 — Gaussian process regression.
-# Parameters: kernel hyperparameters (length scale σ_l, amplitude σ_f,
-# noise σ_n) + dual coefficients.
-# Keep fixed kernel hyperparams and use dual coefficients as the
-# FIM-relevant parameters (same as kernel ridge).
+# Baseline 4 — Gaussian process regression (posterior-mean prediction).
+# Parameters: dual coefficients α_i, one per training sample (kernel
+# hyperparameters are held fixed). Identical parameter structure to
+# kernel ridge, so the Fisher Information in α-space is also the same:
+#
+#     log p(y | X, α) = -Σ_i (y_i - Σ_j α_j K(x_i, x_j))² / (2 σ²) + const
+#     ∂ log p / ∂α_j   = (1/σ²) Σ_i (y_i - f(x_i)) K(x_i, x_j)
+#     F_{jj}           = (1/σ²) E_i[ K(x_i, x_j)² ]
+#
+# which we approximate with the training-set sample mean of K_ij².
 # ---------------------------------------------------------------------------
 
 def gaussian_process_fim(n_train: int, d: int, noise_sigma: float, rng: np.random.Generator) -> np.ndarray:
-    """GP regression on (X, y); FIM diagonal in dual-coefficient space."""
+    """GP posterior-mean regression on (X, y); true FIM diagonal in α-space."""
     X = rng.standard_normal((n_train, d))
     y = X[:, 0] + noise_sigma * rng.standard_normal(n_train)
     pairwise = np.sum((X[:, None] - X[None, :]) ** 2, axis=-1)
     K = np.exp(-pairwise / (2 * d))
-    # FIM in coefficient space ≈ (K + sigma²I) / sigma² — well-conditioned.
-    # Diagonal: (K_ii + sigma²) / sigma² per point.
-    # For FIM-diagonal analysis we use the eigendecomposition of K + sigma² I
-    # to expose the effective parameter variability.
-    eig = np.linalg.eigvalsh(K + noise_sigma ** 2 * np.eye(n_train))
-    # "Parameter importance" proxy: each mode contributes 1/λ_i to the
-    # posterior uncertainty; diagonal-equivalent in α-space.
-    fim_diag = 1.0 / np.clip(eig, 1e-8, None)
+    # True FIM diagonal in α-space: F_jj = <K(·, x_j)^2> / σ²
+    K2 = K ** 2
+    fim_diag = K2.mean(axis=1) / noise_sigma ** 2
     return fim_diag
 
 

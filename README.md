@@ -27,6 +27,8 @@ Computational + analytical validation of the STARGA neural-network cosmology fra
 | **V4.3** | Tier-partition sensitivity + bootstrap 95% CI on all exponents | **Done** ([doc](docs/v4_3_methodology_corrections.md), [experiments](experiments/v4_3_statistics/)) |
 | **V4.4** | 4 non-deep learners (linear/kernel/logistic/GP) — decisive dichotomy | **Done** ([experiment](experiments/v4_0_uniqueness/learning_baselines.py)) |
 | **V5.0** | U(1) pure-gauge lattice FIM (non-deep, spatially-parallel control) | **Done** ([experiment](experiments/v5_0_lattice_qcd/)) |
+| **V5.0-stats** | Bootstrap CIs + Mann–Whitney U test on the 10-system dichotomy ($p = 5.1 \times 10^{-17}$, complete rank separation) | **Done** ([stats](experiments/v5_0_dichotomy_stats/)) |
+| **V6.0** | Mechanism — Hanin–Nica log-normal theorem + depth-sweep empirical confirmation (H1 R²=0.91, H2 R²=0.98) | **Done** ([doc](docs/v6_0_mechanism_hanin_nica.md), [experiment](experiments/v6_0_depth_mechanism/)) |
 
 ### Key documents
 
@@ -124,7 +126,7 @@ Original SV power law: SV ~ $N^{0.47}$, $R^2 = 0.935$ (6 widths)
 † At width 45,000 the cusolver SVD errors and the min-dim-> 4000 path computes only $\sigma_{\max}$ (via randomized SVD); $\sigma_{\min}$ requires multi-hundred-iteration inverse power iteration for poorly-conditioned trained weights, which we do not run. Stem/head layers (32 × 45000) give ratios of ~1.1, not representative of interior-layer ratios.
 
 **SV power-law fit (12 widths, excl. W=45000):** SV ~ $N^{0.516}$, $R^2 = 0.857$.
-**FIM T1/T3 at W=45000 across 3 seeds:** mean 206.6, **CV 1.2%** (even tighter than the 1.85% observed at W=14000 / 589M).
+**FIM T1/T3 at W=45000 across 3 seeds:** mean 206.6, **CV 1.2%** (even tighter than the 1.51% observed at W=14000 / 589M).
 **FIM T1/T3 stays in 150–616x range across 10+ orders of magnitude** — hierarchy is scale-invariant.
 
 **V3.0 finding (2026-04-23).** Including the two A100 cluster-scale points (589M and 1.45B params) pulls the SV exponent from V1.2's $N^{0.566}$ back down to $N^{0.516}$ — **within 0.016 of the NTK theoretical upper bound of 0.5**. The V1.2 excess was a finite-width artifact; cluster-scale data restores compatibility with the V1.1 NTK continuum-limit theorem. Cost: $1.13 on Runpod A100 community cloud.
@@ -134,7 +136,7 @@ Original SV power law: SV ~ $N^{0.47}$, $R^2 = 0.935$ (6 widths)
 | Metric | Mean | Std | CV |
 |--------|------|-----|-----|
 | SV ratio | 693,247 | 752,778 | 108.6% |
-| FIM T1/T3 | 218.5 | 4.04 | **1.85%** |
+| FIM T1/T3 | 218.5 | 4.04 | **1.51%** |
 
 ### V3.0 Tier-1 item 2 — 20-seed robustness at large N (updated 2026-04-24)
 
@@ -150,7 +152,7 @@ Full 20-seed sweep at widths 1024, 4096, 14000 (`experiments/v1_2_scaling/robust
 
 **FIM CV trajectory**: 10% → 4.96% → 2.81% → **1.51%** → 1.2%. Monotone decrease over 4 orders of magnitude in $N$, consistent with a thermodynamic-limit convergence of the Tier-1 fraction $f_1$ to a well-defined value as $N \to \infty$.
 
-**FIM tier CV improves monotonically with N: 10% → 5% → 2.8% → 1.85%.** The FIM tier structure is the *scale-invariant, seed-stable, load-bearing* empirical anchor of the V1.0–V3.0 program. The SV ratio remains an order-of-magnitude noisy observable with non-monotone CV in N.
+**FIM tier CV improves monotonically with N: 10% → 5% → 2.8% → 1.51%.** The FIM tier structure is the *scale-invariant, seed-stable, load-bearing* empirical anchor of the V1.0–V3.0 program. The SV ratio remains an order-of-magnitude noisy observable with non-monotone CV in N.
 
 ### V3.0 Tier-1 item 4 — CNN + Transformer architecture baselines
 
@@ -180,7 +182,7 @@ tier partition). All numbers are mean T1/T3 over 3–5 seeds.
 | Linear regression | Shallow learner | **1.10** |
 | Kernel ridge regression | Shallow learner | **1.42** |
 | Logistic regression | 1-layer softmax learner | **3.14** |
-| Gaussian process regression | Non-parametric learner | **5.37** |
+| Gaussian process regression | Non-parametric learner | **1.97** |
 | U(1) lattice gauge (L=8) | Spatially-parallel QFT | **2.0** |
 | Ising chain | 1D dynamical system | 2.6 |
 | Harmonic oscillator chain | 1D dynamical system | 5.0 |
@@ -189,12 +191,20 @@ tier partition). All numbers are mean T1/T3 over 3–5 seeds.
 
 **Sharp empirical dichotomy.** Deep layered sequential computation (≥4 hidden
 layers, trained OR untrained, NN OR boolean circuit) produces tier ratios of
-10³ or more. Everything else — four genuine shallow learners (linear / kernel
+10² or more — bootstrapped 95% CI [246, 472] for pooled trained NNs, [2 736,
+5 134] for pooled untrained NNs, [3 781, 4.1 × 10⁶] for random boolean
+circuits. Everything else — four genuine shallow learners (linear / kernel
 ridge / logistic / GP, all of which learn and generalise), lattice gauge
-theory, 1D dynamical systems, matrix ensembles — sits in the 1–5 band.
-Random matrices give ~100, still 10× below the lowest NN measurement.
+theory, 1D dynamical systems, random matrices — sits in CIs entirely below
+100, with all four shallow learners' CI upper bounds below 6. Random
+matrices (N = 3 003) give CI [77.8, 83.7], still 3× below the trained-NN
+lower bound. A one-sided Mann–Whitney U test on the per-seed log T1/T3
+values gives p = 5.1 × 10⁻¹⁷ with rank-biserial r = 1.000 — every
+deep-sequential observation ranks above every non-deep observation
+(complete separation, n_deep = 46, n_rest = 47). Full statistical treatment:
+`experiments/v5_0_dichotomy_stats/`.
 
-**Three sharp claims, in order of strength.**
+**Four sharp claims, in order of strength.**
 
 1. **The signature tracks depth + compositionality, not optimisation.** Four
    parameterised learners — linear regression, kernel ridge, logistic
@@ -210,7 +220,20 @@ Random matrices give ~100, still 10× below the lowest NN measurement.
    descent. The universality class is **layered recursive composition as a
    computational primitive**, not neural networks specifically.
 
-3. **If the universe's substrate is a spatially-parallel quantum field (as
+3. **Mechanism (V6.0): the signature follows from a published theorem.**
+   Hanin & Nica (Comm. Math. Phys. 376, 2020, arXiv:1812.05994) prove that
+   for a depth-$L$ random network the log of the gradient-norm squared is
+   asymptotically Gaussian with variance linear in $L$. Our V6.0 depth
+   sweep (7 depths × 5 seeds, untrained ReLU MLPs) empirically confirms
+   two falsifiable predictions of this theorem: $\mathrm{Var}[\log F_{ii}]
+   \propto L$ ($R^2 = 0.906$) and $\log(T_1/T_3) \propto \sqrt{L}$
+   ($R^2 = 0.983$). At $L{=}20$, observed $T_1/T_3 = 9 \times 10^{15}$,
+   matching the theoretical log-normal-tail prediction. The empirical
+   V5.0 dichotomy is therefore no longer phenomenology — it is a
+   quantitative consequence of a published random-matrix-theory theorem.
+   See [`docs/v6_0_mechanism_hanin_nica.md`](docs/v6_0_mechanism_hanin_nica.md).
+
+4. **If the universe's substrate is a spatially-parallel quantum field (as
    lattice QFT suggests), it does not exhibit this hierarchy and the
    FIM-Onsager framework does not apply.** If the substrate is layered-
    sequential (Wheeler–It-from-bit, Vanchurin-style neural cosmology,

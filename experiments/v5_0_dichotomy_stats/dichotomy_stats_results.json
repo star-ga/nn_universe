@@ -1,0 +1,140 @@
+{
+  "meta": {
+    "n_bootstrap": 2000,
+    "threshold": 100.0,
+    "alpha": 0.05,
+    "ci_method": "log_transformed_bootstrap_percentile (normal_approx if n<3)",
+    "test": "Mann-Whitney U (one-sided: deep > rest) on log(T1/T3)",
+    "boolean_circuit_note": "BC: 6 finite seeds used (raw n=6; seeds with T3=0 produce infinite ratios \u2014 excluded from log-bootstrap but verified genuine in v4_0_uniqueness_results.json boolean_circuit_verification block)"
+  },
+  "systems": {
+    "linear_regression": {
+      "n_seeds": 5,
+      "point_estimate": 1.1039,
+      "ci_95_low": 1.0882,
+      "ci_95_high": 1.123,
+      "method": "bootstrap",
+      "ci_crosses_threshold_100": false,
+      "above_threshold_1000": false,
+      "group": "rest"
+    },
+    "logistic_regression": {
+      "n_seeds": 5,
+      "point_estimate": 3.127,
+      "ci_95_low": 2.8949,
+      "ci_95_high": 3.3525,
+      "method": "bootstrap",
+      "ci_crosses_threshold_100": false,
+      "above_threshold_1000": false,
+      "group": "rest"
+    },
+    "kernel_ridge": {
+      "n_seeds": 5,
+      "point_estimate": 1.4215,
+      "ci_95_low": 1.4128,
+      "ci_95_high": 1.4303,
+      "method": "bootstrap",
+      "ci_crosses_threshold_100": false,
+      "above_threshold_1000": false,
+      "group": "rest"
+    },
+    "gaussian_process": {
+      "n_seeds": 5,
+      "point_estimate": 1.9662,
+      "ci_95_low": 1.9418,
+      "ci_95_high": 1.9899,
+      "method": "bootstrap",
+      "ci_crosses_threshold_100": false,
+      "above_threshold_1000": false,
+      "group": "rest"
+    },
+    "u1_lattice": {
+      "n_seeds": 3,
+      "point_estimate": 1.9963,
+      "ci_95_low": 1.9852,
+      "ci_95_high": 2.0036,
+      "method": "bootstrap",
+      "ci_crosses_threshold_100": false,
+      "above_threshold_1000": false,
+      "group": "rest"
+    },
+    "nn_trained_pooled": {
+      "n_seeds": 20,
+      "point_estimate": 336.5682,
+      "ci_95_low": 245.6983,
+      "ci_95_high": 471.8782,
+      "method": "bootstrap",
+      "ci_crosses_threshold_100": false,
+      "above_threshold_1000": false,
+      "group": "deep_sequential"
+    },
+    "nn_untrained_pooled": {
+      "n_seeds": 20,
+      "point_estimate": 3756.7132,
+      "ci_95_low": 2735.5249,
+      "ci_95_high": 5134.2526,
+      "method": "bootstrap",
+      "ci_crosses_threshold_100": false,
+      "above_threshold_1000": true,
+      "group": "deep_sequential"
+    },
+    "boolean_circuit": {
+      "n_seeds": 6,
+      "point_estimate": 88440.4333,
+      "ci_95_low": 3780.45,
+      "ci_95_high": 4146834.5453,
+      "method": "bootstrap",
+      "ci_crosses_threshold_100": false,
+      "above_threshold_1000": true,
+      "group": "deep_sequential"
+    },
+    "random_matrix": {
+      "n_seeds": 6,
+      "point_estimate": 80.7031,
+      "ci_95_low": 77.8121,
+      "ci_95_high": 83.693,
+      "method": "bootstrap",
+      "ci_crosses_threshold_100": false,
+      "above_threshold_1000": false,
+      "group": "rest"
+    },
+    "ising_chain": {
+      "n_seeds": 6,
+      "point_estimate": 2.5445,
+      "ci_95_low": 2.3462,
+      "ci_95_high": 2.7427,
+      "method": "bootstrap",
+      "ci_crosses_threshold_100": false,
+      "above_threshold_1000": false,
+      "group": "rest"
+    },
+    "harmonic_chain": {
+      "n_seeds": 6,
+      "point_estimate": 3.5707,
+      "ci_95_low": 2.8654,
+      "ci_95_high": 4.4951,
+      "method": "bootstrap",
+      "ci_crosses_threshold_100": false,
+      "above_threshold_1000": false,
+      "group": "rest"
+    },
+    "cellular_automaton": {
+      "n_seeds": 6,
+      "point_estimate": 3.7714,
+      "ci_95_low": 3.3252,
+      "ci_95_high": 4.3936,
+      "method": "bootstrap",
+      "ci_crosses_threshold_100": false,
+      "above_threshold_1000": false,
+      "group": "rest"
+    }
+  },
+  "mann_whitney": {
+    "statistic": 2162.0,
+    "p_value": 5.0850794837845834e-17,
+    "effect_size_r": 1.0,
+    "n_deep_obs": 46,
+    "n_rest_obs": 47,
+    "interpretation": "Reject H0 (deep == rest) at alpha=0.05"
+  }
+}

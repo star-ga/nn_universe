@@ -83,11 +83,16 @@ for name, param in net.named_parameters():
         })
         print(f"  {name}: top3={[round(s,3) for s in top3]}, ratio={ratio:.1f}, std={float(S.std()):.4f}")
 
-# --- Measurement 2: FIM Eigenvalue Spectrum ---
+# --- Measurement 2: FIM Diagonal ---
 print("\n=== Measurement 2: FIM Diagonal Approximation ===")
-# Compute empirical FIM diagonal: F_ii = E[(d log p / d theta_i)^2]
+# Empirical FIM diagonal: F_ii = E[(d log p / d theta_i)^2].
+# Accumulate in float64: grad^2 for tier-3 params can fall below the float32
+# minimum normal (~1.2e-38) and round to zero, which inflates the reported
+# T1/T3 ratio. See experiments/v2_1_qec/analyze.py for the canonical version.
 net.eval()
-fim_diag = {name: torch.zeros_like(p) for name, p in net.named_parameters()}
+fim_diag = {
+    name: torch.zeros_like(p, dtype=torch.float64) for name, p in net.named_parameters()
+}
 
 n_samples = 1000
 for _ in range(n_samples):
@@ -98,7 +103,7 @@ for _ in range(n_samples):
     loss.backward()
     for name, p in net.named_parameters():
         if p.grad is not None:
-            fim_diag[name] += p.grad.data ** 2
+            fim_diag[name] += p.grad.data.double() ** 2
 
 # Normalize
 for name in fim_diag:
