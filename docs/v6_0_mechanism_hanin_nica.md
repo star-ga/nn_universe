@@ -178,7 +178,7 @@ T_1/T_3 \;\approx\; \exp(11.51 \, \sqrt{L} \;-\; 5)
 | $L$ | Predicted | Observed (where available) |
 |-----|-----------|----------------------------|
 | 5 | 8.7 × 10⁹ | 10²–10⁴ (trained, with dissipation) |
-| 8 | 1.2 × 10¹⁴ | 6.2 × 10⁶ (untrained) |
+| 8 | 1.2 × 10¹⁴ | 6.87 × 10⁶ (untrained) |
 | 40 | 5.3 × 10³¹ | — (BC depth) |
 
 The overshoot at larger $L$ versus observations reflects that the
@@ -231,14 +231,14 @@ $L \in \{2, 3, 4, 6, 8, 12\}$ × 5 seeds. Both hypotheses pass:
 
 A new finding emerges from per-depth dissipation factors (untrained/trained):
 
-| $L$ | Mean dissipation | Range |
-|-----|------------------|-------|
-| 2   | 2.0×             | 1.8–2.3 |
-| 3   | 2.8×             | 2.2–3.5 |
-| 4   | 4.7×             | 2.8–8.2 |
-| 6   | 10.9×            | 5.8–20.7 |
-| 8   | **1.3×**         | 0.9–1.8 |
-| 12  | **0.7×**         | 0.1–1.7 |
+| $L$ | Mean dissipation | Per-seed range |
+|-----|------------------|----------------|
+| 2   | 2.99×            | 2.69–3.22 |
+| 3   | 3.14×            | 2.23–3.94 |
+| 4   | 4.75×            | 2.82–8.24 |
+| 6   | 10.95×           | 5.83–20.69 |
+| 8   | **1.31×**        | 0.86–1.82 |
+| 12  | **0.86×**        | 0.08–1.72 |
 
 At $L \geq 8$, training produces **no meaningful dissipation on average**;
 at $L = 12$, roughly half the seeds show trained > untrained (dissipation
@@ -277,7 +277,7 @@ Results:
 
 | $L$ | $N$ params | Mean $T_1/T_3$ | $\mathrm{Var}[\log F]$ |
 |----:|-----------:|----------------:|------------------------:|
-|  1  |  14 816    |  96             | 4.65 |
+|  1  |  14 816    |  97             | 4.65 |
 |  2  |  27 520    | 101             | 4.44 |
 |  3  |  40 224    | 119             | 4.51 |
 |  4  |  52 928    | 137             | 4.62 |

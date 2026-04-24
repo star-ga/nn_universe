@@ -17,7 +17,7 @@ This builds directly on prior work showing that deep networks have heavy-tailed 
 
 **Definitions.** $T_1$ = mean FIM diagonal of the top-1% of parameters; $T_3$ = mean FIM diagonal of the bottom-50%. The three-tier partition (top 1% / middle 49% / bottom 50%) is a naming convention; all qualitative claims survive partition choice in direction. CIs are log-bootstrap, 2 000 resamples, percentile method (Efron & Hastie 2016). Threshold = 100, conservative relative to the observed gap.
 
-*(Source: `experiments/v5_0_dichotomy_stats/dichotomy_stats_summary.md`)*
+*(Source: `experiments/v5_0_dichotomy_stats/dichotomy_stats_results.json` — re-run 2026-04-24 with corrected lattice U(1) gradient + SU(2) added.)*
 
 | System | Type | $n$ seeds | Point est. $T_1/T_3$ | 95% CI | CI > 100? |
 |---|---|---:|---:|---|:---:|
@@ -29,7 +29,8 @@ This builds directly on prior work showing that deep networks have heavy-tailed 
 | Harmonic oscillator chain | rest | 6 | 3.57 | [2.87, 4.50] | no |
 | Logistic regression | rest | 5 | 3.13 | [2.89, 3.35] | no |
 | Ising chain (1D) | rest | 6 | 2.54 | [2.35, 2.74] | no |
-| U(1) lattice gauge (L = 8) | rest | 3 | 1.63 | [1.62, 1.63] | no |
+| SU(2) lattice gauge (L = 3, non-abelian) | rest | 3 | 4.85 | [4.67, 4.96] | no |
+| U(1) lattice gauge (L = 8) | rest | 3 | 1.62 | [1.61, 1.62] | no |
 | Gaussian process | rest | 5 | 1.97 | [1.94, 1.99] | no |
 | Kernel ridge regression | rest | 5 | 1.42 | [1.41, 1.43] | no |
 | Linear regression | rest | 5 | 1.10 | [1.09, 1.12] | no |

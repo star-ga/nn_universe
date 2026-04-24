@@ -2,10 +2,11 @@
 
 Computational + analytical validation of the STARGA neural-network cosmology framework.
 
-> **"The Universe as a Self-Organizing Neural Network"**
-> Nikolai Nedovodin, STARGA Inc., 2026.
->
-> **[Read the paper (PDF)](Universe_Neural_Network_V1.0.pdf)**
+## Headline result (2026-04-24)
+
+**The FIM three-tier diagonal hierarchy is a mechanism-backed universality signature of deep layered sequential computation.** Across 12 parameterised substrate classes — trained / untrained neural networks, random boolean circuits, four shallow parameterised learners, U(1) and SU(2) lattice gauge fields, three dynamical-system controls, and a random-matrix ensemble — the tier ratio $T_1/T_3$ separates into two groups with **complete rank separation** (one-sided Mann–Whitney $U$: $p = 1.7 \times 10^{-17}$, rank-biserial $r = 1.000$, $n_{\text{deep}} = 46$, $n_{\text{rest}} = 50$). The split is quantitatively predicted by **Hanin & Nica 2020** (Comm. Math. Phys. 376, 287–322): log-normal $F_{ii}$ with depth-linear variance → $\log(T_1/T_3) \propto \sqrt{L}$. We empirically confirm this scaling across **four independent substrate classes** (untrained MLP $R^2 = 0.98$, trained MLP $R^2 = 0.94$, random boolean circuits $R^2 = 0.98$, transformers $R^2 = 0.97$). The universality class is **deep layered sequential composition** — not neural networks, not learning, not optimisation. See [`docs/v6_summary.md`](docs/v6_summary.md) (3-page handout) or [`docs/paper_draft.md`](docs/paper_draft.md) (full draft).
+
+> **Parent paper:** *"The Universe as a Self-Organizing Neural Network"* (Nikolai Nedovodin, STARGA Inc., 2026) — [Read PDF](Universe_Neural_Network_V1.0.pdf).
 
 ## Roadmap
 
@@ -177,39 +178,41 @@ All three architectures trained on the same 32×32×3 Gaussian-noise self-predic
 
 ## V5.0 — The signature is deep layered sequential computation (2026-04-24)
 
-The universality class is now empirically characterised across 10 systems via
-a single consistent measurement protocol (FIM diagonal, top-1% / bottom-50%
-tier partition). All numbers are mean T1/T3 over 3–5 seeds.
+The universality class is now empirically characterised across 12 substrate
+classes via a single consistent measurement protocol (FIM diagonal, top-1% /
+bottom-50% tier partition). All T1/T3 values are bootstrap point estimates
+from `experiments/v5_0_dichotomy_stats/dichotomy_stats_results.json`.
 
-| System | Type | T1/T3 |
-|--------|------|-------|
-| Trained NN (MLP, CNN, ViT) | Deep layered sequential | **O(10²–10⁴)** |
-| Boolean circuit (random gates) | **Layered sequential — not neural, not trained, not probabilistic** | **O(10⁷–10⁸)** |
-| Untrained NN (Kaiming init) | Deep layered sequential | **O(10³–10⁴)** |
-| Linear regression | Shallow learner | **1.10** |
-| Kernel ridge regression | Shallow learner | **1.42** |
-| Logistic regression | 1-layer softmax learner | **3.14** |
-| Gaussian process regression | Non-parametric learner | **1.97** |
-| U(1) lattice gauge (L=8) | Spatially-parallel QFT | **1.6** |
-| SU(2) lattice gauge (L=3) | Non-abelian spatially-parallel QFT | **4.85** |
-| Ising chain | 1D dynamical system | 2.6 |
-| Harmonic oscillator chain | 1D dynamical system | 5.0 |
-| Cellular automaton (Rule 110) | Sequential but shallow | 3.8 |
-| Random matrix (GOE) | Unstructured | 104 |
+| System | Type | T1/T3 (point est.) | 95% CI |
+|--------|------|--------------------|--------|
+| Boolean circuit (random gates) | **Layered sequential — not neural, not trained, not probabilistic** | **88 440** | [3 739, 4.1 × 10⁶] |
+| Untrained NN (pooled 4 widths) | Deep layered sequential | **3 757** | [2 723, 5 115] |
+| Trained NN (pooled 4 widths) | Deep layered sequential | **337** | [244, 468] |
+| Random matrix (GOE, N = 3 003) | Unstructured | 80.7 | [77.8, 83.7] |
+| SU(2) lattice gauge (L=3) | Non-abelian spatially-parallel QFT | 4.85 | [4.67, 4.96] |
+| Cellular automaton (Rule 110) | Sequential but shallow | 3.77 | [3.33, 4.40] |
+| Harmonic oscillator chain | 1D dynamical system | 3.57 | [2.87, 4.54] |
+| Logistic regression | 1-layer softmax learner | 3.13 | [2.89, 3.35] |
+| Ising chain | 1D dynamical system | 2.54 | [2.35, 2.74] |
+| Gaussian process regression | Non-parametric learner | 1.97 | [1.94, 1.99] |
+| U(1) lattice gauge (L=8) | Spatially-parallel QFT | 1.62 | [1.61, 1.62] |
+| Kernel ridge regression | Shallow learner | 1.42 | [1.41, 1.43] |
+| Linear regression | Shallow learner | 1.10 | [1.09, 1.12] |
 
 **Sharp empirical dichotomy.** Deep layered sequential computation (≥4 hidden
 layers, trained OR untrained, NN OR boolean circuit) produces tier ratios of
-10² or more — bootstrapped 95% CI [246, 472] for pooled trained NNs, [2 736,
-5 134] for pooled untrained NNs, [3 781, 4.1 × 10⁶] for random boolean
-circuits. Everything else — four genuine shallow learners (linear / kernel
-ridge / logistic / GP, all of which learn and generalise), lattice gauge
-theory (both abelian U(1) and non-abelian SU(2)), 1D dynamical systems,
-random matrices — sits in CIs entirely below 100, with all four shallow
-learners' CI upper bounds below 6. Random matrices (N = 3 003) give CI
-[77.8, 83.7], still 3× below the trained-NN lower bound. A one-sided Mann–Whitney U test on the per-seed log T1/T3
-values gives p = 5.1 × 10⁻¹⁷ with rank-biserial r = 1.000 — every
-deep-sequential observation ranks above every non-deep observation
-(complete separation, n_deep = 46, n_rest = 47). Full statistical treatment:
+10² or more — bootstrapped 95% CI [244, 468] for pooled trained NNs,
+[2 723, 5 115] for pooled untrained NNs, [3 739, 4.1 × 10⁶] for random
+boolean circuits. Everything else — four genuine shallow learners (linear /
+kernel ridge / logistic / GP, all of which learn and generalise), *both*
+gauge groups of our lattice test (U(1) abelian and SU(2) non-abelian), 1D
+dynamical systems, random matrices — sits in CIs entirely below 100, with
+all four shallow learners' CI upper bounds below 6. Random matrices
+(N = 3 003) give CI [77.8, 83.7], still 3× below the trained-NN lower bound.
+A one-sided Mann–Whitney U test on the per-seed log T1/T3 values gives
+p = 1.7 × 10⁻¹⁷ with rank-biserial r = 1.000 — every deep-sequential
+observation ranks above every non-deep observation (complete separation,
+n_deep = 46, n_rest = 50). Full statistical treatment:
 `experiments/v5_0_dichotomy_stats/`.
 
 **Four sharp claims, in order of strength.**
@@ -296,7 +299,7 @@ A follow-up experiment (`experiments/v4_0_uniqueness/run_trained_vs_untrained.py
 - V1.1 through V3.0 empirical universality findings (scale invariance, seed stability, task/architecture universality, 4-task consistency) are **unaffected** — they are all about *trained* networks and still hold.
 - The cosmological interpretation needs to relocate "physical constants" from "training-locked parameters" to "parameters stable under the architecture's intrinsic init spectrum". This is a meaningful but not catastrophic revision.
 
-See `docs/v4_1_init_vs_learning.md` (in preparation) for the full writeup.
+See [`docs/v4_1_init_vs_learning.md`](docs/v4_1_init_vs_learning.md) for the full writeup.
 
 ## V3.0 Task-4 (vision classification): 4-task universality
 

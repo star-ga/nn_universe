@@ -30,21 +30,21 @@ In the FIM-Onsager framework (V1.0, §8), $\alpha$ is identified with a weight $
 
 $$\dot{\theta}^i = -\eta \, g^{ij} \partial_j C(\theta)$$
 
-where $g_{ij}$ is the Fisher Information Matrix and $C(\theta)$ is the cost function (identified with negative thermodynamic entropy, $C = -S$). Parameters with large diagonal FIM eigenvalues $F_i$ change slowly; parameters with small $F_i$ change quickly. This is precisely the Elastic Weight Consolidation (EWC) mechanism (V1.0, §8.6): $\alpha$ has a large but finite $F_i$, so it drifts slowly but not at zero rate.
+where $g_{ij}$ is the Fisher Information Matrix and $C(\theta)$ is the cost function (identified with negative thermodynamic entropy, $C = -S$). Parameters with large diagonal FIM diagonal values $F_i$ change slowly; parameters with small $F_i$ change quickly. This is precisely the Elastic Weight Consolidation (EWC) mechanism (V1.0, §8.6): $\alpha$ has a large but finite $F_i$, so it drifts slowly but not at zero rate.
 
-Regions of high information density correspond, in the cosmological dictionary (V1.0, §8.3), to regions of high FIM eigenvalues. The local gradient pressure $\partial_j C$ is proportional to the local information density because the cost function density is the negative entropy density, and entropy density is maximized — at fixed energy — by the equilibrium distribution, which is itself a function of $\rho_I$. Taken together:
+Regions of high information density correspond, in the cosmological dictionary (V1.0, §8.3), to regions of high FIM diagonal values. The local gradient pressure $\partial_j C$ is proportional to the local information density because the cost function density is the negative entropy density, and entropy density is maximized — at fixed energy — by the equilibrium distribution, which is itself a function of $\rho_I$. Taken together:
 
 $$\frac{\dot{\alpha}}{\alpha} \approx -\eta \cdot \frac{F_\alpha(\rho_I)}{F_\alpha^{(0)}} \cdot \bar{\epsilon}$$
 
-where $F_\alpha(\rho_I)$ is the local FIM eigenvalue of the $\alpha$-parameter at information density $\rho_I$, $F_\alpha^{(0)}$ is its background value, and $\bar{\epsilon}$ is a dimensionless cost-gradient amplitude of order unity at cosmic mean density. This reduces to the linear form $\dot{\alpha}/\alpha = \kappa \cdot \rho_I$ in the near-equilibrium, small-perturbation limit.
+where $F_\alpha(\rho_I)$ is the local FIM diagonal entry of the $\alpha$-parameter at information density $\rho_I$, $F_\alpha^{(0)}$ is its background value, and $\bar{\epsilon}$ is a dimensionless cost-gradient amplitude of order unity at cosmic mean density. This reduces to the linear form $\dot{\alpha}/\alpha = \kappa \cdot \rho_I$ in the near-equilibrium, small-perturbation limit.
 
 ### 1.3 Derivation of the Coupling Constant $\kappa$
 
 The coupling constant $\kappa$ connects the fractional drift rate to $\rho_I$ in units of bits per cubic Megaparsec (Mpc$^3$). Its derivation from first principles within the FIM-Onsager framework proceeds as follows.
 
-**Step 1: FIM eigenvalue of $\alpha$ per bit of information density.**
+**Step 1: FIM diagonal entry of $\alpha$ per bit of information density.**
 
-The toy experiment (V1.0, §11; README Tier-1 table) yields a mean Tier-1 FIM eigenvalue of:
+The toy experiment (V1.0, §11; README Tier-1 table) yields a mean Tier-1 FIM diagonal entry of:
 
 $$\langle F \rangle_{\mathrm{Tier\,1}} = 7.73 \times 10^{-6} \quad \text{(dimensionless, per parameter)}$$
 
@@ -52,11 +52,11 @@ for a network of $N_{\mathrm{toy}} \approx 296{,}000$ parameters. This is measur
 
 **Step 2: Scaling to cosmological parameter count.**
 
-The FIM eigenvalue per parameter scales with network size. The scaling experiment (V1.0, §11.7; README) yields:
+The FIM diagonal entry per parameter scales with network size. The scaling experiment (V1.0, §11.7; README) yields:
 
 $$F_{\mathrm{Tier\,1}} \propto N^{-\gamma}, \quad \gamma \approx 0.5 \text{ to } 1.0 \text{ (empirical)}$$
 
-For a cosmological network of $N_{\mathrm{cosm}} \sim 10^{80}$ parameters (Bekenstein bound estimate for the observable universe), the naive per-parameter FIM eigenvalue at the same relative tier position is:
+For a cosmological network of $N_{\mathrm{cosm}} \sim 10^{80}$ parameters (Bekenstein bound estimate for the observable universe), the naive per-parameter FIM diagonal entry at the same relative tier position is:
 
 $$F_\alpha^{(0)} \sim 7.73 \times 10^{-6} \times \left(\frac{10^5}{10^{80}}\right)^{0.5} \sim 7.73 \times 10^{-6} \times 10^{-37.5} \sim 10^{-43}$$
 
@@ -68,7 +68,7 @@ Define $\kappa$ as:
 
 $$\kappa = \frac{F_\alpha^{(\mathrm{per\,bit})}}{\langle F \rangle_{\mathrm{mean}}} \cdot \frac{\eta}{V_0}$$
 
-where $F_\alpha^{(\mathrm{per\,bit})}$ is the Fisher information contribution of $\alpha$ per bit of local information density, $\langle F \rangle_{\mathrm{mean}}$ is the mean FIM eigenvalue over all parameters, $\eta$ is the effective learning rate (identified in §8.3 with the inverse temperature $T^{-1}$ and the cosmological coupling), and $V_0$ is a reference volume (1 Mpc$^3$).
+where $F_\alpha^{(\mathrm{per\,bit})}$ is the Fisher information contribution of $\alpha$ per bit of local information density, $\langle F \rangle_{\mathrm{mean}}$ is the mean FIM diagonal entry over all parameters, $\eta$ is the effective learning rate (identified in §8.3 with the inverse temperature $T^{-1}$ and the cosmological coupling), and $V_0$ is a reference volume (1 Mpc$^3$).
 
 Using the Tier-1/mean ratio from the toy experiment ($\sim 637 \times$ above the geometric mean of Tier-1 and Tier-3), and requiring the drift rate at cosmic mean density to reproduce $|\dot{\alpha}/\alpha| \sim 10^{-17}$ yr$^{-1}$, one obtains:
 
@@ -90,7 +90,7 @@ $$\kappa \sim \frac{10^{-17}\,\mathrm{yr}^{-1}}{2.5 \times 10^{41}\,\mathrm{bits
 4. Independently, laboratory constraints set $|\dot\alpha/\alpha| \lesssim 10^{-17}$ yr$^{-1}$.
 5. The κ value quoted above is what makes the theory compatible with (4). It is not what V1.0's FIM measurements *force*.
 
-In other words, κ is **fit to the observational upper bound, not derived from first principles**. A genuine first-principles κ would require either (a) actual $10^{12}$-parameter FIM measurements from V3.0, or (b) a closed-form expression for how FIM eigenvalues extrapolate with parameter count in the NTK regime (partial progress in docs/v1_1_ntk_continuum_limit.md).
+In other words, κ is **fit to the observational upper bound, not derived from first principles**. A genuine first-principles κ would require either (a) actual $10^{12}$-parameter FIM measurements from V3.0, or (b) a closed-form expression for how FIM diagonal values extrapolate with parameter count in the NTK regime (partial progress in docs/v1_1_ntk_continuum_limit.md).
 
 Until V3.0 lands, the sign and order-of-magnitude of κ should be treated as **phenomenology**, and the predictive content of V3.1 is the *shape* of the correlation (with log ρ_I, controlling for z) rather than the absolute magnitude of κ. This is a limitation but not a fatal one: the null hypothesis $r = 0$ is still a clean falsification criterion regardless of the exact κ value.
 
@@ -439,7 +439,7 @@ The order-of-magnitude uncertainty on $\kappa$ is the primary theoretical bottle
 
 **Source 1: FIM scaling exponent.** The toy experiment covers $N = 1.9 \times 10^3$ to $2.0 \times 10^8$ parameters (5 orders of magnitude). The scaling exponent $\gamma$ in $F_{\mathrm{Tier1}} \propto N^{-\gamma}$ is empirically estimated at $\gamma \approx 0.5$ to $1.0$ from the available data, but the exponent is not converged. Extending the scaling run to $N = 10^{12}$ (the V3.0 target, requiring 64+ GPU cluster) would add 4 further decades and reduce the uncertainty on $\gamma$ from $\Delta\gamma \approx 0.5$ to $\Delta\gamma \lesssim 0.1$.
 
-**Source 2: Tier-1 identification of $\alpha$.** In the toy experiment, Tier-1 parameters are identified by FIM eigenvalue rank. The cosmological identification of $\alpha$ as a specific Tier-1 parameter requires an argument about which weight corresponds to the electromagnetic coupling in the continuum limit. This argument requires the V2.0 lattice-embedding analysis (discretization of the FIM into a smooth metric with identifiable physical field content) to be completed first. V2.0 is listed as a research-phase item in the roadmap.
+**Source 2: Tier-1 identification of $\alpha$.** In the toy experiment, Tier-1 parameters are identified by FIM diagonal entry rank. The cosmological identification of $\alpha$ as a specific Tier-1 parameter requires an argument about which weight corresponds to the electromagnetic coupling in the continuum limit. This argument requires the V2.0 lattice-embedding analysis (discretization of the FIM into a smooth metric with identifiable physical field content) to be completed first. V2.0 is listed as a research-phase item in the roadmap.
 
 **Implication for V3.1 timeline.** V3.1 can proceed in parallel with V3.0 and V2.0 because:
 - The falsification test of §4.1 does not require a sharp $\kappa$ prediction; it requires only $r_{\mathrm{min}} = 0.20$, which follows from the order-of-magnitude estimate.
