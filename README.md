@@ -37,7 +37,9 @@ Computational + analytical validation of the STARGA neural-network cosmology fra
 
 ### Key documents
 
-- [`docs/paper_draft.md`](docs/paper_draft.md) — NeurIPS/ICML workshop draft synthesising V1.1 + V1.2 + V2.1 + V3.0-Tier1 + V4.0.
+- [`docs/paper_draft.md`](docs/paper_draft.md) — NeurIPS/ICML workshop draft synthesising V1.1 + V1.2 + V2.1 + V3.0-Tier1 + V4.0–V6.4.
+- [`docs/v6_summary.md`](docs/v6_summary.md) — **3-page workshop handout**: empirical dichotomy + Hanin–Nica mechanism + 4-substrate confirmation table. Read this first.
+- [`docs/v6_0_mechanism_hanin_nica.md`](docs/v6_0_mechanism_hanin_nica.md) — full V6.0 derivation + V6.1 width / V6.2 trained / V6.4 transformer subsections.
 - [`docs/findings.md`](docs/findings.md) — consolidated findings summary across all phases.
 
 ### Proof Ladder (honest framing; from Naestro, 2026-04-23)
