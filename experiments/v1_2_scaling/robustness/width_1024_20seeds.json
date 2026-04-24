@@ -1,6 +1,7 @@
 {
   "config": {
-    "n_seeds": 20
+    "n_seeds": 20,
+    "width": 1024
   },
   "results": [
     {

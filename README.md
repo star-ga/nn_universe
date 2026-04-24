@@ -174,12 +174,12 @@ A follow-up experiment (`experiments/v4_0_uniqueness/run_trained_vs_untrained.py
 
 **Training does NOT create the FIM tier hierarchy — it partially dissipates it.** Untrained Kaiming-initialized networks already exhibit tier ratios of 10³–10⁴. Training smooths the FIM spectrum by a factor of 4-24× depending on width. The hierarchy is a property of **layered non-linear architectures with i.i.d. Gaussian weight initialization**, not of gradient descent dynamics.
 
-**Probe-count caveat.** V4.0 used `n_probes = 32`; V4.1 uses `n_probes = 200`. MC noise at low probe counts inflates Tier-3 zeros and thus the T1/T3 ratio; most of the factor-25 difference between V4.0's headline (26,449× at 3500 params) and V4.1's value (1,081× at 4,240 params) is probe-count accuracy, not training. Internal V4.1 comparison (trained vs untrained at same probes) is valid; the 4-24× reduction from training stands.
+**Probe-count caveat.** V4.0 used `n_probes = 32`; V4.1 uses `n_probes = 200`. MC noise at low probe counts inflates Tier-3 zeros and thus the T1/T3 ratio; most of the factor-25 difference between V4.0's headline (13,752× at 3500 params) and V4.1's value (1,081× at 4,240 params) is probe-count accuracy, not training. Internal V4.1 comparison (trained vs untrained at same probes) is valid; the 4-24× reduction from training stands.
 
 **Reinterpretation of V1.0 and V4.0:**
 
 - V1.0's "physical constants = Tier-1 FIM parameters that training locks in" — **rejected**. Training *dissipates* the hierarchy, not locks it.
-- V4.0's "hierarchy is learning-induced" (NN 26,449× vs Ising 3× vs CA 4×) — **refined**: the contrast is real but its cause is *architectural depth + nonlinearities*, not learning. An untrained NN at the same N would still dominate Ising/CA by 10³×.
+- V4.0's "hierarchy is learning-induced" (NN 13,752× vs Ising 3× vs CA 4×) — **refined**: the contrast is real but its cause is *architectural depth + nonlinearities*, not learning. An untrained NN at the same N would still dominate Ising/CA by 10³×.
 - V1.1 through V3.0 empirical universality findings (scale invariance, seed stability, task/architecture universality, 4-task consistency) are **unaffected** — they are all about *trained* networks and still hold.
 - The cosmological interpretation needs to relocate "physical constants" from "training-locked parameters" to "parameters stable under the architecture's intrinsic init spectrum". This is a meaningful but not catastrophic revision.
 
@@ -198,19 +198,22 @@ Fourth task: 10-class supervised classification on 1024-d Gaussian inputs with l
 | 512 | 1.58M | 17,358x | 503,865x | 94.5% |
 | 1,024 | 5.26M | 151,280x | 45,512,329x | 94.5% |
 
-**Task-4 SV power law**: $N^{1.02}$, $R^2 = 0.56$
-**Task-4 FIM power law**: $N^{2.748}$, $R^2 = 0.898$ (steepest of all four tasks)
+**Task-4 SV power law** (6 points): $N^{1.02}$, $R^2 = 0.56$
+**Task-4 FIM power law — clean 4 points (W ≤ 256, no Tier-3 underflow)**: $N^{1.07}$, $R^2 = 0.94$
+**Task-4 FIM power law — all 6 points**: $N^{2.75}$, $R^2 = 0.90$ ← **inflated by Tier-3 underflow at W ≥ 512**, do not use
+
+The W=512 and W=1024 rows show FIM T1/T3 of $5 \times 10^5$ and $4.6 \times 10^7$ respectively — these are numerical float32-underflow artifacts in the Tier-3 mean, not physical measurements. The clean 4-point fit ($N^{1.07}$) is the correct headline exponent for Task-4.
 
 ### Final 4-task universality summary
 
-| Task | SV exponent | FIM exponent | Interpretation |
-|------|-------------|--------------|----------------|
-| T1 cosmology self-prediction | 0.516 | ≈ 0 | unstructured (Gaussian noise) |
-| T2 QEC toric-code decoding | 0.807 | 1.386 | lattice-structured |
-| T3 symbolic regression | 0.555 | 1.432 | smooth-function |
-| **T4 supervised classification** | **1.02** | **2.748** | discrete labels (hardest constraints) |
+| Task | SV exponent | FIM exponent | Fit range | Interpretation |
+|------|-------------|--------------|-----------|----------------|
+| T1 cosmology self-prediction | 0.516 | ≈ 0 | 12 widths | unstructured (Gaussian noise) |
+| T2 QEC toric-code decoding | 0.807 | 1.386 | 6 widths | lattice-structured |
+| T3 symbolic regression | 0.555 | 1.432 | 6 widths | smooth-function |
+| **T4 supervised classification** | **1.02** | **1.067** (clean 4pt) / 2.748 (6pt w/ underflow) | 4-6 widths | discrete labels |
 
-**The FIM-tier exponent increases monotonically with task-structural constraint.** Four tasks, all power-law in form, with task-dependent exponents ordered by the sharpness of the label/constraint. This is a strong universality-with-task-scaling result — Naestro Tier-1 item 1 (originally asking for 3 tasks) is now satisfied with 4.
+**Corrected headline**: all three structured tasks (T2, T3, T4) have FIM exponents in the 1.0–1.5 band; the apparent T4 exponent of 2.748 was a Tier-3 float32 underflow artifact at W ≥ 512. Cosmology (T1) stays at ≈0 — unstructured task. Naestro Tier-1 item 1 (3-task universality) satisfied; the 4-task universality claim is honest with the caveat that T4 large-width data needs higher `n_probes` (~2000) to be reliable.
 
 ### V1.2 Depth Sweep (width=256, 6 depths)
 
@@ -251,7 +254,7 @@ Trained the V1.0 architecture (5-layer, 256-neuron ReLU MLP) on the toric-code s
 | hidden 4 | 256×256 | 560x | **8,406x** |
 | head | 256×64 / 256×50 | 3.5x | 7.2x |
 
-**FIM Tier1/Tier3 (QEC, width 256): 850,866x** — three orders of magnitude *deeper* hierarchy than the V1.0 cosmology experiment (637x) at identical architecture.
+**FIM Tier1/Tier3 (QEC, width 256, Adam-trained, n_probes=300): 1,762x** — approximately 3× deeper than the V1.0 cosmology experiment (637×) at identical architecture. (An earlier summary claimed "three orders of magnitude deeper" based on an SGD+momentum single-run value of 850,866×; that was methodology-inflated — the network barely trained, so the FIM diagonal was dominated by random-init structure. The Adam-trained sweep is the reliable measurement.)
 
 ### QEC width sweep (Adam optimizer, L=5, p=0.05, 15k steps)
 

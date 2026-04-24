@@ -8,7 +8,7 @@
 
 ## Abstract
 
-We report a systematic empirical investigation of the three-tier Fisher Information Matrix (FIM) eigenvalue hierarchy first observed in the V1.0 FIM–Onsager cosmology experiment. Across 12 widths (parameter counts $1.9 \times 10^3 \le N \le 1.45 \times 10^9$), 20-seed robustness sweeps at five scales, three independent tasks (self-prediction, toric-code syndrome decoding, symbolic regression), three architectures (MLP, CNN, ViT), and six non-neural-network control systems, we find that the FIM three-tier ratio is (i) architecture-universal, (ii) task-universal in form (with task-dependent exponent in the power-law scaling with $N$), (iii) monotonically stabilised in seed variance as $N$ grows (CV drops from 10% at $N{=}2 \times 10^5$ to 1.85% at $N{=}6 \times 10^8$), (iv) absent from non-learning parameterized systems (Ising chain, harmonic chain, cellular automaton, generic random matrix). The singular-value ratio, by contrast, is a highly seed-dependent observable whose power-law exponent ($N^{0.42}$ to $N^{0.81}$ across tasks/cutoffs) is consistent with the NTK theoretical upper bound of $1/2$ once regime separation is applied. The FIM tier structure is therefore the scale-invariant, seed-stable empirical anchor of learning-induced information-geometric hierarchy — a property that distinguishes trained neural networks from unlearned parameterized systems and that is relevant for the FIM–Onsager cosmology program.
+We report a systematic empirical investigation of the three-tier Fisher Information Matrix (FIM) eigenvalue hierarchy first observed in the V1.0 FIM–Onsager cosmology experiment. Across 13 widths (parameter counts $1.9 \times 10^3 \le N \le 6.1 \times 10^9$), 20-seed robustness sweeps at four scales, four independent tasks (self-prediction, toric-code syndrome decoding, symbolic regression, supervised vision classification), three architectures (MLP, CNN, ViT), and five non-neural-network control systems (including a large-$N$ sweep to $N = 10^4$), we find that the FIM three-tier ratio is (i) architecture-universal (MLP/CNN/ViT at matched $N$), (ii) task-universal in form (FIM power-law exponents in the 1.0–1.5 band for three structured tasks; ≈0 for unstructured self-prediction), (iii) monotonically stabilised in seed variance as $N$ grows (CV drops from 10% at $N{=}2 \times 10^5$ to 1.2% at $N{=}6 \times 10^9$), (iv) absent from non-learning parameterized systems at matched or larger $N$ (Ising chain, harmonic chain, cellular automaton: $T_1/T_3 \leq 5$; generic random matrix: $\sim 100$). A follow-up experiment further shows that the hierarchy is **already present at random Kaiming initialization** with tier ratios of $10^3$–$10^4$, and that gradient-descent training *reduces* it by a factor of 4–24× rather than creating it; the universality class is therefore **architecture-and-init-induced**, not learning-induced, though training is necessary to interact with data. The singular-value ratio is a highly seed-dependent observable whose power-law exponent ($N^{0.42}$ to $N^{0.81}$ across tasks/cutoffs) is consistent with the NTK theoretical upper bound of $1/2$ once regime separation is applied. The FIM tier structure is the scale-invariant, seed-stable empirical anchor of architecture-induced information-geometric hierarchy — a property that distinguishes layered non-linear networks from unlearned parameterized systems and is relevant for the FIM–Onsager cosmology program.
 
 **Keywords:** Fisher Information Matrix, NTK, neural-network cosmology, information geometry, universality, FIM–Onsager correspondence, universality class, power-law scaling.
 
@@ -28,7 +28,7 @@ This paper tests the empirical robustness of that three-tier claim along five ax
 4. **Architecture**: is it MLP-specific, or does it appear in CNN and Transformer architectures?
 5. **Learning**: does it appear in parameterized systems that do *not* learn (random matrix, Ising chain, harmonic chain, cellular automaton)?
 
-We find: yes (1), increasingly yes with $N$ (2), yes in form across 3 tasks (3), yes across MLP/CNN/ViT (4), and no for non-learning systems (5). Together these establish the FIM tier hierarchy as a **learning-induced universality class** in the sense of critical phenomena — robust to architectural and task-level choices, absent in unlearned substrates.
+We find: yes (1), increasingly yes with $N$ (2), yes in form across 4 tasks (3), yes across MLP/CNN/ViT (4), and no for non-learning systems at matched or larger $N$ (5). A follow-up (V4.1, §4.6) further shows the hierarchy is present at random Kaiming init and that training *decreases* it — so the universality class is **architecture-induced**, not created by learning. Together these establish the FIM tier hierarchy as an architecture-induced universality class in the sense of critical phenomena — robust to task and architecture choices, absent in non-layered parameterized systems, and *partially smoothed* by training rather than generated by it.
 
 ## 2. Related work
 
@@ -44,6 +44,7 @@ We find: yes (1), increasingly yes with $N$ (2), yes in form across 3 tasks (3),
 - **T1 – Cosmology self-prediction (V1.0):** MSE self-reconstruction of 32-d Gaussian inputs. Architecture-agnostic baseline.
 - **T2 – QEC toric-code decoding (V2.1):** Binary cross-entropy on syndrome-to-correction mapping for a $L=5$ toric code at physical error rate $p = 0.05$.
 - **T3 – Symbolic regression (V3.0 task-3):** MSE on recovery of degree-8 random-polynomial coefficients from 16 evaluation pairs.
+- **T4 – Supervised vision classification (V3.0 task-4):** 10-class classification on 1024-dimensional Gaussian inputs with fixed random teacher; cross-entropy loss.
 
 ### 3.2 Architectures
 
@@ -87,13 +88,14 @@ FIM T1/T3 remains in the 150–616× band across 8 orders of magnitude in $N$, w
 
 ### 4.3 Task universality
 
-| Task | $\alpha$ (SV exp.) | $\beta$ (FIM exp.) |
-|------|-------------------|--------------------|
-| T1 cosmology self-prediction | 0.516 (R²=0.86) | ≈ 0 |
-| T2 QEC toric-code decoding | 0.807 (R²=0.89) | 1.386 (R²=0.93) |
-| T3 symbolic regression | 0.555 (R²=0.61) | 1.432 (R²=0.94) |
+| Task | $\alpha$ (SV exp.) | $\beta$ (FIM exp.) | Fit range |
+|------|-------------------|--------------------|-----------|
+| T1 cosmology self-prediction | 0.516 (R²=0.86) | ≈ 0 | 12 widths |
+| T2 QEC toric-code decoding | 0.807 (R²=0.89) | 1.386 (R²=0.93) | 6 widths |
+| T3 symbolic regression | 0.555 (R²=0.61) | 1.432 (R²=0.94) | 6 widths |
+| T4 vision classification | 1.02 (R²=0.56) | **1.067 (R²=0.94)** | 4 widths (W≤256; large-W rows Tier-3-underflow at n_probes=300) |
 
-Power-law form present in all three tasks. Exponents task-dependent. FIM exponent sharply positive and super-linear for the two structured tasks (T2, T3); near zero for the unstructured self-prediction of Gaussian noise.
+Power-law form present in all four tasks. Exponents task-dependent but in a 3× band (1.07 – 1.43) for the three structured tasks (T2, T3, T4). FIM exponent sharply positive and near-linear for structured tasks; near zero for the unstructured self-prediction of Gaussian noise. For T4, the W=512 and W=1024 rows show FIM T1/T3 of $5\times 10^5$ and $4.6\times 10^7$ — these are float32 Tier-3 underflow artifacts, not physical measurements; the clean 4-point fit is the reported headline.
 
 ### 4.4 Architecture universality (at $N \approx 1.5 \times 10^6$)
 
@@ -111,7 +113,7 @@ Six parameterized systems at matched parameter scale ($N \approx 3\text{k}$):
 
 | System | FIM T1/T3 | CV across seeds |
 |--------|-----------|-----------------|
-| Neural network (trained) | 26,449× | 74% |
+| Neural network (trained) | 13,752× | 74% |
 | Random matrix (GOE) | 81× | 5% |
 | Ising chain | 2.6× | 10% |
 | Harmonic chain | 3.7× | 28% |
