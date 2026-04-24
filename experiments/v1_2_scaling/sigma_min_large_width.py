@@ -37,45 +37,65 @@ sys.path.insert(0, str(REPO))
 from scaling_experiment_extended import _CheckpointedFC  # noqa: E402
 
 
-def sigma_min_inverse_power(A: torch.Tensor, n_iter: int = 200, tol: float = 1e-8) -> float:
-    """Approximate the smallest singular value of A via inverse power
-    iteration on A^T A.
+def sigma_min_inverse_power(A: torch.Tensor, n_iter: int = 500, tol: float = 1e-10,
+                             power_iters_for_max: int = 80,
+                             shift_safety_factor: float = 1.1) -> float:
+    """Approximate the smallest singular value of A.
 
-    A: (m, n) float32 tensor, possibly on GPU.
-    Returns sigma_min estimate.
+    Strategy: use scipy's ARPACK (implicitly-restarted Arnoldi) via
+    `scipy.sparse.linalg.svds(..., which='SM')`. This is the correct
+    algorithm for large dense matrices with Marchenko-Pastur-like dense
+    spectra where naive shifted power iteration fails to converge.
+
+    Fallback: if scipy ARPACK fails to converge on a particular matrix,
+    fall back to shifted power iteration on :math:`M = s I - A^T A` with
+    strict-upper-bound shift (slow but occasionally necessary).
+
+    Arguments beyond `A` retain their meaning for the fallback path only.
     """
-    m, n = A.shape
-    device = A.device
-    # Normalize by the spectral norm estimate so we iterate on a
-    # well-conditioned matrix.
-    # Step 1: top singular value via power iteration (10 iters).
-    v = torch.randn(n, device=device, dtype=A.dtype)
-    v = v / v.norm()
-    for _ in range(10):
-        u = A @ v
-        u = u / u.norm().clamp_min(1e-30)
-        v = A.T @ u
-        v = v / v.norm().clamp_min(1e-30)
-    sigma_max_sq = float((A @ v).norm() ** 2)
+    import numpy as np
+    import scipy.sparse.linalg as spla
 
-    # Step 2: shifted power iteration on M = sigma_max_sq * I - A^T A.
-    # M has spectrum [0, sigma_max_sq]; its largest eigenvalue is
-    # sigma_max_sq - sigma_min_sq, so after convergence we recover sigma_min.
-    v = torch.randn(n, device=device, dtype=A.dtype)
-    v = v / v.norm()
+    m, n = A.shape
+    A_np = A.detach().cpu().float().numpy()
+
+    try:
+        # ARPACK Lanczos: k=1 smallest singular value.
+        u, s, vt = spla.svds(A_np, k=1, which="SM", tol=tol * 10,
+                              maxiter=max(n_iter, 4 * min(m, n)))
+        sigma_min = float(s[0])
+        return sigma_min
+    except Exception:
+        pass
+
+    # Fallback: shifted power iteration on (shift * I - A^T A) with a
+    # strict-upper-bound shift from power-iteration-estimated sigma_max.
+    A_t = A.detach()
+    device = A_t.device
+
+    v = torch.randn(n, device=device, dtype=A_t.dtype)
+    v = v / v.norm().clamp_min(1e-30)
+    for _ in range(power_iters_for_max):
+        u = A_t @ v
+        u = u / u.norm().clamp_min(1e-30)
+        v = A_t.T @ u
+        v = v / v.norm().clamp_min(1e-30)
+    sigma_max_sq_estimate = float((A_t @ v).norm() ** 2)
+    shift = shift_safety_factor * sigma_max_sq_estimate
+
+    v = torch.randn(n, device=device, dtype=A_t.dtype)
+    v = v / v.norm().clamp_min(1e-30)
     prev_lambda = 0.0
     for i in range(n_iter):
-        # M v = sigma_max_sq * v - A^T (A v)
-        Mv = sigma_max_sq * v - A.T @ (A @ v)
+        Mv = shift * v - A_t.T @ (A_t @ v)
         v_new = Mv / Mv.norm().clamp_min(1e-30)
-        # Rayleigh quotient
-        lam = float(v_new @ (sigma_max_sq * v_new - A.T @ (A @ v_new)))
-        if abs(lam - prev_lambda) < tol * max(abs(lam), 1.0):
+        lam = float((v_new * (shift * v_new - A_t.T @ (A_t @ v_new))).sum())
+        if i > 5 and abs(lam - prev_lambda) < tol * max(abs(lam), 1.0):
             break
         prev_lambda = lam
         v = v_new
 
-    sigma_min_sq = sigma_max_sq - lam
+    sigma_min_sq = shift - lam
     return max(sigma_min_sq, 0.0) ** 0.5
 
 
