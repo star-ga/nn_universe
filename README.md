@@ -33,7 +33,7 @@ Computational + analytical validation of the STARGA neural-network cosmology fra
 | **V6.2** | Trained-NN depth sweep — √L scaling survives training (R²=0.94); dissipation collapses at L≥8 | **Done** ([experiment](experiments/v6_0_depth_mechanism/trained_depth_sweep.py)) |
 | **V6.3** | Layered boolean-circuit depth sweep — substrate-independent √L scaling (R²=0.98 for BCs too) | **Done** ([experiment](experiments/v6_0_depth_mechanism/bc_depth_sweep.py)) |
 | **V6.4** | Transformer depth sweep — attention+residuals preserve √L scaling (R²=0.97) | **Done** ([experiment](experiments/v6_0_depth_mechanism/transformer_depth_sweep.py)) |
-| **V7.0** | SU(2) non-abelian lattice gauge (in progress, L=3, d=4, 972 params, 3 seeds) | **In progress** ([experiment](experiments/v7_0_lattice_su2/)) |
+| **V7.0** | SU(2) non-abelian lattice gauge — T1/T3 = 4.85 (CV 3.1%, 3 seeds), still in O(1-10) non-deep band | **Done** ([experiment](experiments/v7_0_lattice_su2/)) |
 
 ### Key documents
 
@@ -191,6 +191,7 @@ tier partition). All numbers are mean T1/T3 over 3–5 seeds.
 | Logistic regression | 1-layer softmax learner | **3.14** |
 | Gaussian process regression | Non-parametric learner | **1.97** |
 | U(1) lattice gauge (L=8) | Spatially-parallel QFT | **1.6** |
+| SU(2) lattice gauge (L=3) | Non-abelian spatially-parallel QFT | **4.85** |
 | Ising chain | 1D dynamical system | 2.6 |
 | Harmonic oscillator chain | 1D dynamical system | 5.0 |
 | Cellular automaton (Rule 110) | Sequential but shallow | 3.8 |
@@ -202,10 +203,10 @@ layers, trained OR untrained, NN OR boolean circuit) produces tier ratios of
 5 134] for pooled untrained NNs, [3 781, 4.1 × 10⁶] for random boolean
 circuits. Everything else — four genuine shallow learners (linear / kernel
 ridge / logistic / GP, all of which learn and generalise), lattice gauge
-theory, 1D dynamical systems, random matrices — sits in CIs entirely below
-100, with all four shallow learners' CI upper bounds below 6. Random
-matrices (N = 3 003) give CI [77.8, 83.7], still 3× below the trained-NN
-lower bound. A one-sided Mann–Whitney U test on the per-seed log T1/T3
+theory (both abelian U(1) and non-abelian SU(2)), 1D dynamical systems,
+random matrices — sits in CIs entirely below 100, with all four shallow
+learners' CI upper bounds below 6. Random matrices (N = 3 003) give CI
+[77.8, 83.7], still 3× below the trained-NN lower bound. A one-sided Mann–Whitney U test on the per-seed log T1/T3
 values gives p = 5.1 × 10⁻¹⁷ with rank-biserial r = 1.000 — every
 deep-sequential observation ranks above every non-deep observation
 (complete separation, n_deep = 46, n_rest = 47). Full statistical treatment:

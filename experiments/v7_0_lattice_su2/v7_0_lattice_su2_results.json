@@ -1,0 +1,67 @@
+{
+  "config": {
+    "L": 3,
+    "d": 4,
+    "beta": 2.0,
+    "thermalise": 50,
+    "n_samples": 20,
+    "decorr": 10,
+    "step_size": 0.2,
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "out": "/home/n/nn_universe/experiments/v7_0_lattice_su2/v7_0_lattice_su2_results.json"
+  },
+  "results": [
+    {
+      "seed": 0,
+      "L": 3,
+      "d": 4,
+      "beta": 2.0,
+      "n_params": 972,
+      "fim_tier1_mean": 3.4569726747545486,
+      "fim_tier3_mean": 0.6970641081811902,
+      "fim_tier1_tier3": 4.959332483456408,
+      "thermalise_s": 69.64651846885681,
+      "measure_s": 343.8186545372009
+    },
+    {
+      "seed": 1,
+      "L": 3,
+      "d": 4,
+      "beta": 2.0,
+      "n_params": 972,
+      "fim_tier1_mean": 3.0771470170562973,
+      "fim_tier3_mean": 0.6267564761925254,
+      "fim_tier1_tier3": 4.909637369444695,
+      "thermalise_s": 54.54610228538513,
+      "measure_s": 317.9806182384491
+    },
+    {
+      "seed": 2,
+      "L": 3,
+      "d": 4,
+      "beta": 2.0,
+      "n_params": 972,
+      "fim_tier1_mean": 3.3168877936517434,
+      "fim_tier3_mean": 0.7096533579457415,
+      "fim_tier1_tier3": 4.673954905608078,
+      "thermalise_s": 55.483301639556885,
+      "measure_s": 320.68493270874023
+    }
+  ],
+  "aggregate": {
+    "tier_ratio_mean": 4.847641586169726,
+    "tier_ratio_std": 0.15245556186165402,
+    "tier_ratio_cv": 0.03144942940843816
+  },
+  "comparison_context": {
+    "U1_lattice_L8_beta1": 1.6,
+    "trained_NN_W256": 337,
+    "untrained_NN_W256": 3757,
+    "boolean_circuit_N384": 88440
+  },
+  "interpretation": "SU(2) is non-abelian spatially parallel. Dichotomy predicts T1/T3 = O(1). If confirmed, the 'spatially parallel substrates' side of the dichotomy extends to non-abelian gauge theories."
+}
