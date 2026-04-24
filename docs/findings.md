@@ -1,8 +1,35 @@
-# nn_universe — Findings Summary (V1.1–V3.1)
+# nn_universe — Findings Summary (V1.1–V6.4)
 
 **STARGA, Inc. — Research Document**
-**Period:** 2026-04-22 — 2026-04-23
-**Scope:** V1.1 through V3.1 roadmap phases executed autonomously on a single RTX 3080 + a 72-core/251-GB CPU node.
+**Period:** 2026-04-22 — 2026-04-24
+**Scope:** V1.1 through V6.4 roadmap phases executed autonomously on a single RTX 3080 + a 72-core/251-GB CPU node + short A100 cluster bursts.
+
+## 0. Headline (2026-04-24)
+
+The FIM three-tier hierarchy, originally a phenomenological observation of
+a 296k-param cosmology toy experiment, now has:
+
+1. **Empirical universality** across 10 parameterised substrates (MLP / CNN /
+   ViT / boolean circuit / lattice U(1) / 4 shallow learners / Ising /
+   harmonic / CA / random matrix). Mann–Whitney $U$ $p = 5.1 \times 10^{-17}$,
+   complete rank separation between deep-sequential and non-deep systems.
+   (V5.0 + V5.0-stats)
+2. **Mechanism-backed theorem** via Hanin & Nica (Comm. Math. Phys. 376, 2020).
+   The FIM diagonal is log-normal with $\mathrm{Var}[\log F_{ii}] \propto L$,
+   giving $\log(T_1/T_3) \propto \sqrt{L}$. Empirically confirmed at
+   $R^2 = 0.98$ across 7 depths for MLPs (V6.0), $R^2 = 0.98$ for random
+   boolean circuits (V6.3), $R^2 = 0.94$ for SGD-trained MLPs (V6.2), with
+   width-independence confirmed (V6.1).
+3. **Robustness to training** at moderate depth: at $L \geq 8$, training
+   cannot flatten the log-normal tails (V6.2). V4.1's "training dissipates"
+   claim holds for $L \leq 6$ only.
+4. **Substrate specificity**: lattice U(1) pure-gauge theory at 16 k params
+   gives $T_1/T_3 = 1.6$ (CV 0.3%) — no depth chain, no hierarchy.
+   (V5.0 lattice + V7.0 SU(2) in progress.)
+
+The universality class is **deep layered sequential composition** as a
+computational primitive, independent of whether the substrate uses neurons,
+weights, gradients, or probabilities.
 
 ---
 
