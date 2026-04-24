@@ -1,0 +1,179 @@
+{
+  "config": {
+    "n_train": 2000,
+    "d": 32,
+    "n_classes": 10,
+    "noise_sigma": 0.2,
+    "ridge": 0.1,
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "out": "/home/n/nn_universe/experiments/v4_0_uniqueness/v4_learning_baselines_results.json"
+  },
+  "baselines": {
+    "linear_regression": {
+      "per_seed": [
+        {
+          "seed": 0,
+          "n_params": 1056,
+          "tier_ratio": 1.1133958212203272,
+          "elapsed_s": 0.007455587387084961
+        },
+        {
+          "seed": 1,
+          "n_params": 1056,
+          "tier_ratio": 1.088650590136889,
+          "elapsed_s": 0.005984306335449219
+        },
+        {
+          "seed": 2,
+          "n_params": 1056,
+          "tier_ratio": 1.1380144284367948,
+          "elapsed_s": 0.005323886871337891
+        },
+        {
+          "seed": 3,
+          "n_params": 1056,
+          "tier_ratio": 1.0983537026808525,
+          "elapsed_s": 0.005276203155517578
+        },
+        {
+          "seed": 4,
+          "n_params": 1056,
+          "tier_ratio": 1.0820291799214103,
+          "elapsed_s": 0.0054357051849365234
+        }
+      ],
+      "tier_ratio_mean": 1.1040887444792546,
+      "tier_ratio_std": 0.02233509241004463,
+      "tier_ratio_cv": 0.02022943583269569
+    },
+    "logistic_regression": {
+      "per_seed": [
+        {
+          "seed": 0,
+          "n_params": 330,
+          "tier_ratio": 2.990986140491902,
+          "elapsed_s": 0.19816851615905762
+        },
+        {
+          "seed": 1,
+          "n_params": 330,
+          "tier_ratio": 3.149078772482843,
+          "elapsed_s": 0.1845088005065918
+        },
+        {
+          "seed": 2,
+          "n_params": 330,
+          "tier_ratio": 3.344418276093313,
+          "elapsed_s": 0.18785691261291504
+        },
+        {
+          "seed": 3,
+          "n_params": 330,
+          "tier_ratio": 2.7370191085690183,
+          "elapsed_s": 0.17898154258728027
+        },
+        {
+          "seed": 4,
+          "n_params": 330,
+          "tier_ratio": 3.467557602376572,
+          "elapsed_s": 0.1839921474456787
+        }
+      ],
+      "tier_ratio_mean": 3.1378119800027298,
+      "tier_ratio_std": 0.2888503205000434,
+      "tier_ratio_cv": 0.09205469363393536
+    },
+    "kernel_ridge": {
+      "per_seed": [
+        {
+          "seed": 0,
+          "n_params": 2000,
+          "tier_ratio": 1.4060107097703505,
+          "elapsed_s": 0.7651662826538086
+        },
+        {
+          "seed": 1,
+          "n_params": 2000,
+          "tier_ratio": 1.4233023210945295,
+          "elapsed_s": 0.7519524097442627
+        },
+        {
+          "seed": 2,
+          "n_params": 2000,
+          "tier_ratio": 1.414366412996695,
+          "elapsed_s": 0.7228224277496338
+        },
+        {
+          "seed": 3,
+          "n_params": 2000,
+          "tier_ratio": 1.4348313145057057,
+          "elapsed_s": 0.7173557281494141
+        },
+        {
+          "seed": 4,
+          "n_params": 2000,
+          "tier_ratio": 1.4292602519599136,
+          "elapsed_s": 0.7717764377593994
+        }
+      ],
+      "tier_ratio_mean": 1.421554202065439,
+      "tier_ratio_std": 0.011532403308631237,
+      "tier_ratio_cv": 0.008112531546018644
+    },
+    "gaussian_process": {
+      "per_seed": [
+        {
+          "seed": 0,
+          "n_params": 2000,
+          "tier_ratio": 5.266592909622202,
+          "elapsed_s": 3.5471582412719727
+        },
+        {
+          "seed": 1,
+          "n_params": 2000,
+          "tier_ratio": 5.361433717231843,
+          "elapsed_s": 6.978110313415527
+        },
+        {
+          "seed": 2,
+          "n_params": 2000,
+          "tier_ratio": 5.371798019906134,
+          "elapsed_s": 2.166848659515381
+        },
+        {
+          "seed": 3,
+          "n_params": 2000,
+          "tier_ratio": 5.4477527062959155,
+          "elapsed_s": 6.600346565246582
+        },
+        {
+          "seed": 4,
+          "n_params": 2000,
+          "tier_ratio": 5.395568896477022,
+          "elapsed_s": 6.711733341217041
+        }
+      ],
+      "tier_ratio_mean": 5.368629249906624,
+      "tier_ratio_std": 0.06606719579478937,
+      "tier_ratio_cv": 0.012306157255306552
+    }
+  },
+  "comparison": {
+    "trained_NN_W_256": 404,
+    "trained_QEC_W_256": 1762,
+    "untrained_NN_W_256": 1500,
+    "boolean_circuit_N_384": 100000000.0,
+    "random_matrix_N_9870": 104,
+    "ising_chain_N_10000": 2.7,
+    "harmonic_chain_N_10000": 4.9,
+    "cellular_automaton_N_128": 3.8,
+    "U1_lattice_L_8": 2.0
+  },
+  "interpretation_guide": "If all 4 non-deep learning baselines have T1/T3 in the O(1-10) band, the FIM tier hierarchy requires DEPTH \u2014 not 'any parameterized learner'. The universality claim sharpens: 'three-tier hierarchy <=> layered sequential computation', with explicit depth requirement."
+}
