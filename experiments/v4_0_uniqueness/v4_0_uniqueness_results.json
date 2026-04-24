@@ -388,5 +388,23 @@
   "meta": {
     "seeds": 6,
     "probes": 32
+  },
+  "boolean_circuit_verification": {
+    "note": "V4.0 original reported BC as underflow-affected (T3=0 in some seeds). Re-verified 2026-04-24 with vectorized code + higher probe counts: BC tier ratio is GENUINE and consistent across n_probes=32/300 and N=384/1000 in the 10^7-10^8 range. NOT an underflow artifact.",
+    "measurements_2026_04_24": {
+      "N=384, n_probes=32, 3 seeds": {
+        "mean_tier_ratio": 101000000.0,
+        "cv": 1.715
+      },
+      "N=384, n_probes=300, 3 seeds": {
+        "mean_tier_ratio": 51800000.0,
+        "cv": 1.72
+      },
+      "N=1000, n_probes=100, 3 seeds": {
+        "mean_tier_ratio": 75900000.0,
+        "cv": 1.462
+      }
+    },
+    "consequence": "Boolean circuit (non-learning, sequential-gate) shows tier ratios > trained NN. The V4.0 claim \"NN is unique\" is wrong. The correct claim is \"layered sequential computation produces tier hierarchy\" \u2014 both NN and BC are layered sequential systems; Ising/CA/RM are not."
   }
 }

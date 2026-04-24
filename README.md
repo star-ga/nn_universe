@@ -161,6 +161,22 @@ All three architectures trained on the same 32×32×3 Gaussian-noise self-predic
 
 **Naestro Tier-1 items 1, 2, 3, 4 all ✅ closed.**
 
+## Audit v3 correction — Boolean circuit re-verification (2026-04-24)
+
+The multi-LLM audit v3 (Gemini + Grok + Mistral + DeepSeek + Zhipu) flagged that the V4.0 "NN is unique" claim is undermined by the boolean-circuit control, which V4.0 had reported as "underflow-affected" at 50M× tier ratio. Re-verified with vectorized code + higher probe counts (2026-04-24):
+
+| Config | BC T1/T3 | Seeds |
+|--------|----------|-------|
+| N=384, n_probes=32 | $1.01 \times 10^8$ (CV 172%) | 3 |
+| N=384, n_probes=300 | $5.18 \times 10^7$ (CV 172%) | 3 |
+| N=1000, n_probes=100 | $7.59 \times 10^7$ (CV 146%) | 3 |
+
+**The BC tier ratio is real, not an underflow artifact.** It is consistently in the 10^7–10^8 range across probe counts and sizes, *larger* than the trained NN's 10^4.
+
+**Correction to the universality claim:** The V4.0 / V4.1 claim "FIM tier hierarchy is absent from non-learning systems" is incorrect. The correct claim is: **layered sequential computation** (neural networks *or* boolean circuits, both of which have a chain of sequential gates that amplify gradient asymmetries across depth) produces the tier hierarchy. *Non-layered / non-sequential* systems (random matrix, Ising chain, harmonic chain, cellular automaton, where every parameter has equal access to the output) do not. The universality class is **depth-induced gradient-chain asymmetry**, not "learning" per se. This is consistent with the V4.1 finding that untrained ReLU MLPs already show the hierarchy.
+
+This revision weakens but does not refute the cosmological implications: if the universe's substrate is a layered sequential computation (which an NN is a subset of), the framework holds. A literal NN substrate is one specific instantiation of the broader class.
+
 ## V4.1 Re-interpretation: The FIM hierarchy is init-induced, not learning-induced
 
 A follow-up experiment (`experiments/v4_0_uniqueness/run_trained_vs_untrained.py`, 5 widths × 5 seeds, 20k SGD steps, 200 FIM probes) compares trained vs **untrained** NN tier ratios at matched architecture:
