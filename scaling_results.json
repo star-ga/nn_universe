@@ -100,14 +100,27 @@
       "train_time": 253.4,
       "bf16": true,
       "grad_ckpt": true
+    },
+    {
+      "width": 45000,
+      "params": 6078060032,
+      "max_sv_ratio": 1.1,
+      "fim_tier1_tier3": 204.4,
+      "train_time": 537.6,
+      "bf16": true,
+      "grad_ckpt": true,
+      "max_sv_ratio_note": "not measured \u2014 stem/head layer only at min_dim>4000"
     }
   ],
   "sv_power_law": {
     "exponent": 0.516,
-    "r_squared": 0.857
+    "r_squared": 0.857,
+    "n_points": 12,
+    "note": "W=45000 excluded (stem/head-only SV at min_dim>4000)"
   },
   "fim_power_law": {
-    "exponent": -0.012,
-    "r_squared": 0.017
+    "exponent": -0.02,
+    "r_squared": 0.055,
+    "n_points": 13
   }
 }
