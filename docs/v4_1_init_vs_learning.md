@@ -22,7 +22,7 @@
 FIM diagonal estimates are Monte-Carlo in nature; MC noise concentrates
 in the small-FIM tail and artificially inflates the Tier-1/Tier-3 ratio
 at low probe counts. V4.0 used `n_probes = 32`; V4.1 uses `n_probes =
-200`. At matched N (~3-5k params) the V4.0 trained-NN ratio was 26,449×
+200`. At matched N (~3-5k params) the V4.0 trained-NN ratio was 13,752×
 (6-seed mean), whereas V4.1 trained measurements give ~1,000× at the
 same width. **Most of that factor-25 difference is probe-count MC-noise,
 not training dynamics.** The *internal comparison within V4.1* (trained
@@ -75,7 +75,7 @@ In the cosmological analogy: if the universe is a neural network, what correspon
 
 ### V4.0 — uniqueness
 
-The V4.0 contrast between trained NN (26,449×) and non-learning baselines (Ising 3×, Harmonic 4×, CA 4×) remains real: NN's tier ratio is higher than any non-NN baseline tested. But the *mechanism* is architectural, not learning-based. An **untrained** NN of matched N would still dominate the non-NN baselines by 10³×. The uniqueness signal is: *layered non-linear architecture with Kaiming init* → sharp tier ratio; *non-layered parameterized systems* → flat.
+The V4.0 contrast between trained NN (13,752×) and non-learning baselines (Ising 3×, Harmonic 4×, CA 4×) remains real: NN's tier ratio is higher than any non-NN baseline tested. But the *mechanism* is architectural, not learning-based. An **untrained** NN of matched N would still dominate the non-NN baselines by 10³×. The uniqueness signal is: *layered non-linear architecture with Kaiming init* → sharp tier ratio; *non-layered parameterized systems* → flat.
 
 ### V3.0 Tier-1 universality findings
 

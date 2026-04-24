@@ -91,7 +91,7 @@ Same 5-layer 256-neuron ReLU MLP architecture as V1.0, trained on toric-code syn
 | hidden 4 | 560× | **8,406×** |
 | head | 3.5× | 7.2× |
 
-FIM T1/T3 at width 256: cosmology = 637×, QEC = 850,866× (three orders of magnitude deeper).
+FIM T1/T3 at width 256 (both at n_probes=300, Adam): cosmology V1.0 = 637×, QEC V2.1 = 1,762×. QEC is ~3× deeper, not 3 orders of magnitude deeper (an earlier summary claimed "three orders" based on the old SGD+momentum single-run value of 850,866 which was methodology-inflated — use the Adam-trained sweep value).
 
 **Width sweep** (32–1024, Adam optimizer):
 - QEC SV power law: $N^{0.807}$, $R^2 = 0.89$
@@ -99,20 +99,18 @@ FIM T1/T3 at width 256: cosmology = 637×, QEC = 850,866× (three orders of magn
 - Cosmology V1.2 SV power law: $N^{0.566}$, $R^2 = 0.84$ (corrected by V3.0 to $N^{0.516}$)
 - Cosmology V1.2 FIM T1/T3 power law: approx flat across 5 decades
 
-### 2.4 V3.0 Task-3 — Symbolic Regression Universality (Naestro Tier-1 item 1)
+### 2.4 V3.0 Task-3 + Task-4 — Four-Task Universality (Naestro Tier-1 item 1)
 
-Third task: symbolic regression of degree-8 random polynomials at the V1.0/V2.1 architecture:
-- SV power law: $N^{0.555}$, $R^2 = 0.614$
-- FIM T1/T3 power law: $N^{1.432}$, $R^2 = 0.941$ (super-linear)
-- Completes the 3-task universality check:
+Third and fourth tasks added (`experiments/v3_0_task3_symbolic/`, `experiments/v3_0_task4_vision/`):
 
-| Task | SV exponent | FIM exponent |
-|------|-------------|--------------|
-| Cosmology self-prediction | 0.516 | ≈ 0 |
-| QEC toric-code decoding | 0.807 | 1.386 |
-| Symbolic regression | 0.555 | 1.432 |
+| Task | SV exponent | FIM exponent | Notes |
+|------|-------------|--------------|-------|
+| Cosmology self-prediction | 0.516 | ≈ 0 | 12 widths, clean |
+| QEC toric-code decoding | 0.807 | 1.386 | 6 widths, Adam, clean |
+| Symbolic regression | 0.555 | 1.432 | 6 widths, clean |
+| Vision classification | 1.02 | **1.067** (clean 4 widths) / 2.748 (6 widths w/ underflow) | T1/T3 underflow at W ≥ 512, use 4-point fit |
 
-**Power-law FORM holds across all three tasks.** Exponents are task-dependent but the form is invariant. The FIM-tier exponent is super-linear and large for the two structured tasks (QEC, symbolic) and ≈0 for the unstructured task (self-prediction of Gaussian noise), consistent with the hypothesis that structured objectives drive sharper Tier-1 distinction.
+**Power-law FORM holds across all four tasks.** Exponents are task-dependent but the three structured-task FIM exponents cluster in the 1.07–1.43 band; cosmology is ≈0 (unstructured). Initial paper-draft headline of $N^{2.748}$ for vision was a Tier-3 float32 underflow artifact that I caught in the v2 audit; the corrected exponent is $N^{1.07}$.
 
 ### 2.4 V3.1 — Mock Observational Pipeline
 
