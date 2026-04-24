@@ -244,9 +244,27 @@ class HarmonicOscillator(Baseline):
         only (0,0) for i=0). We exploit this to compute all N per-parameter
         gradients at O(N * M) cost where M = number of modes, instead of
         O(N * M * N^2) for the dense einsum.
+
+        For N > 2000 we use ``scipy.linalg.eigh_tridiagonal`` which is
+        O(N^2) vs. O(N^3) for ``np.linalg.eigh``. The stiffness matrix is
+        exactly tridiagonal by construction, so no approximation is
+        introduced; this just exploits the sparsity.
         """
         K = self._stiffness_matrix()
-        eigvals, eigvecs = np.linalg.eigh(K)
+        if self.N > 2000:
+            # Tridiagonal: pass the diagonal (d) and sub-diagonal (e).
+            # scipy's eigh_tridiagonal returns eigenvalues + eigenvectors.
+            try:
+                from scipy.linalg import eigh_tridiagonal
+                d = np.diag(K).astype(np.float64)
+                e = np.diag(K, -1).astype(np.float64)
+                eigvals, eigvecs = eigh_tridiagonal(d, e)
+                eigvals = eigvals.astype(np.float32)
+                eigvecs = eigvecs.astype(np.float32)
+            except Exception:
+                eigvals, eigvecs = np.linalg.eigh(K)
+        else:
+            eigvals, eigvecs = np.linalg.eigh(K)
         eigvals = np.clip(eigvals, 1e-8, None)
         omega = np.sqrt(eigvals)  # (M,)
         # eigvecs[i, n] = i-th component of n-th eigenmode
