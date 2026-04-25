@@ -20,23 +20,6 @@
 
 ---
 
-### One-page index of the paper's claims (jump table)
-
-| § | Claim | Status | Backing |
-|---|---|---|---|
-| §4.5 | Empirical dichotomy: deep-sequential vs rest, $p = 1.7 \times 10^{-17}$ | confirmed | Mann–Whitney $U$, ROC AUC = 1.0, LOSO, B = 10 000 bootstrap |
-| §4.5 | Bonferroni-corrected per-system rejection at $\alpha = 0.05/13$ | confirmed | bootstrap CIs |
-| §4.5 | Partition-invariant: Gini, eff. rank, top-1 % mass all separate cleanly | confirmed | V4.3 |
-| §4.6 | $\sqrt{L}$ scaling of $\log(T_1/T_3)$, $R^2 \geq 0.94$ on 5 substrates | confirmed | V6.0–V6.4, V8.0, V9 |
-| §4.6 | Closed-form mechanism prediction (Theorem 1' + Corollary 1) | proved | Appendix B |
-| §4.6 | Pre-registered Mamba SSM out-of-sample test (H2 PARTIAL) | confirmed | V9.4 |
-| §4.6 | GPT-Tiny tied/untied attention narrowing | falsifier consumed | V9, V9.1 |
-| §4.6 | RNN/LSTM temporal-vs-spatial narrowing | falsifier consumed | V9.3 |
-| §4.6 | Real-data: CIFAR-10 ($T_1/T_3 = 778$) + CIFAR-100 ($T_1/T_3 = 166$) | confirmed | V9.2, V9.2b |
-| §4.7 | Probe convergence + dtype stability | confirmed | V6.0b |
-| §4.8 | Substrate panel main-text summary table | reference | — |
-| §5 | Cosmological framing | out of scope | Appendix D |
-
 ### Plain-language summary
 
 > **One question.** Why do deep neural networks always have a small set of "important" parameters and a large set of "redundant" ones, even before training?
