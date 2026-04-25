@@ -1,6 +1,6 @@
 """V9.3 — RNN / LSTM depth sweep.
 
-Gemini's specific request to reach 10/10 on architecture_coverage:
+A reviewer concern about reaching architecture_coverage 10/10:
 test whether *temporal* sequential composition (RNN / LSTM time-steps)
 induces the same FIM hierarchy as *spatial* layered composition (MLP
 hidden layers).

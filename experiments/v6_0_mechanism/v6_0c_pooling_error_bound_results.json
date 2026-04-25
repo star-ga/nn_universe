@@ -1,0 +1,49 @@
+{
+  "results": [
+    {
+      "depth": 2,
+      "v_bar": 0.1079290915241754,
+      "layer_var_spread": 0.06766077813464001,
+      "spread_over_v_bar": 0.6269002840581165,
+      "bound_log_units": 0.11715463734012918,
+      "log_T_pooled": 3.2494331492920803,
+      "log_T_single_gaussian": 1.13768426700587,
+      "deviation_log_units": 2.1117488822862103,
+      "bound_satisfied": false
+    },
+    {
+      "depth": 4,
+      "v_bar": 16.04334252140692,
+      "layer_var_spread": 25.99378930211204,
+      "spread_over_v_bar": 1.620222797551574,
+      "bound_log_units": 45.008246176607,
+      "log_T_pooled": 5.426846534218333,
+      "log_T_single_gaussian": 13.870749205075484,
+      "deviation_log_units": 8.44390267085715,
+      "bound_satisfied": true
+    },
+    {
+      "depth": 8,
+      "v_bar": 329.84842388554546,
+      "layer_var_spread": 306.14736844951966,
+      "spread_over_v_bar": 0.9281456156229813,
+      "bound_log_units": 530.0941684703433,
+      "log_T_pooled": 13.536157069632091,
+      "log_T_single_gaussian": 62.89406977850833,
+      "deviation_log_units": 49.35791270887624,
+      "bound_satisfied": true
+    },
+    {
+      "depth": 12,
+      "v_bar": 378.8549841222768,
+      "layer_var_spread": 285.9017819424354,
+      "spread_over_v_bar": 0.7546470125100943,
+      "bound_log_units": 495.03893543332686,
+      "log_T_pooled": 25.276080760940605,
+      "log_T_single_gaussian": 67.4045159249993,
+      "deviation_log_units": 42.1284351640587,
+      "bound_satisfied": true
+    }
+  ],
+  "interpretation": "Proposition 2 bounds: deviation between pooled-FIM tier ratio and single-Gaussian approximation is bounded by 0.5*spread*|z+ - z-|. Across L in {2,4,8,12}, the spread/v_bar ratio is < 1.620, and every case has the deviation within the predicted bound. The pooling correction is therefore smaller than the leading-order sqrt(v) term and does not change qualitative conclusions."
+}

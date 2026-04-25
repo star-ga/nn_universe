@@ -1,0 +1,19 @@
+{
+  "config": {
+    "model": "gpt2-medium",
+    "n_probes": 200,
+    "out": "/home/n/nn_universe/experiments/v9_modern_arch/v9_6_gpt2_medium_results.json"
+  },
+  "n_params": 354823168,
+  "model": "gpt2-medium",
+  "tier1_mean": 0.0013137729836969875,
+  "tier3_mean": 2.1461357442518643e-08,
+  "tier_ratio": 61215.74496001717,
+  "partition_invariant": {
+    "gini": 0.9955446269965178,
+    "effective_rank_normalised": 8.258122840900472e-16,
+    "top_1pct_mass": 0.986503312137114
+  },
+  "fim_measurement_s": 20.1735577583313,
+  "interpretation": "FIM tier hierarchy on pretrained gpt2-medium (354,823,168 params), production-scale autoregressive transformer pretrained on WebText. Same protocol as V9.2/V9.2b CIFAR (200 probes, float64 accumulation), with text inputs and language-modelling cross-entropy loss. Closes the language-side architecture_coverage gap."
+}

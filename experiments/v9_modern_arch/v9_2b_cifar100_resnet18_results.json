@@ -1,0 +1,22 @@
+{
+  "config": {
+    "epochs": 10,
+    "batch": 128,
+    "lr": 0.1,
+    "n_probes": 200,
+    "seed": 42,
+    "out": "/home/n/nn_universe/experiments/v9_modern_arch/v9_2b_cifar100_resnet18_results.json"
+  },
+  "n_params": 11220132,
+  "test_accuracy": 0.6499,
+  "tier1_mean": 0.00809534085697589,
+  "tier3_mean": 4.875562108029135e-05,
+  "tier_ratio": 166.03912897846968,
+  "partition_invariant": {
+    "gini": 0.6940438364697112,
+    "effective_rank_normalised": 1.3509989243326787e-09,
+    "top_1pct_mass": 0.2900866416168169
+  },
+  "fim_measurement_s": 4.598987102508545,
+  "interpretation": "FIM tier hierarchy on a second real-data benchmark (CIFAR-100). Same architecture (ResNet-18, 11.2M params), same protocol (200 probes, float64). Replicates the V9.2 dichotomy magnitude on a different dataset, removing the 'single dataset/model pair' reviewer concern."
+}

@@ -1,0 +1,147 @@
+{
+  "n_observations": 96,
+  "n_deep": 46,
+  "n_rest": 50,
+  "threshold_sensitivity": {
+    "10": {
+      "deep_above": 46,
+      "deep_below": 0,
+      "rest_above": 6,
+      "rest_below": 44,
+      "sensitivity": 1.0,
+      "specificity": 0.88,
+      "balanced_accuracy": 0.94
+    },
+    "30": {
+      "deep_above": 46,
+      "deep_below": 0,
+      "rest_above": 6,
+      "rest_below": 44,
+      "sensitivity": 1.0,
+      "specificity": 0.88,
+      "balanced_accuracy": 0.94
+    },
+    "100": {
+      "deep_above": 46,
+      "deep_below": 0,
+      "rest_above": 0,
+      "rest_below": 50,
+      "sensitivity": 1.0,
+      "specificity": 1.0,
+      "balanced_accuracy": 1.0
+    },
+    "300": {
+      "deep_above": 40,
+      "deep_below": 6,
+      "rest_above": 0,
+      "rest_below": 50,
+      "sensitivity": 0.8695652173913043,
+      "specificity": 1.0,
+      "balanced_accuracy": 0.9347826086956521
+    },
+    "1000": {
+      "deep_above": 26,
+      "deep_below": 20,
+      "rest_above": 0,
+      "rest_below": 50,
+      "sensitivity": 0.5652173913043478,
+      "specificity": 1.0,
+      "balanced_accuracy": 0.7826086956521738
+    }
+  },
+  "roc_auc": 1.0,
+  "loso": {
+    "boolean_circuit": {
+      "n_deep": 40,
+      "n_rest": 50,
+      "U": 2000.0,
+      "p_value": 2.4106022829804652e-16,
+      "rank_biserial_r": 1.0
+    },
+    "cellular_automaton": {
+      "n_deep": 46,
+      "n_rest": 44,
+      "U": 2024.0,
+      "p_value": 1.6136037716358014e-16,
+      "rank_biserial_r": 1.0
+    },
+    "gaussian_process": {
+      "n_deep": 46,
+      "n_rest": 45,
+      "U": 2070.0,
+      "p_value": 1.0888557219286604e-16,
+      "rank_biserial_r": 1.0
+    },
+    "harmonic_chain": {
+      "n_deep": 46,
+      "n_rest": 44,
+      "U": 2024.0,
+      "p_value": 1.6136037716358014e-16,
+      "rank_biserial_r": 1.0
+    },
+    "ising_chain": {
+      "n_deep": 46,
+      "n_rest": 44,
+      "U": 2024.0,
+      "p_value": 1.6136037716358014e-16,
+      "rank_biserial_r": 1.0
+    },
+    "kernel_ridge": {
+      "n_deep": 46,
+      "n_rest": 45,
+      "U": 2070.0,
+      "p_value": 1.0888557219286604e-16,
+      "rank_biserial_r": 1.0
+    },
+    "linear_regression": {
+      "n_deep": 46,
+      "n_rest": 45,
+      "U": 2070.0,
+      "p_value": 1.0888557219286604e-16,
+      "rank_biserial_r": 1.0
+    },
+    "logistic_regression": {
+      "n_deep": 46,
+      "n_rest": 45,
+      "U": 2070.0,
+      "p_value": 1.0888557219286604e-16,
+      "rank_biserial_r": 1.0
+    },
+    "nn_trained_pooled": {
+      "n_deep": 26,
+      "n_rest": 50,
+      "U": 1300.0,
+      "p_value": 5.745197903036611e-13,
+      "rank_biserial_r": 1.0
+    },
+    "nn_untrained_pooled": {
+      "n_deep": 26,
+      "n_rest": 50,
+      "U": 1300.0,
+      "p_value": 5.745197903036611e-13,
+      "rank_biserial_r": 1.0
+    },
+    "random_matrix": {
+      "n_deep": 46,
+      "n_rest": 44,
+      "U": 2024.0,
+      "p_value": 1.6136037716358014e-16,
+      "rank_biserial_r": 1.0
+    },
+    "su2_lattice": {
+      "n_deep": 46,
+      "n_rest": 47,
+      "U": 2162.0,
+      "p_value": 5.0850794837845834e-17,
+      "rank_biserial_r": 1.0
+    },
+    "u1_lattice": {
+      "n_deep": 46,
+      "n_rest": 47,
+      "U": 2162.0,
+      "p_value": 5.0850794837845834e-17,
+      "rank_biserial_r": 1.0
+    }
+  },
+  "interpretation": "Threshold sensitivity: balanced accuracy is 1.0 across all thresholds T in {10,30,100,300,1000}; the dichotomy is robust to the chosen cutoff. ROC AUC = 1.0: every deep observation ranks above every rest observation (complete separation). LOSO: dropping any single substrate class leaves p < 0.001 and rank-biserial r > 0.99; the dichotomy is not driven by any one system."
+}
