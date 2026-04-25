@@ -246,6 +246,18 @@ The V1.0 FIM–Onsager correspondence (Nedovodin, 2026) hypothesised that the ti
 
 Theoretical closure of remaining items — a large-$N$ tier-fraction theorem, the 4D emergence argument of Nedovodin (2026), and a Lorentzian-signature derivation — are left open for future work.
 
+## 7. Broader impact
+
+This paper studies a structural property of deep neural networks (the FIM tier hierarchy) that is, by construction, *not* tied to any particular task, dataset, or downstream application. The findings are descriptive about the geometry of the parameter manifold, not prescriptive about how networks should be trained or deployed. We do not see direct dual-use risks: the partition-invariant statistics introduced here (Gini, effective rank, top-1 % FIM mass) are diagnostic tools for analysing trained networks rather than tools for modifying their behaviour. The cosmological interpretation in §5.3 is explicitly bracketed off as an open programme; nothing in the empirical or mechanistic results requires that framing to stand. All datasets used are synthetic or open-licensed standard benchmarks (CIFAR-10); no human subjects, no personal data, no privacy implications. The repository is permissively licensed for academic reuse with citation. We expect the practical impact of this work to be mostly upstream — sharpening the toolkit for studying deep-network structure — rather than directly altering any user-facing application.
+
+## 8. Figures
+
+Three primary figures are included with the supplementary materials and rebuilt deterministically from the JSON outputs by `plots/generate_v2_paper_figures.py`:
+
+- **Figure 1** (`plots/v2_fig1_dichotomy.png`): 12-substrate $T_1/T_3$ point estimates and 95 % bootstrap CIs on a log y-axis. The dichotomy threshold (100) is marked. Every deep-sequential CI lies entirely above the threshold; every rest-group CI lies entirely below. Visualises the Mann–Whitney $p = 1.7 \times 10^{-17}$ result.
+- **Figure 2** (`plots/v2_fig2_depth_sweep.png`): V6.0 untrained-MLP $\log(T_1/T_3)$ vs $\sqrt{L}$ at 7 depths × 5 seeds, with the OLS fit $\log(T_1/T_3) = 11.51\sqrt{L} + c$ overlaid. $R^2 = 0.983$.
+- **Figure 3** (`plots/v2_fig3_substrate_universality.png`): Four-substrate overlay (untrained MLP, trained MLP, boolean circuit, transformer) on the same $\log(T_1/T_3)$ vs $\sqrt{L}$ panel, with per-substrate slope and $R^2$ in the legend. The √L direction is shared but the slope is substrate-specific.
+
 ---
 
 ## Code and data
