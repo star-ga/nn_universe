@@ -1,0 +1,22 @@
+{
+  "config": {
+    "epochs": 10,
+    "batch": 128,
+    "lr": 0.1,
+    "n_probes": 200,
+    "seed": 42,
+    "out": "/home/n/nn_universe/experiments/v9_modern_arch/v9_2_cifar_resnet18_fim.json"
+  },
+  "n_params": 11173962,
+  "test_accuracy": 0.8139,
+  "tier1_mean": 0.007922502507366876,
+  "tier3_mean": 1.0180037336063676e-05,
+  "tier_ratio": 778.2390423363886,
+  "partition_invariant": {
+    "gini": 0.8434512682111623,
+    "effective_rank_normalised": 1.6792231012158304e-10,
+    "top_1pct_mass": 0.4781629524405028
+  },
+  "fim_measurement_s": 4.805410623550415,
+  "interpretation": "FIM tier hierarchy on a real-data benchmark (CIFAR-10) with a real architecture (ResNet-18, 11M params). All four observables (T1/T3, Gini, r_eff/n, top-1% mass) are reported; the deep-sequential prediction is high T1/T3 + Gini\u21921 + r_eff/n\u21920 + top-1% mass \u2192 significant fraction."
+}
