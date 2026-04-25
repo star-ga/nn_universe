@@ -120,11 +120,11 @@ def main() -> int:
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Device: {device}", flush=True)
 
-    print("Loading pretrained ResNet-50 (ImageNet-1K-V1)...", flush=True)
-    weights = ResNet50_Weights.IMAGENET1K_V1
+    print("Loading pretrained ResNet-50 (ImageNet-1K-V2, 80.86% top-1)...", flush=True)
+    weights = ResNet50_Weights.IMAGENET1K_V2
     net = resnet50(weights=weights).to(device)
     n_params = sum(p.numel() for p in net.parameters())
-    pretrain_acc = weights.meta.get("metrics", {}).get("acc@1", "76.13%")
+    pretrain_acc = weights.meta.get("_metrics", {}).get("ImageNet-1K", {}).get("acc@1", weights.meta.get("metrics", {}).get("acc@1", "unknown"))
     print(f"ResNet-50 params: {n_params:,}", flush=True)
     print(f"Pretrained ImageNet-1K top-1 acc: {pretrain_acc}", flush=True)
 
