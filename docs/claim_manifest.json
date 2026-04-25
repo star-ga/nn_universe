@@ -1,0 +1,174 @@
+{
+  "_comment": "Claim-to-artifact manifest. Each paper claim maps to (script, result_json, sha256, figure). Generated 2026-04-25 for the NeurIPS 2026 main-track submission.",
+  "paper": "docs/fim_tier_hierarchy_neurips2026.md",
+  "claims": [
+    {
+      "id": "C1",
+      "section": "§4.5",
+      "text": "Mann–Whitney U test gives p = 1.7e-17, rank-biserial r = 1.000",
+      "script": "experiments/v5_0_dichotomy_stats/dichotomy_stats.py",
+      "result_json": "experiments/v5_0_dichotomy_stats/dichotomy_stats_results.json",
+      "sha256": "aaedacbf9aae607db52852fad8c1e0240563dbc1f0b998be23dcb7855e5165d4",
+      "figure": "Fig. 1",
+      "repro": "python3 -m experiments.v5_0_dichotomy_stats.dichotomy_stats"
+    },
+    {
+      "id": "C2",
+      "section": "§4.5",
+      "text": "Threshold-sensitivity ROC AUC = 1.0, LOSO p < 5.8e-13 across 13 leave-outs",
+      "script": "experiments/v5_0_dichotomy_stats/threshold_sensitivity.py",
+      "result_json": "experiments/v5_0_dichotomy_stats/v5_1_threshold_sensitivity_results.json",
+      "sha256": "9469472382630e157113b35e7d620e0580fdaa21f27966322eef6b025d34e9a3",
+      "figure": "Tab. §4.5",
+      "repro": "python3 -m experiments.v5_0_dichotomy_stats.threshold_sensitivity"
+    },
+    {
+      "id": "C3",
+      "section": "§4.5",
+      "text": "B = 10000 bootstrap of Mann–Whitney p, max p across resamples = 1.71e-17",
+      "script": "experiments/v5_0_dichotomy_stats/mw_bootstrap.py",
+      "result_json": "experiments/v5_0_dichotomy_stats/v5_2_mw_bootstrap_results.json",
+      "sha256": "cacabdd06d2d558720fd2325f8b6a3a42023a475ca5cb0af6b65316227711d8c",
+      "figure": "§4.5 inline",
+      "repro": "python3 -m experiments.v5_0_dichotomy_stats.mw_bootstrap"
+    },
+    {
+      "id": "C4",
+      "section": "§4.5",
+      "text": "Partition-invariant Gini / effective rank / top-1 % mass dichotomy",
+      "script": "experiments/v4_3_statistics/partition_invariant_dichotomy.py",
+      "result_json": "experiments/v4_3_statistics/v4_3_partition_invariant_dichotomy.json",
+      "sha256": "65bf13d7bcf37d6c593953a4d4e5acc6d6047ba2e24c7e79675d27c72a79a56a",
+      "figure": "§4.5 inline",
+      "repro": "python3 -m experiments.v4_3_statistics.partition_invariant_dichotomy"
+    },
+    {
+      "id": "C5",
+      "section": "§4.6 V6.0",
+      "text": "Untrained MLP: log(T1/T3) ~ sqrt(L), R^2 = 0.983, slope = 11.5",
+      "script": "experiments/v6_0_depth_mechanism/depth_sweep.py",
+      "result_json": "experiments/v6_0_depth_mechanism/depth_sweep_results.json",
+      "figure": "Fig. 2",
+      "repro": "python3 -m experiments.v6_0_depth_mechanism.depth_sweep"
+    },
+    {
+      "id": "C6",
+      "section": "§4.6 V6.3",
+      "text": "Random boolean circuit: log(T1/T3) ~ sqrt(L), R^2 = 0.98",
+      "script": "experiments/v6_0_depth_mechanism/bc_depth_sweep.py",
+      "result_json": "experiments/v6_0_depth_mechanism/bc_depth_sweep_results.json",
+      "figure": "Fig. 3",
+      "repro": "python3 -m experiments.v6_0_depth_mechanism.bc_depth_sweep"
+    },
+    {
+      "id": "C7",
+      "section": "§4.6 V9",
+      "text": "ResNet residual stack: slope 16.74, R^2 = 0.999; GPT-Tiny tied attention: slope -0.22 (narrowing)",
+      "script": "experiments/v9_modern_arch/resnet_gpt2_depth.py",
+      "result_json": "experiments/v9_modern_arch/v9_resnet_gpt_results.json",
+      "figure": "Tab. §4.6",
+      "repro": "python3 -m experiments.v9_modern_arch.resnet_gpt2_depth"
+    },
+    {
+      "id": "C8",
+      "section": "§4.6 V9.1",
+      "text": "GPT-Tiny untied embedding: slope -0.027, R^2 = 0.39 (untied falsifier)",
+      "script": "experiments/v9_modern_arch/gpt_untied_depth.py",
+      "result_json": "experiments/v9_modern_arch/v9_1_gpt_untied_results.json",
+      "figure": "§4.6 V9.1",
+      "repro": "python3 -m experiments.v9_modern_arch.gpt_untied_depth"
+    },
+    {
+      "id": "C9",
+      "section": "§4.6 V9.2",
+      "text": "CIFAR-10 ResNet-18: T1/T3 = 778, 81.4% test acc, Gini = 0.84, top1% = 0.48",
+      "script": "experiments/v9_modern_arch/cifar_resnet18_fim.py",
+      "result_json": "experiments/v9_modern_arch/v9_2_cifar_resnet18_results.json",
+      "figure": "Tab. §4.6",
+      "repro": "python3 -m experiments.v9_modern_arch.cifar_resnet18_fim"
+    },
+    {
+      "id": "C10",
+      "section": "§4.6 V9.2b",
+      "text": "CIFAR-100 ResNet-18: T1/T3 = 166, 65% test acc, Gini = 0.69, top1% = 0.29",
+      "script": "experiments/v9_modern_arch/cifar100_resnet18_fim.py",
+      "result_json": "experiments/v9_modern_arch/v9_2b_cifar100_resnet18_results.json",
+      "sha256": "193e51b5bc054a063821e2f46aea221549463025da1dfd7734a417df9c02b607",
+      "figure": "Tab. §4.6",
+      "repro": "python3 -m experiments.v9_modern_arch.cifar100_resnet18_fim"
+    },
+    {
+      "id": "C11",
+      "section": "§4.6 V9.3",
+      "text": "RNN/LSTM temporal-vs-spatial narrowing: time-unrolled composition is structurally distinct",
+      "script": "experiments/v9_modern_arch/rnn_depth.py",
+      "result_json": "experiments/v9_modern_arch/v9_3_rnn_lstm_results.json",
+      "figure": "§4.6 V9.3",
+      "repro": "python3 -m experiments.v9_modern_arch.rnn_depth"
+    },
+    {
+      "id": "C12",
+      "section": "§4.6 V9.4",
+      "text": "Mamba SSM pre-registered out-of-sample: H2 PARTIAL, slope = 0.468, R^2 = 0.78",
+      "script": "experiments/v9_modern_arch/mamba_depth.py",
+      "result_json": "experiments/v9_modern_arch/v9_4_mamba_results.json",
+      "sha256": "a75cdd61c4712abdf88750ec09fae112390aa261fa6555dae50930557d19e857",
+      "figure": "§4.6 V9.4",
+      "repro": "python3 -m experiments.v9_modern_arch.mamba_depth"
+    },
+    {
+      "id": "C13",
+      "section": "§4.6 V9.5",
+      "text": "ImageNet ResNet-50 V1 (76.13% acc): T1/T3 = 1.76e21, Gini = 0.99, top1% = 0.76",
+      "script": "experiments/v9_modern_arch/imagenet_resnet50_fim.py",
+      "result_json": "experiments/v9_modern_arch/v9_5_imagenet_resnet50_results.json",
+      "sha256": "5c946350123a164f62052f92220747c4b9163bed4cc402c614ca8a22f6dc69bd",
+      "figure": "Tab. §4.6 + §4.8",
+      "repro": "python3 -m experiments.v9_modern_arch.imagenet_resnet50_fim"
+    },
+    {
+      "id": "C14",
+      "section": "§4.6 V9.5",
+      "text": "ImageNet ResNet-50 V2 (80.86% acc): T1/T3 = 7.32e6, Gini = 1.00, top1% = 0.96",
+      "script": "experiments/v9_modern_arch/imagenet_resnet50_fim.py",
+      "result_json": "experiments/v9_modern_arch/v9_5_imagenet_resnet50_v2_results.json",
+      "sha256": "1bb6089d7098624fa6d2572df028b466eb9977abfb5cf31ee7c74a31f45a3a22",
+      "figure": "Tab. §4.6 + §4.8",
+      "repro": "python3 -m experiments.v9_modern_arch.imagenet_resnet50_fim --out experiments/v9_modern_arch/v9_5_imagenet_resnet50_v2_results.json"
+    },
+    {
+      "id": "C15",
+      "section": "§4.6 V9.6",
+      "text": "GPT-2-medium pretrained (354.8M params): T1/T3 = 6.12e4, Gini = 1.00, top1% = 0.99",
+      "script": "experiments/v9_modern_arch/gpt2_medium_fim.py",
+      "result_json": "experiments/v9_modern_arch/v9_6_gpt2_medium_results.json",
+      "sha256": "a08980ac554eb26f9a846daf6681d0693e3cd3c51c452136e1ed330ddf9f2042",
+      "figure": "Tab. §4.6 + §4.8",
+      "repro": "python3 -m experiments.v9_modern_arch.gpt2_medium_fim --model gpt2-medium"
+    },
+    {
+      "id": "C16",
+      "section": "§4.7",
+      "text": "V6.0b probe convergence + float32-vs-float64 stability",
+      "script": "experiments/v6_0_mechanism/probe_convergence.py",
+      "result_json": "experiments/v6_0_mechanism/v6_0b_probe_convergence_results.json",
+      "sha256": "5e4ffc67974084e3b00b6fd2c61d7806c9135a039c0ffd1506560ce80e39571b",
+      "figure": "§4.7 inline",
+      "repro": "python3 -m experiments.v6_0_mechanism.probe_convergence"
+    },
+    {
+      "id": "C17",
+      "section": "Appendix B Proposition 2",
+      "text": "Pooling-error bound numerically verified at L >= 4",
+      "script": "experiments/v6_0_mechanism/pooling_error_bound.py",
+      "result_json": "experiments/v6_0_mechanism/v6_0c_pooling_error_bound_results.json",
+      "sha256": "6dac59cbbdd9c06f40008c18b84d750b6fa5210d6d938a4b6cde940c0d0ab41b",
+      "figure": "Appendix B inline",
+      "repro": "python3 -m experiments.v6_0_mechanism.pooling_error_bound"
+    }
+  ],
+  "verification": {
+    "method": "SHA-256 over the produced JSON file at submission time. Reviewers can re-run any `repro` command and verify the produced JSON matches the listed sha256.",
+    "regenerate_all": "bash run_all.sh"
+  }
+}

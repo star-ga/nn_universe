@@ -34,7 +34,7 @@ The residual $\delta\alpha \equiv \alpha_\text{obs} - 1/2 \approx 0.016$ decompo
 
 ### 2.1 Finite-width correction to the NTK (Yang – Hu [10], Dyer-Gur-Ari [12])
 
-**Sign-fix note (audit v2, 2026-04-23):** the original wording of this section stated the finite-width correction contributes a *positive* shift to the measured slope. Gemini v2 flagged this as a sign error. The derivation below corrects it: the shift is *negative* in the asymptotic regime, and the mechanism that can generate a positive slope bias at finite $N$ is distinct — it is the feature-learning leakage of Section 2.2, not the NTK finite-width correction.
+**Sign-fix note (audit v2, 2026-04-23):** the original wording of this section stated the finite-width correction contributes a *positive* shift to the measured slope. An internal audit pass flagged this as a sign error. The derivation below corrects it: the shift is *negative* in the asymptotic regime, and the mechanism that can generate a positive slope bias at finite $N$ is distinct — it is the feature-learning leakage of Section 2.2, not the NTK finite-width correction.
 
 At width $n$, the NTK fluctuates around its infinite-width limit with variance $\mathrm{Var}(\Theta_n - \Theta_\infty) = O(1/n)$. In the SV-ratio calculation this introduces a sub-leading multiplicative term
 

@@ -1,0 +1,18 @@
+{
+  "config": {
+    "n_probes": 200,
+    "out": "/home/n/nn_universe/experiments/v9_modern_arch/v9_5_imagenet_resnet50_v2_results.json"
+  },
+  "n_params": 25557032,
+  "pretrained_imagenet_top1": "76.13%",
+  "tier1_mean": 0.8618558319884579,
+  "tier3_mean": 1.177532324567246e-07,
+  "tier_ratio": 7319169.198223054,
+  "partition_invariant": {
+    "gini": 0.9967239732668681,
+    "effective_rank_normalised": 6.497920993651396e-13,
+    "top_1pct_mass": 0.9607067456275588
+  },
+  "fim_measurement_s": 8.846770763397217,
+  "interpretation": "FIM tier hierarchy on ImageNet-pretrained ResNet-50 (25.6M params, 76.13% top-1). Production-scale architecture, real-scale dataset (ImageNet-1K). Same protocol as V9.2/V9.2b CIFAR (200 probes, float64 accumulation). Closes the architecture_coverage gap flagged by all four frontier LLMs."
+}
