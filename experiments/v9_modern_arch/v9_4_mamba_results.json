@@ -1,0 +1,149 @@
+{
+  "preregistered_hypothesis": "H1 positive: Mamba SSM with distinct per-layer params follows \u221aL (R\u00b2 > 0.85, slope > 0); H2: smaller slope than ResNet due to selective gating; H3 null: flat/negative if something distinct.",
+  "config": {
+    "depths": [
+      1,
+      2,
+      4,
+      6,
+      8
+    ],
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "dim": 32,
+    "d_state": 16,
+    "seq_len": 8,
+    "n_probes": 200,
+    "out": "/home/n/nn_universe/experiments/v9_modern_arch/v9_4_mamba_results.json"
+  },
+  "per_run": [
+    {
+      "depth": 1,
+      "seed": 0,
+      "n_params": 8032,
+      "tier_ratio": 70915.65685865475,
+      "elapsed_s": 1.114220142364502
+    },
+    {
+      "depth": 1,
+      "seed": 1,
+      "n_params": 8032,
+      "tier_ratio": 73760.28968820846,
+      "elapsed_s": 1.0457377433776855
+    },
+    {
+      "depth": 1,
+      "seed": 2,
+      "n_params": 8032,
+      "tier_ratio": 69376.91106650842,
+      "elapsed_s": 1.0211565494537354
+    },
+    {
+      "depth": 2,
+      "seed": 0,
+      "n_params": 13888,
+      "tier_ratio": 107147.28028816506,
+      "elapsed_s": 1.993337631225586
+    },
+    {
+      "depth": 2,
+      "seed": 1,
+      "n_params": 13888,
+      "tier_ratio": 119631.98883861143,
+      "elapsed_s": 2.014716148376465
+    },
+    {
+      "depth": 2,
+      "seed": 2,
+      "n_params": 13888,
+      "tier_ratio": 122278.73169738571,
+      "elapsed_s": 1.8211174011230469
+    },
+    {
+      "depth": 4,
+      "seed": 0,
+      "n_params": 25600,
+      "tier_ratio": 144997.41394536968,
+      "elapsed_s": 3.4596176147460938
+    },
+    {
+      "depth": 4,
+      "seed": 1,
+      "n_params": 25600,
+      "tier_ratio": 183989.88944533787,
+      "elapsed_s": 3.6655335426330566
+    },
+    {
+      "depth": 4,
+      "seed": 2,
+      "n_params": 25600,
+      "tier_ratio": 201538.07780136852,
+      "elapsed_s": 3.580056667327881
+    },
+    {
+      "depth": 6,
+      "seed": 0,
+      "n_params": 37312,
+      "tier_ratio": 152751.35082889034,
+      "elapsed_s": 5.582873582839966
+    },
+    {
+      "depth": 6,
+      "seed": 1,
+      "n_params": 37312,
+      "tier_ratio": 191499.90447137004,
+      "elapsed_s": 5.998937129974365
+    },
+    {
+      "depth": 6,
+      "seed": 2,
+      "n_params": 37312,
+      "tier_ratio": 184722.75901072563,
+      "elapsed_s": 5.577178001403809
+    },
+    {
+      "depth": 8,
+      "seed": 0,
+      "n_params": 49024,
+      "tier_ratio": 157389.05952351485,
+      "elapsed_s": 7.434162616729736
+    },
+    {
+      "depth": 8,
+      "seed": 1,
+      "n_params": 49024,
+      "tier_ratio": 182818.80582662052,
+      "elapsed_s": 7.3819146156311035
+    },
+    {
+      "depth": 8,
+      "seed": 2,
+      "n_params": 49024,
+      "tier_ratio": 171847.87246595015,
+      "elapsed_s": 7.443181753158569
+    }
+  ],
+  "summary": {
+    "depths": [
+      1,
+      2,
+      4,
+      6,
+      8
+    ],
+    "mean_log_T1T3": [
+      11.17504390051503,
+      11.662731190689797,
+      12.073613629011271,
+      12.075273563081618,
+      12.04569727210662
+    ],
+    "slope_sqrt_L": 0.4676265143800141,
+    "R2": 0.7800934495597547,
+    "verdict": "H2 PARTIAL \u2014 positive slope but lower R\u00b2; selective gating attenuates",
+    "h1_pass": false
+  }
+}
