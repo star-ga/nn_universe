@@ -1,0 +1,311 @@
+{
+  "config": {
+    "resnet_depths": [
+      4,
+      8,
+      16,
+      32
+    ],
+    "gpt_depths": [
+      1,
+      2,
+      4,
+      6,
+      8,
+      12
+    ],
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "width": 128,
+    "dim": 64,
+    "vocab": 64,
+    "seq_len": 16,
+    "n_probes": 200,
+    "out": "/home/n/nn_universe/experiments/v9_modern_arch/v9_resnet_gpt2_results.json"
+  },
+  "per_run": [
+    {
+      "family": "resnet",
+      "depth": 4,
+      "seed": 0,
+      "n_params": 150720,
+      "tier_ratio": 2369826761.0426555,
+      "elapsed_s": 0.6971611976623535
+    },
+    {
+      "family": "resnet",
+      "depth": 4,
+      "seed": 1,
+      "n_params": 150720,
+      "tier_ratio": 1231364977.1333785,
+      "elapsed_s": 0.6586430072784424
+    },
+    {
+      "family": "resnet",
+      "depth": 4,
+      "seed": 2,
+      "n_params": 150720,
+      "tier_ratio": 7254244699.163286,
+      "elapsed_s": 0.6613702774047852
+    },
+    {
+      "family": "resnet",
+      "depth": 8,
+      "seed": 0,
+      "n_params": 284864,
+      "tier_ratio": 3095246163682685.0,
+      "elapsed_s": 1.2750306129455566
+    },
+    {
+      "family": "resnet",
+      "depth": 8,
+      "seed": 1,
+      "n_params": 284864,
+      "tier_ratio": 6.267090997059302e+17,
+      "elapsed_s": 1.2693307399749756
+    },
+    {
+      "family": "resnet",
+      "depth": 8,
+      "seed": 2,
+      "n_params": 284864,
+      "tier_ratio": 827644736370354.2,
+      "elapsed_s": 1.218735933303833
+    },
+    {
+      "family": "resnet",
+      "depth": 16,
+      "seed": 0,
+      "n_params": 553152,
+      "tier_ratio": 2.690804790988936e+26,
+      "elapsed_s": 2.1837968826293945
+    },
+    {
+      "family": "resnet",
+      "depth": 16,
+      "seed": 1,
+      "n_params": 553152,
+      "tier_ratio": 4.3176886948543044e+21,
+      "elapsed_s": 2.321720838546753
+    },
+    {
+      "family": "resnet",
+      "depth": 16,
+      "seed": 2,
+      "n_params": 553152,
+      "tier_ratio": 1.3087870562068593e+23,
+      "elapsed_s": 2.3607234954833984
+    },
+    {
+      "family": "resnet",
+      "depth": 32,
+      "seed": 0,
+      "n_params": 1089728,
+      "tier_ratio": 4.113248184001884e+35,
+      "elapsed_s": 4.5172154903411865
+    },
+    {
+      "family": "resnet",
+      "depth": 32,
+      "seed": 1,
+      "n_params": 1089728,
+      "tier_ratio": 1.595343382628754e+35,
+      "elapsed_s": 4.744629383087158
+    },
+    {
+      "family": "resnet",
+      "depth": 32,
+      "seed": 2,
+      "n_params": 1089728,
+      "tier_ratio": 1.3069328900449885e+38,
+      "elapsed_s": 4.550410985946655
+    },
+    {
+      "family": "gpt",
+      "depth": 1,
+      "seed": 0,
+      "n_params": 59392,
+      "tier_ratio": 452.42885521746894,
+      "elapsed_s": 0.4317808151245117
+    },
+    {
+      "family": "gpt",
+      "depth": 1,
+      "seed": 1,
+      "n_params": 59392,
+      "tier_ratio": 469.6216927649779,
+      "elapsed_s": 0.4300706386566162
+    },
+    {
+      "family": "gpt",
+      "depth": 1,
+      "seed": 2,
+      "n_params": 59392,
+      "tier_ratio": 418.85746265836605,
+      "elapsed_s": 0.42940449714660645
+    },
+    {
+      "family": "gpt",
+      "depth": 2,
+      "seed": 0,
+      "n_params": 109376,
+      "tier_ratio": 382.1292590641512,
+      "elapsed_s": 0.745711088180542
+    },
+    {
+      "family": "gpt",
+      "depth": 2,
+      "seed": 1,
+      "n_params": 109376,
+      "tier_ratio": 410.7800002706899,
+      "elapsed_s": 0.7929596900939941
+    },
+    {
+      "family": "gpt",
+      "depth": 2,
+      "seed": 2,
+      "n_params": 109376,
+      "tier_ratio": 385.4142774440795,
+      "elapsed_s": 0.8682172298431396
+    },
+    {
+      "family": "gpt",
+      "depth": 4,
+      "seed": 0,
+      "n_params": 209344,
+      "tier_ratio": 338.5534356734775,
+      "elapsed_s": 1.5972700119018555
+    },
+    {
+      "family": "gpt",
+      "depth": 4,
+      "seed": 1,
+      "n_params": 209344,
+      "tier_ratio": 373.71415614510255,
+      "elapsed_s": 1.5310947895050049
+    },
+    {
+      "family": "gpt",
+      "depth": 4,
+      "seed": 2,
+      "n_params": 209344,
+      "tier_ratio": 346.7486148752295,
+      "elapsed_s": 1.3411169052124023
+    },
+    {
+      "family": "gpt",
+      "depth": 6,
+      "seed": 0,
+      "n_params": 309312,
+      "tier_ratio": 315.2935526981118,
+      "elapsed_s": 2.1687045097351074
+    },
+    {
+      "family": "gpt",
+      "depth": 6,
+      "seed": 1,
+      "n_params": 309312,
+      "tier_ratio": 350.1024544600524,
+      "elapsed_s": 2.073289394378662
+    },
+    {
+      "family": "gpt",
+      "depth": 6,
+      "seed": 2,
+      "n_params": 309312,
+      "tier_ratio": 329.04160237274084,
+      "elapsed_s": 2.1670122146606445
+    },
+    {
+      "family": "gpt",
+      "depth": 8,
+      "seed": 0,
+      "n_params": 409280,
+      "tier_ratio": 292.7391508458274,
+      "elapsed_s": 2.7943334579467773
+    },
+    {
+      "family": "gpt",
+      "depth": 8,
+      "seed": 1,
+      "n_params": 409280,
+      "tier_ratio": 332.3796395001635,
+      "elapsed_s": 2.8763175010681152
+    },
+    {
+      "family": "gpt",
+      "depth": 8,
+      "seed": 2,
+      "n_params": 409280,
+      "tier_ratio": 310.7936590221614,
+      "elapsed_s": 2.794830560684204
+    },
+    {
+      "family": "gpt",
+      "depth": 12,
+      "seed": 0,
+      "n_params": 609216,
+      "tier_ratio": 239.04660010656931,
+      "elapsed_s": 4.303169012069702
+    },
+    {
+      "family": "gpt",
+      "depth": 12,
+      "seed": 1,
+      "n_params": 609216,
+      "tier_ratio": 257.8508531522289,
+      "elapsed_s": 4.424921989440918
+    },
+    {
+      "family": "gpt",
+      "depth": 12,
+      "seed": 2,
+      "n_params": 609216,
+      "tier_ratio": 252.39336859301292,
+      "elapsed_s": 4.481102705001831
+    }
+  ],
+  "summary": {
+    "resnet": {
+      "depths": [
+        4,
+        8,
+        16,
+        32
+      ],
+      "mean_log_T1T3": [
+        21.74077481052832,
+        36.99916927392141,
+        54.63420595633276,
+        83.60939171962845
+      ],
+      "slope_sqrt_L": 16.740569149338945,
+      "R2_sqrt_L": 0.9989731246528177,
+      "pass": true
+    },
+    "gpt": {
+      "depths": [
+        1,
+        2,
+        4,
+        6,
+        8,
+        12
+      ],
+      "mean_log_T1T3": [
+        6.101362887926719,
+        5.972711839665362,
+        5.86559107383047,
+        5.802638050206471,
+        5.741562988868854,
+        5.5200095661920825
+      ],
+      "slope_sqrt_L": -0.21650444509394476,
+      "R2_sqrt_L": 0.9739476692826989,
+      "pass": true
+    }
+  }
+}

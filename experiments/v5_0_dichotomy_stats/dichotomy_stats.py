@@ -170,16 +170,22 @@ def main():
                if isinstance(v, list) and k not in ("boolean_circuit_raw_n",)}
 
     results = {}
+    n_systems = len(systems)
+    bonferroni_alpha = 0.05 / n_systems  # FWER-corrected per-system alpha
     for name, vals in systems.items():
         point, ci_low, ci_high, method, n = bootstrap_log_ci(vals)
-        ci_crosses_100 = ci_low < THRESHOLD < ci_high
+        # Bonferroni-corrected CI at alpha = 0.05 / n_systems.
+        _, bonf_low, bonf_high, _, _ = bootstrap_log_ci(vals, alpha=bonferroni_alpha)
         results[name] = {
             "n_seeds": n,
             "point_estimate": round(point, 4),
             "ci_95_low": round(ci_low, 4),
             "ci_95_high": round(ci_high, 4),
+            "ci_bonferroni_low": round(bonf_low, 4),
+            "ci_bonferroni_high": round(bonf_high, 4),
             "method": method,
-            "ci_crosses_threshold_100": ci_crosses_100,
+            "ci_crosses_threshold_100": ci_low < THRESHOLD < ci_high,
+            "ci_bonferroni_crosses_threshold_100": bonf_low < THRESHOLD < bonf_high,
             "above_threshold_1000": point >= 1000.0,
             "group": "deep_sequential" if name in DEEP_SEQUENTIAL else "rest",
         }
@@ -203,6 +209,15 @@ def main():
             "n_bootstrap": N_BOOT,
             "threshold": THRESHOLD,
             "alpha": 0.05,
+            "n_systems": n_systems,
+            "bonferroni_alpha": bonferroni_alpha,
+            "bonferroni_note": (
+                f"Family-wise error rate controlled by Bonferroni correction "
+                f"alpha=0.05/{n_systems}={bonferroni_alpha:.5f}. The headline "
+                "Mann-Whitney U test on group separation tests a single hypothesis "
+                "and does not require correction; the per-system CIs are reported "
+                "at both 95% and Bonferroni-corrected levels for transparency."
+            ),
             "ci_method": "log_transformed_bootstrap_percentile (normal_approx if n<3)",
             "test": "Mann-Whitney U (one-sided: deep > rest) on log(T1/T3)",
             "boolean_circuit_note": (

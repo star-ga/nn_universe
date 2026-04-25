@@ -59,7 +59,7 @@ This three-line derivation predicts: (a) $\mathrm{Var}[\log F_{ii}]$ is linear i
 
 ---
 
-## 4. Empirical Confirmation — Five Experiments, One Theorem
+## 4. Empirical Confirmation — Six Experiments, One Theorem
 
 All four experiments test the same prediction on structurally different substrates. All four pass at $R^2 \geq 0.94$.
 
@@ -70,6 +70,7 @@ All four experiments test the same prediction on structurally different substrat
 | V6.3 boolean circuits | Layered random boolean gates, 5 depths $\times$ 3 seeds | $\log(T_1/T_3) \propto \sqrt{L}$, no neurons, no gradients | 0.980 | PASS |
 | V6.4 transformers | Pre-norm Transformer blocks, 6 depths $\times$ 3 seeds | $\log(T_1/T_3) \propto \sqrt{L}$ with attention + residuals | 0.969 | PASS |
 | V8.0 binary tensor networks | Balanced binary tree, 8 depths $\times$ 5 seeds, tanh tensor at every node | $\log(T_1/T_3) \propto \sqrt{L}$ on a non-neural MERA-like substrate | 0.992 | PASS |
+| V9 ResNet residual stacks | BatchNorm + residual, depths 4/8/16/32, width 128 | $\log(T_1/T_3) \propto \sqrt{L}$ on modern residual architecture | 0.999 | PASS (slope 16.74, T1/T3 reaches $1.3\times10^{38}$ at L=32) |
 
 *(Sources: `experiments/v6_0_depth_mechanism/v6_0_depth_sweep.json`, `v6_2_trained_depth_sweep.json`, `v6_3_bc_depth_sweep.json`, `v6_4_transformer_depth_sweep.json`)*
 

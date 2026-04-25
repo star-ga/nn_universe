@@ -19,11 +19,14 @@ a 296k-param cosmology toy experiment, now has:
 2. **Mechanism-backed theorem** via Hanin & Nica (Comm. Math. Phys. 376, 2020).
    The FIM diagonal is log-normal with $\mathrm{Var}[\log F_{ii}] \propto L$,
    giving $\log(T_1/T_3) \propto \sqrt{L}$. Empirically confirmed at
-   $R^2 \geq 0.94$ across **five independent substrate classes**:
+   $R^2 \geq 0.94$ across **six independent substrate classes**:
    untrained MLP $R^2 = 0.98$ (V6.0), trained MLP $R^2 = 0.94$ (V6.2),
    random boolean circuits $R^2 = 0.98$ (V6.3), transformers $R^2 = 0.97$
-   (V6.4), and balanced binary tensor networks $R^2 = 0.99$ (V8.0 —
-   the empirical bridge to MERA / HaPPY tensor-network cosmology).
+   (V6.4), balanced binary tensor networks $R^2 = 0.99$ (V8.0 — the
+   empirical bridge to MERA / HaPPY tensor-network cosmology), and
+   ResNet residual stacks $R^2 = 0.999$ at slope 16.74 over depths
+   4-32 (V9 — modern-architecture confirmation, parameter range
+   150 k - 1.09 M).
    Width-independence confirmed (V6.1). All four activations (ReLU /
    GELU / tanh / Swish) pass at $R^2 \geq 0.97$ with σ-prefactor
    varying as the per-layer Jacobian variance dictates (V6.5).
