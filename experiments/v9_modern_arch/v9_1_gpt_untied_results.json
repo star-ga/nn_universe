@@ -1,0 +1,171 @@
+{
+  "config": {
+    "depths": [
+      1,
+      2,
+      4,
+      6,
+      8,
+      12
+    ],
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "dim": 32,
+    "vocab": 64,
+    "seq_len": 16,
+    "n_probes": 200,
+    "out": "/home/n/nn_universe/experiments/v9_modern_arch/v9_1_gpt_untied_results.json"
+  },
+  "per_run": [
+    {
+      "depth": 1,
+      "seed": 0,
+      "n_params": 17440,
+      "tier_ratio": 5831.303564287755,
+      "elapsed_s": 0.4996206760406494
+    },
+    {
+      "depth": 1,
+      "seed": 1,
+      "n_params": 17440,
+      "tier_ratio": 6580.276311773313,
+      "elapsed_s": 0.5265069007873535
+    },
+    {
+      "depth": 1,
+      "seed": 2,
+      "n_params": 17440,
+      "tier_ratio": 6050.135294643601,
+      "elapsed_s": 0.4927058219909668
+    },
+    {
+      "depth": 2,
+      "seed": 0,
+      "n_params": 30144,
+      "tier_ratio": 5418.889342603725,
+      "elapsed_s": 0.8513834476470947
+    },
+    {
+      "depth": 2,
+      "seed": 1,
+      "n_params": 30144,
+      "tier_ratio": 6286.584639183732,
+      "elapsed_s": 0.8357319831848145
+    },
+    {
+      "depth": 2,
+      "seed": 2,
+      "n_params": 30144,
+      "tier_ratio": 5510.919106028374,
+      "elapsed_s": 0.8314108848571777
+    },
+    {
+      "depth": 4,
+      "seed": 0,
+      "n_params": 55552,
+      "tier_ratio": 5593.436541523459,
+      "elapsed_s": 1.2886457443237305
+    },
+    {
+      "depth": 4,
+      "seed": 1,
+      "n_params": 55552,
+      "tier_ratio": 6282.025149754947,
+      "elapsed_s": 1.3889884948730469
+    },
+    {
+      "depth": 4,
+      "seed": 2,
+      "n_params": 55552,
+      "tier_ratio": 5162.729380134729,
+      "elapsed_s": 1.4480350017547607
+    },
+    {
+      "depth": 6,
+      "seed": 0,
+      "n_params": 80960,
+      "tier_ratio": 5638.045889077878,
+      "elapsed_s": 2.008273124694824
+    },
+    {
+      "depth": 6,
+      "seed": 1,
+      "n_params": 80960,
+      "tier_ratio": 6053.855782874835,
+      "elapsed_s": 1.9917633533477783
+    },
+    {
+      "depth": 6,
+      "seed": 2,
+      "n_params": 80960,
+      "tier_ratio": 4879.958121022418,
+      "elapsed_s": 1.9468283653259277
+    },
+    {
+      "depth": 8,
+      "seed": 0,
+      "n_params": 106368,
+      "tier_ratio": 5924.701391741379,
+      "elapsed_s": 2.7201690673828125
+    },
+    {
+      "depth": 8,
+      "seed": 1,
+      "n_params": 106368,
+      "tier_ratio": 5527.746303304662,
+      "elapsed_s": 2.6272642612457275
+    },
+    {
+      "depth": 8,
+      "seed": 2,
+      "n_params": 106368,
+      "tier_ratio": 5218.653831121818,
+      "elapsed_s": 2.5918991565704346
+    },
+    {
+      "depth": 12,
+      "seed": 0,
+      "n_params": 157184,
+      "tier_ratio": 6147.097748778677,
+      "elapsed_s": 3.967289924621582
+    },
+    {
+      "depth": 12,
+      "seed": 1,
+      "n_params": 157184,
+      "tier_ratio": 5775.296914744561,
+      "elapsed_s": 3.995208978652954
+    },
+    {
+      "depth": 12,
+      "seed": 2,
+      "n_params": 157184,
+      "tier_ratio": 5291.964113639484,
+      "elapsed_s": 4.060138702392578
+    }
+  ],
+  "summary": {
+    "slope_sqrt_L": -0.026987405616466224,
+    "R2": 0.39327794676338557,
+    "depths": [
+      1,
+      2,
+      4,
+      6,
+      8,
+      12
+    ],
+    "mean_log_T1T3": [
+      8.723554593305893,
+      8.652768689939512,
+      8.641339165002227,
+      8.612878465149235,
+      8.621471932978219,
+      8.653008343496486
+    ]
+  },
+  "interpretation": "If slope > 0 with R\u00b2 > 0.8, the prediction in the paper (GPT-Tiny's negative slope is due to tied embeddings) is confirmed. If slope is still negative, the narrowing is more general than just embedding tying."
+}
