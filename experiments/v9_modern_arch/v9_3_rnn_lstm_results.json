@@ -1,0 +1,303 @@
+{
+  "config": {
+    "seq_lens": [
+      2,
+      4,
+      8,
+      16,
+      32
+    ],
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "dim": 16,
+    "hidden": 64,
+    "n_probes": 300,
+    "out": "/home/n/nn_universe/experiments/v9_modern_arch/v9_3_rnn_lstm_results.json"
+  },
+  "per_run": [
+    {
+      "arch": "rnn",
+      "seq_len": 2,
+      "seed": 0,
+      "n_params": 6288,
+      "tier_ratio": 76.60175172640577,
+      "elapsed_s": 0.24014973640441895
+    },
+    {
+      "arch": "rnn",
+      "seq_len": 2,
+      "seed": 1,
+      "n_params": 6288,
+      "tier_ratio": 73.24285409599838,
+      "elapsed_s": 0.19844985008239746
+    },
+    {
+      "arch": "rnn",
+      "seq_len": 2,
+      "seed": 2,
+      "n_params": 6288,
+      "tier_ratio": 75.07308752479149,
+      "elapsed_s": 0.19931459426879883
+    },
+    {
+      "arch": "rnn",
+      "seq_len": 4,
+      "seed": 0,
+      "n_params": 6288,
+      "tier_ratio": 49.199868782581575,
+      "elapsed_s": 0.2905595302581787
+    },
+    {
+      "arch": "rnn",
+      "seq_len": 4,
+      "seed": 1,
+      "n_params": 6288,
+      "tier_ratio": 45.87438136181788,
+      "elapsed_s": 0.2791733741760254
+    },
+    {
+      "arch": "rnn",
+      "seq_len": 4,
+      "seed": 2,
+      "n_params": 6288,
+      "tier_ratio": 48.74971729701269,
+      "elapsed_s": 0.2775602340698242
+    },
+    {
+      "arch": "rnn",
+      "seq_len": 8,
+      "seed": 0,
+      "n_params": 6288,
+      "tier_ratio": 45.44040179318396,
+      "elapsed_s": 0.41980719566345215
+    },
+    {
+      "arch": "rnn",
+      "seq_len": 8,
+      "seed": 1,
+      "n_params": 6288,
+      "tier_ratio": 43.60705285109427,
+      "elapsed_s": 0.43465518951416016
+    },
+    {
+      "arch": "rnn",
+      "seq_len": 8,
+      "seed": 2,
+      "n_params": 6288,
+      "tier_ratio": 45.152108093065266,
+      "elapsed_s": 0.4175233840942383
+    },
+    {
+      "arch": "rnn",
+      "seq_len": 16,
+      "seed": 0,
+      "n_params": 6288,
+      "tier_ratio": 46.59419715117257,
+      "elapsed_s": 0.7406644821166992
+    },
+    {
+      "arch": "rnn",
+      "seq_len": 16,
+      "seed": 1,
+      "n_params": 6288,
+      "tier_ratio": 43.87477679013471,
+      "elapsed_s": 0.7106266021728516
+    },
+    {
+      "arch": "rnn",
+      "seq_len": 16,
+      "seed": 2,
+      "n_params": 6288,
+      "tier_ratio": 45.540551650130695,
+      "elapsed_s": 0.7123923301696777
+    },
+    {
+      "arch": "rnn",
+      "seq_len": 32,
+      "seed": 0,
+      "n_params": 6288,
+      "tier_ratio": 45.820743140644154,
+      "elapsed_s": 1.2955889701843262
+    },
+    {
+      "arch": "rnn",
+      "seq_len": 32,
+      "seed": 1,
+      "n_params": 6288,
+      "tier_ratio": 43.40724918256387,
+      "elapsed_s": 1.2720084190368652
+    },
+    {
+      "arch": "rnn",
+      "seq_len": 32,
+      "seed": 2,
+      "n_params": 6288,
+      "tier_ratio": 46.84906548105992,
+      "elapsed_s": 1.376565933227539
+    },
+    {
+      "arch": "lstm",
+      "seq_len": 2,
+      "seed": 0,
+      "n_params": 22032,
+      "tier_ratio": 242898.2065632672,
+      "elapsed_s": 0.353069543838501
+    },
+    {
+      "arch": "lstm",
+      "seq_len": 2,
+      "seed": 1,
+      "n_params": 22032,
+      "tier_ratio": 215318.34432597135,
+      "elapsed_s": 0.3464634418487549
+    },
+    {
+      "arch": "lstm",
+      "seq_len": 2,
+      "seed": 2,
+      "n_params": 22032,
+      "tier_ratio": 238476.0635535117,
+      "elapsed_s": 0.3205375671386719
+    },
+    {
+      "arch": "lstm",
+      "seq_len": 4,
+      "seed": 0,
+      "n_params": 22032,
+      "tier_ratio": 118820.5337584781,
+      "elapsed_s": 0.47209835052490234
+    },
+    {
+      "arch": "lstm",
+      "seq_len": 4,
+      "seed": 1,
+      "n_params": 22032,
+      "tier_ratio": 116482.89509874996,
+      "elapsed_s": 0.45552706718444824
+    },
+    {
+      "arch": "lstm",
+      "seq_len": 4,
+      "seed": 2,
+      "n_params": 22032,
+      "tier_ratio": 126561.39953496744,
+      "elapsed_s": 0.46302127838134766
+    },
+    {
+      "arch": "lstm",
+      "seq_len": 8,
+      "seed": 0,
+      "n_params": 22032,
+      "tier_ratio": 93553.73843319665,
+      "elapsed_s": 0.890648603439331
+    },
+    {
+      "arch": "lstm",
+      "seq_len": 8,
+      "seed": 1,
+      "n_params": 22032,
+      "tier_ratio": 91485.92206835536,
+      "elapsed_s": 0.8722198009490967
+    },
+    {
+      "arch": "lstm",
+      "seq_len": 8,
+      "seed": 2,
+      "n_params": 22032,
+      "tier_ratio": 97961.06036069711,
+      "elapsed_s": 0.813528299331665
+    },
+    {
+      "arch": "lstm",
+      "seq_len": 16,
+      "seed": 0,
+      "n_params": 22032,
+      "tier_ratio": 89406.63466906287,
+      "elapsed_s": 1.6415464878082275
+    },
+    {
+      "arch": "lstm",
+      "seq_len": 16,
+      "seed": 1,
+      "n_params": 22032,
+      "tier_ratio": 95354.70052532143,
+      "elapsed_s": 1.594334602355957
+    },
+    {
+      "arch": "lstm",
+      "seq_len": 16,
+      "seed": 2,
+      "n_params": 22032,
+      "tier_ratio": 97565.70548579656,
+      "elapsed_s": 1.5171334743499756
+    },
+    {
+      "arch": "lstm",
+      "seq_len": 32,
+      "seed": 0,
+      "n_params": 22032,
+      "tier_ratio": 88780.30093482875,
+      "elapsed_s": 2.751319169998169
+    },
+    {
+      "arch": "lstm",
+      "seq_len": 32,
+      "seed": 1,
+      "n_params": 22032,
+      "tier_ratio": 93737.38705285163,
+      "elapsed_s": 3.0589747428894043
+    },
+    {
+      "arch": "lstm",
+      "seq_len": 32,
+      "seed": 2,
+      "n_params": 22032,
+      "tier_ratio": 96763.10375582986,
+      "elapsed_s": 2.7944724559783936
+    }
+  ],
+  "summary": {
+    "rnn": {
+      "depths": [
+        2,
+        4,
+        8,
+        16,
+        32
+      ],
+      "mean_log_T1T3": [
+        4.316954257486872,
+        3.869499058616082,
+        3.8005524954050984,
+        3.8138062590617436,
+        3.8140981386823647
+      ],
+      "slope_sqrt_seq_len": -0.08292230358383723,
+      "R2": 0.39967273168749695,
+      "pass": false
+    },
+    "lstm": {
+      "depths": [
+        2,
+        4,
+        8,
+        16,
+        32
+      ],
+      "mean_log_T1T3": [
+        12.35409827887394,
+        11.699784024431443,
+        11.454185670153082,
+        11.451530137182397,
+        11.44073116859594
+      ],
+      "slope_sqrt_seq_len": -0.16731162788561005,
+      "R2": 0.5205706721739423,
+      "pass": false
+    }
+  },
+  "interpretation": "Tests whether temporal sequential composition (RNN time-steps) induces the same FIM hierarchy as spatial layered composition. The honest expected outcome: vanilla RNN may pass at small seq_len and saturate at large seq_len due to vanishing/exploding gradients; LSTM with gating is expected to attenuate the mechanism via saturating sigmoids. Either way, the result is informative."
+}
