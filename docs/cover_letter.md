@@ -1,6 +1,6 @@
 # Cover letter — FIM tier hierarchy as a signature of deep layered sequential computation
 
-**Target venue:** NeurIPS / ICML workshop on foundations of deep learning, or ICLR TinyPapers / ML Safety Workshop.
+**Target venue:** NeurIPS 2026 main track. Fallback: NeurIPS 2026 workshop on foundations of deep learning, or ICLR 2027.
 **Nature of the work:** empirical + mechanism-backed universality claim about the Fisher-information diagonal of deep networks and deeply-composed non-learning substrates.
 **Contact:** Nikolai Nedovodin, STARGA Inc., nikolai@star.ga
 **Git commit:** see `main` HEAD of https://github.com/star-ga/nn_universe at the time of submission.

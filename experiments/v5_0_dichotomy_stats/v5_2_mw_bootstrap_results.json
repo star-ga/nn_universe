@@ -1,0 +1,23 @@
+{
+  "n_bootstrap": 10000,
+  "deep_n": 46,
+  "rest_n": 50,
+  "original_p": 1.7219619494666733e-17,
+  "original_U": 2300,
+  "p_value_distribution": {
+    "median": 1.6968931614998915e-17,
+    "mean": 1.6959472110210088e-17,
+    "max": 1.710219947681214e-17,
+    "fraction_below_0.001": 1.0,
+    "fraction_below_0.05": 1.0,
+    "p99": 1.7064618275706287e-17,
+    "p95": 1.7039607505774365e-17
+  },
+  "rank_biserial_distribution": {
+    "median": 1.0,
+    "min": 1.0,
+    "max": 1.0,
+    "fraction_above_0.99": 1.0
+  },
+  "interpretation": "Bootstrap of B=10000 resamples within-group: median p=1.70e-17, 99th percentile p=1.71e-17; 100% of resamples have p < 0.001 and rank-biserial r > 0.99. The headline group-separation result is robust to per-seed sampling noise."
+}
