@@ -188,9 +188,9 @@ from `experiments/v5_0_dichotomy_stats/dichotomy_stats_results.json`.
 
 | System | Type | T1/T3 (point est.) | 95% CI |
 |--------|------|--------------------|--------|
-| Boolean circuit (random gates) | **Layered sequential — not neural, not trained, not probabilistic** | **88 440** | [3 739, 4.1 × 10⁶] |
-| Untrained NN (pooled 4 widths) | Deep layered sequential | **3 757** | [2 723, 5 115] |
-| Trained NN (pooled 4 widths) | Deep layered sequential | **337** | [244, 468] |
+| Boolean circuit (random gates) | **Layered sequential — not neural, not trained, not probabilistic** | **88 440** | [4 286, 4.23 × 10⁶] |
+| Untrained NN (pooled 4 widths) | Deep layered sequential | **3 757** | [2 749, 5 195] |
+| Trained NN (pooled 4 widths) | Deep layered sequential | **337** | [246, 468] |
 | Random matrix (GOE, N = 3 003) | Unstructured | 80.7 | [77.8, 83.7] |
 | SU(2) lattice gauge (L=3) | Non-abelian spatially-parallel QFT | 4.85 | [4.67, 4.96] |
 | Cellular automaton (Rule 110) | Sequential but shallow | 3.77 | [3.33, 4.40] |
@@ -205,7 +205,7 @@ from `experiments/v5_0_dichotomy_stats/dichotomy_stats_results.json`.
 **Sharp empirical dichotomy.** Deep layered sequential computation (≥4 hidden
 layers, trained OR untrained, NN OR boolean circuit) produces tier ratios of
 10² or more — bootstrapped 95% CI [244, 468] for pooled trained NNs,
-[2 723, 5 115] for pooled untrained NNs, [3 739, 4.1 × 10⁶] for random
+[2 749, 5 195] for pooled untrained NNs, [4 286, 4.23 × 10⁶] for random
 boolean circuits. Everything else — four genuine shallow learners (linear /
 kernel ridge / logistic / GP, all of which learn and generalise), *both*
 gauge groups of our lattice test (U(1) abelian and SU(2) non-abelian), 1D

@@ -21,9 +21,9 @@ This builds directly on prior work showing that deep networks have heavy-tailed 
 
 | System | Type | $n$ seeds | Point est. $T_1/T_3$ | 95% CI | CI > 100? |
 |---|---|---:|---:|---|:---:|
-| Boolean circuit (N = 384) | deep-sequential | 6 | 88 440 | [3 781, 4 146 835] | YES |
-| NN untrained (pooled 4 widths) | deep-sequential | 20 | 3 757 | [2 736, 5 134] | YES |
-| NN trained (pooled 4 widths) | deep-sequential | 20 | 337 | [246, 472] | YES |
+| Boolean circuit (N = 384) | deep-sequential | 6 | 88 440 | [4 286, 4 226 719] | YES |
+| NN untrained (pooled 4 widths) | deep-sequential | 20 | 3 757 | [2 749, 5 195] | YES |
+| NN trained (pooled 4 widths) | deep-sequential | 20 | 337 | [246, 468] | YES |
 | Random matrix (GOE, N = 3 003) | rest | 6 | 80.7 | [77.8, 83.7] | no |
 | Cellular automaton (Rule 110) | rest | 6 | 3.77 | [3.33, 4.39] | no |
 | Harmonic oscillator chain | rest | 6 | 3.57 | [2.87, 4.50] | no |

@@ -142,7 +142,7 @@ Six parameterized systems at matched parameter scale ($N \approx 3\text{k}$):
 | Cellular automaton (Rule 110, N=128) | 3.77× | CI [3.33, 4.40] |
 | Random matrix (GOE, N=3 003) | 80.7× | CI [77.8, 83.7] |
 
-**Sharp empirical dichotomy.** Systems that perform deep layered sequential computation (≥ 4 hidden layers, trained or untrained, neural networks *or* random boolean circuits) produce tier ratios bounded *below* by $10^2$: log-bootstrap 95 % CIs are $[244,\ 468]$ for pooled trained NNs, $[2\,723,\ 5\,115]$ for pooled untrained NNs, and $[3\,739,\ 4.1 \times 10^6]$ for random boolean circuits. Every other system we tested — four shallow parameterised learners (linear, kernel ridge, logistic, GP), *both* gauge groups of our lattice test (U(1) abelian and SU(2) non-abelian), three dynamical-system controls, and a random-matrix ensemble — has a 95 % CI entirely below $100$, with all four shallow learners' upper bounds below $6$. A one-sided Mann–Whitney $U$ test on the per-seed $\log T_1/T_3$ values yields $p = 1.7 \times 10^{-17}$ and rank-biserial $r = 1.000$: every deep-sequential observation ranks above every non-deep observation (complete separation, $n_{\text{deep}} = 46$, $n_{\text{rest}} = 50$). The boolean-circuit result is the decisive data point — no neurons, no real-valued weights, no gradients, no probabilistic structure, and no training, yet its FIM diagonal hierarchy matches or exceeds a trained ViT. The universality class is **deep layered sequential composition**, not neural networks, not learning, not optimisation. See Appendix A for the full bootstrap + Mann–Whitney methodology.
+**Sharp empirical dichotomy.** Systems that perform deep layered sequential computation (≥ 4 hidden layers, trained or untrained, neural networks *or* random boolean circuits) produce tier ratios bounded *below* by $10^2$: log-bootstrap 95 % CIs are $[246,\ 468]$ for pooled trained NNs, $[2\,749,\ 5\,195]$ for pooled untrained NNs, and $[4\,286,\ 4.23 \times 10^6]$ for random boolean circuits. Every other system we tested — four shallow parameterised learners (linear, kernel ridge, logistic, GP), *both* gauge groups of our lattice test (U(1) abelian and SU(2) non-abelian), three dynamical-system controls, and a random-matrix ensemble — has a 95 % CI entirely below $100$, with all four shallow learners' upper bounds below $6$. A one-sided Mann–Whitney $U$ test on the per-seed $\log T_1/T_3$ values yields $p = 1.7 \times 10^{-17}$ and rank-biserial $r = 1.000$: every deep-sequential observation ranks above every non-deep observation (complete separation, $n_{\text{deep}} = 46$, $n_{\text{rest}} = 50$). The boolean-circuit result is the decisive data point — no neurons, no real-valued weights, no gradients, no probabilistic structure, and no training, yet its FIM diagonal hierarchy matches or exceeds a trained ViT. The universality class is **deep layered sequential composition**, not neural networks, not learning, not optimisation. See Appendix A for the full bootstrap + Mann–Whitney methodology.
 
 ### 4.6 Mechanism — log-normal Jacobian product (V6.0)
 
@@ -162,7 +162,7 @@ We test this empirically (`experiments/v6_0_depth_mechanism/depth_sweep.py`) wit
 |  2 |  2 128 | $2.0 \times 10^{1}$ |  0.71 | $+0.34$ | $-0.79$ |
 |  3 |  6 288 | $1.1 \times 10^{2}$ |  2.12 | $-1.35$ | $+6.86$ |
 |  4 | 10 448 | $6.2 \times 10^{2}$ |  4.35 | $-1.51$ | $+5.58$ |
-|  6 | 18 768 | $4.1 \times 10^{4}$ |  8.15 | $-1.10$ | $+4.47$ |
+|  6 | 18 768 | $4.19 \times 10^{4}$ |  8.15 | $-1.10$ | $+4.47$ |
 |  8 | 27 088 | $6.87 \times 10^{6}$ | 12.40 | $-0.23$ | $+2.62$ |
 | 12 | 43 728 | $3.65 \times 10^{12}$ † | 30.05 | $+0.67$ | $+0.54$ |
 | 20 | 77 008 | $9.53 \times 10^{15}$ | 107.0 | $+0.69$ | $-0.64$ |
@@ -183,7 +183,7 @@ A layered boolean-circuit depth sweep (`experiments/v6_0_depth_mechanism/bc_dept
 
 A transformer depth sweep (`experiments/v6_0_depth_mechanism/transformer_depth_sweep.py`, pre-norm Transformer blocks with multi-head self-attention + GELU MLP + residual stream, $d_{\text{model}} = 32$, 6 depths × 3 seeds, 500 FIM probes) tests whether the mechanism survives attention softmax and residual connections. The tier-ratio scaling $\log(T_1/T_3) \propto \sqrt{L}$ **passes** with $R^2 = 0.969$ (slope $0.44$), though the underlying $\mathrm{Var}[\log F] \propto L$ prediction is borderline ($R^2 = 0.79$, slope $0.10$) — the residual stream partially decouples the per-layer log-variance accumulation. Net transformer $T_1/T_3$ ranges 96–210 across $L = 1$ to $8$, all within the deep-sequential band. The mechanism's tier-ratio prediction is therefore universality-class-preserving even for modern attention architectures; only the per-layer variance accumulation constant is damped.
 
-An activation-function depth sweep (V6.5, `experiments/v6_0_depth_mechanism/activation_sweep.py`, 5 depths × 3 seeds × {ReLU, GELU, tanh, Swish}) separates the "√L scaling" claim from the "σ-prefactor is activation-dependent" claim. All four activations PASS the $\log(T_1/T_3) \propto \sqrt{L}$ test at $R^2 \geq 0.97$: ReLU 7.74 (R² 0.986), GELU 9.24 (R² 0.990), Swish 9.20 (R² 0.990), tanh 4.20 (R² 0.969). The slope ordering (GELU ≈ Swish > ReLU > tanh) matches the ordering of the per-layer Jacobian variance of each nonlinearity, as Hanin & Nica's theorem predicts.
+An activation-function depth sweep (V6.5, `experiments/v6_0_depth_mechanism/activation_sweep.py`, 5 depths × 3 seeds × {ReLU, GELU, tanh, Swish}) separates the "√L scaling" claim from the "σ-prefactor is activation-dependent" claim. All four activations PASS the $\log(T_1/T_3) \propto \sqrt{L}$ test at $R^2 \geq 0.965$: ReLU slope 10.87 (R² 0.965), GELU 9.24 (R² 0.990), Swish 9.20 (R² 0.990), tanh 4.20 (R² 0.969). The slope ordering (GELU ≈ Swish > ReLU > tanh) matches the ordering of the per-layer Jacobian variance of each nonlinearity, as Hanin & Nica's theorem predicts.
 
 A balanced binary tensor-network depth sweep (V8.0, `experiments/v8_0_tensor_network/binary_tree_tensor_network.py`, 8 depths × 5 seeds, 2-input soft-threshold tensor at every internal node of the tree) is the load-bearing test of whether the mechanism extends to *non-neural* layered substrates that are relevant to the physics-literature holographic-code cosmology constructions (Swingle 2012, Pastawski–Yoshida–Harlow–Preskill 2015, Vidal 2007). $\log(T_1/T_3) \propto \sqrt{L}$ passes at slope $7.44$, $R^2 = 0.992$. The tier hierarchy is therefore a *predicted consequence* of any MERA-like emergent-spacetime tensor-network substrate, not a new physical postulate.
 
@@ -208,7 +208,7 @@ The three-tier FIM diagonal hierarchy is:
 
 ### 5.2 Theoretical framing
 
-**Upper-bound compatibility.** The FIM tier hierarchy is compatible with the NTK continuum-limit upper bound $\alpha \le 1/2$ on the SV ratio (Jacot et al., 2018), which our interior-fit value $0.473 \pm 0.093$ respects. The fuller V1.0 → V3.0 dataset and its interior-fit at multiple cutoffs is given in the supplementary gap-closure note.
+**Upper-bound compatibility and the V1.2 → V3.0 NTK gap closure.** The FIM tier hierarchy is compatible with the NTK continuum-limit upper bound $\alpha \le 1/2$ on the SV ratio (Jacot et al., 2018). Our V1.2 10-width fit gave $\alpha = 0.566$ — apparently $0.066$ above the bound. The V3.0 cluster-scale extension (adding 589 M and 1.45 B parameter points on A100) brought the 12-width fit to $\alpha = 0.516 \pm 0.075$ (95 % bootstrap CI), within $0.016$ of the NTK bound and consistent with $\alpha = 1/2$ at the $0.21\sigma$ level. The discrepancy is a finite-width artifact (Yang & Hu 2021 [15]; Hayase & Karakida 2020 [32]): at finite $n$ there is a positive $O(n^{-1/2})$ correction that adds to the asymptotic $N^{1/2}$ scaling, biases the empirical exponent upward, and shrinks as the cluster-scale points dominate the fit. We document this resolution in `docs/v1_1_ntk_gap_closure.md` and include the per-width interior fits at multiple cutoffs in the supplementary code/JSON. No theory revision is required.
 
 **Log-normal mechanism (V6.0).** The Hanin–Nica 2020 theorem gives the core mechanism directly (§4.6): product of random Jacobians $\to$ log-normal gradient norm with depth-linear variance. This is the closest thing to a "theorem" that the paper provides for the dichotomy. Its predictions for *untrained* MLPs ($R^2 = 0.906$ on Var[log F] $\propto L$; $R^2 = 0.983$ on $\log T_1/T_3 \propto \sqrt{L}$) pass quantitatively. Training (V4.1) does *not* remove the log-normal shape; it reduces the per-layer variance coefficient $\sigma$ by factor 4–24, corresponding to a reduction in tier ratio but preservation of the $\sqrt{L}$ functional form.
 
@@ -220,10 +220,12 @@ The V1.0 FIM–Onsager correspondence (Nedovodin, 2026) hypothesised that the ti
 
 ### 5.4 Limitations
 
-- Parameter count explored: $10^3$ to $10^9$. Extrapolating tier invariance to cosmological scales ($10^{120+}$) remains conjectural.
-- Spacetime emergence (4D + Lorentz signature) is not addressed empirically; remains an open theoretical question in the parent framework.
-- The SV power-law exponent is *noisy* (CV 60–250%); interpretations must not over-rely on it. The FIM tier ratio is the robust observable.
-- T3 (symbolic regression) final loss is 0.526 (trivial baseline 1.0); the task is imperfectly learned but sufficient to probe the FIM structure of a trained network.
+- **Parameter scale.** Architectures explored span $10^3$–$10^9$ parameters. Extrapolating tier invariance to cosmological scales ($10^{120+}$) remains conjectural.
+- **Production-scale architectures.** V9 demonstrates the √L mechanism on ResNet residual stacks at 1.09 M parameters and on GPT-Tiny at 0.6 M parameters. ResNet-50 (25 M parameters), ViT-B/16 (86 M), and GPT-2-small (124 M) — the standard NeurIPS-era benchmarks — are not measured at full scale; this is constrained by the single-RTX-3080 compute budget of the present study, not by methodology. The mechanism's prediction is that the √L scaling persists at production scale; a follow-up cluster run testing this explicitly is preregistered in `docs/preregistration_v2.md` and the runbook for reproducing it on H200 hardware is given in `docs/h200_cluster_runbook.md`.
+- **Real-data benchmarks.** All four tasks in §4.3 are synthetic (Gaussian self-prediction, toric-code syndrome decoding, symbolic regression, supervised vision classification on Gaussian-labelled $32{\times}32{\times}3$ inputs). Verification on CIFAR-10/100, ImageNet, and language-modelling benchmarks is left to future work; the synthetic suite was chosen to control the ground-truth signal structure necessary for the dichotomy claim.
+- **Spacetime emergence.** Spacetime emergence (4D + Lorentz signature) is not addressed empirically; remains an open theoretical question in the parent framework.
+- **SV-ratio noise.** The SV power-law exponent is *noisy* (CV 60–250 %); interpretations must not over-rely on it. The FIM tier ratio is the robust observable.
+- **T3 partial fit.** T3 (symbolic regression) final loss is 0.526 (trivial baseline 1.0); the task is imperfectly learned but sufficient to probe the FIM structure of a trained network.
 
 ## 6. Conclusion
 
@@ -246,7 +248,7 @@ All scripts, result JSONs, and the full computational log are public at
 ## Appendix A — Bootstrap + Mann–Whitney procedure (§4.5)
 
 Per-seed $T_1/T_3$ values were extracted from the JSON result files of
-the 10 systems listed in §4.5, totalling $n = 93$ observations across
+the 13 systems listed in §4.5, totalling $n = 96$ observations across
 12 systems. For each system we computed the sample mean of $\log T_1/T_3$
 across its seeds and resampled the per-seed values 2 000 times with
 replacement ( `numpy.random.default_rng(42)` ), recording the resampled
