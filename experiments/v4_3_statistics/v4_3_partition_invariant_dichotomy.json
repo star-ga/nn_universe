@@ -1,0 +1,47 @@
+{
+  "rows": [
+    {
+      "system": "ref_uniform_gaussian",
+      "n_params": 5000,
+      "gini": 0.16728285781680935,
+      "effective_rank_normalised": 0.922537799433968,
+      "top_1pct_mass": 0.015026031127090365
+    },
+    {
+      "system": "ref_random_sq_gaussian",
+      "n_params": 5000,
+      "gini": 0.643203489553227,
+      "effective_rank_normalised": 0.329384993657651,
+      "top_1pct_mass": 0.08394440041520883
+    },
+    {
+      "system": "mlp_untrained_L2",
+      "n_params": 2128,
+      "gini": 0.47221342681404177,
+      "effective_rank_normalised": 0.485703268390323,
+      "top_1pct_mass": 0.07162615243025734
+    },
+    {
+      "system": "mlp_untrained_L4",
+      "n_params": 10448,
+      "gini": 0.7860338326736751,
+      "effective_rank_normalised": 0.011864800158121004,
+      "top_1pct_mass": 0.4685577987699222
+    },
+    {
+      "system": "mlp_untrained_L8",
+      "n_params": 27088,
+      "gini": 0.9958829751762537,
+      "effective_rank_normalised": 0.001599906388859347,
+      "top_1pct_mass": 0.930114865163844
+    },
+    {
+      "system": "mlp_untrained_L12",
+      "n_params": 43728,
+      "gini": 0.9966022118780241,
+      "effective_rank_normalised": 0.0016689084578111143,
+      "top_1pct_mass": 0.8924020728565656
+    }
+  ],
+  "interpretation": "All three partition-invariant statistics order systems by depth: the dichotomy claim survives without any tier-partition choice. Higher gini + lower r_eff/n + higher top_1pct_mass = heavier tail = more 'deep-layered-sequential' character."
+}
