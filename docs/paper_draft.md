@@ -20,6 +20,23 @@
 
 ---
 
+### One-page index of the paper's claims (jump table)
+
+| § | Claim | Status | Backing |
+|---|---|---|---|
+| §4.5 | Empirical dichotomy: deep-sequential vs rest, $p = 1.7 \times 10^{-17}$ | confirmed | Mann–Whitney $U$, ROC AUC = 1.0, LOSO, B = 10 000 bootstrap |
+| §4.5 | Bonferroni-corrected per-system rejection at $\alpha = 0.05/13$ | confirmed | bootstrap CIs |
+| §4.5 | Partition-invariant: Gini, eff. rank, top-1 % mass all separate cleanly | confirmed | V4.3 |
+| §4.6 | $\sqrt{L}$ scaling of $\log(T_1/T_3)$, $R^2 \geq 0.94$ on 5 substrates | confirmed | V6.0–V6.4, V8.0, V9 |
+| §4.6 | Closed-form mechanism prediction (Theorem 1' + Corollary 1) | proved | Appendix B |
+| §4.6 | Pre-registered Mamba SSM out-of-sample test (H2 PARTIAL) | confirmed | V9.4 |
+| §4.6 | GPT-Tiny tied/untied attention narrowing | falsifier consumed | V9, V9.1 |
+| §4.6 | RNN/LSTM temporal-vs-spatial narrowing | falsifier consumed | V9.3 |
+| §4.6 | Real-data: CIFAR-10 ($T_1/T_3 = 778$) + CIFAR-100 ($T_1/T_3 = 166$) | confirmed | V9.2, V9.2b |
+| §4.7 | Probe convergence + dtype stability | confirmed | V6.0b |
+| §4.8 | Substrate panel main-text summary table | reference | — |
+| §5 | Cosmological framing | out of scope | Appendix D |
+
 ### Plain-language summary
 
 > **One question.** Why do deep neural networks always have a small set of "important" parameters and a large set of "redundant" ones, even before training?
@@ -38,9 +55,11 @@ The Fisher Information Matrix (FIM) is the unique (Chentsov, 1982) invariant Rie
 
 An earlier baseline (Nedovodin, 2026) measured the FIM diagonal distribution of a 5-layer 256-neuron ReLU MLP (296k params) trained on a self-prediction task, and observed a sharp *three-tier* structure: the top 1% of FIM-diagonal values dominated the middle 49% by a factor of ~13, and dominated the bottom 50% by a factor of 637×. The present paper isolates the **structural property** (heavy-tailed FIM diagonal across deep layered sequential systems) and asks (a) how universal it is across substrate classes, (b) what the underlying mechanism is, and (c) under what scope it does and does not extend to modern architectures.
 
-**Terminology and validation note (V4.2 / V4.3):** throughout this paper we use "FIM diagonal hierarchy" for what earlier iterations called "FIM eigenvalue hierarchy". We measure only the diagonal of the empirical FIM, $F_{ii} = \mathbb{E}[(\partial_{\theta_i}\ell)^2]$, accumulated in float64 to avoid the tier-3 underflow regime. **Estimator validation against the full empirical FIM**: at small parameter counts (5-layer MLP, $P = 1\,368$) we ran full Lanczos eigendecomposition of the per-sample-gradient FIM and compared the diagonal-based tier ratio against the full-spectrum tier ratio (`experiments/v4_2_fim_spectrum_validation/`). The full spectrum is rank-deficient (rank $\leq N_{\text{samples}} \cdot d_{\text{out}}$) and dominated by numerical zero modes that produce an unbounded $T_1/T_3$ artefact; the diagonal-based estimator is bounded, reproducible, and the only stable observable in the regime relevant for any modern-scale architecture. The diagonal-based estimator is therefore not an approximation that we hope agrees with the full FIM at scale; it is the *load-bearing observable*. We also verified that the diagonal estimator is partition-invariant under three alternative summary statistics (Gini coefficient, normalised effective rank, top-1 % mass fraction; §4.5 and `experiments/v4_3_statistics/v4_3_partition_invariant_dichotomy.json`).
+**Estimator definition.** $F_{ii} = \mathbb{E}[(\partial_{\theta_i}\ell)^2]$ accumulated in float64 over Gaussian probes (200 by default; convergence sweep §4.7).
 
-**Partition-convention note (V4.3):** the three-tier partition (top 1% / middle 49% / bottom 50%) is a naming convention inherited from V1.0, not a spectral feature. Reported $T_1/T_3$ magnitudes vary by up to 5 orders of magnitude across plausible partition choices (`experiments/v4_3_statistics/tier_partition_sensitivity.py`). All qualitative universality claims in this paper survive partition choice in direction; magnitudes should be read relative to the 1%/50% convention.
+**Estimator validation.** At $P = 1\,368$ we ran full Lanczos eigendecomposition of the per-sample-gradient FIM (`experiments/v4_2_fim_spectrum_validation/`) and confirmed: the full spectrum is rank-deficient and produces an unbounded $T_1/T_3$ artefact; the diagonal-based estimator is the bounded, reproducible, scale-stable load-bearing observable. The dichotomy is partition-invariant under three alternative summary statistics (Gini, effective rank, top-1 % mass; §4.5).
+
+**Partition convention.** The 1 % / 49 % / 50 % partition is a naming convention from V1.0. Magnitudes vary by up to 5 orders of magnitude across plausible alternatives, but the *direction* of every qualitative claim is preserved (V4.3 sensitivity study); read absolute $T_1/T_3$ values relative to the 1 % / 50 % convention.
 
 This paper tests the empirical robustness of that three-tier claim along five axes:
 
