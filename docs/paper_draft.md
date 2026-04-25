@@ -14,7 +14,7 @@
 
 **Real-data verification.** A ResNet-18 (11.2 M parameters) trained 10 epochs on CIFAR-10 to 81.4 % test accuracy gives $T_1/T_3 = 778$ (deep-sequential band, $\gg 100$), Gini = $0.84$, top-1 % FIM mass = $0.48$. The dichotomy magnitude is confirmed on a real benchmark beyond synthetic Gaussian self-prediction.
 
-**Implications.** The tier hierarchy is (i) already present at random Kaiming initialisation with $T_1/T_3 \sim 10^3$–$10^4$, and (ii) gradient-descent training *reduces* it by a factor of 4–24× rather than creating it. The mechanism makes the FIM tier signature a property of the *architecture class* — depth + sequential composition — not of any specific learning algorithm or substrate. This connects directly to standard deep-learning observables (heavy-tail-phase weight spectra, hierarchical Hessian outliers) and to non-neural computational substrates (boolean circuits, balanced binary tensor networks). A possible cosmological interpretation is bracketed off in §5.3 as out-of-scope; the empirical and mechanistic results in this paper stand independently of any such framing.
+**Implications.** The tier hierarchy is (i) already present at random Kaiming initialisation with $T_1/T_3 \sim 10^3$–$10^4$, and (ii) gradient-descent training *reduces* it by a factor of 4–24× rather than creating it. The mechanism makes the FIM tier signature a property of the *architecture class* — depth + sequential composition — not of any specific learning algorithm or substrate. This connects directly to standard deep-learning observables (heavy-tail-phase weight spectra, hierarchical Hessian outliers) and to non-neural computational substrates (boolean circuits, balanced binary tensor networks).
 
 **Keywords:** Fisher Information Matrix, neural tangent kernel, information geometry, deep-network spectral properties, universality, log-normal random matrix products, statistical learning theory.
 
@@ -247,6 +247,8 @@ Six parameterized systems at matched parameter scale ($N \approx 3\text{k}$):
 
 This statement (a) names the family ("strong tier-hierarchy class"), (b) gives the formal threshold (100×) and decision rule (bootstrap 95 % CI + Bonferroni-corrected test), (c) lists the substrates currently inside vs. outside, and (d) writes down the falsifier explicitly. To our knowledge this is the first formal statement of an FIM-diagonal universality class with a registered decision threshold and a Bonferroni-corrected significance test across substrate classes; it is intentionally sharp enough that a single counter-example will refute it.
 
+**Mann–Whitney p-value bootstrap (V5.2).** A reviewer concern is that the headline $p = 1.7 \times 10^{-17}$ depends on the specific per-seed observations realised in our experiments. We bootstrap-resample $B = 10\,000$ times *within each group* (deep-sequential and rest separately, preserving the group structure) and recompute the Mann–Whitney $U$ statistic on each resample. Result: every single one of the 10 000 resamples produces $p < 1.71 \times 10^{-17}$, $U = 2\,300$ (the saturating value at complete separation), rank-biserial $r = 1.000$. The 99th percentile of the bootstrap p-value distribution is $1.706 \times 10^{-17}$ (essentially identical to the point estimate); the max is $1.710 \times 10^{-17}$. The headline statistical-significance claim is dominated by the *complete rank separation* between the two groups, not by any specific per-seed value. Full results: `experiments/v5_0_dichotomy_stats/v5_2_mw_bootstrap_results.json`.
+
 **Threshold sensitivity, ROC, and leave-one-substrate-class-out (V5.1).** A reviewer concern is that the threshold $T_1/T_3 = 100$ might be over-tuned to the present panel. We sweep the threshold over $\{10, 30, 100, 300, 1000\}$ and report deep-vs-rest balanced accuracy on the per-seed observations:
 
 | Threshold $T$ | Sensitivity (deep above) | Specificity (rest below) | Balanced accuracy |
@@ -374,11 +376,7 @@ The three-tier FIM diagonal hierarchy is:
 
 **Large-$N$ convergence.** Beyond NTK, the monotone-with-$N$ stabilisation of FIM CV (10% → 1.51%) is suggestive of a thermodynamic-like limit in the parameter manifold: at finite $N$ the tier fractions $f_1, f_2, f_3$ fluctuate across seeds, but as $N \to \infty$ they appear to converge to well-defined values $(0.01, 0.49, 0.50)$ respectively. A formal large-$N$ theorem for the tier fractions themselves remains open.
 
-### 5.3 Relevance to neural-network cosmology
-
-The V1.0 FIM–Onsager correspondence (Nedovodin, 2026) hypothesised that the tier hierarchy maps onto the physical-law / coupling-constant / gauge-DOF distinction in cosmology. Our results establish that this hierarchy is (a) an intrinsic property of deep layered sequential computation (not specifically of learning or of neural networks), and (b) robust across task and architecture within that class (§4.3, §4.4). The natural refinement of the V1.0 specification is therefore **"the substrate performs deep layered recursive composition"** rather than "the substrate learns." This includes neural networks as one instance, but also admits boolean circuits and any Turing-machine-like layered computation as alternatives; it excludes spatially-parallel quantum fields (lattice QCD / QED), shallow parameterised learners, and ordinary dynamical systems. Within this specification the FIM tier hierarchy is *empirically satisfied*. Whether the universe's substrate falls inside this class remains an open cosmological question.
-
-### 5.4 Limitations
+### 5.3 Limitations
 
 - **Parameter scale.** Architectures explored span $10^3$–$10^9$ parameters. Extrapolating tier invariance to cosmological scales ($10^{120+}$) remains conjectural.
 - **Production-scale architectures.** V9 demonstrates the √L mechanism on ResNet residual stacks at 1.09 M parameters and on GPT-Tiny at 0.6 M parameters. ResNet-50 (25 M parameters), ViT-B/16 (86 M), and GPT-2-small (124 M) — the standard NeurIPS-era benchmarks — are not measured at full scale; this is constrained by the single-RTX-3080 compute budget of the present study, not by methodology. The mechanism's prediction is that the √L scaling persists at production scale; a follow-up cluster run testing this explicitly is preregistered in `docs/preregistration_v2.md` and the runbook for reproducing it on H200 hardware is given in `docs/h200_cluster_runbook.md`.
@@ -393,13 +391,11 @@ The V1.0 FIM–Onsager correspondence (Nedovodin, 2026) hypothesised that the ti
 
 **Mechanism** (§4.6). The dichotomy is quantitatively predicted by Hanin & Nica (2020, Comm. Math. Phys. 376), who prove the log-normal limit of products of random Jacobians for ReLU MLPs at infinite depth and width. Log-normal quantile analysis gives $\log(T_1/T_3) \propto \sqrt{L}$; our 7-depth × 5-seed measurement confirms both the linear $\mathrm{Var}[\log F_{ii}] \propto L$ prediction ($R^2 = 0.906$) and the $\sqrt{L}$ tier-ratio prediction ($R^2 = 0.983$). A width sweep confirms the theorem's width-independence prediction. **Empirical extension and explicit narrowing.** The same scaling law holds at $R^2 \geq 0.94$ for trained MLPs (V6.2), random boolean circuits (V6.3), vanilla pre-norm transformers (V6.4), balanced binary tensor networks (V8.0), and BatchNorm ResNets (V9, $R^2 = 0.999$ slope 16.74). It *does not* hold for tied-embedding GPT-Tiny architectures (V9), where the slope is negative — a quantitative narrowing of the universality reach to architectures whose FIM tier-1 mass is not embedding-dominated. We treat this as an honest scope statement, not as evidence against the mechanism.
 
-**Cosmological framing (note, not central result).** A possible interpretation in the FIM–Onsager neural-network-cosmology programme of Vanchurin (2020) and Nedovodin (2026) is that the tier-hierarchy signature is a *necessary condition* for the substrate to satisfy that programme's deep-layered-sequential specification. Our work does not test the cosmological claim; it provides an empirical and mechanistic foundation that any such interpretation can build on. This note is included for context only and does not affect any quantitative result above.
-
-Theoretical closure of remaining items — a large-$N$ tier-fraction theorem, the 4D emergence argument of Nedovodin (2026), and a Lorentzian-signature derivation — are left open for future work.
+A large-$N$ tier-fraction theorem (formal proof that the limit fractions $(0.01, 0.49, 0.50)$ are well-defined under a specified parameter-prior class) and a tighter mechanism for residual + attention architectures are left open for future work. Cosmological framings of the deep-layered-sequential class (Vanchurin 2020; Nedovodin 2026) are out of scope for this paper and discussed only briefly in Appendix C.
 
 ## 7. Broader impact
 
-This paper studies a structural property of deep neural networks (the FIM tier hierarchy) that is, by construction, *not* tied to any particular task, dataset, or downstream application. The findings are descriptive about the geometry of the parameter manifold, not prescriptive about how networks should be trained or deployed. We do not see direct dual-use risks: the partition-invariant statistics introduced here (Gini, effective rank, top-1 % FIM mass) are diagnostic tools for analysing trained networks rather than tools for modifying their behaviour. The cosmological interpretation in §5.3 is explicitly bracketed off as an open programme; nothing in the empirical or mechanistic results requires that framing to stand. All datasets used are synthetic or open-licensed standard benchmarks (CIFAR-10); no human subjects, no personal data, no privacy implications. The repository is permissively licensed for academic reuse with citation. We expect the practical impact of this work to be mostly upstream — sharpening the toolkit for studying deep-network structure — rather than directly altering any user-facing application.
+This paper studies a structural property of deep neural networks (the FIM tier hierarchy) that is, by construction, *not* tied to any particular task, dataset, or downstream application. The findings are descriptive about the geometry of the parameter manifold, not prescriptive about how networks should be trained or deployed. We do not see direct dual-use risks: the partition-invariant statistics introduced here (Gini, effective rank, top-1 % FIM mass) are diagnostic tools for analysing trained networks rather than tools for modifying their behaviour. All datasets used are synthetic or open-licensed standard benchmarks (CIFAR-10/100); no human subjects, no personal data, no privacy implications. The repository is permissively licensed for academic reuse with citation. We expect the practical impact of this work to be mostly upstream — sharpening the toolkit for studying deep-network structure — rather than directly altering any user-facing application.
 
 ## 8. Figures
 
@@ -590,6 +586,32 @@ $c \approx 11.5 / 1.69 = 6.8$, within 39 % of the derivation's value $c
 theorem is asymptotic in $n$), (ii) the tier partition being a simple
 top/bottom cut rather than an exact log-normal quantile expectation, and
 (iii) higher-order $O(\sigma^4)$ corrections at moderate depth.
+
+## Appendix C — Cross-substrate mechanism table (§4.6 verification)
+
+The Hanin–Nica $\sqrt{L}$ scaling prediction $\log(T_1/T_3) = c \, \sigma \, \sqrt{L} + o(\sqrt{L})$ with $c \approx 4.90$ (Theorem 1') gives a *substrate-specific* slope prediction once the per-substrate $\sigma$ (Var[$\log F_{ii}$] coefficient on $L$) is measured. We list the prediction-vs-measurement comparison for every substrate where we ran the per-depth sweep:
+
+| Substrate | Measured $\sigma$ | Predicted slope $c\sigma$ | Measured slope | $R^2$ on √L fit | Pred/meas ratio | Verdict |
+|---|---|---|---|---|---|---|
+| Untrained MLP (V6.0) | 1.69 | 8.28 | 11.5 | 0.983 | 0.72 | within 39 % (finite-width correction) |
+| Trained MLP (V6.2) | 0.83 | 4.07 | 5.2 | 0.97 | 0.78 | within 30 % |
+| Boolean circuit (V6.3) | 1.45 | 7.11 | 6.8 | 0.961 | 1.05 | within 5 % (best fit) |
+| Vanilla transformer (V6.4) | 1.21 | 5.93 | 7.3 | 0.97 | 0.81 | within 23 % |
+| Tensor network MERA (V8.0) | 1.04 | 5.10 | 4.5 | 0.94 | 1.13 | within 14 % |
+| ResNet residual stack (V9) | 0.78 | 3.82 | 16.74 | 0.999 | 0.23 | high $R^2$, slope amplification (residual-stream accumulation; see §4.6 V9 discussion) |
+| GPT-Tiny (tied, V9) | — | — | $-0.22$ | 0.40 | — | falsified, narrowed to attention-distinct regime |
+| GPT-Tiny (untied, V9.1) | — | — | $-0.027$ | 0.39 | — | falsified, untying does not restore |
+| Mamba SSM (V9.4 pre-reg.) | — | — | 0.468 | 0.78 | — | H2 PARTIAL (positive direction confirmed, gating attenuation) |
+| RNN (V9.3) | — | — | flat below threshold | — | — | temporal ≠ depth-stack |
+| LSTM (V9.3) | — | — | flat above threshold | — | — | temporal ≠ depth-stack |
+
+Reading: every substrate where the Hanin–Nica assumptions reasonably apply (untrained MLP, trained MLP, boolean circuit, vanilla transformer, tensor network) gives a measured slope within $5$–$39\%$ of the closed-form prediction, with $R^2 \geq 0.94$. The residual-stream architecture (V9 ResNet) gives the *highest* $R^2$ (0.999) but a 4× amplified slope, which is exactly what residual addition predicts: the residual stream accumulates per-layer log-FIM variance more aggressively than a non-residual stack at the same depth. The four narrowing cases (GPT-Tiny tied/untied, Mamba SSM, RNN/LSTM) are gated or temporal-composition substrates where the assumption fails and the slope is correspondingly attenuated. This table converts the qualitative "mechanism is universal" claim into a quantitative substrate-by-substrate prediction-vs-measurement comparison, with no post-hoc parameter-fitting per substrate.
+
+## Appendix D — Out-of-scope cosmological framing (note only)
+
+This appendix is included for context; nothing in the empirical or mechanistic results above depends on it.
+
+The neural-network-cosmology programme of Vanchurin (Entropy 22, 2020) and Nedovodin (2026) hypothesises that physical law, coupling constants, and gauge-degree-of-freedom statistics emerge from a deep-layered-sequential substrate. Our results establish that the FIM tier hierarchy is (i) a property of "deep layered sequential composition" as a computational primitive (§4.5; boolean-circuit data point), and (ii) absent from spatially-parallel quantum-field substrates (U(1) and SU(2) lattice gauge fields, §4.5). If the universe's fundamental substrate falls inside the "deep layered sequential composition" class, the FIM tier hierarchy would be a *necessary signature* of that class; if it falls outside (e.g. spatially-parallel QFT), the hierarchy would not appear. We make no claim about which side of this distinction nature occupies; we only provide the empirical and mechanistic foundation that any such claim would need to build on.
 
 ## References
 
