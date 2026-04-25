@@ -86,16 +86,6 @@ To pre-empt the question of "what, exactly, is new here?", we explicitly disting
 
 In short: prior FIM-spectral and Hessian-outlier work characterises *some* heavy-tailed structure in *some* trained or large-width MLP regime; we identify a substrate-class-defining tier hierarchy with a clean dichotomy threshold at $T_1/T_3 = 100$, give it a closed-form mechanism (Theorem 1 + Hanin–Nica), and test it under the broadest substrate panel published to date for a single FIM-diagonal observable.
 
-**Diagnostic-tool corollary (novel use).** The dichotomy gives a constructive *substrate-class detector*: given any new parameterised system $\mathcal{F}$, computing the FIM-diagonal tier ratio under protocol $\Pi$ and applying the threshold-100 decision rule is sufficient to classify $\mathcal{F}$ as deep-sequential or not, with bootstrap-95 % CI accuracy on the V2 panel and ROC-AUC = 1.0. Three concrete operational uses follow:
-
-1. *Pre-deployment screening*: any new architecture proposed for deep-learning use (e.g., a novel state-space variant, a new attention scheme, a non-standard activation chain) can be classified before any expensive training run by computing $T_1/T_3$ at random initialisation. Cost: a few hundred backward passes (seconds on RTX 3080 for ≤ 100 M params; minutes for ≤ 1 B; bounded above by the model's per-sample-backward cost). This is the rationale used in §4.6 V9.4 to classify the Mamba SSM substrate as deep-sequential before any pre-registered measurement was performed.
-
-2. *Architecture taxonomy* across substrate classes: we provide a falsifiable taxonomy in which any new architecture admits a single Yes/No dichotomy classification, with the threshold rule and bootstrap procedure given in Proposition 1 and Appendix A. The four "narrowing" architectures of §4.6 (GPT-Tiny tied/untied, Mamba SSM, RNN/LSTM) sit *inside* the deep-sequential band by $T_1/T_3$ magnitude but *outside* the $\sqrt{L}$-scaling sub-class — a finer-grained taxonomy that emerges directly from the diagnostic.
-
-3. *Pruning / saliency prior*: the mechanism's prediction (top-1 % of FIM mass concentrates the architectural sensitivity) gives a principled prior on which parameters to keep under aggressive pruning at random initialisation, parallel to SNIP / GraSP / Synaptic Flow but with a closed-form mechanism behind it (Theorem 1' + Corollary 1) rather than empirical heuristics. We do not pursue pruning experiments in this paper, but the diagnostic immediately identifies the candidate parameter set.
-
-To our knowledge no prior work provides any of these three operational uses with a closed-form mechanism prediction *and* a Bonferroni-corrected substrate-class-discriminative test on a 12-class panel. The combination is the contribution.
-
 **Ablation: which conclusions are unique to the FIM-diagonal observable?** To make explicit what the present observable adds beyond prior heavy-tail observables, we ablate against three closest prior signals on the *same* 5-layer 256-neuron untrained MLP ($P = 296\,k$, $L = 5$):
 
 | Observable | Tier-3 / Tier-1 dichotomy at threshold 100 | Boolean-circuit substrate | Lattice-gauge null result | Detected at random init? | Partition-invariant analogue computable? | Substrate panel published |
