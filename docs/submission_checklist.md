@@ -79,7 +79,7 @@ Pre-flight review before submitting to NeurIPS 2026 main track (or workshop fall
 1. Is the strongest empirical claim in the abstract? Yes — complete rank separation $p = 1.7 \times 10^{-17}$, $r = 1.000$.
 2. Is the mechanism tied to a published theorem? Yes — Hanin–Nica 2020 (Comm. Math. Phys. 376, 287–322, arXiv:1812.05994), plus our Theorem 1' exact form and Proposition 2 pooling-error bound.
 3. Are the falsification criteria pre-registered? Yes — `docs/preregistration_v2.md` and §3.5 Falsifiability Ladder.
-4. Are real-data benchmarks present? Yes — V9.2 CIFAR-10, V9.2b CIFAR-100, V9.5 ImageNet ResNet-50 (V1 and V2 weights), V9.6 GPT-2-medium.
+4. Are real-data benchmarks present? Yes — V9.2 CIFAR-10, V9.2b CIFAR-100, V9.5 ImageNet ResNet-50 (V1 + V2 weights), V9.6 GPT-2-medium, V9.7 ImageNet ViT-L/16. Five production-scale data points covering CNN + ViT + autoregressive-LM.
 5. Is reproducibility complete? Yes — `docs/neurips_reproducibility_checklist.md`, claim manifest with SHA-256, one-line per-figure repro recipe.
 
 *Checklist v2, NeurIPS 2026 main-track edition. STARGA Commercial License.*
