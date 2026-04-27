@@ -376,6 +376,18 @@ A modern-architecture depth sweep (V9, `experiments/v9_modern_arch/resnet_gpt2_d
 - **Mamba SSM out-of-sample test (V9.4, pre-registered prediction)**: To address the standard "post-hoc narrowing" reviewer concern directly, we *pre-registered three hypotheses* before measuring on a substrate not in the V2 panel: a simplified Mamba state-space-model stack with distinct per-layer parameters. **H1** (positive): if Mamba follows the layered-stack √L scaling, slope $> 0$ and $R^2 > 0.85$. **H2** (attenuated): if selective gating partially attenuates Var[$\log F$] accumulation, slope $> 0$ but $R^2 < 0.85$ — same family as V9.4 attention finding. **H3** (null): flat or negative slope — out-of-sample failure. Setup: 5 depths × 3 seeds, dim=32, d_state=16, distinct per-layer params, identical FIM-diagonal protocol. **Result: slope $= 0.468$, $R^2 = 0.780$, H2 PARTIAL.** $T_1/T_3$ at L=1 sits at $\approx 70\,000$ (already above the dichotomy threshold by 700×) and grows to $\approx 180\,000$ at L=6. Honest reading: (i) the dichotomy magnitude survives the out-of-sample test cleanly — Mamba sits firmly in the deep-sequential band; (ii) the √L scaling direction is positive but $R^2$ is below the strict H1 threshold, consistent with the same "selective-gating attenuation" we found in attention transformers; (iii) the out-of-sample H2 verdict was registered before measurement and matches what a Hanin–Nica reading of selective-scan SSMs would predict (gating saturation reduces but does not eliminate the depth-linear variance accumulation). This narrows the universality scope to the same regime found across other gated architectures and is, to our knowledge, the first FIM-diagonal measurement on a Mamba-style SSM.
 
 - **CIFAR-10 + ResNet-18 (real-data verification)**: To address the synthetic-task / toy-architecture concern directly we trained a CIFAR-style ResNet-18 (11.2 M parameters, the canonical CIFAR-residual variant — 3×3 stem, 4 stages of 2 BasicBlocks, 64/128/256/512 channels, no max-pool) for 10 epochs of cosine-annealed SGD on CIFAR-10. Final test accuracy: **81.4 %**, confirming the network has actually learned. FIM diagonal measured on the test set, 200 per-sample probes, float64 accumulation, identical protocol to the synthetic-task panel. Results: $T_1/T_3 = 7.78 \times 10^2$ (deep-sequential band, $\gg 100$); Gini coefficient $= 0.844$ (matches MLP-L=4 territory); $r_{\text{eff}}/n \approx 0$ (extreme heavy-tail concentration); top-1 % mass $= 0.478$ (47.8 % of all FIM mass concentrated in 1 % of parameters). All four observables — $T_1/T_3$, Gini, effective rank, top-1 % mass — agree on the deep-sequential characterisation.
+- **CIFAR-10 + ResNet-18 from-scratch training trajectory**: To address the reviewer concern about endpoint-only production-scale evidence, we measure the FIM tier hierarchy at multiple training checkpoints on the same network from random init. 10-epoch SGD on CIFAR-10:
+
+  | Epoch | $\log_{10}(T_1/T_3)$ | Gini | Test acc |
+  |---|---|---|---|
+  | 0 (random init) | 4.506 | 0.970 | 9.8 % (random) |
+  | 1 | 3.875 | 0.943 | 37.6 % |
+  | 3 | 3.316 | 0.903 | 56.4 % |
+  | 5 | 3.227 | 0.896 | 65.5 % |
+  | 10 (final) | 2.784 | 0.826 | 86.7 % |
+
+  **Total $T_1/T_3$ reduction during training: 52.7× (1.72 log units), monotonic across all checkpoint epochs.** This refines V4.1's "training reduces by 4–24×" finding with intermediate samples on a real benchmark — the reduction is graded across training, not a step at any single epoch, and the network ends in the deep-sequential band ($T_1/T_3 = 608$ at epoch 10) despite the substantial drop. Full results: `experiments/v9_modern_arch/v9_2c_cifar_trajectory_results.json`.
+
 - **CIFAR-100 + ResNet-18 (second real-dataset replication)**: Same architecture, same 10-epoch SGD training schedule, only the dataset and final-layer head differ. Final test accuracy: **65.0 %** (typical for 10-epoch CIFAR-100 ResNet-18 without aggressive augmentation). FIM measured with the identical 200-probe float64 protocol. Results: $T_1/T_3 = 1.66 \times 10^2$ (deep-sequential band, $> 100$ ✓), Gini = $0.694$, top-1 % mass = $0.290$. The tier ratio is somewhat lower than CIFAR-10's 778 — expected, because CIFAR-100's 100-way classification head adds 50× more output parameters at the final layer, slightly diluting per-parameter concentration. The dichotomy direction is preserved on a second real-data benchmark, and both partition-invariant statistics (Gini and top-1 % mass) remain well above the rest-band maxima (Gini $\le 0.49$, top-1 % mass $\le 0.083$). This addresses the "single dataset/model pair" reviewer concern. Together V9.2 and V9.2b are the **two real-data data points** in the panel.
 
 - **ImageNet + ResNet-50, pretrained (production-scale CNN, multi-seed)**: Torchvision's `ResNet50_Weights.IMAGENET1K_V1` (25.6 M parameters, **76.13 %** ImageNet-1K top-1 accuracy — the standard 90-epoch baseline) and `ResNet50_Weights.IMAGENET1K_V2` (same architecture, **80.86 %** top-1, trained with the modern recipe: LARS optimiser + cosine LR + label smoothing + RandAugment). FIM measured with the 200-probe float64 protocol on ImageNet-statistics-normalised inputs, repeated across **5 different probe seeds** to characterise estimator uncertainty (`v9_multi_seed_production_results.json`):
@@ -453,6 +465,19 @@ A reviewer may worry that the FIM-diagonal estimator's choice of 200 Gaussian pr
 *Reading*: every cell of the "$> 100$?" column is consistent with the V5.1 ROC AUC of 1.0 and with Proposition 1; the dichotomy is visible in *every* tracked observable (column 5 for tier ratio, columns 8–10 for partition-invariant analogues). The deep-sequential band has Gini $\geq 0.79$, $r_{\text{eff}}/n \le 10^{-3}$, top-1 % mass $\geq 0.42$; the rest band has Gini $\le 0.49$, $r_{\text{eff}}/n \geq 0.71$, top-1 % mass $\le 0.083$. There is no overlap on any of the four metrics.
 
 ## 5. Discussion
+
+### 5.0 What the diagnostic does *not* do (honest negative result, V10c)
+
+A reviewer asked whether $T_1/T_3$ has direct downstream utility — specifically, whether the top-1 % FIM-diagonal mass at random init is a useful pruning saliency. We tested this on a 5-layer ReLU MLP trained on a synthetic 4-class classification task: at each keep-fraction $\in \{1\%, 5\%, 10\%, 50\%\}$ we built three masks (top-$k$ by FIM-diagonal, top-$k$ by weight magnitude, random-$k$) and trained the masked subnetwork from the same random init.
+
+| Keep frac | FIM-saliency (mean test acc) | Magnitude (mean) | Random (mean) |
+|---|---|---|---|
+| 1 % | 0.31 ± 0.00 | **0.53** ± 0.00 | 0.53 ± 0.00 |
+| 5 % | **0.31** ± 0.00 | 0.26 ± 0.01 | 0.19 ± 0.01 |
+| 10 % | 0.20 ± 0.01 | 0.20 ± 0.01 | 0.22 ± 0.01 |
+| 50 % | 0.21 ± 0.01 | 0.21 ± 0.00 | 0.20 ± 0.01 |
+
+The result is mixed: at the extreme 1 % keep-fraction FIM-saliency *underperforms* magnitude pruning; at 5 % it slightly outperforms; at $\geq 10 \%$ the methods converge. **We do not claim FIM-diagonal saliency at random init as a pruning-method replacement.** The diagnostic value of $T_1/T_3$ lies in *substrate-class detection* (§4.5) — one signal in a multi-signal architecture-screening or stability-checking workflow — *not* as a standalone pruning-saliency criterion. This honest negative result narrows the practical-utility scope of the paper. Full data: `experiments/v10_baselines/v10c_pruning_utility_results.json`.
 
 ### 5.1 Summary of the empirical claim
 
