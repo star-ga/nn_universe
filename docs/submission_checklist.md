@@ -42,6 +42,7 @@ Pre-flight review before submitting to NeurIPS 2026 main track (or workshop fall
 - [x] `experiments/v9_modern_arch/gpt_untied_depth.py` — V9.1 untied falsifier.
 - [x] `experiments/v9_modern_arch/cifar_resnet18_fim.py` — V9.2 CIFAR-10 ResNet-18.
 - [x] `experiments/v9_modern_arch/cifar100_resnet18_fim.py` — V9.2b CIFAR-100 ResNet-18.
+- [x] `experiments/v9_modern_arch/vit_large_fim.py` — V9.7 ImageNet ViT-L/16.
 - [x] `experiments/v9_modern_arch/rnn_depth.py` — V9.3 RNN/LSTM.
 - [x] `experiments/v9_modern_arch/mamba_depth.py` — V9.4 Mamba SSM (pre-registered).
 - [x] `experiments/v9_modern_arch/imagenet_resnet50_fim.py` — V9.5 ImageNet ResNet-50.
