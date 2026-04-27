@@ -1,0 +1,18 @@
+{
+  "config": {
+    "n_probes": 200,
+    "out": "/home/n/nn_universe/experiments/v9_modern_arch/v9_7_imagenet_vit_l16_results.json"
+  },
+  "n_params": 304326632,
+  "pretrained_imagenet_top1": "79.66%",
+  "tier1_mean": 0.004484744983051617,
+  "tier3_mean": 6.4704698124445e-07,
+  "tier_ratio": 6931.096370198984,
+  "partition_invariant": {
+    "gini": 0.8938962461964721,
+    "effective_rank_normalised": 1.5872231301841848e-12,
+    "top_1pct_mass": 0.5667101928986639
+  },
+  "fim_measurement_s": 18.11744475364685,
+  "interpretation": "FIM tier hierarchy on ImageNet-pretrained ViT-L/16 (304M params, 79.66% top-1). Production-scale vision transformer (attention architecture). Combined with V9.5 ResNet-50 (CNN production-scale) and V9.6 GPT-2-medium (language production-scale), gives three production-scale data points across CNN + ViT + autoregressive-LM."
+}
