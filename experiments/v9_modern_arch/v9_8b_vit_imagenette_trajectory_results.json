@@ -1,0 +1,57 @@
+{
+  "model": "vit_b_16_from_scratch",
+  "n_params": 85806346,
+  "trajectory": [
+    {
+      "epoch": 0,
+      "T1T3": 0.37253906552688804,
+      "log10_T1T3": -0.4288281791487621,
+      "gini": 0.9999887567908696,
+      "top_1pct_mass": 0.2642149558106169,
+      "test_accuracy": 0.09859872611464968,
+      "fim_time_s": 14.449926376342773
+    },
+    {
+      "epoch": 1,
+      "T1T3": 211144.9452072302,
+      "log10_T1T3": 5.324580688910895,
+      "gini": 0.9946491636027431,
+      "top_1pct_mass": 0.9446517509861988,
+      "test_accuracy": 0.4043312101910828,
+      "fim_time_s": 18.018468379974365
+    },
+    {
+      "epoch": 3,
+      "T1T3": 73338.58061339865,
+      "log10_T1T3": 4.865332500419596,
+      "gini": 0.9812371099539321,
+      "top_1pct_mass": 0.8220301598504222,
+      "test_accuracy": 0.5696815286624204,
+      "fim_time_s": 17.72663426399231
+    },
+    {
+      "epoch": 5,
+      "T1T3": 46830.93034670369,
+      "log10_T1T3": 4.670532785593872,
+      "gini": 0.9714349540747386,
+      "top_1pct_mass": 0.7530437710622461,
+      "test_accuracy": 0.6405095541401273,
+      "fim_time_s": 17.379841327667236
+    },
+    {
+      "epoch": 10,
+      "T1T3": 29353.3886229726,
+      "log10_T1T3": 4.4676582444357305,
+      "gini": 0.9614330003054128,
+      "top_1pct_mass": 0.7022438604066331,
+      "test_accuracy": 0.7154140127388535,
+      "fim_time_s": 17.30425214767456
+    }
+  ],
+  "log10_T1T3_init_vs_final": {
+    "epoch_0": -0.4288281791487621,
+    "epoch_final": 4.4676582444357305,
+    "log10_drop_during_training": -4.896486423584492
+  },
+  "interpretation": "ViT-B/16 (88M params) FROM SCRATCH on Imagenette; trajectory FIM at epochs 0/1/3/5/10. ViT-from-scratch trajectory data \u2014 was missing prior since V9.7 used pretrained weights only. AdamW lr=1e-4, weight_decay=0.05 (reasonable for ViT from scratch on small dataset)."
+}

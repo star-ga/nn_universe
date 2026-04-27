@@ -1,0 +1,15 @@
+{
+  "model": "EleutherAI/pythia-1.4b",
+  "n_params": 1414647808,
+  "tier1_mean": 0.0005247687854786399,
+  "tier3_mean": 1.2335070618150722e-07,
+  "tier_ratio": 4254.282782187374,
+  "log10_T1T3": 3.6288263540814847,
+  "partition_invariant": {
+    "gini": 0.9424993076486164,
+    "effective_rank_normalised": 8.914225081570788e-14,
+    "top_1pct_mass": 0.7954781756524457
+  },
+  "n_probes": 100,
+  "interpretation": "Pythia-1.4B FIM at 1.4B autoregressive-LM parameters \u2014 billion-param LM data point. Closes prior gap (V11.2 had 354.8M GPT-2-medium as max LM). GPU-fp32 accumulator + cast-to-fp64 at end (memory-efficient)."
+}

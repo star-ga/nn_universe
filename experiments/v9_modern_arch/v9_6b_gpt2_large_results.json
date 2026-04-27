@@ -1,0 +1,19 @@
+{
+  "config": {
+    "model": "gpt2-large",
+    "n_probes": 100,
+    "out": "experiments/v9_modern_arch/v9_6b_gpt2_large_results.json"
+  },
+  "n_params": 774030080,
+  "model": "gpt2-large",
+  "tier1_mean": 4.2362211033875215e-05,
+  "tier3_mean": 3.825031636232693e-08,
+  "tier_ratio": 1107.4996251690648,
+  "partition_invariant": {
+    "gini": 0.8667551713769065,
+    "effective_rank_normalised": 9.47502123878377e-13,
+    "top_1pct_mass": 0.6065363382948298
+  },
+  "fim_measurement_s": 12.227393865585327,
+  "interpretation": "FIM tier hierarchy on pretrained gpt2-large (774,030,080 params), production-scale autoregressive transformer pretrained on WebText. Same protocol as V9.2/V9.2b CIFAR (200 probes, float64 accumulation), with text inputs and language-modelling cross-entropy loss. Closes the language-side architecture_coverage gap."
+}
