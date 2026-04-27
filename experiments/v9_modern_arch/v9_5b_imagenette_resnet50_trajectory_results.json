@@ -1,0 +1,89 @@
+{
+  "config": {
+    "epochs": 10,
+    "checkpoint_epochs": [
+      0,
+      1,
+      3,
+      5,
+      10
+    ],
+    "batch": 128,
+    "lr": 0.1,
+    "n_probes": 200,
+    "seed": 42,
+    "out": "/home/n/nn_universe/experiments/v9_modern_arch/v9_5b_imagenette_resnet50_trajectory_results.json"
+  },
+  "n_params": 23528522,
+  "trajectory": [
+    {
+      "T1T3": 404685.06952533644,
+      "log10_T1T3": 5.607117181801075,
+      "gini": 0.9753547250971776,
+      "eff_rank_n": 4.928984856433148e-12,
+      "top_1pct_mass": 0.7944128371717605,
+      "epoch": 0,
+      "test_accuracy": 0.09859872611464968,
+      "fim_time_s": 14.9840829372406
+    },
+    {
+      "T1T3": 8762904331.227694,
+      "log10_T1T3": 9.942648070320772,
+      "gini": 0.9996162638250252,
+      "eff_rank_n": 1.4111093129954082e-14,
+      "top_1pct_mass": 0.9942693983876595,
+      "epoch": 1,
+      "test_accuracy": 0.13121019108280255,
+      "train_accuracy": 0.11669658886894076,
+      "train_loss": 6.320617980621649,
+      "fim_time_s": 14.979043006896973,
+      "epoch_time_s": 12.422964811325073
+    },
+    {
+      "T1T3": 73385726.55476761,
+      "log10_T1T3": 7.865611598317968,
+      "gini": 0.9969424323777323,
+      "eff_rank_n": 6.375362205093531e-13,
+      "top_1pct_mass": 0.9578269752724734,
+      "epoch": 3,
+      "test_accuracy": 0.21859872611464967,
+      "train_accuracy": 0.19357904741788995,
+      "train_loss": 2.167736384090343,
+      "fim_time_s": 13.905075311660767,
+      "epoch_time_s": 12.41743278503418
+    },
+    {
+      "T1T3": 47320149.415093645,
+      "log10_T1T3": 7.675046107258687,
+      "gini": 0.9946612509890473,
+      "eff_rank_n": 3.263925636251908e-12,
+      "top_1pct_mass": 0.922418993470838,
+      "epoch": 5,
+      "test_accuracy": 0.23031847133757963,
+      "train_accuracy": 0.24173619178371528,
+      "train_loss": 2.0925973808013825,
+      "fim_time_s": 15.208116292953491,
+      "epoch_time_s": 12.455107688903809
+    },
+    {
+      "T1T3": 21040427.27889768,
+      "log10_T1T3": 7.323054555015128,
+      "gini": 0.9931468892100228,
+      "eff_rank_n": 5.847033527217225e-12,
+      "top_1pct_mass": 0.9005401939592033,
+      "epoch": 10,
+      "test_accuracy": 0.35082802547770703,
+      "train_accuracy": 0.3327700918787623,
+      "train_loss": 1.8827925663410339,
+      "fim_time_s": 15.359966278076172,
+      "epoch_time_s": 12.562045574188232
+    }
+  ],
+  "log10_T1T3_init_vs_final": {
+    "epoch_0": 5.607117181801075,
+    "epoch_final": 7.323054555015128,
+    "log10_drop_during_training": -1.7159373732140528,
+    "T1T3_drop_factor": 0.0192336906547146
+  },
+  "interpretation": "Imagenette ResNet-50 (25.6M params, 10-class real-image subset of ImageNet) from-scratch trajectory. 10 epochs SGD, FIM measured at epochs 0/1/3/5/10. Real natural-image classification, production-scale architecture, from random init \u2014 extends V9.2c CIFAR-10 ResNet-18 trajectory to real-ImageNet-class images and a deeper architecture."
+}
