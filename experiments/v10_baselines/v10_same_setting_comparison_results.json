@@ -1,0 +1,149 @@
+{
+  "config": {
+    "dim": 16,
+    "probes": 200,
+    "spectrum_samples": 64
+  },
+  "per_system": [
+    {
+      "system": "untrained_mlp_L=5",
+      "n_params": 14608,
+      "T1_T3_diag": 4264.2132933959965,
+      "top1_pct_mass": 0.7490317573567525,
+      "gini_diag": 0.9418951554527647,
+      "fim_spectrum_top_med": 63.62917138743835,
+      "hessian_outliers": 128.29139709472656,
+      "weight_spectrum_alpha": 4.916601657867432,
+      "gradient_log_var": 0.1625347012269101,
+      "jacobian_cond": 397.48016834259033,
+      "elapsed_s": 0.5387492179870605
+    },
+    {
+      "system": "untrained_mlp_L=8",
+      "n_params": 27088,
+      "T1_T3_diag": 2854555.0305777113,
+      "top1_pct_mass": 0.8709432883644163,
+      "gini_diag": 0.9929031361639414,
+      "fim_spectrum_top_med": 5144.763623728771,
+      "hessian_outliers": 10997.1953125,
+      "weight_spectrum_alpha": 4.298025608062744,
+      "gradient_log_var": 0.1190377324706466,
+      "jacobian_cond": 2365.8282470703125,
+      "elapsed_s": 0.7087769508361816
+    },
+    {
+      "system": "untrained_mlp_L=12",
+      "n_params": 43728,
+      "T1_T3_diag": 662652615125514.0,
+      "top1_pct_mass": 0.9276785545657702,
+      "gini_diag": 0.9972183159266784,
+      "fim_spectrum_top_med": 6465544.323655961,
+      "hessian_outliers": 16172723.0,
+      "weight_spectrum_alpha": 4.021850109100342,
+      "gradient_log_var": 0.16045343008841761,
+      "jacobian_cond": 12164.811813354492,
+      "elapsed_s": 1.0598547458648682
+    },
+    {
+      "system": "logistic_regression",
+      "n_params": 68,
+      "T1_T3_diag": 4.816139171999432,
+      "top1_pct_mass": 0.04675258837281039,
+      "gini_diag": 0.24060512680786333,
+      "fim_spectrum_top_med": 23.708947714565447,
+      "hessian_outliers": 94.3958740234375,
+      "weight_spectrum_alpha": NaN,
+      "gradient_log_var": 1.040409797525386,
+      "jacobian_cond": NaN,
+      "elapsed_s": 0.17281270027160645
+    },
+    {
+      "system": "linear_regression",
+      "n_params": 272,
+      "T1_T3_diag": 4.094994807237339,
+      "top1_pct_mass": 0.0215699079498925,
+      "gini_diag": 0.20978948774127903,
+      "fim_spectrum_top_med": 10.496258409196518,
+      "hessian_outliers": 23.4838809967041,
+      "weight_spectrum_alpha": 3.4174158573150635,
+      "gradient_log_var": 0.5867999636178045,
+      "jacobian_cond": 55.57948303222656,
+      "elapsed_s": 0.20969367027282715
+    }
+  ],
+  "discrimination": {
+    "T1_T3_diag": {
+      "deep_min": 4264.2132933959965,
+      "deep_max": 662652615125514.0,
+      "nondeep_min": 4.094994807237339,
+      "nondeep_max": 4.816139171999432,
+      "separation_above": 4259.397154223997,
+      "separation_below": -662652615125509.9,
+      "clean_separation": true
+    },
+    "top1_pct_mass": {
+      "deep_min": 0.7490317573567525,
+      "deep_max": 0.9276785545657702,
+      "nondeep_min": 0.0215699079498925,
+      "nondeep_max": 0.04675258837281039,
+      "separation_above": 0.7022791689839422,
+      "separation_below": -0.9061086466158776,
+      "clean_separation": true
+    },
+    "gini_diag": {
+      "deep_min": 0.9418951554527647,
+      "deep_max": 0.9972183159266784,
+      "nondeep_min": 0.20978948774127903,
+      "nondeep_max": 0.24060512680786333,
+      "separation_above": 0.7012900286449013,
+      "separation_below": -0.7874288281853994,
+      "clean_separation": true
+    },
+    "fim_spectrum_top_med": {
+      "deep_min": 63.62917138743835,
+      "deep_max": 6465544.323655961,
+      "nondeep_min": 10.496258409196518,
+      "nondeep_max": 23.708947714565447,
+      "separation_above": 39.9202236728729,
+      "separation_below": -6465533.827397552,
+      "clean_separation": true
+    },
+    "hessian_outliers": {
+      "deep_min": 128.29139709472656,
+      "deep_max": 16172723.0,
+      "nondeep_min": 23.4838809967041,
+      "nondeep_max": 94.3958740234375,
+      "separation_above": 33.89552307128906,
+      "separation_below": -16172699.516119003,
+      "clean_separation": true
+    },
+    "weight_spectrum_alpha": {
+      "deep_min": 4.021850109100342,
+      "deep_max": 4.916601657867432,
+      "nondeep_min": 3.4174158573150635,
+      "nondeep_max": 3.4174158573150635,
+      "separation_above": 0.6044342517852783,
+      "separation_below": -1.4991858005523682,
+      "clean_separation": true
+    },
+    "gradient_log_var": {
+      "deep_min": 0.1190377324706466,
+      "deep_max": 0.1625347012269101,
+      "nondeep_min": 0.5867999636178045,
+      "nondeep_max": 1.040409797525386,
+      "separation_above": -0.9213720650547395,
+      "separation_below": 0.4242652623908944,
+      "clean_separation": true
+    },
+    "jacobian_cond": {
+      "deep_min": 397.48016834259033,
+      "deep_max": 12164.811813354492,
+      "nondeep_min": 55.57948303222656,
+      "nondeep_max": 55.57948303222656,
+      "separation_above": 341.90068531036377,
+      "separation_below": -12109.232330322266,
+      "clean_separation": true
+    }
+  },
+  "summary": "Same-setting comparison: which prior observable cleanly separates deep (untrained MLP L>=5) from non-deep (linear, logistic) at matched parameter count? See discrimination dict for per-observable verdict."
+}

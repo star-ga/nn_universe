@@ -1,0 +1,153 @@
+{
+  "config": {
+    "depth": 8,
+    "width": 128,
+    "dim": 16,
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "n_probes": 200
+  },
+  "per_init": [
+    {
+      "init": "kaiming",
+      "depth": 8,
+      "width": 128,
+      "per_seed": [
+        {
+          "T1T3": 638.4927383585331,
+          "gini": 0.7604328344387664,
+          "top1_pct_mass": 0.20836924484314912,
+          "seed": 0
+        },
+        {
+          "T1T3": 364.380428436114,
+          "gini": 0.7382951114309075,
+          "top1_pct_mass": 0.19034053942656184,
+          "seed": 1
+        },
+        {
+          "T1T3": 517.828819881076,
+          "gini": 0.7536075139129148,
+          "top1_pct_mass": 0.2070515593008333,
+          "seed": 2
+        }
+      ],
+      "T1T3_mean": 506.9006622252411,
+      "T1T3_std": 137.3825246713139,
+      "log10_T1T3_mean": 2.6936324073433973,
+      "log10_T1T3_std": 0.12309425825844217,
+      "gini_mean": 0.7507784865941961,
+      "top1_mean": 0.20192044785684807,
+      "above_threshold_100": true
+    },
+    {
+      "init": "xavier",
+      "depth": 8,
+      "width": 128,
+      "per_seed": [
+        {
+          "T1T3": 2619.7512505823697,
+          "gini": 0.8653170765378453,
+          "top1_pct_mass": 0.5704255512442895,
+          "seed": 0
+        },
+        {
+          "T1T3": 1103.9466242301335,
+          "gini": 0.8156730507368142,
+          "top1_pct_mass": 0.43993144595459116,
+          "seed": 1
+        },
+        {
+          "T1T3": 1652.7831474724667,
+          "gini": 0.8412659899628891,
+          "top1_pct_mass": 0.5180841368719957,
+          "seed": 2
+        }
+      ],
+      "T1T3_mean": 1792.1603407616567,
+      "T1T3_std": 767.4538538730454,
+      "log10_T1T3_mean": 3.2264746693545248,
+      "log10_T1T3_std": 0.18779224275912212,
+      "gini_mean": 0.8407520390791828,
+      "top1_mean": 0.5094803780236254,
+      "above_threshold_100": true
+    },
+    {
+      "init": "orthogonal",
+      "depth": 8,
+      "width": 128,
+      "per_seed": [
+        {
+          "T1T3": 277.02209074496835,
+          "gini": 0.7253003909368602,
+          "top1_pct_mass": 0.15160212439347975,
+          "seed": 0
+        },
+        {
+          "T1T3": 325.980281209688,
+          "gini": 0.7341859361962818,
+          "top1_pct_mass": 0.17587998384607353,
+          "seed": 1
+        },
+        {
+          "T1T3": 246.75211849199985,
+          "gini": 0.7220651204070195,
+          "top1_pct_mass": 0.15610040422647123,
+          "seed": 2
+        }
+      ],
+      "T1T3_mean": 283.2514968155521,
+      "T1T3_std": 39.97973945512008,
+      "log10_T1T3_mean": 2.4493222075739363,
+      "log10_T1T3_std": 0.06075197519137348,
+      "gini_mean": 0.7271838158467205,
+      "top1_mean": 0.16119417082200815,
+      "above_threshold_100": true
+    },
+    {
+      "init": "identity_eps",
+      "depth": 8,
+      "width": 128,
+      "per_seed": [
+        {
+          "T1T3": 40.85644856414047,
+          "gini": 0.5400909076632605,
+          "top1_pct_mass": 0.14207386638514502,
+          "seed": 0
+        },
+        {
+          "T1T3": 42.632847366473115,
+          "gini": 0.5478999558304904,
+          "top1_pct_mass": 0.14428790791638257,
+          "seed": 1
+        },
+        {
+          "T1T3": 42.797958166821765,
+          "gini": 0.5482871390161564,
+          "top1_pct_mass": 0.14521138900287506,
+          "seed": 2
+        }
+      ],
+      "T1T3_mean": 42.095751365811786,
+      "T1T3_std": 1.0764380937939328,
+      "log10_T1T3_mean": 1.6241426674068844,
+      "log10_T1T3_std": 0.011187716992688692,
+      "gini_mean": 0.5454260008366357,
+      "top1_mean": 0.14385772110146755,
+      "above_threshold_100": false
+    }
+  ],
+  "falsifier_verdict": {
+    "kaiming_log10_T1T3": 2.6936324073433973,
+    "orthogonal_log10_T1T3": 2.4493222075739363,
+    "identity_eps_log10_T1T3": 1.6241426674068844,
+    "log10_drop_kaiming_to_orthogonal": 0.244310199769461,
+    "log10_drop_kaiming_to_identity": 1.0694897399365129,
+    "orthogonal_below_threshold_100": false,
+    "identity_below_threshold_100": true,
+    "falsifier_outcome": "PARTIAL: orthogonal init reduces T1/T3 but not below 100 threshold; hierarchy partially survives near-isometric init (mechanism may need refinement)"
+  }
+}
