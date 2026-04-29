@@ -1,0 +1,59 @@
+{
+  "config": {
+    "hf_path": "/data/checkpoints/imagenet_1k_hf",
+    "epochs": 90,
+    "checkpoint_epochs": [
+      0,
+      10,
+      30,
+      60,
+      90
+    ],
+    "batch": 128,
+    "lr": 0.1,
+    "n_probes": 200,
+    "seed": 42,
+    "workers": 6,
+    "out": "/home/n/nn_universe/experiments/v9_modern_arch/v9_5c_imagenet_resnet50_fromscratch_results.json"
+  },
+  "n_params": 25557032,
+  "trajectory": [
+    {
+      "T1T3": 3400731.522452937,
+      "log10_T1T3": 6.531572347040154,
+      "gini": 0.9687795246575044,
+      "eff_rank_n": 1.0180529300479346e-11,
+      "top_1pct_mass": 0.7301091456471228,
+      "epoch": 0,
+      "test_accuracy": 0.001,
+      "fim_time_s": 38.39313578605652
+    },
+    {
+      "T1T3": 1243.925002877373,
+      "log10_T1T3": 3.094794197221074,
+      "gini": 0.8679100338126166,
+      "eff_rank_n": 1.0927310302787401e-10,
+      "top_1pct_mass": 0.5195236217940572,
+      "epoch": 10,
+      "test_accuracy": 0.43332,
+      "train_accuracy": 0.41860819081353173,
+      "train_loss": 2.67630359016862,
+      "fim_time_s": 36.67324233055115,
+      "epoch_time_s": 1945.434993505478
+    },
+    {
+      "T1T3": 1474.08818216928,
+      "log10_T1T3": 3.168523464448409,
+      "gini": 0.875972849801474,
+      "eff_rank_n": 1.489685416123202e-10,
+      "top_1pct_mass": 0.5193454543763198,
+      "epoch": 30,
+      "test_accuracy": 0.50308,
+      "train_accuracy": 0.4624978632762161,
+      "train_loss": 2.4353152607670814,
+      "fim_time_s": 37.16772747039795,
+      "epoch_time_s": 2131.2295134067535
+    }
+  ],
+  "partial": true
+}
