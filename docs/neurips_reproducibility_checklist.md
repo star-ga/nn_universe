@@ -25,10 +25,10 @@ Per the NeurIPS 2026 reproducibility checklist requirements (`https://nips.cc/pu
 
 ## 4. Code
 
-- [x] **Code is available.** Yes — public repo at `https://github.com/star-ga/nn_universe`.
+- [x] **Code is available.** Yes — public repo at `https://github.com/<anonymous>/nn_universe`.
 - [x] **Code is documented.** README + per-section docstrings + 9 standalone docs (paper_draft, v6_summary, v6_0_mechanism_hanin_nica, findings, v1_1_ntk_continuum_limit, v2_0_lattice_embedded, v3_*, v4_*, v5_*).
 - [x] **Code includes tests.** `tests/` with 104 pytest tests passing; runtime ~60 s.
-- [x] **Code is licensed.** STARGA Commercial License (permissive academic reuse with citation; see repo `LICENSE`).
+- [x] **Code is licensed.** [License removed for anonymous review] (permissive academic reuse with citation; see repo `LICENSE`).
 
 ## 5. Statistical methodology
 

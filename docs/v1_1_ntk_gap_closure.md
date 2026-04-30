@@ -1,6 +1,6 @@
 # V1.1 — NTK Gap Closure Note
 
-**STARGA, Inc. — Research Document (Supplement to V1.1)**
+**Anonymous, Inc. — Research Document (Supplement to V1.1)**
 **Phase:** Naestro Tier-1 item 3
 **Companion:** `docs/v1_1_ntk_continuum_limit.md`
 
@@ -152,4 +152,4 @@ See `docs/v1_1_ntk_continuum_limit.md` for the main NTK theorem, references [1] 
 
 ---
 
-*STARGA Commercial License.*
+*[License removed for anonymous review].*

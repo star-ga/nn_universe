@@ -5,7 +5,7 @@
     "lr": 0.1,
     "n_probes": 200,
     "seed": 42,
-    "out": "/home/n/nn_universe/experiments/v9_modern_arch/v9_2_cifar_resnet18_fim.json"
+    "out": "experiments/v9_modern_arch/v9_2_cifar_resnet18_fim.json"
   },
   "n_params": 11173962,
   "test_accuracy": 0.8139,

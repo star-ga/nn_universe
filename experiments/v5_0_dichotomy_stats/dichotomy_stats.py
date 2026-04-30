@@ -28,7 +28,7 @@ N_BOOT = 2000
 THRESHOLD = 100.0   # dichotomy boundary
 rng = np.random.default_rng(SEED)
 
-BASE = pathlib.Path("/home/n/nn_universe/experiments")
+BASE = pathlib.Path(__file__).resolve().parents[1]
 
 # ── load raw per-seed T1/T3 values ───────────────────────────────────────────
 

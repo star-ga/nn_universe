@@ -1,24 +1,26 @@
-"""V3.1 real-data α-drift pipeline — **STUB**.
+"""V3.1 future α-drift pipeline (FORWARD-LOOKING STUB — no real data exists yet).
+
+**SCOPE WARNING:** This file documents the exact pipeline that *will* run on
+ELT-HIRES α-drift data once the data exists (~2028 instrument schedule).
+It does NOT process any real data today — the underlying observations have
+not yet been collected. The script below executes against synthetic mock
+inputs and produces a structurally-correct null result purely for unit-test
+purposes.
 
 This file establishes the exact protocol for the V3.1 prediction
-($\\dot\\alpha/\\alpha = \\kappa \\rho_I(x)$) against real archival data.
+($\\dot\\alpha/\\alpha = \\kappa \\rho_I(x)$) against future archival data.
 
-Execution requires:
+Execution will require (when real data arrives):
   1. UVES + HIRES absorption-spectrum archival data with per-sightline
      $\\Delta\\alpha/\\alpha$ (Webb / King / Murphy / Carswell work).
   2. SDSS DR18 environmental density $\\rho_I$ per sightline at
      absorber redshift (bit-density proxy from local galaxy count).
   3. Redshift z and S/N metadata for the partial-correlation controls.
 
-None of this data is included in the repo; the script below is
-a placeholder that documents the expected interface and the
-decision rule. It executes against synthetic data and produces a
-structurally-correct null result, so it is still testable via
-`pytest tests/`.
-
-When real data arrives, populate `load_archival_data()` to return
-columns (delta_alpha_over_alpha, rho_I, z, snr, sightline_id) and
-re-run. The rest of the pipeline is locked at preregistration.
+None of this data is included in the repo. When real data arrives, populate
+`load_archival_data()` to return columns (delta_alpha_over_alpha, rho_I, z,
+snr, sightline_id) and re-run. The rest of the pipeline is locked at
+preregistration.
 """
 from __future__ import annotations
 

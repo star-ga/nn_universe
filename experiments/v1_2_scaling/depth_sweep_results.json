@@ -13,7 +13,7 @@
     "steps": 15000,
     "batch": 128,
     "seed": 42,
-    "out": "/home/n/nn_universe/experiments/v1_2_scaling/depth_sweep_results.json"
+    "out": "experiments/v1_2_scaling/depth_sweep_results.json"
   },
   "results": [
     {

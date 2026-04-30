@@ -4,8 +4,8 @@ Replicates the V1.0 cosmology-experiment measurements on a trained decoder:
 
 - Per-weight-layer singular-value ratios  (`sv_stats`)
 - FIM diagonal spectrum + 3-tier partition (top 1% / 1-50% / bottom 50%)
-- Summary statistics suitable for direct comparison with
-  `/home/n/nn_universe/toy_experiment_results.json`.
+- Summary statistics suitable for direct comparison with the V1.0
+  baseline `toy_experiment_results.json` at the repo root.
 """
 from __future__ import annotations
 

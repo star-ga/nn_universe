@@ -10,7 +10,7 @@
       3,
       4
     ],
-    "out": "/home/n/nn_universe/experiments/v4_2_fim_spectrum_validation/v4_2_diag_vs_spectrum.json"
+    "out": "experiments/v4_2_fim_spectrum_validation/v4_2_diag_vs_spectrum.json"
   },
   "results": [
     {

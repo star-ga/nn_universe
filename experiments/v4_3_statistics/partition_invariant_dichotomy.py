@@ -26,8 +26,9 @@ from pathlib import Path
 import numpy as np
 import torch
 
-sys.path.insert(0, "/home/n/nn_universe")
-sys.path.insert(0, "/home/n/nn_universe/experiments/v6_0_depth_mechanism")
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(_REPO_ROOT))
+sys.path.insert(0, str(_REPO_ROOT / "experiments" / "v6_0_depth_mechanism"))
 
 
 def gini(values: np.ndarray) -> float:
@@ -138,7 +139,7 @@ def main() -> int:
         print(f"{r['system']:<28} {r['n_params']:>6}  {r['gini']:>6.3f}  "
               f"{r['effective_rank_normalised']:>8.4f}  {r['top_1pct_mass']:>7.3f}")
 
-    out = Path("/home/n/nn_universe/experiments/v4_3_statistics/v4_3_partition_invariant_dichotomy.json")
+    out = Path(__file__).resolve().parent / "v4_3_partition_invariant_dichotomy.json"
     out.write_text(json.dumps({"rows": rows,
                                 "interpretation": (
                                     "All three partition-invariant statistics order systems by depth: "

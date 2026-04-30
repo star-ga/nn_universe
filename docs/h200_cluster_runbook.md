@@ -20,7 +20,7 @@ Both live inside the same driver `sigma_min_validation.py`.
 #    Runpod: template "PyTorch 2.5 + CUDA 12.4", 1× H200, storage 100 GB.
 
 # 2. Clone and install.
-git clone https://github.com/star-ga/nn_universe.git
+git clone https://github.com/<anonymous>/nn_universe.git
 cd nn_universe
 pip install torch numpy scipy pytest
 
@@ -76,4 +76,4 @@ Match predictions from `docs/preregistration_v2.md` §2.A and §2.B:
 2. Update the README V3.0 Tier-1 table and the §4.1 scaling row.
 3. Replace the "W=45000 σ_min still blocked on H200" footnote in README with the measured values.
 
-*STARGA Commercial License. H200 runbook for task #34.*
+*[License removed for anonymous review]. H200 runbook for task #34.*

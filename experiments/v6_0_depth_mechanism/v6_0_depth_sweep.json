@@ -20,7 +20,7 @@
     "dim": 16,
     "n_probes": 1000,
     "omp_threads": 4,
-    "out": "/home/n/nn_universe/experiments/v6_0_depth_mechanism/v6_0_depth_sweep.json"
+    "out": "experiments/v6_0_depth_mechanism/v6_0_depth_sweep.json"
   },
   "per_run": [
     {

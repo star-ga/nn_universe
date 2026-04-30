@@ -17,7 +17,7 @@
     "seq_len": 8,
     "n_probes": 500,
     "omp_threads": 4,
-    "out": "/home/n/nn_universe/experiments/v6_0_depth_mechanism/v6_4_transformer_depth_sweep.json"
+    "out": "experiments/v6_0_depth_mechanism/v6_4_transformer_depth_sweep.json"
   },
   "per_run": [
     {

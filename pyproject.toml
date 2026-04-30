@@ -1,12 +1,17 @@
 [project]
 name = "nn_universe"
 version = "1.2.0"
-description = "FIM-Onsager cosmology computational validation — STARGA, Inc."
+description = "Computational validation for the FIM tier hierarchy: a panel-bounded empirical regularity of deep layered sequential computation."
 requires-python = ">=3.10"
 dependencies = [
     "numpy>=1.26",
     "torch>=2.1",
     "scipy>=1.11",
+    "transformers>=4.40",
+    "datasets>=2.14",
+    "torchvision>=0.18",
+    "huggingface_hub>=0.20",
+    "safetensors>=0.4",
 ]
 
 [project.optional-dependencies]

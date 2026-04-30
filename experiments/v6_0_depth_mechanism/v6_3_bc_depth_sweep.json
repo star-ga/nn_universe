@@ -15,7 +15,7 @@
     "gates_per_layer": 16,
     "n_inputs": 8,
     "n_probes": 200,
-    "out": "/home/n/nn_universe/experiments/v6_0_depth_mechanism/v6_3_bc_depth_sweep.json"
+    "out": "experiments/v6_0_depth_mechanism/v6_3_bc_depth_sweep.json"
   },
   "per_run": [
     {

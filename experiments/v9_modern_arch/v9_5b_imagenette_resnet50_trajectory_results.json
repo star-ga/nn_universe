@@ -12,7 +12,7 @@
     "lr": 0.1,
     "n_probes": 200,
     "seed": 42,
-    "out": "/home/n/nn_universe/experiments/v9_modern_arch/v9_5b_imagenette_resnet50_trajectory_results.json"
+    "out": "experiments/v9_modern_arch/v9_5b_imagenette_resnet50_trajectory_results.json"
   },
   "n_params": 23528522,
   "trajectory": [

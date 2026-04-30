@@ -18,7 +18,7 @@
     ],
     "n_probes": 500,
     "omp_threads": 4,
-    "out": "/home/n/nn_universe/experiments/v8_0_tensor_network/v8_0_bttn_results.json"
+    "out": "experiments/v8_0_tensor_network/v8_0_bttn_results.json"
   },
   "per_run": [
     {

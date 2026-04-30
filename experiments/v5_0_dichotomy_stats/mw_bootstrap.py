@@ -10,7 +10,7 @@ from pathlib import Path
 import numpy as np
 from scipy import stats
 
-EXP = Path("/home/n/nn_universe/experiments")
+EXP = Path(__file__).resolve().parents[1]
 RAW = json.loads((EXP / "v5_0_dichotomy_stats/dichotomy_stats_results.json").read_text())
 
 DEEP = ["nn_trained_pooled", "nn_untrained_pooled", "boolean_circuit"]

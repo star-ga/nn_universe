@@ -2,7 +2,7 @@
   "config": {
     "model": "gpt2-medium",
     "n_probes": 200,
-    "out": "/home/n/nn_universe/experiments/v9_modern_arch/v9_6_gpt2_medium_results.json"
+    "out": "experiments/v9_modern_arch/v9_6_gpt2_medium_results.json"
   },
   "n_params": 354823168,
   "model": "gpt2-medium",

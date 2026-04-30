@@ -162,7 +162,7 @@ def main():
     ap.add_argument("--n-probes", type=int, default=200)
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--workers", type=int, default=8)
-    ap.add_argument("--out", default="/home/n/nn_universe/experiments/v9_modern_arch/v9_5c_imagenet_resnet50_fromscratch_results.json")
+    ap.add_argument("--out", default=str(Path(__file__).resolve().parent / "v9_5c_imagenet_resnet50_fromscratch_results.json"))
     args = ap.parse_args()
 
     os.environ.setdefault('HF_HOME', '/data/checkpoints/hf_cache')

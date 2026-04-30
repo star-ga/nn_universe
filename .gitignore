@@ -13,3 +13,14 @@ runtime/target/
 /tmp/
 # claude-mem / local assistant artifacts
 AGENTS.md
+
+# C5: parent paper PDF (deanonymised) — never commit
+*.pdf
+!docs/img/*.pdf
+# H6: STARGA-private MIND toolchain artefacts (proprietary; not for public release)
+Mind.toml
+runtime/
+target/
+*.mind
+# M3: __pycache__ everywhere
+**/__pycache__/

@@ -18,7 +18,7 @@
       1,
       2
     ],
-    "out": "/home/n/nn_universe/experiments/v5_0_lattice_qcd/v7_1_beta_sweep_results.json"
+    "out": "experiments/v5_0_lattice_qcd/v7_1_beta_sweep_results.json"
   },
   "per_run": [
     {

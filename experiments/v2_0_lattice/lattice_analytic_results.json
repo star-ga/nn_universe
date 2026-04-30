@@ -6,7 +6,7 @@
     "levels": 4,
     "eval_density": 121,
     "freq": 1.0,
-    "out": "/home/n/nn_universe/experiments/v2_0_lattice/lattice_analytic_results.json"
+    "out": "experiments/v2_0_lattice/lattice_analytic_results.json"
   },
   "continuum_reference": 2.4768594005884927,
   "levels": [

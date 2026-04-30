@@ -13,7 +13,7 @@
     "iters": 500,
     "cutoff": 4000,
     "device": null,
-    "out": "/home/n/nn_universe/experiments/v1_2_scaling/sigma_min_validation_results.json"
+    "out": "experiments/v1_2_scaling/sigma_min_validation_results.json"
   },
   "results": [
     {

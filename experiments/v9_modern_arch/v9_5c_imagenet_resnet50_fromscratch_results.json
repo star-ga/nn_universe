@@ -14,7 +14,7 @@
     "n_probes": 200,
     "seed": 42,
     "workers": 6,
-    "out": "/home/n/nn_universe/experiments/v9_modern_arch/v9_5c_imagenet_resnet50_fromscratch_results.json"
+    "out": "experiments/v9_modern_arch/v9_5c_imagenet_resnet50_fromscratch_results.json"
   },
   "n_params": 25557032,
   "trajectory": [

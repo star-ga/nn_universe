@@ -1,33 +1,33 @@
 # FIM-Onsager Neural-Network Cosmology
 
-Computational + analytical validation of the STARGA neural-network cosmology framework.
+Computational + analytical validation of the Anonymous neural-network cosmology framework.
 
 ## Headline result (2026-04-24)
 
-**The FIM three-tier diagonal hierarchy is a mechanism-backed universality signature of deep layered sequential computation.** Across 12 parameterised substrate classes — trained / untrained neural networks, random boolean circuits, four shallow parameterised learners, U(1) and SU(2) lattice gauge fields, three dynamical-system controls, and a random-matrix ensemble — the tier ratio $T_1/T_3$ separates into two groups with **complete rank separation** (one-sided Mann–Whitney $U$: $p = 1.7 \times 10^{-17}$, rank-biserial $r = 1.000$, $n_{\text{deep}} = 46$, $n_{\text{rest}} = 50$). The split is quantitatively predicted by **Hanin & Nica 2020** (Comm. Math. Phys. 376, 287–322): log-normal $F_{ii}$ with depth-linear variance → $\log(T_1/T_3) \propto \sqrt{L}$. We empirically confirm this scaling across **six independent substrate classes** (untrained MLP $R^2 = 0.98$, trained MLP $R^2 = 0.94$, random boolean circuits $R^2 = 0.98$, transformers $R^2 = 0.97$, balanced binary tensor networks $R^2 = 0.99$ — V8.0, **ResNet residual stacks $R^2 = 0.999$ — V9, slope 16.74 over 4-32 blocks**). The mechanism is also confirmed across **four activations** (ReLU / GELU / tanh / Swish, all $R^2 \geq 0.97$) and **five gauge couplings** for the rest-side U(1) lattice (β = 0.1 → 5.0, $T_1/T_3$ stable at 1.72–1.79). **Honest scope narrowing**: GPT-Tiny attention architectures (V9 + V9.1, both tied- and untied-embedding variants) sit in the deep-sequential band by $T_1/T_3$ magnitude (250-6,200) but the $\sqrt{L}$ scaling itself **does not hold** for either configuration (tied: slope $-0.22$; untied: slope $-0.027$, $R^2 = 0.39$). The mechanism's $\sqrt{L}$ universality is therefore scoped to non-attention architectures; the dichotomy magnitude claim is universal across all tested substrates including attention.
+**The FIM three-tier diagonal hierarchy is a mechanism-backed universality signature of deep layered sequential computation.** Across 12 parameterised substrate classes — trained / untrained neural networks, random boolean circuits, four shallow parameterised learners, U(1) and SU(2) lattice gauge fields, three dynamical-system controls, and a random-matrix ensemble — the tier ratio $T_1/T_3$ separates into two groups with **complete rank separation** (one-sided Mann–Whitney $U$: $p = 1.7 \times 10^{-17}$, rank-biserial $r = 1.000$, $n_{\text{deep}} = 46$, $n_{\text{rest}} = 50$). The split is quantitatively predicted by **Hanin & Nica 2020** (Comm. Math. Phys. 376, 287–322): log-normal $F_{ii}$ with depth-linear variance → $\log(T_1/T_3) \propto \sqrt{L}$. We empirically confirm this scaling across **six independent substrate classes** (untrained MLP $R^2 = 0.98$, trained MLP $R^2 = 0.94$, random boolean circuits $R^2 = 0.98$, transformers $R^2 = 0.97$, balanced binary tensor networks $R^2 = 0.99$ — V8.0, **ResNet residual stacks $R^2 = 0.999$ — V9, slope 16.74 over 4-32 blocks**). The mechanism is also confirmed across **four activations** (ReLU $R^2 = 0.965$, GELU / Swish $R^2 = 0.990$, tanh $R^2 = 0.969$ — all $\geq 0.96$ on the depth-averaged $\log(T_1/T_3)$ vs $\sqrt{L}$ fit; per-seed OLS gives $R^2 \geq 0.93$ for all four) and **five gauge couplings** for the rest-side U(1) lattice (β = 0.1 → 5.0, $T_1/T_3$ stable at 1.72–1.79). **Honest scope narrowing**: GPT-Tiny attention architectures (V9 + V9.1, both tied- and untied-embedding variants) sit in the deep-sequential band by $T_1/T_3$ magnitude (250-6,200) but the $\sqrt{L}$ scaling itself **does not hold** for either configuration (tied: slope $-0.22$; untied: slope $-0.027$, $R^2 = 0.39$). The mechanism's $\sqrt{L}$ universality is therefore scoped to non-attention architectures; the dichotomy magnitude claim is universal across all tested substrates including attention.
 
-**Real-data verification (V9.2)**: ResNet-18 trained 10 epochs on CIFAR-10 (81.4% test accuracy, 11.2M params) gives **T1/T3 = 778** (deep-sequential band confirmed), Gini=0.84, top-1% FIM mass = 47.8%. Same measurement protocol as the synthetic-task panel. The dichotomy is verified on a real benchmark with a real architecture, addressing the "synthetic-tasks-only" reviewer concern. The universality class is **deep layered sequential composition** — not neural networks, not learning, not optimisation. See [`docs/v6_summary.md`](docs/v6_summary.md) (3-page handout) or [`docs/fim_tier_hierarchy_neurips2026.md`](docs/fim_tier_hierarchy_neurips2026.md) (full draft).
+**Real-data verification (V9.2)**: ResNet-18 trained 10 epochs on CIFAR-10 (81.4% test accuracy, 11.2M params) gives **T1/T3 = 778** (deep-sequential band confirmed), Gini=0.84, top-1% FIM mass = 47.8%. Same measurement protocol as the synthetic-task panel. The dichotomy is verified on a real benchmark with a real architecture, addressing the "synthetic-tasks-only" reviewer concern. The universality class is **deep layered sequential composition** — not neural networks, not learning, not optimisation. See `docs/v6_summary.md` *(removed)* (3-page handout) or [`docs/fim_tier_hierarchy_neurips2026.md`](docs/fim_tier_hierarchy_neurips2026.md) (full draft).
 
-> **Parent paper:** *"The Universe as a Self-Organizing Neural Network"* (Nikolai Nedovodin, STARGA Inc., 2026) — [Read PDF](Universe_Neural_Network_V1.0.pdf).
+> **Parent paper:** *"The Universe as a Self-Organizing Neural Network"* (Anonymous, 2026) — paper unavailable during anonymous review.
 
 ## Roadmap
 
 | Phase | Description | Status |
 |-------|-------------|--------|
 | **V1.0** | 296K-param toy experiment + 6-scale sweep (1.9K → 201M), 3 falsifiable predictions validated | **Done** (paper) |
-| **V1.1** | NTK continuum limit — rigorous theorem for $L$-layer ReLU FC networks | **Done** ([doc](docs/v1_1_ntk_continuum_limit.md)) |
+| **V1.1** | NTK continuum limit — rigorous theorem for $L$-layer ReLU FC networks | **Done** (doc *(removed)*) |
 | **V1.2** | Extended scaling: 10 widths, seed-robustness, depth sweep, H200 recipe | **Done** ([script](experiments/v1_2_scaling/), [results](scaling_results.json)) |
-| **V2.0** | Lattice-embedded subclass: Cauchy-refinement theorem + numerical demo | **Done** ([theory](docs/v2_0_lattice_embedded.md), [numerics](experiments/v2_0_lattice/)) |
+| **V2.0** | Lattice-embedded subclass: Cauchy-refinement theorem + numerical demo | **Done** (theory *(removed)*, [numerics](experiments/v2_0_lattice/)) |
 | **V2.1** | QEC decoder spectral analysis — universality test across 2 tasks | **Done** ([experiment](experiments/v2_1_qec/), results below) |
-| **V3.0** | 10^10–10^12 param cluster runs (Tier-1 hardening) | **Tier-1 items 1-4 closed** ([recipe](docs/v3_0_cluster_recipe.md), [gap closure](docs/v1_1_ntk_gap_closure.md), [task-3](experiments/v3_0_task3_symbolic/), [arch baselines](experiments/v3_0_arch_baselines/)) |
-| **V3.1** | Observational: α-drift × information density (ELT-HIRES target ~2028) | **Prediction + mock pipeline** ([doc](docs/v3_1_alpha_drift_prediction.md), [mock](experiments/v3_1_alpha/)) |
-| **V3.2** | Cosmological-constant prediction Λ ≈ 10^{-122} | **Consistency check** ([doc](docs/v3_2_cosmological_constant.md)) |
-| **V3.3** | Cluster-core α-drift amplification | **Closes Tier-2 item 6 with negative result** ([doc](docs/v3_3_cluster_amplification.md)) |
+| **V3.0** | 10^10–10^12 param cluster runs (Tier-1 hardening) | **Tier-1 items 1-4 closed** (recipe *(removed)*, [gap closure](docs/v1_1_ntk_gap_closure.md), [task-3](experiments/v3_0_task3_symbolic/), [arch baselines](experiments/v3_0_arch_baselines/)) |
+| **V3.1** | Observational: α-drift × information density (ELT-HIRES target ~2028) | **Prediction + mock pipeline** (doc *(removed)*, [mock](experiments/v3_1_alpha/)) |
+| **V3.2** | Cosmological-constant prediction Λ ≈ 10^{-122} | **Consistency check** (doc *(removed)*) |
+| **V3.3** | Cluster-core α-drift amplification | **Closes Tier-2 item 6 with negative result** (doc *(removed)*) |
 | **V4.0** | Uniqueness test — FIM tier hierarchy vs 5 non-NN parameterized systems | **Done** ([experiment](experiments/v4_0_uniqueness/)) |
-| **V4.1** | Trained-vs-untrained: hierarchy is init-induced, training dissipates 4–24× | **Done** ([doc](docs/v4_1_init_vs_learning.md), [experiment](experiments/v4_0_uniqueness/run_trained_vs_untrained.py)) |
+| **V4.1** | Trained-vs-untrained: hierarchy is init-induced, training dissipates 4–24× | **Done** (doc *(removed)*, [experiment](experiments/v4_0_uniqueness/run_trained_vs_untrained.py)) |
 | **V4.1.2** | CNN + ViT init-vs-trained (architecture generalisation) | **Done** (README Arch baselines) |
 | **V4.2** | FIM diagonal vs full spectrum (Lanczos on small MLP) | **Done** ([experiment](experiments/v4_2_fim_spectrum_validation/)) |
-| **V4.3** | Tier-partition sensitivity + bootstrap 95% CI on all exponents | **Done** ([doc](docs/v4_3_methodology_corrections.md), [experiments](experiments/v4_3_statistics/)) |
+| **V4.3** | Tier-partition sensitivity + bootstrap 95% CI on all exponents | **Done** (doc *(removed)*, [experiments](experiments/v4_3_statistics/)) |
 | **V4.4** | 4 non-deep learners (linear/kernel/logistic/GP) — decisive dichotomy | **Done** ([experiment](experiments/v4_0_uniqueness/learning_baselines.py)) |
 | **V5.0** | U(1) pure-gauge lattice FIM (non-deep, spatially-parallel control) | **Done** ([experiment](experiments/v5_0_lattice_qcd/)) |
 | **V5.0-stats** | Bootstrap CIs + Mann–Whitney U test on the 12-system dichotomy ($p = 1.7 \times 10^{-17}$, complete rank separation, $n_{\text{deep}}=46$, $n_{\text{rest}}=50$) | **Done** ([stats](experiments/v5_0_dichotomy_stats/)) |
@@ -44,9 +44,9 @@ Computational + analytical validation of the STARGA neural-network cosmology fra
 ### Key documents
 
 - [`docs/fim_tier_hierarchy_neurips2026.md`](docs/fim_tier_hierarchy_neurips2026.md) — NeurIPS/ICML workshop draft synthesising V1.1 + V1.2 + V2.1 + V3.0-Tier1 + V4.0–V6.4.
-- [`docs/v6_summary.md`](docs/v6_summary.md) — **3-page workshop handout**: empirical dichotomy + Hanin–Nica mechanism + 4-substrate confirmation table. Read this first.
+- `docs/v6_summary.md` *(removed)* — **3-page workshop handout**: empirical dichotomy + Hanin–Nica mechanism + 4-substrate confirmation table. Read this first.
 - [`docs/v6_0_mechanism_hanin_nica.md`](docs/v6_0_mechanism_hanin_nica.md) — full V6.0 derivation + V6.1 width / V6.2 trained / V6.4 transformer subsections.
-- [`docs/findings.md`](docs/findings.md) — consolidated findings summary across all phases.
+- `docs/findings.md` *(removed)* — consolidated findings summary across all phases.
 
 ### Proof Ladder (honest framing; from Naestro, 2026-04-23)
 
@@ -304,7 +304,7 @@ A follow-up experiment (`experiments/v4_0_uniqueness/run_trained_vs_untrained.py
 - V1.1 through V3.0 empirical universality findings (scale invariance, seed stability, task/architecture universality, 4-task consistency) are **unaffected** — they are all about *trained* networks and still hold.
 - The cosmological interpretation needs to relocate "physical constants" from "training-locked parameters" to "parameters stable under the architecture's intrinsic init spectrum". This is a meaningful but not catastrophic revision.
 
-See [`docs/v4_1_init_vs_learning.md`](docs/v4_1_init_vs_learning.md) for the full writeup.
+See `docs/v4_1_init_vs_learning.md` *(removed)* for the full writeup.
 
 ## V3.0 Task-4 (vision classification): 4-task universality
 
@@ -481,20 +481,20 @@ Mock pipeline at `experiments/v3_1_alpha/mock_pipeline.py` verifies that the sta
 
 - Python 3.10+ with PyTorch 2.1+, NumPy, SciPy
 - CUDA GPU for V1.2/V2.1 scaling runs (RTX 3080 sufficient for published widths; H200 for V3.0)
-- Optional: [MIND compiler](https://github.com/star-ga/mind) v0.2.3+ for the reference MIND runtime (`experiment_training.mind`)
+- Optional: [MIND compiler](https://github.com/<anonymous>/mind) v0.2.3+ for the reference MIND runtime (`experiment_training.mind`)
 
 ## License
 
-Copyright 2026 STARGA, Inc. STARGA Commercial License.
+Copyright 2026 Anonymous. [License removed for anonymous review].
 
 ## Citation
 
 ```bibtex
-@article{nedovodin2026universe,
+@article{anonymous2026universe,
   title={The Universe as a Self-Organizing Neural Network},
-  author={Nedovodin, Nikolai},
+  author={Anonymous},
   year={2026},
-  institution={STARGA, Inc.},
+  institution={Anonymous},
   note={V1.0 paper + V1.1/V1.2/V2.0/V2.1 extensions, V3.0/V3.1 recipe+predictions}
 }
 ```

@@ -56,9 +56,9 @@ Pre-flight review before submitting to NeurIPS 2026 main track (or workshop fall
 - [x] **Terminology unified.** "Deep layered sequential composition" throughout.
 - [x] **Cross-references valid.** Every `[foo](bar)` link resolves to an existing file.
 - [x] **No "TODO" / "in progress" markers** in public docs.
-- [x] **Author attribution.** STARGA Inc. only — no other authors, no AI mentions.
+- [x] **Author attribution.** Anonymous. only — no other authors, no AI mentions.
 - [ ] **Paper PDF renders** without LaTeX errors using NeurIPS 2026 template.
-- [ ] **Anonymisation pass** — strip STARGA branding from author block per NeurIPS double-blind rules (use the `anonymous` template option).
+- [ ] **Anonymisation pass** — strip Anonymous branding from author block per NeurIPS double-blind rules (use the `anonymous` template option).
 
 ## Known out-of-scope items
 
@@ -82,4 +82,4 @@ Pre-flight review before submitting to NeurIPS 2026 main track (or workshop fall
 4. Are real-data benchmarks present? Yes — V9.2 CIFAR-10, V9.2b CIFAR-100, V9.5 ImageNet ResNet-50 (V1 + V2 weights), V9.6 GPT-2-medium, V9.7 ImageNet ViT-L/16. Five production-scale data points covering CNN + ViT + autoregressive-LM.
 5. Is reproducibility complete? Yes — `docs/neurips_reproducibility_checklist.md`, claim manifest with SHA-256, one-line per-figure repro recipe.
 
-*Checklist v2, NeurIPS 2026 main-track edition. STARGA Commercial License.*
+*Checklist v2, NeurIPS 2026 main-track edition. [License removed for anonymous review].*

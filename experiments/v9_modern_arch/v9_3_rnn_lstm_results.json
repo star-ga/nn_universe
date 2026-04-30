@@ -15,7 +15,7 @@
     "dim": 16,
     "hidden": 64,
     "n_probes": 300,
-    "out": "/home/n/nn_universe/experiments/v9_modern_arch/v9_3_rnn_lstm_results.json"
+    "out": "experiments/v9_modern_arch/v9_3_rnn_lstm_results.json"
   },
   "per_run": [
     {

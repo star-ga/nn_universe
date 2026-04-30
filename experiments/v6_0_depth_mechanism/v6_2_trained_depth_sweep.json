@@ -20,7 +20,7 @@
     "n_probes": 1000,
     "train_steps": 10000,
     "omp_threads": 4,
-    "out": "/home/n/nn_universe/experiments/v6_0_depth_mechanism/v6_2_trained_depth_sweep.json"
+    "out": "experiments/v6_0_depth_mechanism/v6_2_trained_depth_sweep.json"
   },
   "per_run": [
     {

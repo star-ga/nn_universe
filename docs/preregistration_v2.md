@@ -1,6 +1,6 @@
 # Preregistration — V2 Paper Predictions for External Compute
 
-**STARGA, Inc.**
+**Anonymous, Inc.**
 **Date of registration: 2026-04-24**
 **Commit at registration: see `git log` for the most recent `main` commit at this date.**
 **Purpose:** lock in, prior to external (H200 cluster / ELT-HIRES / archival) execution, the exact quantitative predictions the paper is making, so the predictions cannot drift post-hoc.
@@ -100,4 +100,4 @@ All of §2's predictions can be reproduced by:
 
 All numerical predictions in this document are bound to **the commit hash of the repo at the moment of registration**, not to any subsequent change. Subsequent commits may refine the paper's framing but cannot retroactively change §2's decision rules.
 
-*STARGA Commercial License. Preregistration v2 (V2 paper).*
+*[License removed for anonymous review]. Preregistration v2 (V2 paper).*

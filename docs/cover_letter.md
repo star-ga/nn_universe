@@ -2,8 +2,8 @@
 
 **Target venue:** NeurIPS 2026 main track. Fallback: NeurIPS 2026 workshop on foundations of deep learning, or ICLR 2027.
 **Nature of the work:** empirical + mechanism-backed universality claim about the Fisher-information diagonal of deep networks and deeply-composed non-learning substrates.
-**Contact:** Nikolai Nedovodin, STARGA Inc., ceo@star.ga
-**Git commit:** see `main` HEAD of https://github.com/star-ga/nn_universe at the time of submission.
+**Contact:** Anonymous Authors, Anonymous., anonymous@example.org
+**Git commit:** see `main` HEAD of https://github.com/<anonymous>/nn_universe at the time of submission.
 
 ---
 
@@ -33,7 +33,7 @@ The novel contributions are:
 
 ## 4. Reproducibility
 
-Everything in the paper can be regenerated from commit `HEAD` of `https://github.com/star-ga/nn_universe`:
+Everything in the paper can be regenerated from commit `HEAD` of `https://github.com/<anonymous>/nn_universe`:
 
 - `bash run_all.sh` runs every experiment that fits on a single RTX 3080 in a few hours (V1.0 through V8.0, σ_min validation, 104-test pytest suite). Total time: ~3 hours.
 - Only the H200-cluster-scale experiments (W = 14000 / 22000 / 45000 NN training) are out of scope; these have a pre-registered runbook (`docs/h200_cluster_runbook.md`) and locked predictions (`docs/preregistration_v2.md` §2.A + §2.B).
@@ -41,7 +41,7 @@ Everything in the paper can be regenerated from commit `HEAD` of `https://github
 
 ## 5. Ethics + open science
 
-No human subjects, no sensitive data. All measurements are on parameterised mathematical / computational systems generated with public seeds. The repo is permissive-licensed (STARGA Commercial License, permits non-commercial academic reuse with citation).
+No human subjects, no sensitive data. All measurements are on parameterised mathematical / computational systems generated with public seeds. The repo is permissive-licensed ([License removed for anonymous review], permits non-commercial academic reuse with citation).
 
 ## 6. What would change our mind
 
@@ -64,4 +64,4 @@ Anyone with expertise in one of:
 
 ---
 
-*Cover letter v1, 2026-04-24. STARGA Commercial License.*
+*Cover letter v1, 2026-04-24. [License removed for anonymous review].*

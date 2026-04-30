@@ -12,7 +12,7 @@
       1,
       2
     ],
-    "out": "/home/n/nn_universe/experiments/v7_0_lattice_su2/v7_0_lattice_su2_results.json"
+    "out": "experiments/v7_0_lattice_su2/v7_0_lattice_su2_results.json"
   },
   "results": [
     {

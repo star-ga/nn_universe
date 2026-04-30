@@ -13,7 +13,7 @@
     "steps": 3000,
     "batch": 128,
     "probes": 200,
-    "out": "/home/n/nn_universe/experiments/v3_0_arch_baselines/v4_1_2_arch_trained_vs_untrained.json"
+    "out": "experiments/v3_0_arch_baselines/v4_1_2_arch_trained_vs_untrained.json"
   },
   "results": [
     {

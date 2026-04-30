@@ -1,4 +1,5 @@
 {
+  "WARNING": "MOCK \u2014 NOT REAL OBSERVATIONAL DATA. Pre-deployment power analysis only.",
   "config": {
     "n_sightlines": 2000,
     "z_min": 0.5,
