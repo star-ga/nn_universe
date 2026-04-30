@@ -14,6 +14,7 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[1]
 BASE_PATHS = (
     "",
+    "experiments/v1_baseline",
     "experiments/v1_2_scaling",
     "experiments/v2_0_lattice",
     "experiments/v3_1_alpha",

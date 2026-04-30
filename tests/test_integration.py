@@ -48,8 +48,14 @@ def test_alpha_mock_pipeline(tmp_path: Path) -> None:
 
 @pytest.mark.integration
 def test_scaling_fit_schema() -> None:
-    # Read scaling_results.json (must exist from V1.0) and verify schema.
-    payload = json.loads((REPO / "scaling_results.json").read_text())
+    # Read scaling_results.json (V1.0 baseline) and verify schema.
+    candidates = [
+        REPO / "scaling_results.json",
+        REPO / "experiments" / "v1_baseline" / "scaling_results.json",
+    ]
+    path = next((c for c in candidates if c.exists()), None)
+    assert path is not None, f"scaling_results.json not found at any of: {candidates}"
+    payload = json.loads(path.read_text())
     assert "results" in payload
     assert "sv_power_law" in payload
     assert "fim_power_law" in payload
