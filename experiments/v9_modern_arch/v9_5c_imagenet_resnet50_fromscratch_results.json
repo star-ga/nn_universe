@@ -14,7 +14,7 @@
     "n_probes": 200,
     "seed": 42,
     "workers": 6,
-    "out": "experiments/v9_modern_arch/v9_5c_imagenet_resnet50_fromscratch_results.json"
+    "out": "/home/n/nn_universe/experiments/v9_modern_arch/v9_5c_imagenet_resnet50_fromscratch_results.json"
   },
   "n_params": 25557032,
   "trajectory": [
@@ -66,7 +66,26 @@
       "train_loss": 1.9083365620457848,
       "fim_time_s": 36.80336856842041,
       "epoch_time_s": 2003.018903017044
+    },
+    {
+      "T1T3": 778.8410909404557,
+      "log10_T1T3": 2.8914488564303387,
+      "gini": 0.8350231259962936,
+      "eff_rank_n": 1.3913516888493933e-10,
+      "top_1pct_mass": 0.45655407638977874,
+      "epoch": 90,
+      "test_accuracy": 0.74562,
+      "train_accuracy": 0.7601085572762958,
+      "train_loss": 0.9906234421548372,
+      "fim_time_s": 36.87816524505615,
+      "epoch_time_s": 1958.178539276123
     }
   ],
-  "partial": true
+  "log10_T1T3_init_vs_final": {
+    "epoch_0": 6.531572347040154,
+    "epoch_final": 2.8914488564303387,
+    "log10_drop_during_training": 3.640123490609815,
+    "T1T3_drop_factor": 4366.399721343072
+  },
+  "interpretation": "Full ImageNet-1K ResNet-50 90-epoch from-scratch with FIM at 0/10/30/60/90 (LOCAL RTX 3080 + AMP fp16)."
 }
