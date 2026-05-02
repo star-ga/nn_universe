@@ -10,7 +10,7 @@
 #   5. verify page counts (main ≤ 9, supp ≤ 10)
 #   6. exiftool strip metadata
 #   7. anonymisation grep (STARGA/Nedovodin/star.ga/Nikolai/ceo@star.ga = 0)
-#   8. reviewer-vendor-leak grep (model-D/model-C/GPT-5/reviewer-B/etc. = 0 in body)
+#   8. external-vendor-name leak grep (vendor names = 0 in body)
 #   9. mirror to /data/checkpoints/neurips2026_submission/submission/
 #  10. refresh submission.zip
 #
@@ -22,8 +22,9 @@
 #   MAX_MAIN_PAGES     default 9
 #   MAX_SUPP_PAGES     default 10
 #
-# Exits non-zero if page count exceeded, anonymisation leaks, or reviewer-vendor
-# leaks detected. Run from anywhere; always returns to invoker's cwd.
+# Exits non-zero if page count exceeded, anonymisation leaks, or external-
+# vendor-name leaks detected. Run from anywhere; always returns to invoker's
+# cwd.
 
 set -euo pipefail
 
@@ -180,9 +181,9 @@ for kw in STARGA Nedovodin star.ga "github.com/star-ga" Nikolai ceo@star.ga; do
   fi
 done
 
-echo "=== reviewer-vendor-leak check ==="
-# OpenAI is allowed when used as the GPT-2 paper publisher citation; everything
-# else should be 0 in the body.
+echo "=== External-vendor-name leak check ==="
+# Citation-context publisher names (e.g. for the GPT-2 reference) are allowed;
+# every other vendor token should be 0 in the body.
 for kw in model-D vendor-D 'model-C ' 'GPT-5' 'reviewer-B ' Anthropic model-E model-F model-G Moonshot Kimi 'Llama-' 'Qwen '; do
   m=$(pdftotext paper_main_v11_3.pdf - 2>/dev/null | grep -c -i "$kw" || true)
   s=$(pdftotext paper_supp_v11_3.pdf - 2>/dev/null | grep -c -i "$kw" || true)

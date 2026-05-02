@@ -11,7 +11,7 @@ runtime/target/
 # Keep generated results JSON in-tree (they *are* the deliverable), but ignore
 # purely-local working outputs
 /tmp/
-# claude-mem / local assistant artifacts
+# Local memory tool artifacts
 AGENTS.md
 
 # C5: parent paper PDF (deanonymised) — never commit

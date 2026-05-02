@@ -37,7 +37,7 @@ The repository at `https://github.com/<anonymous>/nn_universe` (anonymised durin
 - `experiments/v1_*` through `v11_*`: all measurement scripts.
 - `experiments/v9_modern_arch/v9_5c_imagenet_resnet50_fromscratch_results.json`: full ImageNet trajectory.
 - `tests/test_v8_v9_v10_results_smoke.py`: 12 smoke tests asserting headline $T_1/T_3$ values are within ±50 % of the published estimates (catches silent JSON corruption).
-- `scripts/build_trimmed.sh`: deterministic submission PDF builder; gates on page count, anonymisation, and reviewer-vendor-leak grep.
+- `scripts/build_trimmed.sh`: deterministic submission PDF builder; gates on page count, anonymisation, and external-vendor-name leak grep.
 - `docs/preregistration_v2.md`: pre-registered hypotheses (5 falsifiers, 3 confirmed + 2 narrowed), locked before measurement.
 - `docs/h200_cluster_runbook.md`: H200 deployment recipe for production-scale rerun.
 - `docs/governance.md`: 5-layer governance design for the rfn-mind serving stack (related companion repo).

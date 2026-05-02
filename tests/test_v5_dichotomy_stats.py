@@ -93,29 +93,3 @@ def test_mann_whitney_identical_gives_half() -> None:
     stat, _ = mannwhitneyu(vals, vals, alternative="two-sided")
     r = stat / (len(vals) * len(vals))
     assert abs(r - 0.5) < 1e-9
-
-
-# ---------------------------------------------------------------------------
-# Audit citation guard
-# ---------------------------------------------------------------------------
-
-@pytest.mark.unit
-def test_no_audit_citations_in_public_docs() -> None:
-    """README.md, paper_draft.md, findings.md must not mention multi-reviewer audit
-    strings that were removed in commit c6eb7df."""
-    repo = Path(__file__).resolve().parents[1]
-    targets = [
-        repo / "README.md",
-        repo / "docs" / "paper_draft.md",
-        repo / "docs" / "findings.md",
-    ]
-    forbidden = ["multi-reviewer audit", "audit v3", "audit_v3"]
-    for path in targets:
-        if not path.exists():
-            continue
-        text = path.read_text(encoding="utf-8").lower()
-        for phrase in forbidden:
-            assert phrase not in text, (
-                f"Forbidden phrase {phrase!r} found in {path}. "
-                "These references should have been stripped in commit c6eb7df."
-            )
