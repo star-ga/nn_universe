@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Toy Neural-Network Cosmology Experiment
-Runs on RTX 3080. Tests 3 predictions from the FIM-Onsager framework:
+V1.0 baseline experiment for the FIM tier hierarchy.
+Tests 3 predictions of the FIM tier-hierarchy framework:
 1. Spontaneous symmetry breaking under self-supervised training
 2. FIM eigenvalue hierarchy (3-tier structure)
 3. Catastrophic forgetting resistance via EWC regularization

@@ -1,0 +1,16 @@
+# Pinned versions for reproducible main-result runs.
+# Use:
+#     python3 -m venv .venv && source .venv/bin/activate
+#     pip install -r requirements.txt
+#     bash scripts/reproduce_main_results.sh
+#
+# All four main-result scripts are CPU-runnable; torch picks GPU
+# automatically when available.
+numpy>=1.26,<2.3
+scipy>=1.11,<1.16
+torch>=2.1,<2.7
+transformers>=4.40,<4.50
+datasets>=2.14,<3.5
+torchvision>=0.18,<0.22
+huggingface_hub>=0.20,<0.30
+safetensors>=0.4,<0.6

@@ -1,500 +1,136 @@
-# FIM-Onsager Neural-Network Cosmology
+# FIM Tier Hierarchy in Deep Layered Sequential Computation
 
-Computational + analytical validation of the Anonymous neural-network cosmology framework.
+Computational and statistical validation of the Fisher Information Matrix
+diagonal tier hierarchy as a panel-bounded empirical regularity of deep
+layered sequential computation.
 
-## Headline result (2026-04-24)
+## Headline result
 
-**The FIM three-tier diagonal hierarchy is a mechanism-backed universality signature of deep layered sequential computation.** Across 12 parameterised substrate classes — trained / untrained neural networks, random boolean circuits, four shallow parameterised learners, U(1) and SU(2) lattice gauge fields, three dynamical-system controls, and a random-matrix ensemble — the tier ratio $T_1/T_3$ separates into two groups with **complete rank separation** (one-sided Mann–Whitney $U$: $p = 1.7 \times 10^{-17}$, rank-biserial $r = 1.000$, $n_{\text{deep}} = 46$, $n_{\text{rest}} = 50$). The split is quantitatively predicted by **Hanin & Nica 2020** (Comm. Math. Phys. 376, 287–322): log-normal $F_{ii}$ with depth-linear variance → $\log(T_1/T_3) \propto \sqrt{L}$. We empirically confirm this scaling across **six independent substrate classes** (untrained MLP $R^2 = 0.98$, trained MLP $R^2 = 0.94$, random boolean circuits $R^2 = 0.98$, transformers $R^2 = 0.97$, balanced binary tensor networks $R^2 = 0.99$ — V8.0, **ResNet residual stacks $R^2 = 0.999$ — V9, slope 16.74 over 4-32 blocks**). The mechanism is also confirmed across **four activations** (ReLU $R^2 = 0.965$, GELU / Swish $R^2 = 0.990$, tanh $R^2 = 0.969$ — all $\geq 0.96$ on the depth-averaged $\log(T_1/T_3)$ vs $\sqrt{L}$ fit; per-seed OLS gives $R^2 \geq 0.93$ for all four) and **five gauge couplings** for the rest-side U(1) lattice (β = 0.1 → 5.0, $T_1/T_3$ stable at 1.72–1.79). **Honest scope narrowing**: GPT-Tiny attention architectures (V9 + V9.1, both tied- and untied-embedding variants) sit in the deep-sequential band by $T_1/T_3$ magnitude (250-6,200) but the $\sqrt{L}$ scaling itself **does not hold** for either configuration (tied: slope $-0.22$; untied: slope $-0.027$, $R^2 = 0.39$). The mechanism's $\sqrt{L}$ universality is therefore scoped to non-attention architectures; the dichotomy magnitude claim is universal across all tested substrates including attention.
+**The FIM three-tier diagonal hierarchy is a mechanism-backed universality
+signature of deep layered sequential computation.** Across 12 parameterised
+substrate classes — trained / untrained neural networks, random boolean
+circuits, four shallow parameterised learners, U(1) and SU(2) lattice gauge
+fields, three dynamical-system controls, and a random-matrix ensemble — the
+tier ratio $T_1/T_3$ separates into two groups with **complete rank
+separation** (one-sided Mann–Whitney $U$: $p = 1.7 \times 10^{-17}$,
+rank-biserial $r = 1.000$, $n_{\text{deep}} = 46$, $n_{\text{rest}} = 50$).
+The split is quantitatively predicted by **Hanin & Nica 2020** (Comm. Math.
+Phys. 376, 287–322): log-normal $F_{ii}$ with depth-linear variance →
+$\log(T_1/T_3) \propto \sqrt{L}$. We empirically confirm this scaling across
+**six independent substrate classes** (untrained MLP $R^2 = 0.98$, trained
+MLP $R^2 = 0.94$, random boolean circuits $R^2 = 0.98$, transformers
+$R^2 = 0.97$, balanced binary tensor networks $R^2 = 0.99$, ResNet
+residual stacks $R^2 = 0.999$ slope 16.74 over 4–32 blocks). The mechanism
+is also confirmed across four activations (ReLU $R^2 = 0.965$, GELU/Swish
+$R^2 = 0.990$, tanh $R^2 = 0.969$). **Honest scope narrowing**: GPT-Tiny
+attention architectures sit in the deep-sequential band by magnitude but
+the $\sqrt{L}$ scaling itself does not hold for either tied- or
+untied-embedding configuration; time-unrolled RNN/LSTM also do not follow
+the scaling. The mechanism's $\sqrt{L}$ universality is therefore scoped to
+non-attention layered-stack architectures; the dichotomy magnitude claim is
+universal across all tested substrates.
 
-**Real-data verification (V9.2)**: ResNet-18 trained 10 epochs on CIFAR-10 (81.4% test accuracy, 11.2M params) gives **T1/T3 = 778** (deep-sequential band confirmed), Gini=0.84, top-1% FIM mass = 47.8%. Same measurement protocol as the synthetic-task panel. The dichotomy is verified on a real benchmark with a real architecture, addressing the "synthetic-tasks-only" reviewer concern. The universality class is **deep layered sequential composition** — not neural networks, not learning, not optimisation. See `docs/v6_summary.md` *(removed)* (3-page handout) or [`docs/fim_tier_hierarchy_neurips2026.md`](docs/fim_tier_hierarchy_neurips2026.md) (full draft).
+**Real-data verification.** ResNet-18 trained 10 epochs on CIFAR-10 (81.4 %
+test accuracy, 11.2 M params) gives **$T_1/T_3 = 778$**, Gini = 0.84,
+top-1 % FIM mass = 47.8 %. Same measurement protocol as the synthetic-task
+panel. Production-scale measurements at ResNet-50 V1+V2 on ImageNet
+(76.13 / 80.86 % top-1), ViT-L/16 (304 M params), GPT-2-medium (5-seed
+$\log_{10}(T_1/T_3) = 4.83 \pm 0.003$), GPT-2-large (774 M), and
+Pythia-1.4 B all sit firmly in the deep-sequential band.
 
-> **Parent paper:** *"The Universe as a Self-Organizing Neural Network"* (Anonymous, 2026) — paper unavailable during anonymous review.
+The universality class is **deep layered sequential composition** — not
+neural networks, not learning, not optimisation. See
+[`docs/fim_tier_hierarchy_neurips2026.md`](docs/fim_tier_hierarchy_neurips2026.md)
+for the full draft and [`docs/v6_0_mechanism_hanin_nica.md`](docs/v6_0_mechanism_hanin_nica.md)
+for the mechanism derivation.
+
+## Reproduction (one command)
+
+```bash
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+bash scripts/reproduce_main_results.sh
+```
+
+Wall-clock on a single CPU is ~12 minutes; on a CUDA GPU ~3 minutes. The
+script runs the four load-bearing experiments and writes JSONs alongside
+the committed reference outputs for byte-level comparison.
+
+| Experiment | Script | Reference output |
+|---|---|---|
+| V5.0 dichotomy stats | `experiments/v5_0_dichotomy_stats/dichotomy_stats.py` | `dichotomy_stats_results.json` |
+| V5.1 threshold sensitivity | `experiments/v5_0_dichotomy_stats/threshold_sensitivity.py` | `v5_1_threshold_sensitivity_results.json` |
+| V5.2 multi-seed bootstrap | `experiments/v5_0_dichotomy_stats/mw_bootstrap.py` | `v5_2_mw_bootstrap_results.json` |
+| V6.0 mechanism (depth sweep) | `experiments/v6_0_depth_mechanism/depth_sweep.py` | `v6_0_depth_sweep.json` |
+| V4.5 partition-invariant | `experiments/v4_3_statistics/partition_invariant_dichotomy.py` | `v4_3_partition_invariant_dichotomy.json` |
+| V6.0c pooling-error bound | `experiments/v6_0_mechanism/pooling_error_bound.py` | `v6_0c_pooling_error_bound_results.json` |
+
+For a faster first pass that skips the V6.0 depth sweep (~7 min savings):
+
+```bash
+bash scripts/reproduce_main_results.sh --quick
+```
 
 ## Roadmap
 
 | Phase | Description | Status |
 |-------|-------------|--------|
-| **V1.0** | 296K-param toy experiment + 6-scale sweep (1.9K → 201M), 3 falsifiable predictions validated | **Done** (paper) |
-| **V1.1** | NTK continuum limit — rigorous theorem for $L$-layer ReLU FC networks | **Done** (doc *(removed)*) |
-| **V1.2** | Extended scaling: 10 widths, seed-robustness, depth sweep, H200 recipe | **Done** ([script](experiments/v1_2_scaling/), [results](scaling_results.json)) |
-| **V2.0** | Lattice-embedded subclass: Cauchy-refinement theorem + numerical demo | **Done** (theory *(removed)*, [numerics](experiments/v2_0_lattice/)) |
-| **V2.1** | QEC decoder spectral analysis — universality test across 2 tasks | **Done** ([experiment](experiments/v2_1_qec/), results below) |
-| **V3.0** | 10^10–10^12 param cluster runs (Tier-1 hardening) | **Tier-1 items 1-4 closed** (recipe *(removed)*, [gap closure](docs/v1_1_ntk_gap_closure.md), [task-3](experiments/v3_0_task3_symbolic/), [arch baselines](experiments/v3_0_arch_baselines/)) |
-| **V3.1** | Observational: α-drift × information density (ELT-HIRES target ~2028) | **Prediction + mock pipeline** (doc *(removed)*, [mock](experiments/v3_1_alpha/)) |
-| **V3.2** | Cosmological-constant prediction Λ ≈ 10^{-122} | **Consistency check** (doc *(removed)*) |
-| **V3.3** | Cluster-core α-drift amplification | **Closes Tier-2 item 6 with negative result** (doc *(removed)*) |
-| **V4.0** | Uniqueness test — FIM tier hierarchy vs 5 non-NN parameterized systems | **Done** ([experiment](experiments/v4_0_uniqueness/)) |
-| **V4.1** | Trained-vs-untrained: hierarchy is init-induced, training dissipates 4–24× | **Done** (doc *(removed)*, [experiment](experiments/v4_0_uniqueness/run_trained_vs_untrained.py)) |
-| **V4.1.2** | CNN + ViT init-vs-trained (architecture generalisation) | **Done** (README Arch baselines) |
+| **V1.0** | 296k-param toy experiment + 6-scale sweep, 3 falsifiable predictions validated | **Done** |
+| **V1.1** | NTK continuum limit — rigorous theorem for $L$-layer ReLU FC networks | **Done** ([gap closure](docs/v1_1_ntk_gap_closure.md)) |
+| **V1.2** | Extended scaling: 10 widths, seed-robustness, depth sweep | **Done** ([scripts](experiments/v1_2_scaling/)) |
+| **V2.0** | Lattice-embedded subclass: Cauchy-refinement theorem + numerical demo | **Done** ([numerics](experiments/v2_0_lattice/)) |
+| **V2.1** | QEC decoder spectral analysis — universality test across 2 tasks | **Done** ([experiment](experiments/v2_1_qec/)) |
+| **V3.0** | Cluster-scale runs + symbolic-regression task + arch baselines | **Done** ([task-3](experiments/v3_0_task3_symbolic/), [arch baselines](experiments/v3_0_arch_baselines/)) |
+| **V4.0** | Uniqueness test — FIM tier hierarchy vs 5 non-NN parameterised systems | **Done** ([experiment](experiments/v4_0_uniqueness/)) |
+| **V4.1** | Trained-vs-untrained: hierarchy is init-induced, training dissipates 4–24× | **Done** ([experiment](experiments/v4_0_uniqueness/run_trained_vs_untrained.py)) |
 | **V4.2** | FIM diagonal vs full spectrum (Lanczos on small MLP) | **Done** ([experiment](experiments/v4_2_fim_spectrum_validation/)) |
-| **V4.3** | Tier-partition sensitivity + bootstrap 95% CI on all exponents | **Done** (doc *(removed)*, [experiments](experiments/v4_3_statistics/)) |
+| **V4.3** | Tier-partition sensitivity + bootstrap 95 % CI on all exponents | **Done** ([experiments](experiments/v4_3_statistics/)) |
 | **V4.4** | 4 non-deep learners (linear/kernel/logistic/GP) — decisive dichotomy | **Done** ([experiment](experiments/v4_0_uniqueness/learning_baselines.py)) |
 | **V5.0** | U(1) pure-gauge lattice FIM (non-deep, spatially-parallel control) | **Done** ([experiment](experiments/v5_0_lattice_qcd/)) |
-| **V5.0-stats** | Bootstrap CIs + Mann–Whitney U test on the 12-system dichotomy ($p = 1.7 \times 10^{-17}$, complete rank separation, $n_{\text{deep}}=46$, $n_{\text{rest}}=50$) | **Done** ([stats](experiments/v5_0_dichotomy_stats/)) |
-| **V6.0** | Mechanism — Hanin–Nica log-normal theorem + depth-sweep empirical confirmation (H1 R²=0.91, H2 R²=0.98) | **Done** ([doc](docs/v6_0_mechanism_hanin_nica.md), [experiment](experiments/v6_0_depth_mechanism/)) |
-| **V6.1** | Width sweep — confirms Hanin–Nica width-independence (σ depends on activation, not width) | **Done** ([JSON](experiments/v6_0_depth_mechanism/v6_1_width_sweep.json)) |
-| **V6.2** | Trained-NN depth sweep — √L scaling survives training (R²=0.94); dissipation collapses at L≥8 | **Done** ([experiment](experiments/v6_0_depth_mechanism/trained_depth_sweep.py)) |
-| **V6.3** | Layered boolean-circuit depth sweep — substrate-independent √L scaling (R²=0.98 for BCs too) | **Done** ([experiment](experiments/v6_0_depth_mechanism/bc_depth_sweep.py)) |
-| **V6.4** | Transformer depth sweep — attention+residuals preserve √L scaling (R²=0.97) | **Done** ([experiment](experiments/v6_0_depth_mechanism/transformer_depth_sweep.py)) |
-| **V7.0** | SU(2) non-abelian lattice gauge — T1/T3 = 4.85 (CV 3.1%, 3 seeds), still in O(1-10) non-deep band | **Done** ([experiment](experiments/v7_0_lattice_su2/)) |
-| **V6.5** | Activation-function depth sweep — ReLU/GELU/tanh/Swish all pass √L (R² ≥ 0.97) with activation-dependent σ | **Done** ([experiment](experiments/v6_0_depth_mechanism/activation_sweep.py)) |
-| **V7.1** | U(1) lattice β-sweep (5 couplings 0.1 → 5.0 across deconfinement) — T1/T3 = 1.72-1.79, gauge-coupling-invariant | **Done** ([experiment](experiments/v5_0_lattice_qcd/beta_sweep.py)) |
-| **V8.0** | Binary-tree tensor-network depth sweep — MERA/holographic-substrate test passes √L at R²=0.99 | **Done** ([experiment](experiments/v8_0_tensor_network/)) |
+| **V5.0-stats** | Bootstrap CIs + Mann–Whitney U test on the 12-system dichotomy ($p = 1.7 \times 10^{-17}$, complete rank separation, $n_{\text{deep}} = 46$, $n_{\text{rest}} = 50$) | **Done** ([stats](experiments/v5_0_dichotomy_stats/)) |
+| **V6.0** | Mechanism — Hanin–Nica log-normal theorem + depth-sweep empirical confirmation (H1 $R^2 = 0.91$, H2 $R^2 = 0.98$) | **Done** ([doc](docs/v6_0_mechanism_hanin_nica.md), [experiment](experiments/v6_0_depth_mechanism/)) |
+| **V6.1** | Width sweep — confirms Hanin–Nica width-independence | **Done** ([JSON](experiments/v6_0_depth_mechanism/v6_1_width_sweep.json)) |
+| **V6.2** | Trained-NN depth sweep — $\sqrt{L}$ scaling survives training ($R^2 = 0.94$) | **Done** ([experiment](experiments/v6_0_depth_mechanism/trained_depth_sweep.py)) |
+| **V6.3** | Layered boolean-circuit depth sweep — substrate-independent $\sqrt{L}$ scaling | **Done** ([experiment](experiments/v6_0_depth_mechanism/bc_depth_sweep.py)) |
+| **V6.4** | Transformer depth sweep — attention + residuals preserve $\sqrt{L}$ scaling ($R^2 = 0.97$) | **Done** ([experiment](experiments/v6_0_depth_mechanism/transformer_depth_sweep.py)) |
+| **V6.5** | Activation-function depth sweep — ReLU/GELU/tanh/Swish all pass $\sqrt{L}$ ($R^2 \geq 0.97$) with activation-dependent $\sigma$ | **Done** ([experiment](experiments/v6_0_depth_mechanism/activation_sweep.py)) |
+| **V7.0** | SU(2) non-abelian lattice gauge — $T_1/T_3 = 4.85$ (CV 3.1 %, 3 seeds), still in O(1–10) non-deep band | **Done** ([experiment](experiments/v7_0_lattice_su2/)) |
+| **V7.1** | U(1) lattice $\beta$-sweep (5 couplings 0.1 → 5.0 across deconfinement) — $T_1/T_3 = 1.72$–1.79, gauge-coupling-invariant | **Done** ([experiment](experiments/v5_0_lattice_qcd/beta_sweep.py)) |
+| **V8.0** | Binary-tree tensor-network depth sweep — MERA-style substrate test passes $\sqrt{L}$ at $R^2 = 0.99$ | **Done** ([experiment](experiments/v8_0_tensor_network/)) |
+| **V9** | Modern-architecture coverage: ResNet, GPT-Tiny, ResNet-50 ImageNet, ViT trajectories | **Done** ([experiments](experiments/v9_modern_arch/)) |
+| **V10** | Production-scale baselines | **Done** ([experiments](experiments/v10_baselines/)) |
 
-### Key documents
+## Key documents
 
-- [`docs/fim_tier_hierarchy_neurips2026.md`](docs/fim_tier_hierarchy_neurips2026.md) — NeurIPS/ICML workshop draft synthesising V1.1 + V1.2 + V2.1 + V3.0-Tier1 + V4.0–V6.4.
-- `docs/v6_summary.md` *(removed)* — **3-page workshop handout**: empirical dichotomy + Hanin–Nica mechanism + 4-substrate confirmation table. Read this first.
-- [`docs/v6_0_mechanism_hanin_nica.md`](docs/v6_0_mechanism_hanin_nica.md) — full V6.0 derivation + V6.1 width / V6.2 trained / V6.4 transformer subsections.
-- `docs/findings.md` *(removed)* — consolidated findings summary across all phases.
+- [`docs/fim_tier_hierarchy_neurips2026.md`](docs/fim_tier_hierarchy_neurips2026.md) — full paper draft synthesising V1.0 through V10 (panel + mechanism + falsifier + scope narrowing).
+- [`docs/v6_0_mechanism_hanin_nica.md`](docs/v6_0_mechanism_hanin_nica.md) — V6.0 derivation of $\log(T_1/T_3) \propto \sqrt{L}$ from Hanin–Nica + log-normal quantile algebra, with V6.1 / V6.2 / V6.4 sub-results.
+- [`docs/v1_1_ntk_gap_closure.md`](docs/v1_1_ntk_gap_closure.md) — NTK continuum-limit gap-closure note for the SV-exponent compatibility check.
+- [`docs/preregistration_v2.md`](docs/preregistration_v2.md) — pre-registered hypotheses and falsifiers.
 
-### Proof Ladder (honest framing; from Naestro, 2026-04-23)
+## Repository layout
 
-The universe-as-neural-network claim is **not** fully proveable by empirical science. What can be done:
-
-**Tier 1 — H200-scope (what V3.0 cluster runs actually accomplish):**
-
-1. FIM tier universality across ≥3 genuinely different tasks (cosmology + QEC done; add symbolic regression *or* protein folding).
-2. Seed variance at large N: 20+ seeds at widths 1k–100k, report CV(tier ratio) as a function of N.
-3. Continuum-limit proof closure: either tighten NTK bound to match N^0.566, or explain the 0.5 → 0.566 gap.
-4. Convolutional + transformer baselines (ResNet-50, ViT-Tiny, GPT-2-small) to rule out the "MLP artifact" critique.
-
-**Tier 2 — 12–24 months + external infrastructure (out of H200 scope):**
-
-5. α-drift at ELT-HIRES detection floor (first light ~2028).
-6. Cluster-core amplification calculation (sub-5-year falsifier if effect is detectable in a cluster potential).
-7. Cosmological-constant prediction from FIM hierarchy (Λ ≈ 10^{-122} in Planck units).
-8. Dark-sector ratio: 5:1 baryon:DM mass prediction from FIM tier structure.
-
-**Tier 3 — actual proof criteria (physics, not philosophy):**
-
-9. Emergent 4D spacetime with Lorentz signature from FIM geometry under dynamical flow.
-10. Emergent quantum mechanics with Bell violation arising from info-geometric structure.
-11. Falsifiable GR deviation at identified scale (Planck, cosmological, or horizon).
-
-**Tier 4 — honest endpoint:** full proof is *not attainable*. The realistic target is predictive advantage + ontological economy + falsifiable consequences surviving ~30 years.
-
-V3.0 therefore targets Tier 1 only: multi-task / multi-architecture / 20-seed / large-N FIM tier studies. That's what H200 compute can produce, and it's the next publishable paper.
-
-## Run
-
-```bash
-# V1.0 reproduction (296K-param toy experiment)
-python3 experiment_pytorch.py
-
-# V1.2 extended scaling (fills ladder; idempotent)
-python3 experiments/v1_2_scaling/fill_ladder.py
-python3 experiments/v1_2_scaling/seed_robustness.py --width 256 --seeds 0 1 2 3 4
-
-# V2.0 lattice refinement (Cauchy convergence to smooth metric)
-python3 experiments/v2_0_lattice/lattice_refinement.py --d 2 --L 6 --levels 4
-
-# V2.1 QEC decoder + spectral analysis
-python3 experiments/v2_1_qec/train.py --L 5 --p 0.05 --width 256
-python3 experiments/v2_1_qec/run_sweep.py --widths 32 64 128 256 512 1024
-
-# V3.1 mock α-drift pipeline (no real data; power analysis)
-python3 experiments/v3_1_alpha/mock_pipeline.py
-
-# V4.0 uniqueness test — FIM tier structure vs 5 non-NN substrates
-python3 experiments/v4_0_uniqueness/run_uniqueness.py --seeds 6 --probes 32
-python3 experiments/v4_0_uniqueness/analyze.py
-
-# Tests
-pytest tests/
 ```
-
-## V1.0 Results (reference — from the paper)
-
-Hardware: NVIDIA H200 SXM 141 GB, CUDA 12.4, PyTorch 2.4. Seed 42.
-
-| Prediction | Measured | Threshold | Status |
-|-----------|----------|-----------|--------|
-| Symmetry breaking | SV ratio 1921x | >100x | **PASS** |
-| FIM 3-tier hierarchy | Tier1/Tier3 = 637x | >100x | **PASS** |
-| EWC forgetting resistance | 21.5x reduction (λ=50000) | >10x | **PASS** |
-
-### V1.0 Scaling (width sweep, 5 orders of magnitude)
-
-Original SV power law: SV ~ $N^{0.47}$, $R^2 = 0.935$ (6 widths)
-
-## V1.2 + V3.0 Extended Scaling Results (13 widths, through 6.08B params)
-
-| Width | Params | SV Ratio | FIM Tier1/Tier3 | Hardware |
-|-------|--------|----------|-----------------|----------|
-| 16 | 1,888 | 377x | 191x | RTX 3080 |
-| 32 | 5,280 | 383x | 502x | RTX 3080 |
-| 64 | 16,672 | 1,048x | 616x | RTX 3080 |
-| 128 | 57,888 | 2,172x | 371x | RTX 3080 |
-| 256 | 214,048 | 9,491x | 150x | RTX 3080 |
-| 512 | 821,280 | 9,115x | 248x | RTX 3080 |
-| 1,024 | 3,215,392 | 32,228x | 335x | RTX 3080 |
-| 2,048 | 12,722,208 | 554,885x | 379x | RTX 3080 |
-| 4,096 | 50,610,208 | 77,169x | 417x | RTX 3080 |
-| 8,192 | 201,883,680 | 59,364x | 453x | RTX 3080 |
-| **14,000** | **588,952,032** | **91,946x** (seed 42) | **224x** | **A100 80GB (V3.0)** |
-| **22,000** | **1,452,002,432** | **602,008x** | **210x** | **A100 80GB (V3.0)** |
-| **45,000** | **6,078,060,032** | (not measured †) | **204–209x** (3 seeds) | **A100 80GB (V3.0 "true 10^10")** |
-
-† At width 45,000 the cusolver SVD errors and the min-dim→4000 path on the original `scaling_experiment_extended.py` only computed $\sigma_{\max}$. **Update (2026-04-24):** the $\sigma_{\min}$ measurement path has been re-implemented correctly — naive shifted power iteration on $sI - A^\top A$ does *not* converge for Marchenko–Pastur-like dense spectra, so we now use CPU full SVD (NumPy LAPACK gesdd), which is validated against GPU full SVD at $\sim 0.01\%$ relative error. Independent validation sweep `experiments/v1_2_scaling/sigma_min_validation.py` gives interior $\sigma_{\max}/\sigma_{\min}$ of $2.2 \times 10^3$ (W=256), $2.9 \times 10^4$ (W=1024), $4.1 \times 10^5$ (W=4096, one outlier layer), $6.1 \times 10^4$ (W=8192) — consistent with the noisy-observable characterisation. W=45000 requires H200 cluster because training a 5-layer 45000-wide MLP needs ~45 GB of activation memory; the measurement infrastructure is ready. Stem/head layers (32 × 45000) give ratios of ~1.1, not representative of interior-layer ratios.
-
-**SV power-law fit (12 widths, excl. W=45000):** SV ~ $N^{0.516}$, $R^2 = 0.857$.
-**FIM T1/T3 at W=45000 across 3 seeds:** mean 206.6, **CV 1.2%** (even tighter than the 1.51% observed at W=14000 / 589M).
-**FIM T1/T3 stays in 150–616x range across 10+ orders of magnitude** — hierarchy is scale-invariant.
-
-**V3.0 finding (2026-04-23).** Including the two A100 cluster-scale points (589M and 1.45B params) pulls the SV exponent from V1.2's $N^{0.566}$ back down to $N^{0.516}$ — **within 0.016 of the NTK theoretical upper bound of 0.5**. The V1.2 excess was a finite-width artifact; cluster-scale data restores compatibility with the V1.1 NTK continuum-limit theorem. Cost: $1.13 on Runpod A100 community cloud.
-
-**Multi-seed at width=14000** (5 seeds, 589M params; `experiments/v1_2_scaling/v3_0_multiseed_results.json`):
-
-| Metric | Mean | Std | CV |
-|--------|------|-----|-----|
-| SV ratio | 693,247 | 752,778 | 108.6% |
-| FIM T1/T3 | 218.5 | 4.04 | **1.51%** |
-
-### V3.0 Tier-1 item 2 — 20-seed robustness at large N (updated 2026-04-24)
-
-Full 20-seed sweep at widths 1024, 4096, 14000 (`experiments/v1_2_scaling/robustness/`):
-
-| Width | Params | n_seeds | SV mean / std / CV | FIM mean / std / CV |
-|-------|--------|---------|---------------------|----------------------|
-| 256 | 214k | 6 | 20,152 / 24,990 / 124% | 404 / 40 / 10% |
-| 1,024 | 3.2M | 20 | 20,448 / 13,457 / 66% | **329 / 16 / 4.96%** |
-| 4,096 | 50M | 20 | 269,160 / 669,811 / 249% | **257 / 7 / 2.81%** |
-| **14,000** | **589M** | **20** | — (stem/head only) | **217.8 / 3.28 / 1.51%** |
-| 45,000 | 6.08B | 3 | — (not measured) | 206.6 / 2.5 / 1.2% |
-
-**FIM CV trajectory**: 10% → 4.96% → 2.81% → **1.51%** → 1.2%. Monotone decrease over 4 orders of magnitude in $N$, consistent with a thermodynamic-limit convergence of the Tier-1 fraction $f_1$ to a well-defined value as $N \to \infty$.
-
-**FIM tier CV improves monotonically with N: 10% → 5% → 2.8% → 1.51%.** The FIM tier structure is the *scale-invariant, seed-stable, load-bearing* empirical anchor of the V1.0–V3.0 program. The SV ratio remains an order-of-magnitude noisy observable with non-monotone CV in N.
-
-### V3.0 Tier-1 item 4 — CNN + Transformer architecture baselines
-
-All three architectures trained on the same 32×32×3 Gaussian-noise self-prediction autoencoder task at comparable parameter counts (`experiments/v3_0_arch_baselines/`):
-
-| Arch | Params | SV ratio | FIM T1/T3 | Final MSE (trivial=1.0) |
-|------|--------|----------|-----------|-------------------------|
-| MLP (5-layer 256-neuron ReLU) | 1.84M | 1,674× | **2,808×** | 0.964 |
-| SmallCNN (4-block enc/dec) | 1.38M | 60× | **2,312×** | 0.488 |
-| SmallViT (patch=4, d=192, depth=4) | 1.81M | 1,378× | **121,670×** | 0.0001 |
-
-**FIM tier hierarchy appears in all three architectures.** The ratio is in the thousands to hundreds-of-thousands across MLP, CNN, and ViT at matched parameter count. The ViT, which is the only architecture able to actually learn the autoencoder task (loss 10⁻⁴ vs ~0.5–1.0 for MLP/CNN on pure Gaussian noise), develops the deepest hierarchy (121,670×). The SV ratio differs dramatically by architecture (CNN's filter tensors are intrinsically low-rank and give SV~60×), but the FIM tier structure is robust to architecture.
-
-**Naestro Tier-1 items 1, 2, 3, 4 all ✅ closed.**
-
-## V5.0 — The signature is deep layered sequential computation (2026-04-24)
-
-The universality class is now empirically characterised across 12 substrate
-classes via a single consistent measurement protocol (FIM diagonal, top-1% /
-bottom-50% tier partition). All T1/T3 values are bootstrap point estimates
-from `experiments/v5_0_dichotomy_stats/dichotomy_stats_results.json`.
-
-| System | Type | T1/T3 (point est.) | 95% CI |
-|--------|------|--------------------|--------|
-| Boolean circuit (random gates) | **Layered sequential — not neural, not trained, not probabilistic** | **88 440** | [4 286, 4.23 × 10⁶] |
-| Untrained NN (pooled 4 widths) | Deep layered sequential | **3 757** | [2 749, 5 195] |
-| Trained NN (pooled 4 widths) | Deep layered sequential | **337** | [246, 468] |
-| Random matrix (GOE, N = 3 003) | Unstructured | 80.7 | [77.8, 83.7] |
-| SU(2) lattice gauge (L=3) | Non-abelian spatially-parallel QFT | 4.85 | [4.67, 4.96] |
-| Cellular automaton (Rule 110) | Sequential but shallow | 3.77 | [3.33, 4.40] |
-| Harmonic oscillator chain | 1D dynamical system | 3.57 | [2.87, 4.54] |
-| Logistic regression | 1-layer softmax learner | 3.13 | [2.89, 3.35] |
-| Ising chain | 1D dynamical system | 2.54 | [2.35, 2.74] |
-| Gaussian process regression | Non-parametric learner | 1.97 | [1.94, 1.99] |
-| U(1) lattice gauge (L=8) | Spatially-parallel QFT | 1.62 | [1.61, 1.62] |
-| Kernel ridge regression | Shallow learner | 1.42 | [1.41, 1.43] |
-| Linear regression | Shallow learner | 1.10 | [1.09, 1.12] |
-
-**Sharp empirical dichotomy.** Deep layered sequential computation (≥4 hidden
-layers, trained OR untrained, NN OR boolean circuit) produces tier ratios of
-10² or more — bootstrapped 95% CI [244, 468] for pooled trained NNs,
-[2 749, 5 195] for pooled untrained NNs, [4 286, 4.23 × 10⁶] for random
-boolean circuits. Everything else — four genuine shallow learners (linear /
-kernel ridge / logistic / GP, all of which learn and generalise), *both*
-gauge groups of our lattice test (U(1) abelian and SU(2) non-abelian), 1D
-dynamical systems, random matrices — sits in CIs entirely below 100, with
-all four shallow learners' CI upper bounds below 6. Random matrices
-(N = 3 003) give CI [77.8, 83.7], still 3× below the trained-NN lower bound.
-A one-sided Mann–Whitney U test on the per-seed log T1/T3 values gives
-p = 1.7 × 10⁻¹⁷ with rank-biserial r = 1.000 — every deep-sequential
-observation ranks above every non-deep observation (complete separation,
-n_deep = 46, n_rest = 50). Full statistical treatment:
-`experiments/v5_0_dichotomy_stats/`.
-
-**Four sharp claims, in order of strength.**
-
-1. **The signature tracks depth + compositionality, not optimisation.** Four
-   parameterised learners — linear regression, kernel ridge, logistic
-   regression, Gaussian processes — all fit data and all generalise, yet
-   none develop a tier hierarchy above 5×. *Learning* is not what produces
-   the signature; *deep layered sequential composition* is.
-
-2. **The boolean-circuit data point is the most important row of the
-   table.** Boolean circuits are not neural, not probabilistic, not
-   trained, and have no gradients at all. They *are* layered and
-   sequentially composed. Their inclusion in the deep-NN band tells us the
-   signature does not require neurons, real-valued weights, or gradient
-   descent. The universality class is **layered recursive composition as a
-   computational primitive**, not neural networks specifically.
-
-3. **Mechanism (V6.0): the signature follows from a published theorem.**
-   Hanin & Nica (Comm. Math. Phys. 376, 2020, arXiv:1812.05994) prove that
-   for a depth-$L$ random network the log of the gradient-norm squared is
-   asymptotically Gaussian with variance linear in $L$. Our V6.0 depth
-   sweep (7 depths × 5 seeds, untrained ReLU MLPs) empirically confirms
-   two falsifiable predictions of this theorem: $\mathrm{Var}[\log F_{ii}]
-   \propto L$ ($R^2 = 0.906$) and $\log(T_1/T_3) \propto \sqrt{L}$
-   ($R^2 = 0.983$). At $L{=}20$, observed $T_1/T_3 = 9 \times 10^{15}$,
-   matching the theoretical log-normal-tail prediction. A width sweep
-   (V6.1) confirms the width-independence predicted by the theorem.
-   A **layered random-gate boolean-circuit depth sweep** (V6.3) shows the
-   same scaling at $R^2 = 0.98$ — the mechanism is substrate-independent
-   within the deep-sequential class. The empirical V5.0 dichotomy is
-   therefore no longer phenomenology — it is a quantitative consequence
-   of a published random-matrix-theory theorem that applies to
-   *any substrate performing deep layered sequential composition*,
-   neural or otherwise.
-   See [`docs/v6_0_mechanism_hanin_nica.md`](docs/v6_0_mechanism_hanin_nica.md).
-
-4. **If the universe's substrate is a spatially-parallel quantum field (as
-   lattice QFT suggests), it does not exhibit this hierarchy and the
-   FIM-Onsager framework does not apply.** If the substrate is layered-
-   sequential (Wheeler–It-from-bit, Vanchurin-style neural cosmology,
-   Page–Wootters internal-reference constructions, or any other layered
-   recursive computation), the hierarchy is a structural consequence that
-   need not be put in by hand. V1.0–V4.1 empirical work does not
-   distinguish these hypotheses; it only establishes that **if** the
-   substrate is deep-layered-sequential, the FIM tier hierarchy is a robust
-   consequence.
-
-## Boolean-circuit re-verification (2026-04-24)
-
-The V4.0 "NN is unique" claim is undermined by the boolean-circuit control, which V4.0 had reported as "underflow-affected" at 50M× tier ratio. Re-verified with vectorized code + higher probe counts (2026-04-24):
-
-| Config | BC T1/T3 | Seeds |
-|--------|----------|-------|
-| N=384, n_probes=32 | $1.01 \times 10^8$ (CV 172%) | 3 |
-| N=384, n_probes=300 | $5.18 \times 10^7$ (CV 172%) | 3 |
-| N=1000, n_probes=100 | $7.59 \times 10^7$ (CV 146%) | 3 |
-
-**The BC tier ratio is real, not an underflow artifact.** It is consistently in the 10^7–10^8 range across probe counts and sizes, *larger* than the trained NN's 10^4.
-
-**Correction to the universality claim:** The V4.0 / V4.1 claim "FIM tier hierarchy is absent from non-learning systems" is incorrect. The correct claim is: **layered sequential computation** (neural networks *or* boolean circuits, both of which have a chain of sequential gates that amplify gradient asymmetries across depth) produces the tier hierarchy. *Non-layered / non-sequential* systems (random matrix, Ising chain, harmonic chain, cellular automaton, where every parameter has equal access to the output) do not. The universality class is **depth-induced gradient-chain asymmetry**, not "learning" per se. This is consistent with the V4.1 finding that untrained ReLU MLPs already show the hierarchy.
-
-This revision weakens but does not refute the cosmological implications: if the universe's substrate is a layered sequential computation (which an NN is a subset of), the framework holds. A literal NN substrate is one specific instantiation of the broader class.
-
-## V4.1 Re-interpretation: The FIM hierarchy is init-induced, not learning-induced
-
-A follow-up experiment (`experiments/v4_0_uniqueness/run_trained_vs_untrained.py`, 5 widths × 5 seeds, 20k SGD steps, 200 FIM probes) compares trained vs **untrained** NN tier ratios at matched architecture:
-
-| Width | n_params | **Untrained** T1/T3 | Trained T1/T3 | Effect of training |
-|-------|----------|----------------------|----------------|--------------------|
-| 32 | 4,240 | 10,186 | 1,081 | 9.4× **reduction** |
-| 64 | 14,608 | 5,083 | 211 | 24× **reduction** |
-| 128 | 53,776 | 2,914 | 195 | 15× **reduction** |
-| 256 | 205,840 | 1,500 | 349 | 4.3× **reduction** |
-
-**Training does NOT create the FIM tier hierarchy — it partially dissipates it.** Untrained Kaiming-initialized networks already exhibit tier ratios of 10³–10⁴. Training smooths the FIM spectrum by a factor of 4-24× depending on width. The hierarchy is a property of **layered non-linear architectures with i.i.d. Gaussian weight initialization**, not of gradient descent dynamics.
-
-**Probe-count caveat.** V4.0 used `n_probes = 32`; V4.1 uses `n_probes = 200`. MC noise at low probe counts inflates Tier-3 zeros and thus the T1/T3 ratio; most of the factor-25 difference between V4.0's headline (13,752× at 3500 params) and V4.1's value (1,081× at 4,240 params) is probe-count accuracy, not training. Internal V4.1 comparison (trained vs untrained at same probes) is valid; the 4-24× reduction from training stands.
-
-**Reinterpretation of V1.0 and V4.0:**
-
-- V1.0's "physical constants = Tier-1 FIM parameters that training locks in" — **rejected**. Training *dissipates* the hierarchy, not locks it.
-- V4.0's "hierarchy is learning-induced" (NN 13,752× vs Ising 3× vs CA 4×) — **refined**: the contrast is real but its cause is *architectural depth + nonlinearities*, not learning. An untrained NN at the same N would still dominate Ising/CA by 10³×.
-- V1.1 through V3.0 empirical universality findings (scale invariance, seed stability, task/architecture universality, 4-task consistency) are **unaffected** — they are all about *trained* networks and still hold.
-- The cosmological interpretation needs to relocate "physical constants" from "training-locked parameters" to "parameters stable under the architecture's intrinsic init spectrum". This is a meaningful but not catastrophic revision.
-
-See `docs/v4_1_init_vs_learning.md` *(removed)* for the full writeup.
-
-## V3.0 Task-4 (vision classification): 4-task universality
-
-Fourth task: 10-class supervised classification on 1024-d Gaussian inputs with labels assigned by a fixed random teacher (6 widths, same 5-layer 256-neuron ReLU MLP, Adam, CE loss, 15k steps).
-
-| Width | Params | SV ratio | FIM T1/T3 | Final accuracy |
-|-------|--------|----------|-----------|----------------|
-| 32 | 37k | 2,888x | 49x | 96.1% |
-| 64 | 83k | 665x | 231x | 97.7% |
-| 128 | 199k | 900x | 357x | 93.0% |
-| 256 | 528k | 211,738x | 998x | 96.9% |
-| 512 | 1.58M | 17,358x | 503,865x | 94.5% |
-| 1,024 | 5.26M | 151,280x | 45,512,329x | 94.5% |
-
-**Task-4 SV power law**: $N^{1.02}$ at 300 probes (R²=0.56) → $N^{1.53}$ at 2000 probes (R²=0.94)
-**Task-4 FIM power law**: $N^{2.75}$ at 300 probes (R²=0.90) → $N^{5.55}$ at 2000 probes (R²=0.995) — **the canonical value**
-
-A high-probes verification (W=256/512/1024 at n_probes=2000, RTX 4090, commit 2026-04-24) showed that the 300-probe FIM values at W ≥ 512 are actually *under*-estimates, not over-estimates. At W=1024 the FIM T1/T3 rises from 45M (300 probes) to **326M (2000 probes)**. The exponent gets *steeper* and the fit *cleaner* (R² = 0.995) with more probes. The earlier hypothesis that the high-W FIM values were Tier-3-underflow artifacts was **wrong**; the FIM tier ratio genuinely grows super-quadratically with N for this task. See `experiments/v3_0_task4_vision/v3_0_task4_verify_2000probes.json` for the verified numbers.
-
-### Final 4-task universality summary
-
-| Task | FIM T1/T3 exp @ 300 probes | FIM T1/T3 exp @ 2000 probes | Probe-count sensitivity |
-|------|-----------------------------|-----------------------------|--------------------------|
-| T1 cosmology self-prediction | ≈ 0 (flat) | **≈ 0 (flat)** | **NONE — values literally unchanged** |
-| T2 QEC toric-code decoding | 1.386 | 2.258 | yes (+0.87) |
-| T3 symbolic regression | 1.432 | 2.299 | yes (+0.87) |
-| T4 supervised classification | 2.748 | **5.546** | yes (+2.80) |
-
-**Final headline after full verification (all 4 tasks at 2000 probes, commit 2026-04-24):**
-
-- **Unstructured** task (cosmology self-prediction of Gaussian noise): FIM T1/T3 is **flat in N and probe-insensitive** — T1/T3 sits in the 145–335× band across 3 decades of N at both probe counts, with at most 3% change between 300 and 2000 probes.
-- **Structured** tasks (QEC, symbolic regression, vision classification): FIM T1/T3 grows **super-linearly** in N, and the exponent *increases* with probe count. The 300-probe measurements were lower bounds because MC noise on tier-3 (genuinely very small) biases the tier-3 mean *upward*, which biases the ratio *downward*. At 2000 probes, tier-3 is tighter and the true super-linear scaling is exposed.
-
-This is a **cleaner empirical statement** of task universality than before: the FIM tier *form* is universal (all tasks give a stable or growing T1/T3 with N); the *exponent* sharply separates unstructured tasks (≈0) from structured ones (2.3 – 5.5 at high probes). 4-task universality is confirmed; Naestro Tier-1 item 1 satisfied.
-
-### V1.2 Depth Sweep (width=256, 6 depths)
-
-| Depth | Params | SV Ratio | FIM T1/T3 |
-|-------|--------|----------|-----------|
-| 2 | 82,464 | 1,348x | 64x |
-| 3 | 148,256 | 36,801x | 98x |
-| 5 | 279,840 | 8,794x | 766x |
-| 8 | 477,216 | 4,144x | 8.17×10^6 |
-| 12 | 740,384 | 2,979x | 5.82×10^14 † |
-| 20 | 1,266,720 | 53,629x | 3.45×10^14 † |
-
-† Tier-3 FIM values underflow float32 at depth ≥ 8; absolute ratios are lower bounds. The **monotone upward trend is physical**: deeper networks develop exponentially sharper Tier-1 vs Tier-3 distinction. Going from 5 → 8 layers alone moves the ratio by 4 orders of magnitude. This is consistent with the FIM-Onsager interpretation of deeper optimization producing more stable "physical-constant-like" parameters.
-
-### V1.2 Seed Robustness (width=256, 6 seeds)
-
-| Seed | SV Ratio | FIM T1/T3 |
-|------|----------|-----------|
-| 0 | 30,492x | 354x |
-| 1 | 13,003x | 417x |
-| 2 | 66,398x | 416x |
-| 3 | 2,957x | 435x |
-| 4 | 6,327x | 354x |
-| 5 | 1,739x | 448x |
-
-**Mean SV:** 20,152 ± 24,990 (CV 124%) — high variance. **Mean FIM T1/T3:** 404 ± 40 (CV 10%) — stable.
-
-## V2.1 QEC Decoder: Same Architecture, Different Task
-
-Trained the V1.0 architecture (5-layer, 256-neuron ReLU MLP) on the toric-code syndrome-decoding task ($L = 5$, $p = 0.05$):
-
-| Layer | Shape | SV Ratio (cosmology V1.0) | SV Ratio (QEC V2.1) |
-|-------|-------|---------------------------|----------------------|
-| stem | 25×256 / 64×256 | 2.9x | 1.9x |
-| hidden 1 | 256×256 | 847x | **3,971x** |
-| hidden 2 | 256×256 | 570x | **38,384x** |
-| hidden 3 | 256×256 | 1,921x | **6,376x** |
-| hidden 4 | 256×256 | 560x | **8,406x** |
-| head | 256×64 / 256×50 | 3.5x | 7.2x |
-
-**FIM Tier1/Tier3 (QEC, width 256, Adam-trained, n_probes=300): 1,762x** — approximately 3× deeper than the V1.0 cosmology experiment (637×) at identical architecture. (An earlier summary claimed "three orders of magnitude deeper" based on an SGD+momentum single-run value of 850,866×; that was methodology-inflated — the network barely trained, so the FIM diagonal was dominated by random-init structure. The Adam-trained sweep is the reliable measurement.)
-
-### QEC width sweep (Adam optimizer, L=5, p=0.05, 15k steps)
-
-| Width | Params | SV Ratio | FIM Tier1/Tier3 | Final BCE loss |
-|-------|--------|----------|------------------|----------------|
-| 32 | 6,706 | 568x | 93x | 0.1005 |
-| 64 | 21,554 | 1,045x | 201x | 0.0713 |
-| 128 | 75,826 | 6,191x | 421x | 0.0569 |
-| 256 | 282,674 | 36,094x | 1,762x | 0.0452 |
-| 512 | 1,089,586 | 70,290x | 46,206x | 0.0413 |
-| 1,024 | 4,276,274 | 50,251x | ~10^6x | 0.0390 |
-
-**QEC SV power law: SV ~ $N^{0.807}$, $R^2 = 0.89$.**
-Cosmology V1.0 was $N^{0.47}$; V1.2 update gives $N^{0.566}$.
-
-**QEC FIM T1/T3 power law (V2.1, patched 6-width fit): T1/T3 ~ $N^{1.386}$, $R^2 = 0.93$.** The FIM hierarchy grows *super-linearly* in parameter count for the QEC decoder, versus flat (no scaling) in the cosmology experiment. Task-dependent exponent + task-dependent magnitude: the power-law *form* is universal; its *parameters* are not.
-
-## V3.0 Task-3: Symbolic Regression Universality
-
-Third task — symbolic regression of degree-8 random polynomials. Input: 16 (x, y) evaluation pairs flattened to R^32; output: 8 polynomial coefficients. Same 5-layer 256-neuron ReLU MLP architecture; Adam + MSE loss; 20k steps.
-
-| Width | Params | SV Ratio | FIM T1/T3 | Final MSE (trivial=1.0) |
-|-------|--------|----------|-----------|-------------------------|
-| 32 | 5,544 | 8,345x | 63x | 0.684 |
-| 64 | 19,272 | 1,768x | 227x | 0.626 |
-| 128 | 71,304 | 1,624x | 415x | 0.573 |
-| 256 | 273,672 | 9,016x | 3,753x | 0.552 |
-| 512 | 1,071,624 | 43,782x | 217,907x | 0.527 |
-| 1,024 | 4,240,392 | 141,833x | 399,483x | 0.526 |
-
-**Task-3 power laws (6 widths):** SV ~ $N^{0.555}$ (R²=0.614), FIM T1/T3 ~ $N^{1.432}$ (R²=0.941).
-
-### 3-task universality summary (Naestro Tier-1 item 1)
-
-| Task | SV exponent $\alpha$ | FIM exponent $\beta$ |
-|------|---------------------|----------------------|
-| V1.2 Cosmology self-prediction (12 widths) | $N^{0.516}$ (R²=0.86) | $\approx N^0$ (R² ≪ 1) |
-| V2.1 QEC toric-code decoding (6 widths) | $N^{0.807}$ (R²=0.89) | $N^{1.386}$ (R²=0.93) |
-| V3.0 Symbolic regression (6 widths) | $N^{0.555}$ (R²=0.61) | $N^{1.432}$ (R²=0.94) |
-
-**Universality claim now survives 3 structurally unrelated tasks.** The power-law *form* holds in every case. The SV exponent is task-dependent (0.52 – 0.81). The FIM tier exponent is task-dependent but is super-linear and large in the structured tasks (QEC, symbolic), near zero in the unstructured task (self-prediction of Gaussian noise). This is consistent with the Naestro/FIM-Onsager picture: structured learning objectives induce sharper Tier-1 distinction; noise-only objectives do not.
-
-**Interpretation.** The spectral hierarchy is not specific to self-prediction loss; it appears across architecturally-identical networks trained on genuinely different tasks. Both tasks exhibit SV power-law scaling, but the *exponent* is task-dependent (0.566 for self-prediction, 0.807 for QEC decoding). This is consistent with the FIM-Onsager framework prediction that physical laws should be stabilized under any learning objective the universe optimizes, while the specific exponent reflects the task geometry. Universal class (power law present) + task-dependent parameter (exponent).
-
-## V2.0 Lattice Refinement (Cauchy Convergence)
-
-Numerical demonstration that discrete FIM on a translation-invariant hypercubic lattice converges to a smooth limiting metric as spacing $a \to 0$:
-
-- Level-to-level relative error in the FIM radial profile decreases with refinement (Cauchy criterion satisfied).
-- Exact theorem in `docs/v2_0_lattice_embedded.md`: for lattice-embedded FC networks with $C^2$ activations (or ReLU with the V1.1 smoothing), translation-invariant weights, and bounded locality radius, the discrete FIM converges to a smooth metric field on $\mathbb{R}^4$ in the $C^0$ norm.
-
-This gives a **restricted-class proof** of the Appendix-A Step-6 continuum-limit postulate of the main paper.
-
-## V3.1 α-Drift Prediction (Falsifiability)
-
-Sharpened §9.1 of the main paper:
-
-$$\frac{\dot{\alpha}}{\alpha}(x) = \kappa \cdot \rho_I(x)$$
-
-with $\kappa \approx 4 \times 10^{-59}$ yr$^{-1}$ bit$^{-1}$ Mpc$^3$ (order-of-magnitude from V1.0 Tier-1 FIM values).
-
-**Falsification test:** partial correlation $r(\Delta\alpha/\alpha, \log \rho_I \mid z, S/N)$ on $N \geq 200$ quasar sightlines from archival UVES + HIRES with SDSS DR18 environmental density. Theory rejected if $r \leq 0$ at 95% CL or $|r| < 0.20$.
-
-Sample-size requirement for 5σ: $N \approx 834$ systems (see power analysis in `docs/v3_1_alpha_drift_prediction.md`).
-
-Mock pipeline at `experiments/v3_1_alpha/mock_pipeline.py` verifies that the statistical machinery recovers an injected signal at the predicted SNR.
-
-## Plots
-
-- `plots/sv_scaling_comparison.png` — cosmology vs QEC SV scaling on the same architecture
-- `plots/v2_0_cauchy_convergence.png` — V2.0 lattice-refinement convergence of u^T G_a u
-- `plots/v3_1_roc.png` — V3.1 mock pipeline ROC (strong-signal validation)
-
-## Files
-
-| Path | Description |
-|------|-------------|
-| `experiment_pytorch.py` | V1.0 reproduction (5-layer NN + SVD + FIM + EWC) |
-| `ewc_experiment.py` | Standalone V1.0 EWC sweep |
-| `scaling_experiment.py` | V1.0 width sweep (6 widths) |
-| `scaling_experiment_extended.py` | V1.2 single-width runner (bf16 + grad ckpt) |
-| `experiments/v1_2_scaling/fill_ladder.py` | V1.2 ladder-filler (10-width sweep) |
-| `experiments/v1_2_scaling/seed_robustness.py` | V1.2 seed-variance estimator |
-| `experiments/v1_2_scaling/depth_sweep.py` | V1.2 depth sweep at fixed width |
-| `experiments/v2_0_lattice/lattice_refinement.py` | V2.0 trained-FIM Cauchy numerics |
-| `experiments/v2_0_lattice/lattice_analytic.py` | V2.0 clean analytical convergence test |
-| `experiments/v2_1_qec/{toric_code,decoder,train,run_sweep,analyze}.py` | V2.1 QEC decoder experiments |
-| `experiments/v3_1_alpha/mock_pipeline.py` | V3.1 mock observational pipeline |
-| `experiments/visualize.py` | Auto-generate `docs/results_summary.md` + plots |
-| `docs/v1_1_ntk_continuum_limit.md` | V1.1 NTK continuum-limit theorem |
-| `docs/v2_0_lattice_embedded.md` | V2.0 Cauchy-refinement theorem |
-| `docs/v3_0_cluster_recipe.md` | V3.0 cluster scaling recipe |
-| `docs/v3_1_alpha_drift_prediction.md` | V3.1 α-drift prediction + protocol |
-| `docs/findings.md` | Summary of V1.1–V3.1 findings (this session) |
-| `docs/references.bib` | BibTeX bibliography covering V1.0–V3.1 references |
-| `tests/` | Unit + integration tests (32 tests, `pytest`) |
-
-## Requirements
-
-- Python 3.10+ with PyTorch 2.1+, NumPy, SciPy
-- CUDA GPU for V1.2/V2.1 scaling runs (RTX 3080 sufficient for published widths; H200 for V3.0)
-- Optional: [MIND compiler](https://github.com/<anonymous>/mind) v0.2.3+ for the reference MIND runtime (`experiment_training.mind`)
+docs/                  # Paper drafts and mechanism notes
+experiments/           # Per-phase experiment scripts and committed JSON outputs
+plots/                 # Figures (PNG)
+scripts/               # Reproduction infrastructure (one-command rerun)
+runtime/               # Optional: tier-hierarchy runtime hooks (research only)
+tests/                 # pytest suite (markers: unit/integration/slow)
+```
 
 ## License
 
-Copyright 2026 Anonymous. [License removed for anonymous review].
+This repository is released for academic reuse with citation under the terms
+in `LICENSE`.
 
 ## Citation
 
 ```bibtex
-@article{anonymous2026universe,
-  title={The Universe as a Self-Organizing Neural Network},
-  author={Anonymous},
-  year={2026},
-  institution={Anonymous},
-  note={V1.0 paper + V1.1/V1.2/V2.0/V2.1 extensions, V3.0/V3.1 recipe+predictions}
+@article{anonymous2026fimtier,
+  title  = {Fisher Information Tier Hierarchy: A Panel-Bounded Empirical
+            Regularity of Deep Layered Sequential Computation},
+  author = {Anonymous},
+  year   = {2026},
+  note   = {Submission under double-blind review.}
 }
 ```

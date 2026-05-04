@@ -1,6 +1,5 @@
 # V6.0 — Product-of-Random-Matrices mechanism for the FIM tier hierarchy
 
-**Anonymous, Inc. — Research Document**
 **Phase:** V6.0 — mechanism behind V5.0's empirical dichotomy.
 **Date:** 2026-04-24
 **Depends on:** V4.1 (hierarchy is init-induced), V5.0 + V7.0 + V8.0 (12-system dichotomy with non-abelian gauge + tensor-network coverage).

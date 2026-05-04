@@ -1,7 +1,6 @@
 # V1.1 — NTK Gap Closure Note
 
-**Anonymous, Inc. — Research Document (Supplement to V1.1)**
-**Phase:** Naestro Tier-1 item 3
+**Phase:** Tier-1 item 3
 **Companion:** `docs/v1_1_ntk_continuum_limit.md`
 
 ---
@@ -26,7 +25,7 @@ The empirical sweeps find:
 | V1.2 | 10 (16 – 8,192 + 4 fills) | RTX 3080 | 0.566 | **above bound** |
 | V3.0 | 12 (16 – 22,000) | +A100 589M & 1.45B | 0.516 | **near bound** |
 
-Naestro Tier-1 item 3 asks: **account for the gap between the theoretical bound $\alpha = 1/2$ and the measured $\alpha \approx 0.52$ over 10 orders of magnitude of $N$.**
+Tier-1 item 3 asks: **account for the gap between the theoretical bound $\alpha = 1/2$ and the measured $\alpha \approx 0.52$ over 10 orders of magnitude of $N$.**
 
 ## 2. Four contributing mechanisms
 
@@ -136,7 +135,7 @@ All four fits are consistent with $\alpha \le 1/2$ within their standard errors.
 
 **The NTK "gap" is not a real gap.** The observed direction and magnitude of deviations from $\alpha = 1/2$ are consistent with the known finite-width [10, 12], feature-learning [13], rank-saturation, and seed-variance corrections. When the data are restricted to widths where the NTK regime is most plausibly applicable ($n \ge 128$), the fitted exponent is *below* the upper bound rather than above it — which is what NTK theory predicts.
 
-Naestro Tier-1 item 3 closed by this note.
+Tier-1 item 3 closed by this note.
 
 ---
 

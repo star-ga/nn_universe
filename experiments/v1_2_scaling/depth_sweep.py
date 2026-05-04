@@ -2,8 +2,8 @@
 
 Complements the V1.0 width sweep by varying depth at fixed width=256.
 Answers: does the SV hierarchy strengthen with depth, saturate, or degrade?
-The FIM-Onsager picture predicts deeper networks give stronger hierarchies
-(more 'physical-constant-like' parameters in Tier 1).
+The Hanin-Nica mechanism predicts deeper networks give stronger hierarchies
+(more concentrated Tier-1 parameters in the FIM diagonal).
 """
 from __future__ import annotations
 

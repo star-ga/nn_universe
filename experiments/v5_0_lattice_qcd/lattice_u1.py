@@ -29,9 +29,8 @@ Then we compute T1/T3 using the same 1% / 50% tier partition used
 throughout this repo. If T1/T3 ~ O(1-10), lattice QCD does NOT share
 the NN hierarchy — the V4.0 "layered sequential computation" framing
 is vindicated (lattice is spatially parallel, not layered). If
-T1/T3 ~ 10^3+, the NN universality class extends to known physics
-and the FIM-Onsager cosmological interpretation gains empirical
-support.
+T1/T3 ~ 10^3+, the deep-layered-sequential universality class extends
+to known physics.
 
 Runs in minutes on CPU for L=8; no GPU required.
 """
@@ -266,7 +265,7 @@ def main() -> int:
             "computation' universality framing (adopted after the V4.0 BC-contradiction audit) is "
             "vindicated, and NN universality does NOT extend to known physics via this substrate. "
             "If T1/T3 is >1000, the universality class extends to at least U(1) gauge theory, and "
-            "the FIM-Onsager cosmological framing gains empirical support."
+            "the deep-layered-sequential universality framing gains empirical support."
         ),
     }
     os.makedirs(os.path.dirname(args.out), exist_ok=True)

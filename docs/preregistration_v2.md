@@ -1,6 +1,5 @@
 # Preregistration — V2 Paper Predictions for External Compute
 
-**Anonymous, Inc.**
 **Date of registration: 2026-04-24**
 **Commit at registration: see `git log` for the most recent `main` commit at this date.**
 **Purpose:** lock in, prior to external (H200 cluster / ELT-HIRES / archival) execution, the exact quantitative predictions the paper is making, so the predictions cannot drift post-hoc.

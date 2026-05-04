@@ -6,11 +6,11 @@ Given 16 evaluation pairs (x_i, y_i) where y_i = sum_{k=0}^{D-1} c_k x_i^k
 with c_k drawn i.i.d. from N(0, 1), predict the coefficient vector c in
 R^D from the flat input (x_0, y_0, x_1, y_1, ..., x_15, y_15) in R^32.
 
-This is structurally distinct from both V1.0 cosmology (self-prediction
-of Gaussian noise) and V2.1 toric-code decoding (binary error correction
-on a lattice). A positive signal here -- same SV power-law, same FIM
-tier hierarchy -- would make the universality claim hold across three
-genuinely different tasks, satisfying Naestro Tier-1 item 1.
+This is structurally distinct from both V1.0 self-prediction of Gaussian
+noise and V2.1 toric-code decoding (binary error correction on a lattice).
+A positive signal here -- same SV power-law, same FIM tier hierarchy --
+would make the universality claim hold across three genuinely different
+tasks, satisfying Tier-1 item 1.
 
 Architecture
 ------------
