@@ -323,7 +323,53 @@ accumulate log-variance:
   matrices give a modest but nonzero ratio. Still 3× below the trained-NN
   lower bound.
 
-## 7. Implications for the universe-as-neural-network programme
+## 7. Asymptotic-family neighbours
+
+The functional form $\log(T_1/T_3) \propto \sqrt{L}$ places our result in the
+same broad subexponential-in-$\sqrt{\text{scale}}$ asymptotic family as several
+classical formulae in additive combinatorics. The most prominent is the
+Hardy–Ramanujan partition asymptotic
+
+$$
+p(n) \;\sim\; \frac{1}{4n\sqrt{3}} \exp\!\Bigl(\pi \sqrt{2n/3}\Bigr)
+$$
+
+(Hardy & Ramanujan 1918), which counts the number of unordered partitions of
+an integer $n$. The shared functional shape — exponential in $\sqrt{(\cdot)}$
+— is striking, but the underlying mechanisms are unrelated:
+
+- Hardy–Ramanujan comes from saddle-point analysis of the modular-form
+  generating function $\eta(\tau)^{-1} = \prod_{k\ge 1} (1 - q^k)^{-1}$ on the
+  unit circle (Rademacher's exact circle method).
+- Our $\sqrt{L}$ scaling comes from log-normal quantile algebra (Theorem 1')
+  applied to Hanin–Nica's product-of-random-matrices theorem.
+
+We flag this as a **shape neighbourhood, not a derivation**: the FIM tier
+hierarchy and integer partitions live in the same asymptotic-growth family,
+but no proof connects them. The neighbourhood is useful as a positioning
+marker for reviewers wondering "why $\sqrt{L}$ specifically?" — the answer
+is that this exponent is shared with one of the oldest deep-counting
+asymptotics in mathematics, and its appearance in random-Jacobian product
+spectra is the first random-matrix-theoretic instance of that family.
+
+What we do **not** claim:
+
+- We do not claim a generating-function description of the FIM diagonal.
+  Layered networks are *ordered* compositions, integer partitions are
+  *unordered* sums; there is no obvious bijection.
+- We do not claim that Rogers–Ramanujan-style sum-product identities, the
+  Ramanujan Master Theorem, or the Rogers–Ramanujan continued fraction
+  imply structure on $T_1/T_3$. Speculative substrate-panel extensions
+  (e.g. congruence-constrained skip connectivity) are flagged as open
+  questions for future work, not load-bearing here.
+
+The honest statement is: $T_1/T_3$ sits in the **same broad asymptotic
+family as partition-counting formulae** — *subexponential but faster than
+any polynomial in $\sqrt{\text{scale}}$* — and within that family, the
+log-normal-quantile-from-product-of-random-Jacobians mechanism is, to our
+knowledge, a new entry.
+
+## 8. Implications for the universe-as-neural-network programme
 
 The V4.1 result ("hierarchy is init-induced") plus the V6.0 mechanism
 ("hierarchy = product-of-random-Jacobians log-normal") gives a much
@@ -350,7 +396,7 @@ The V1.0 "FIM–Onsager correspondence" therefore lives or dies with the
 sequentially deep or spatially parallel. Our paper puts that empirically
 on the table without pretending to answer it.
 
-## 8. References
+## 9. References
 
 1. B. Hanin, M. Nica. *Products of Many Large Random Matrices and
    Gradients in Deep Neural Networks.* Comm. Math. Phys. 376, 287–322
@@ -369,6 +415,11 @@ on the table without pretending to answer it.
    [arXiv:0905.1317](https://arxiv.org/abs/0905.1317).
 6. V. Vanchurin. *The World as a Neural Network.* Entropy 22(11):1210,
    2020. [arXiv:2008.01540](https://arxiv.org/abs/2008.01540).
+7. G. H. Hardy, S. Ramanujan. *Asymptotic Formulae in Combinatory
+   Analysis.* Proc. London Math. Soc. (2) 17, 75–115 (1918).
+   [doi:10.1112/plms/s2-17.1.75](https://doi.org/10.1112/plms/s2-17.1.75).
+   *Cited as an asymptotic-family shape neighbour, not a derivational
+   connection (§7).*
 
 ---
 
