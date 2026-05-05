@@ -1,0 +1,12 @@
+{
+  "model_id": "state-spaces/mamba-790m-hf",
+  "n_params": 793204224,
+  "n_probes": 200,
+  "seed": 42,
+  "T1T3": 82024.75885223484,
+  "log10_T1T3": 4.913944962260795,
+  "gini": 0.9958920712082034,
+  "gini_sample_size": 100000000,
+  "eff_rank_n": 1.07654256714631e-15,
+  "top_1pct_mass": 0.983850303390753
+}
