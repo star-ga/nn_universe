@@ -1,0 +1,88 @@
+// nn_universe architectural-governance rules (research-repo profile)
+//
+// Enforced via:
+//   arch-mind sidecar-scan --repo . --lang python --out .arch-mind/sidecar.json
+//   arch-mind scan --fixture .arch-mind/sidecar.json --out .arch-mind/scored.json
+//   arch-mind rules --rules .arch-mind/rules.mind --scan .arch-mind/scored.json
+//
+// Q16.16 fixed-point thresholds in [0, 10000]. nn_universe is a research
+// repo (FIM tier-hierarchy paper; ML measurement code) — the rules here
+// reflect that this is NOT an audit-grade SaMD codebase like clinicalmem,
+// so the q16_determinism_purity / governance_kernel_coverage / evidence_
+// chain_density floors are 0 (the repo legitimately uses torch / numpy
+// floating-point arithmetic everywhere by design). Structural floors
+// (acyclicity, modularity, redundancy) are enforced because those reflect
+// general code-organisation health regardless of arithmetic mode.
+//
+// Baseline scan: docs/.arch-mind/baseline_scan.json (Phase A scored,
+// from arch-mind sidecar-scan + scan; live state at iter-143).
+//
+// Live readings (iter-143):
+//   acyclicity_q16              = 10000  (no cycles)
+//   redundancy_q16              =  9964  (low duplication)
+//   modularity_q16              = 10000  (clean per-experiment package layout)
+//   mcp_tool_isolation          = 10000  (no MCP tools — N/A)
+//   depth_q16                   =  9000  (longest path = 1 — flat)
+//   equality_q16                =  6921  (concentrated in v9_modern_arch/)
+//   q16_determinism_purity      =  1304  (torch / numpy throughout)
+//   governance_kernel_coverage  =     0  (research repo — N/A)
+//   evidence_chain_density      =     0  (research repo — N/A)
+//
+// Copyright 2026 STARGA, Inc. — research-repo profile, MIT License.
+
+[protection]
+module nn_universe_rules {
+
+    // ─── structural floors (research repos still have to be cycle-free) ──
+
+    // No cycles in the experiment dependency graph. Each experiment
+    // (v8_/v9_/v10_/v11_/...) is independent of every other.
+    [arch_rule(acyclicity_q16, eq)]
+    const NO_CYCLES: i32 = 10000
+
+    // Current 9964. 5% slack for new experiment additions that may
+    // duplicate small helper functions.
+    [arch_rule(redundancy_q16, ge)]
+    const REDUNDANCY_FLOOR: i32 = 9000
+
+    // Current 10000. Each experiment is its own top-level package
+    // (v8_*/v9_*/v10_*/v11_*) — modularity is honest by construction.
+    [arch_rule(modularity_q16, ge)]
+    const MODULARITY_FLOOR: i32 = 9000
+
+    // Current 9000. Most experiments are 1-file scripts; longest dep path
+    // is short. Catches a future regression where a single experiment
+    // grows a 5-deep import chain.
+    [arch_rule(depth_q16, ge)]
+    const DEPTH_FLOOR: i32 = 7000
+
+    // Current 6921. Symbol distribution concentrated in v9_modern_arch/
+    // (the largest experiment family). Future paper drafts may rebalance
+    // as v11_ / v12_ experiments grow.
+    [arch_rule(equality_q16, ge)]
+    const EQUALITY_FLOOR: i32 = 5000
+
+    // ─── floors set to 0 (research-repo profile) ────────────────────────
+
+    // q16_determinism_purity: research repo uses torch / numpy float
+    // arithmetic by design (FIM measurement, gradient² accumulation,
+    // log-domain reduction). The clinicalmem / SaMD purity story does
+    // not apply. Floor 0.
+    [arch_rule(q16_determinism_purity, ge)]
+    const PURITY_FLOOR: i32 = 0
+
+    // governance_kernel_coverage: MIND-ecosystem [protection] / [invariant]
+    // decoration count. nn_universe is pure-Python research code — no
+    // MIND decorations. Floor 0.
+    [arch_rule(governance_kernel_coverage, ge)]
+    const GOVERNANCE_FLOOR: i32 = 0
+
+    // evidence_chain_density: nn_universe doesn't ship an audit-chain
+    // (no clinical decisions, no mind-mem integration). Floor 0.
+    [arch_rule(evidence_chain_density, ge)]
+    const EVIDENCE_FLOOR: i32 = 0
+
+    // mcp_tool_isolation: no MCP tools in nn_universe. Floor 0.
+    [arch_rule(mcp_tool_isolation, ge)]
+    const MCP_ISOLATION_FLOOR: i32 = 0
+}

@@ -22,5 +22,9 @@ Mind.toml
 runtime/
 target/
 *.mind
+# Exception: arch-mind L1 governance rules profile is a Q16.16 config
+# file (no proprietary toolchain leakage); MUST be tracked so CI can
+# verify rules. Safe to ship — `.arch-mind/rules.mind` is config not code.
+!.arch-mind/rules.mind
 # M3: __pycache__ everywhere
 **/__pycache__/
