@@ -1,0 +1,15 @@
+{
+  "model_id": "EleutherAI/pythia-6.9b",
+  "n_params": 6857302016,
+  "n_probes": 200,
+  "n_unique_texts": 200,
+  "seed": 7,
+  "T1T3": 3158.9226976381524,
+  "log10_T1T3": 3.4995389983648018,
+  "gini": 0.9454032751868924,
+  "gini_sample_size": 100000000,
+  "eff_rank_n": 1.1298932657469209e-14,
+  "top_1pct_mass": 0.848014859872471,
+  "arch_id": "NVIDIA H200_139GB",
+  "spec_version": "v2-iter262"
+}

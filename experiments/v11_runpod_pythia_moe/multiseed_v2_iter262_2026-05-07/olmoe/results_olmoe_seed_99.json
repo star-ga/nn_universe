@@ -1,0 +1,15 @@
+{
+  "model_id": "allenai/OLMoE-1B-7B-0924",
+  "n_params": 6919161856,
+  "n_probes": 200,
+  "n_unique_texts": 200,
+  "seed": 99,
+  "T1T3": 82608.00121077524,
+  "log10_T1T3": 4.917022114068548,
+  "gini": 0.9944261251641722,
+  "gini_sample_size": 100000000,
+  "eff_rank_n": 1.5006540582204478e-17,
+  "top_1pct_mass": 0.9754269386021343,
+  "arch_id": "NVIDIA H200_139GB",
+  "spec_version": "v2-iter262"
+}
