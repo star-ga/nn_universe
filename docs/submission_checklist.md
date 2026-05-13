@@ -58,7 +58,7 @@ Pre-flight review before submitting to NeurIPS 2026 main track (or workshop fall
 - [x] **No "TODO" / "in progress" markers** in public docs.
 - [x] **Author attribution.** Anonymous. only — no other authors, no AI mentions.
 - [ ] **Paper PDF renders** without LaTeX errors using NeurIPS 2026 template.
-- [ ] **Anonymisation pass** — strip Anonymous branding from author block per NeurIPS double-blind rules (use the `anonymous` template option).
+- [x] **Anonymisation pass** — manual `Anonymous Authors` branding replaced by HTML comment; LaTeX template `[anonymous]` option handles author block at typeset time. Repo URL on lines 551 and 556 redacted to `<URL REDACTED FOR DOUBLE-BLIND REVIEW>` and `<repo>` placeholder.
 
 ## Known out-of-scope items
 

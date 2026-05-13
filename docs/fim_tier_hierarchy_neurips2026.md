@@ -1,8 +1,10 @@
 # Fisher Information Tier Hierarchy: A Panel-Bounded Empirical Regularity of Deep Layered Sequential Computation
 
-**Anonymous Authors**
-**Submission under double-blind review (V11.5 revision, 2026-04-29)**
-**Draft: NeurIPS 2026 main-track submission**
+<!-- Author block: handled by NeurIPS 2026 LaTeX template's [anonymous] option
+during the double-blind review phase. After acceptance, restore the
+de-anonymized author block per the camera-ready procedure. -->
+
+**Submission under double-blind review (V11.8 revision, 2026-05-13)**
 
 ---
 
@@ -548,12 +550,12 @@ Three primary figures are included with the supplementary materials and rebuilt 
 
 ## Code and data availability
 
-**Repository.** All scripts, result JSONs, and the full computational log are public at `https://github.com/star-ga/nn_universe`, reproducible from `run_all.sh`. The exact submission commit is pinned in `docs/paper_draft.md` and frozen at the SHA referenced on the first page; the corresponding archive will be deposited on Zenodo at submission time.
+**Repository.** All scripts, result JSONs, and the full computational log are public at `<URL REDACTED FOR DOUBLE-BLIND REVIEW>`, reproducible from `run_all.sh`. The exact submission commit is pinned in `docs/paper_draft.md` and frozen at the SHA referenced on the first page; the corresponding archive will be deposited on Zenodo at submission time.
 
 **Reproduction recipe (one-liner).** A complete reproduction of the V2 main panel, V5.0 dichotomy stats, V6.0 mechanism sweep, and V9 modern-architecture extension on a single GPU machine (RTX 3080 / RTX 4090 / A100 supported):
 
 ```
-git clone https://github.com/star-ga/nn_universe && cd nn_universe
+git clone <URL REDACTED FOR DOUBLE-BLIND REVIEW> && cd <repo>
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt          # torch + numpy + scipy + matplotlib only
 bash run_all.sh                           # ≈ 4 GPU-hours total
