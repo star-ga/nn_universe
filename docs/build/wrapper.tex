@@ -1,0 +1,81 @@
+\documentclass{article}
+
+% NeurIPS 2026 style file not yet published on neurips.cc (~May 2026).
+% Using neurips_2025.sty as the working draft; replace with neurips_2026.sty
+% once the official 2026 template is released.
+% Default options = anonymous + main track (double-blind), which is what
+% the submission requires.
+\usepackage{neurips_2025}
+
+% xelatex pipeline: Unicode-native, drops inputenc + fontenc.
+% fontspec alone handles all the Greek + arrows + math symbols in body
+% text. Pandoc converts in-math symbols to \sqrt/\geq/etc. so we don't
+% need unicode-math (which conflicts with amssymb's \eth).
+\usepackage{fontspec}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{nicefrac}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{calc}        % required by pandoc's longtable column-width calc
+\usepackage{listings}
+
+% Pandoc 3.x emits \real{0.25} in table column widths; provide a passthrough.
+\providecommand{\real}[1]{#1}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue
+}
+
+% Pandoc-required macros for fenced-divs / quotes / tightlist
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\providecommand{\passthrough}[1]{#1}
+
+% Allow long code blocks to break across pages.
+% literate map: Unicode glyphs that appear inside \lstinline / lstlisting
+% must be converted to LaTeX commands because listings reads its body
+% as raw 8-bit input.
+\lstset{
+  breaklines=true,
+  basicstyle=\ttfamily\small,
+  extendedchars=true,
+  literate=
+    {→}{{$\to$}}1
+    {≈}{{$\approx$}}1
+    {≥}{{$\geq$}}1
+    {≤}{{$\leq$}}1
+    {≠}{{$\neq$}}1
+    {×}{{$\times$}}1
+    {±}{{$\pm$}}1
+    {²}{{$^2$}}1
+    {³}{{$^3$}}1
+    {√}{{$\sqrt{}$}}1
+    {₂}{{$_2$}}1
+    {₃}{{$_3$}}1
+}
+
+\title{Fisher Information Tier Hierarchy: A Panel-Bounded Empirical
+       Regularity of Deep Layered Sequential Computation}
+
+% Anonymous track: the NeurIPS template's default [anonymous] option
+% renders the author block as "Anonymous Author(s)" automatically.
+% Do not put author identity here pre-acceptance.
+
+\begin{document}
+
+\maketitle
+
+\input{body.tex}
+
+\end{document}

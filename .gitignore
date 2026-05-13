@@ -28,3 +28,11 @@ target/
 !.arch-mind/rules.mind
 # M3: __pycache__ everywhere
 **/__pycache__/
+
+# LaTeX build artifacts (docs/build/ workspace)
+docs/build/body.tex
+docs/build/_body_stripped.md
+docs/build/wrapper.aux
+docs/build/wrapper.log
+docs/build/wrapper.out
+docs/build/wrapper.pdf
