@@ -1,4 +1,4 @@
-# V11.7 Multi-seed FIM stats — 5 seeds × 2 architectures
+# V11.8 Multi-seed FIM stats — 5 seeds × 2 architectures
 
 **Date:** 2026-05-08
 **Spec version:** v2-iter262
@@ -8,7 +8,7 @@
 
 This document is generated from the 10 result JSONs at
 `results_{pythia,olmoe}_seed_{7,13,42,99,256}.json` and is the
-authoritative V11.7 paper input. Reproduce locally with the
+authoritative V11.8 paper input. Reproduce locally with the
 aggregation script at the bottom of this file.
 
 ## Pythia-6.9B (dense decoder, n=6,857,302,016 params)

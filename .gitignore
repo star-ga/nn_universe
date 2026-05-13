@@ -36,3 +36,11 @@ docs/build/wrapper.aux
 docs/build/wrapper.log
 docs/build/wrapper.out
 docs/build/wrapper.pdf
+
+# Local-only review correspondence — never commit
+docs/eval_runs/
+docs/AUDIT_*.md
+docs/audit_*.md
+experiments/v11_runpod_pythia_moe/multiseed_iter*/
+experiments/v11_runpod_pythia_moe/launch_olmoe_3seeds.py
+experiments/v11_runpod_pythia_moe/.olmoe_resume_state.json
