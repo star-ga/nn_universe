@@ -20,23 +20,28 @@
 | 6 | Theorem 1' (closed-form quantile→tier ratio) only in supplementary | Move full derivation into camera-ready main text (12-page allowance) | n/a | 0 |
 | 7 | Formal Hanin–Nica extension to attention / SSM / residual | Theoretical work. Open problem. Separate paper. | n/a | Theorist-month, not compute |
 
-### Total compute budget if all on 4070×2
+### Runpod options surveyed (May 2026 pricing)
 
-| Stage | Wall-clock on 2×4070 |
-|---|---|
-| Items 1 + 3 + 4 + 5 (everything small enough to fit) | 3–4 days (embarrassingly parallel across the 2 GPUs) |
-| Item 2 Pythia-1.4B + 2.8B + Mamba-790M (FP16) | +1 day |
-| Item 2 OLMoE-1B-7B (INT4 via bitsandbytes) | +0.5 day, FIM ~5–10 % noisier |
-| Item 2 Pythia-6.9B | Does NOT fit 4070 FP16. Either INT4 quant (degraded FIM) or rent 1×H100 for ~3 hours ($6) |
+| Class | VRAM | Community $/hr | Notes |
+|---|---|---|---|
+| B200 | 180 GB | $4.99 | Newest Blackwell |
+| **H200 SXM** | **141 GB** | **$3.59** | Sweet spot for V12 |
+| H100 SXM | 80 GB | $2.99 | Cheapest viable path |
+| H100 PCIe | 80 GB | $2.79 | Slower interconnect |
+| MI300X | 192 GB | varies | AMD, fewer ML tools |
 
-**Total: ~5 days wall-clock, $0–6 cloud spend.**
+Multi-GPU: Instant Clusters scale to **64 GPUs**; single-pod max 8× SXM with NVLink. V12 is *embarrassingly parallel* across substrates/seeds, so multi-node tensor parallelism gives zero speedup — VRAM-per-GPU is the binding constraint.
 
-### Alternative: full cluster on H100
+### Total compute budget — four scenarios
 
-| Stage | Wall-clock on 1×H100 80 GB |
-|---|---|
-| Items 1+2+3+4+5 full FP16 | ~24 hours total |
-| Cloud cost (Runpod community $1.99/hr) | ~$50 |
+| Scenario | Hardware | Wall-clock | Cloud spend | Methodology risk |
+|---|---|---|---|---|
+| **A — Cheapest viable** | 4070×2 (free) + 1×H100 80 GB for Pythia-6.9B + OLMoE FP16 (3 h) | 7 days | **~$15** | INT4 quant noise on some items, mixed-GPU orchestration |
+| **B — Single H200 (recommended)** | 1× H200 141 GB | ~8 hours | **~$32** | None — full FP16, single pod, clean |
+| **C — 8× H200 speedrun** | 8× H200 SXM Instant Cluster | ~3 hours | **~$96** | None, but 3× cost for negligible methodological gain |
+| **D — Biggest reasonable** | 64× B200 Instant Cluster | ~30 min | **~$160** | None, but ~5× cost vs B for zero scientific benefit (embarrassingly parallel) |
+
+**Recommendation: Scenario B (1× H200, 8 hours, ~$32 total).** Clean methodology, full FP16, defensible against camera-ready audit reviewers. Scenario A is the zero-spend fallback with documented quant-noise caveats.
 
 ## Embarrassingly-parallel orchestration
 
