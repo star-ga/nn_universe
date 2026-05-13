@@ -1,11 +1,10 @@
 # Cluster Follow-up Roadmap — V12
 
-**Purpose.** Close the remaining pre-submission rigor review gaps that block 10/10 in the multi-reviewer audit panel. Each item below maps to a specific reviewer-style critique surfaced by GPT-5.5, model-B, model-F-large, model-E-v4-pro, and vendor-I model-I against `paper_main_v11_8`. None of these items invalidate the current submission — §5.3 Limitations + the pre-registration disclosure cover them as honest scope statements — but they would move audit mean from ~6/10 (submission-time) to 8.5–9.5/10 for the camera-ready / journal-extension version.
+**Purpose.** Close the remaining concrete reviewer-style critiques against `paper_main_v11_8` that require new compute (not text edits). Each item below maps to a specific gap that an empirical-rigor reviewer would flag. None of these items invalidate the current submission — §5.3 Limitations + the pre-registration disclosure cover them as honest scope statements — but addressing them strengthens the camera-ready / journal-extension version.
 
 ## Status (2026-05-13)
 
-- Main submission PDF: 9 pages, 3 audit passes, 5 latest-model audit responses (model-D.3 8, self-Opus 8, model-F 7, GPT-5.5 5, model-E-v4-pro 5, vendor-I 5). Currently honest-weak-accept territory.
-- All in-paper wordsmithing gaps closed (panel-bounded language, dual statistical tests, pre-registered threshold disclosure, boolean-circuit sensitivity-analog caveat, NeurIPS-2026 header, contiguous bibliography 1–37).
+- Main submission PDF: 9 pages, pre-submission rigor review complete. All in-paper wordsmithing gaps closed (panel-bounded language, dual statistical tests, pre-registered threshold disclosure, boolean-circuit sensitivity-analog caveat, NeurIPS-2026 header, contiguous bibliography).
 - Remaining gaps require *new compute*, not text edits. That work is what this doc plans.
 
 ## Items + concrete budgets

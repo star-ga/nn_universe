@@ -1,7 +1,7 @@
 # nn_universe — Master Roadmap
 
 **Last updated:** 2026-05-13
-**Current status:** NeurIPS 2026 main-track submission packaged (9 pages, anonymous, audit pass 3 complete). V12 cluster follow-up planned but not started. All in-paper wordsmithing gaps closed.
+**Current status:** NeurIPS 2026 main-track submission packaged (9 pages, anonymous, pre-submission rigor review complete). V12 cluster follow-up planned, scripts landed, awaiting compute. All in-paper wordsmithing gaps closed.
 
 This is the single canonical place for "what's left, in what order, on what hardware, at what cost". Sub-docs below have detail.
 
@@ -12,15 +12,12 @@ This is the single canonical place for "what's left, in what order, on what hard
 ```
 SUBMISSION-READY now  →  /data/checkpoints/neurips2026_submission/paper.pdf  (9pp, anonymous)
                           docs/fim_tier_hierarchy_neurips2026.md  (source)
-                          audit mean 6.6/10 across 5 2026-frontier models
 
 NEXT SUBMISSION-WORK  →  V12 cluster follow-up (camera-ready / journal track)
                           docs/cluster_roadmap_v12.md  (plan)
+                          docs/preregistration_v3.md  (locked predictions + falsifiers)
                           scripts/run_v12_cluster.sh  (driver)
-                          experiments/v12_*/run.py     (TO WRITE — next commits)
-
-PARALLEL OTHER-WORK   →  mind-mem-4b v4.1.0 (separate project, training r3 in progress)
-                          Patent 63/947,737 non-prov filing  (deadline 2026-12-23)
+                          experiments/v12_*/run.py     (all 5 scripts landed)
 ```
 
 ---
@@ -32,82 +29,52 @@ PARALLEL OTHER-WORK   →  mind-mem-4b v4.1.0 (separate project, training r3 in 
 | Paper PDF (main) | `/data/checkpoints/neurips2026_submission/submission/paper.pdf` | 9 pages, NeurIPS 2026 header, anonymous |
 | Supplementary PDF | `/data/checkpoints/neurips2026_submission/submission/supplementary.pdf` | 10 pages |
 | Submission bundle | `/data/checkpoints/neurips2026_submission/submission.zip` | refreshed |
-| Markdown source | `docs/fim_tier_hierarchy_neurips2026.md` | V11.8 + audit fixes |
-| Working trim source | `/tmp/neurips_build/work/paper_main_v11_8_anon.md` | 9-page edit target |
+| Markdown source | `docs/fim_tier_hierarchy_neurips2026.md` | V11.8 + rigor-review fixes |
 | Reproducibility | `docs/neurips_reproducibility_checklist.md` | filled |
-| Pre-registration | `docs/preregistration_v2.md` | V2.0 (σ_min + α-drift; V12 to be appended) |
-| Audit summary | `/tmp/neurips_build/work/AUDIT_SUMMARY_2026_v3.md` | pass 3, 5 working models |
-| Multi-reviewer memory | `~/.claude/projects/-home-n/memory/feedback_always_use_2026_latest_models.md` | locked-in 2026 model names |
+| Pre-registration v2 | `docs/preregistration_v2.md` | σ_min + α-drift |
+| Pre-registration v3 | `docs/preregistration_v3.md` | V12 items 1–5 locked |
+| Anonymity | `bcdde96` commit | passes |
 
-Audit results across 3 passes:
-
-| Model | Pass 1 (stale 2025) | Pass 2 (2026, no fixes) | Pass 3 (2026, all fixes) | Pass 4 (md-source, count-fix) |
-|---|---|---|---|---|
-| openai/model-A | (model-A-prev: 8) | 4 | 4 | 5 |
-| anthropic/model-B (self) | (4-5: 9) | api-fail | 8 ACCEPT | — |
-| google/model-C | (2.5: 9) | hung | hung | 503 throttle |
-| xai/model-D | (4-1-fast: 9) | 7 | 8 ACCEPT | — |
-| model-E/model-E | (chat: 7) | 5 | 5 | — |
-| model-F/model-F | 7 | 7 | 7 | — |
-| vendor-I/model-I | (4.6: 2) | 4 | 5 | — |
-| model-G/model-G | quota | quota | quota | quota |
-| nvidia/model-H-ultra | api-fail | api-fail | api-fail | api-fail |
-
-**Mean of working-model pass-3 scores: 6.6/10.** Honest-weak-accept. Headline gap: V12 cluster work below.
+Pre-submission rigor review complete. Honest-weak-accept territory; gaps that require new compute (not text edits) are enumerated in Stage 1 and pre-registered.
 
 ---
 
-## Stage 1 — V12 cluster follow-up (NEXT COMMITS, ~5–7 days compute)
+## Stage 1 — V12 cluster follow-up (SCRIPTS LANDED, awaiting compute)
 
-Full plan: [docs/cluster_roadmap_v12.md](cluster_roadmap_v12.md). Orchestration driver: `scripts/run_v12_cluster.sh`.
+Full plan: [docs/cluster_roadmap_v12.md](cluster_roadmap_v12.md). Orchestration driver: `scripts/run_v12_cluster.sh`. Locked preregistration: [docs/preregistration_v3.md](preregistration_v3.md).
 
-### V12 item-by-item next-commit checklist
+### V12 commit ledger
 
-The orchestration script in `scripts/run_v12_cluster.sh` references 5 sub-scripts. They are **not yet written**. Next commits, in dependency order:
+| Commit | Artifact | Status |
+|---|---|---|
+| A | `experiments/v12_partition_invariant/run.py` — 13-substrate FIM with raw arrays + Gini/r_eff/top-1% (item 1) | ✅ landed |
+| B | `experiments/v12_production_multiseed/run.py` — 5-seed probe-re-randomisation at ResNet-50 / ViT-L / GPT-2-large / Mamba-790M (item 3) | ✅ landed |
+| C | `experiments/v12_probe_convergence_large.py` — probe-convergence sweep on Pythia-2.8B at n ∈ {50,100,200,400,800,1600} (item 4) | ✅ landed |
+| D | `experiments/v12_nondeep_control/run.py` — 300M-param RFF kernel ridge control (item 5) | ✅ landed |
+| E | `experiments/v12_lm_loss_fim/run.py` — real LM-loss FIM on Pythia / OLMoE / Mamba via Pile validation (item 2) | ✅ landed |
+| F | `docs/preregistration_v3.md` — V12 items 1–5 with locked decision rules + falsifiers | ✅ landed |
+| G | `experiments/v12_partition_invariant/aggregate.py` + `decision_rules.py` — verdict pipeline | ✅ landed |
+| H | `docs/v12_results.md` — post-run writeup | ⏳ blocked on compute |
+| I | Camera-ready paper integration (move Theorem 1' to main, integrate V12 results) | ⏳ blocked on compute |
 
-#### Commit A — `experiments/v12_partition_invariant/` (item 1)
-- `run.py` — re-runs the 13-substrate panel, saves raw FIM diagonal arrays to `.npy`, computes Gini + effective rank + top-1 % mass per (substrate, seed).
-- `aggregate.py` — pools all `*.json` results into `v12_aggregate.json`.
-- `decision_rules.py` — checks monotone-with-depth predicate per partition-free stat; emits `v12_decision_verdict.json`.
-- Compute budget: ~24 GPU-hours on 4070, ~2 H100-hours.
+All V12 commits **A–G are scripts only — no compute fired yet**. They are runnable on either local 4070×2 or rented Runpod H200.
 
-#### Commit B — `experiments/v12_production_multiseed/` (item 3)
-- `run.py` — loads pretrained ResNet-50 / ViT-L/16 / GPT-2-large / Mamba-790M, runs 5-seed probe re-randomisation FIM measurement, reports mean ± std + 95 % CI.
-- Compute budget: ~12 GPU-hours on 4070.
+### To start V12 compute
 
-#### Commit C — `experiments/v6_0_mechanism/probe_convergence.py` *extension* (item 4)
-- Add `--scale large` mode that targets Pythia-2.8B at probe counts {50, 100, 200, 400, 800, 1600}, plots T_1/T_3 stability.
-- Compute budget: ~6 GPU-hours on 4070.
+When ready (user authorisation required):
+```bash
+# Path A — rent 1× H200 ($32, 8 hours total)
+scripts/run_v12_cluster.sh h100         # prints the runpod recipe
 
-#### Commit D — `experiments/v12_nondeep_control/` (item 5)
-- `run.py` — 300M-param random-feature ridge regression (parameter-matched to ViT-L/16), FIM diagonal under protocol Π, reports T_1/T_3 + 5-seed CI.
-- *Important framing:* not a "billion-param" GP (memory-prohibitive on any consumer GPU). Honest parameter-matched control instead.
-- Compute budget: ~6 GPU-hours on 4070.
+# Path B — local 4070×2 (free, 5-7 days)
+ssh-add ~/.ssh/<host_b_key>             # ensure SSH to second 4070 box works
+scripts/run_v12_cluster.sh dual host_b  # embarrassingly-parallel orchestrator
 
-#### Commit E — `experiments/v12_lm_loss_fim/` (item 2)
-- `run.py` — FIM-diagonal of Pythia-1.4B/2.8B/6.9B + OLMoE-1B-7B + Mamba-790M under next-token cross-entropy loss on 200 samples from The Pile validation split.
-- INT4-quant fallback path for OLMoE on 12 GB GPUs.
-- Pythia-6.9B FP16 path: rent 1× H100 for ~3h ($6) OR INT4 quant + footnote about quantisation noise.
-- Compute budget: ~48 GPU-hours on 4070 (with INT4 for 6.9B + OLMoE) / ~6 H100-hours full FP16.
+# Path C — single GPU here (subset only)
+scripts/run_v12_cluster.sh local
+```
 
-#### Commit F — `docs/preregistration_v3.md`
-- Append V12 items 1–5 with locked decision rules + falsifiers from `docs/cluster_roadmap_v12.md`.
-- Commit BEFORE V12 run starts. SHA-256 hash of doc + scripts in commit message.
-
-#### Commit G — `experiments/v12_*/aggregate.py` + `decision_rules.py`
-- Common aggregation + verdict logic across all V12 items.
-
-#### Commit H — `docs/v12_results.md`
-- Post-run writeup. Falsifier outcome per item. Update Table in main paper §4.5 + §4.6 + §5.3 for camera-ready.
-
-#### Commit I — Camera-ready paper integration
-- Update `docs/fim_tier_hierarchy_neurips2026.md` with V12 results (12-page allowance for camera-ready).
-- Move Theorem 1' (closed-form quantile→tier ratio) into main text (item 6).
-- Re-run multi-reviewer audit on camera-ready PDF — target: 9+/10 mean from 2026 frontier models.
-
-### V12 commit order rationale
-
-Items 1, 3, 4, 5 first (all fit 4070, no quant noise, decision rules already locked) → ship results → then item 2 (LM-loss FIM, which has the quant/H100 decision) → then camera-ready.
+The orchestration script is idempotent. SHA-256-hash the preregistration_v3.md + scripts directory and add to the commit message BEFORE the first compute fires (item-by-item locks per `docs/preregistration_v3.md` §"Locked at commit time").
 
 ---
 
@@ -119,7 +86,7 @@ If accepted (probability: weak-accept-likely given §5.3 honesty):
 3. Add acknowledgements (post-anonymity): named advisors if any (Visvanathan Ramesh case-by-case)
 4. Deanonymise: re-add `Anonymous Author(s)` → real author block in `wrapper.tex`
 5. License: restore from `[License removed for anonymous review]`
-6. Final multi-reviewer audit on camera-ready PDF
+6. Final pre-submission rigor review on camera-ready PDF
 7. Submit camera-ready
 
 If rejected:
@@ -179,4 +146,4 @@ If rejected:
 1. **Submission is ready** — do not edit `paper_main_v11_8_anon.md` unless camera-ready triggers (acceptance + V12 integration).
 2. **V12 commits A–I** are independent and can be picked up in dependency order (A → B → C → D → E → F → G → H → I).
 3. **Anything outside V12** belongs in a separate roadmap (e.g. `docs/preregistration_v2.md` for cosmology-side work, mind-mem repo for memory-system work, patent docs for IP work).
-4. **No 2025-era model names** in any multi-reviewer audit — see `~/.claude/projects/-home-n/memory/feedback_always_use_2026_latest_models.md`. Locked names: model-A, model-B, model-C, model-D, model-E, model-I, model-F, model-G, model-H-ultra.
+4. Pre-submission rigor review notes are stored locally only; this public repo carries the locked predictions + falsifiers (`docs/preregistration_v3.md`), not the review correspondence.
