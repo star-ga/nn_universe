@@ -28,7 +28,7 @@
 //   governance_kernel_coverage  =     0  (research repo — N/A)
 //   evidence_chain_density      =     0  (research repo — N/A)
 //
-// Copyright 2026 STARGA, Inc. — research-repo profile, MIT License.
+// research-repo governance profile, MIT License.
 
 [protection]
 module nn_universe_rules {

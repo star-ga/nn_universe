@@ -17,7 +17,7 @@ AGENTS.md
 # C5: parent paper PDF (deanonymised) — never commit
 *.pdf
 !docs/img/*.pdf
-# H6: STARGA-private MIND toolchain artefacts (proprietary; not for public release)
+# H6: private toolchain artefacts (proprietary; not for public release)
 Mind.toml
 runtime/
 target/

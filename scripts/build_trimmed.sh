@@ -9,8 +9,9 @@
 #   4. same for supplementary
 #   5. verify page counts (main ≤ 9, supp ≤ 10)
 #   6. exiftool strip metadata
-#   7. anonymisation grep (STARGA/Nedovodin/star.ga/Nikolai/ceo@star.ga = 0)
-#   8. external-vendor-name leak grep (vendor names = 0 in body)
+#   7. anonymisation grep (identity keywords = 0; keyword list lives OUTSIDE
+#      the repo in $ANON_KEYWORDS_FILE so the checker itself cannot leak)
+#   8. external-vendor-name leak grep (vendor keyword list also external)
 #   9. mirror to /data/checkpoints/neurips2026_submission/submission/
 #  10. refresh submission.zip
 #
@@ -170,27 +171,47 @@ if [ "$SUPP_PAGES" -gt "$MAX_SUPP_PAGES" ]; then
 fi
 
 echo "=== Anonymisation check ==="
-for kw in STARGA Nedovodin star.ga "github.com/star-ga" Nikolai ceo@star.ga; do
-  m=$(pdftotext paper_main_v11_3.pdf - 2>/dev/null | grep -c -i "$kw" || true)
-  s=$(pdftotext paper_supp_v11_3.pdf - 2>/dev/null | grep -c -i "$kw" || true)
-  if [ "$m" -gt 0 ] || [ "$s" -gt 0 ]; then
-    echo "  FAIL '$kw' main=$m supp=$s"
-    errors=$((errors + 1))
-  else
-    echo "  OK   '$kw' main=0 supp=0"
-  fi
-done
+# The identity keyword list is deliberately kept OUTSIDE the repo tree
+# (one keyword per line) so that the checker itself cannot leak the very
+# strings it exists to catch. Override with ANON_KEYWORDS_FILE.
+ANON_KEYWORDS_FILE="${ANON_KEYWORDS_FILE:-$HOME/nn_universe_anon_keywords_LOCAL.txt}"
+anon_idx=0
+if [ ! -f "$ANON_KEYWORDS_FILE" ]; then
+  echo "  FAIL: keyword file $ANON_KEYWORDS_FILE not found (kept outside the repo by design)"
+  errors=$((errors + 1))
+else
+  while IFS= read -r kw; do
+    [ -z "$kw" ] && continue
+    case "$kw" in \#*) continue ;; esac
+    m=$(pdftotext paper_main_v11_3.pdf - 2>/dev/null | grep -c -i "$kw" || true)
+    s=$(pdftotext paper_supp_v11_3.pdf - 2>/dev/null | grep -c -i "$kw" || true)
+    if [ "$m" -gt 0 ] || [ "$s" -gt 0 ]; then
+      echo "  FAIL keyword #$((++anon_idx)) main=$m supp=$s"
+      errors=$((errors + 1))
+    else
+      echo "  OK   keyword #$((++anon_idx)) main=0 supp=0"
+    fi
+  done < "$ANON_KEYWORDS_FILE"
+fi
 
 echo "=== External-vendor-name leak check ==="
 # Citation-context publisher names (e.g. for the GPT-2 reference) are allowed;
-# every other vendor token should be 0 in the body.
-for kw in model-D vendor-D 'model-C ' 'GPT-5' 'reviewer-B ' Anthropic model-E model-F model-G Moonshot Kimi 'Llama-' 'Qwen '; do
-  m=$(pdftotext paper_main_v11_3.pdf - 2>/dev/null | grep -c -i "$kw" || true)
-  s=$(pdftotext paper_supp_v11_3.pdf - 2>/dev/null | grep -c -i "$kw" || true)
-  if [ "$m" -gt 0 ] || [ "$s" -gt 0 ]; then
-    echo "  WARN '$kw' main=$m supp=$s (review whether load-bearing)"
-  fi
-done
+# every other vendor token should be 0 in the body. Vendor keyword list is
+# also external (one per line). Override with VENDOR_KEYWORDS_FILE.
+VENDOR_KEYWORDS_FILE="${VENDOR_KEYWORDS_FILE:-$HOME/nn_universe_vendor_keywords_LOCAL.txt}"
+if [ -f "$VENDOR_KEYWORDS_FILE" ]; then
+  while IFS= read -r kw; do
+    [ -z "$kw" ] && continue
+    case "$kw" in \#*) continue ;; esac
+    m=$(pdftotext paper_main_v11_3.pdf - 2>/dev/null | grep -c -i "$kw" || true)
+    s=$(pdftotext paper_supp_v11_3.pdf - 2>/dev/null | grep -c -i "$kw" || true)
+    if [ "$m" -gt 0 ] || [ "$s" -gt 0 ]; then
+      echo "  WARN vendor keyword main=$m supp=$s (review whether load-bearing)"
+    fi
+  done < "$VENDOR_KEYWORDS_FILE"
+else
+  echo "  SKIP: vendor keyword file $VENDOR_KEYWORDS_FILE not found"
+fi
 
 # ------------------------------------------------------------ mirror to /data
 if [ -d "$SUB/submission" ]; then

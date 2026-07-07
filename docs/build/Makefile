@@ -5,7 +5,7 @@
 #
 # Inputs:
 #   ../fim_tier_hierarchy_neurips2026.md   (paper source, markdown)
-#   neurips_2025.sty                        (NeurIPS template style file)
+#   neurips_2026.sty                        (official NeurIPS 2026 style file)
 #   wrapper.tex                              (LaTeX preamble + \input{body.tex})
 #
 # Toolchain required: pandoc, pdflatex.
@@ -32,7 +32,7 @@ $(BODY): $(SRC)
 	    --top-level-division=section
 	rm -f _body_stripped.md
 
-$(PDF): wrapper.tex $(BODY) neurips_2025.sty
+$(PDF): wrapper.tex $(BODY) neurips_2026.sty
 	@echo "  pdflatex (pass 1)"
 	xelatex -interaction=nonstopmode -halt-on-error $(JOB).tex > /tmp/pdflatex.log 2>&1 \
 	    || (tail -50 /tmp/pdflatex.log && false)

@@ -134,10 +134,10 @@ python3 experiments/visualize.py --plots
 # =============================================================
 # Regression tests
 # =============================================================
-log "Running pytest (104 tests expected)"
+log "Running pytest (116 passed + 2 skipped expected)"
 python3 -m pytest tests/ -q
 
 log "Pipeline complete."
-log "Paper source: docs/paper_draft.md"
+log "Paper source: docs/fim_tier_hierarchy_neurips2026.md"
 log "Rebuild PDF with:"
-log "  pandoc docs/paper_draft.md -o docs/nn_universe_paper_V2.pdf --pdf-engine=lualatex -V mainfont='DejaVu Serif' -V geometry:margin=1in -V colorlinks=true -V fontsize=10pt"
+log "  make -C docs/build pdf"

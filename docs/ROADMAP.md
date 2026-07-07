@@ -103,7 +103,6 @@ If rejected:
 | Formal Hanin–Nica extension theorem to attention/SSM/residual (V12 item 7) | Theorist collaborator post-acceptance (Hanin / Pennington) | Separate paper, ~6 months |
 | 4D + Lorentz-signature spacetime emergence | Parent framework, open theoretical question | Indefinite |
 | Real α-drift on UVES + HIRES + SDSS DR18 | Already in `docs/preregistration_v2.md` §2.C | Separate cosmology paper |
-| Patent 63/947,737 non-provisional conversion | Nikolai, pro se | Hard deadline 2026-12-23 |
 
 ---
 

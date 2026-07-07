@@ -1,5 +1,5 @@
 {
-  "_comment": "Claim-to-artifact manifest. Each paper claim maps to (script, result_json, sha256, figure). Generated 2026-04-25 for the NeurIPS 2026 main-track submission.",
+  "_comment": "Claim-to-artifact manifest. Each paper claim maps to (script, result_json, sha256, figure). Generated 2026-04-25 for the NeurIPS 2026 main-track submission; regenerated 2026-07-06: 4 drifted result_json paths corrected, all SHA-256 hashes re-anchored to the current artifact bytes after verifying each artifact's headline numbers against the claim text, and claims C19-C29 added to cover the V9.6b-V11.8 production-scale results.",
   "paper": "docs/fim_tier_hierarchy_neurips2026.md",
   "claims": [
     {
@@ -47,27 +47,30 @@
       "section": "\u00a74.6 V6.0",
       "text": "Untrained MLP: log(T1/T3) ~ sqrt(L), R^2 = 0.983, slope = 11.5",
       "script": "experiments/v6_0_depth_mechanism/depth_sweep.py",
-      "result_json": "experiments/v6_0_depth_mechanism/depth_sweep_results.json",
+      "result_json": "experiments/v6_0_depth_mechanism/v6_0_depth_sweep.json",
       "figure": "Fig. 2",
-      "repro": "python3 -m experiments.v6_0_depth_mechanism.depth_sweep"
+      "repro": "python3 -m experiments.v6_0_depth_mechanism.depth_sweep",
+      "sha256": "a6724b367b75000573b43390560510270f00d29f743bc9db48798c5884a16bbf"
     },
     {
       "id": "C6",
       "section": "\u00a74.6 V6.3",
       "text": "Random boolean circuit: log(T1/T3) ~ sqrt(L), R^2 = 0.98",
       "script": "experiments/v6_0_depth_mechanism/bc_depth_sweep.py",
-      "result_json": "experiments/v6_0_depth_mechanism/bc_depth_sweep_results.json",
+      "result_json": "experiments/v6_0_depth_mechanism/v6_3_bc_depth_sweep.json",
       "figure": "Fig. 3",
-      "repro": "python3 -m experiments.v6_0_depth_mechanism.bc_depth_sweep"
+      "repro": "python3 -m experiments.v6_0_depth_mechanism.bc_depth_sweep",
+      "sha256": "b3a5fc9c2c32be6eba9443bf0e6302eeeda9323f65bd317749911e0543c7c6ca"
     },
     {
       "id": "C7",
       "section": "\u00a74.6 V9",
       "text": "ResNet residual stack: slope 16.74, R^2 = 0.999; GPT-Tiny tied attention: slope -0.22 (narrowing)",
       "script": "experiments/v9_modern_arch/resnet_gpt2_depth.py",
-      "result_json": "experiments/v9_modern_arch/v9_resnet_gpt_results.json",
+      "result_json": "experiments/v9_modern_arch/v9_resnet_gpt2_results.json",
       "figure": "Tab. \u00a74.6",
-      "repro": "python3 -m experiments.v9_modern_arch.resnet_gpt2_depth"
+      "repro": "python3 -m experiments.v9_modern_arch.resnet_gpt2_depth",
+      "sha256": "ad83bb29aae43f096318b86947d93e0c5c28152c822749a3f4d42412e473939b"
     },
     {
       "id": "C8",
@@ -76,16 +79,18 @@
       "script": "experiments/v9_modern_arch/gpt_untied_depth.py",
       "result_json": "experiments/v9_modern_arch/v9_1_gpt_untied_results.json",
       "figure": "\u00a74.6 V9.1",
-      "repro": "python3 -m experiments.v9_modern_arch.gpt_untied_depth"
+      "repro": "python3 -m experiments.v9_modern_arch.gpt_untied_depth",
+      "sha256": "e576e26ff16ad383a571dde8e0d1432fc6210e624ff2d4bce9ac35518f8a8e74"
     },
     {
       "id": "C9",
       "section": "\u00a74.6 V9.2",
       "text": "CIFAR-10 ResNet-18: T1/T3 = 778, 81.4% test acc, Gini = 0.84, top1% = 0.48",
       "script": "experiments/v9_modern_arch/cifar_resnet18_fim.py",
-      "result_json": "experiments/v9_modern_arch/v9_2_cifar_resnet18_results.json",
+      "result_json": "experiments/v9_modern_arch/v9_2_cifar_resnet18_fim.json",
       "figure": "Tab. \u00a74.6",
-      "repro": "python3 -m experiments.v9_modern_arch.cifar_resnet18_fim"
+      "repro": "python3 -m experiments.v9_modern_arch.cifar_resnet18_fim",
+      "sha256": "fd342de06ba67d95136b31b32dd0d5b34d0f7c7a6ecacbf5dd39aaaf67f1fac2"
     },
     {
       "id": "C10",
@@ -93,7 +98,7 @@
       "text": "CIFAR-100 ResNet-18: T1/T3 = 166, 65% test acc, Gini = 0.69, top1% = 0.29",
       "script": "experiments/v9_modern_arch/cifar100_resnet18_fim.py",
       "result_json": "experiments/v9_modern_arch/v9_2b_cifar100_resnet18_results.json",
-      "sha256": "193e51b5bc054a063821e2f46aea221549463025da1dfd7734a417df9c02b607",
+      "sha256": "390121ea6d8e12876371cfbb823bed8ccb687197a1835b9d61e39e67f1056b81",
       "figure": "Tab. \u00a74.6",
       "repro": "python3 -m experiments.v9_modern_arch.cifar100_resnet18_fim"
     },
@@ -104,7 +109,8 @@
       "script": "experiments/v9_modern_arch/rnn_depth.py",
       "result_json": "experiments/v9_modern_arch/v9_3_rnn_lstm_results.json",
       "figure": "\u00a74.6 V9.3",
-      "repro": "python3 -m experiments.v9_modern_arch.rnn_depth"
+      "repro": "python3 -m experiments.v9_modern_arch.rnn_depth",
+      "sha256": "316c376546b2dcbf9d28d9e25bb1fe8aa1101e95963c5e5f234fb00b9b9cbe14"
     },
     {
       "id": "C12",
@@ -112,7 +118,7 @@
       "text": "Mamba SSM pre-registered out-of-sample: H2 PARTIAL, slope = 0.468, R^2 = 0.78",
       "script": "experiments/v9_modern_arch/mamba_depth.py",
       "result_json": "experiments/v9_modern_arch/v9_4_mamba_results.json",
-      "sha256": "a75cdd61c4712abdf88750ec09fae112390aa261fa6555dae50930557d19e857",
+      "sha256": "c0c490101199ba890398dd95cf9902a74b7fe0eef1bef37449974726e7fb4e8f",
       "figure": "\u00a74.6 V9.4",
       "repro": "python3 -m experiments.v9_modern_arch.mamba_depth"
     },
@@ -122,7 +128,7 @@
       "text": "ImageNet ResNet-50 V1 (76.13% acc): T1/T3 = 1.76e21, Gini = 0.99, top1% = 0.76",
       "script": "experiments/v9_modern_arch/imagenet_resnet50_fim.py",
       "result_json": "experiments/v9_modern_arch/v9_5_imagenet_resnet50_results.json",
-      "sha256": "5c946350123a164f62052f92220747c4b9163bed4cc402c614ca8a22f6dc69bd",
+      "sha256": "404c8d6f82baed98571c3111cb5470ccec93a281630dea369ac1a4df67af08aa",
       "figure": "Tab. \u00a74.6 + \u00a74.8",
       "repro": "python3 -m experiments.v9_modern_arch.imagenet_resnet50_fim"
     },
@@ -132,7 +138,7 @@
       "text": "ImageNet ResNet-50 V2 (80.86% acc): T1/T3 = 7.32e6, Gini = 1.00, top1% = 0.96",
       "script": "experiments/v9_modern_arch/imagenet_resnet50_fim.py",
       "result_json": "experiments/v9_modern_arch/v9_5_imagenet_resnet50_v2_results.json",
-      "sha256": "1bb6089d7098624fa6d2572df028b466eb9977abfb5cf31ee7c74a31f45a3a22",
+      "sha256": "d62d4f485681ab4cbe8b38920e6407a81f3c9e952cd3939782898df3dd6e8881",
       "figure": "Tab. \u00a74.6 + \u00a74.8",
       "repro": "python3 -m experiments.v9_modern_arch.imagenet_resnet50_fim --out experiments/v9_modern_arch/v9_5_imagenet_resnet50_v2_results.json"
     },
@@ -142,7 +148,7 @@
       "text": "GPT-2-medium pretrained (354.8M params): T1/T3 = 6.12e4, Gini = 1.00, top1% = 0.99",
       "script": "experiments/v9_modern_arch/gpt2_medium_fim.py",
       "result_json": "experiments/v9_modern_arch/v9_6_gpt2_medium_results.json",
-      "sha256": "a08980ac554eb26f9a846daf6681d0693e3cd3c51c452136e1ed330ddf9f2042",
+      "sha256": "7ea2aa5439876aa7a90463c9db691f97a8f4adc29933d3bc0931ba1eddfa27b4",
       "figure": "Tab. \u00a74.6 + \u00a74.8",
       "repro": "python3 -m experiments.v9_modern_arch.gpt2_medium_fim --model gpt2-medium"
     },
@@ -172,9 +178,132 @@
       "text": "ImageNet ViT-L/16 pretrained (304.3M params, 79.66% top-1): T1/T3 = 6.93e3, Gini = 0.89, top1% = 0.57",
       "script": "experiments/v9_modern_arch/vit_large_fim.py",
       "result_json": "experiments/v9_modern_arch/v9_7_imagenet_vit_l16_results.json",
-      "sha256": "67b7ada7f7bb2fe167f6a15cd7364120cf88b4ac02d845a771cc0342ecf1c023",
+      "sha256": "9773a67726dc27e2259c8dab133edeab36f4945aeb735e11bc30c396d2772c26",
       "figure": "Tab. \u00a74.6 + \u00a74.8",
       "repro": "python3 -m experiments.v9_modern_arch.vit_large_fim"
+    },
+    {
+      "id": "C19",
+      "section": "\u00a74.6 V9.6 / \u00a71.5 (6)",
+      "text": "GPT-2-medium 5-seed multi-seed: log10(T1/T3) = 4.828 \u00b1 0.003 (reported 4.83 \u00b1 0.003)",
+      "script": "experiments/v9_modern_arch/multi_seed_production.py",
+      "result_json": "experiments/v9_modern_arch/v9_6_gpt2_medium_5seed_results.json",
+      "figure": "Tab. \u00a74.6 + \u00a74.8",
+      "repro": "python3 -m experiments.v9_modern_arch.multi_seed_production --models gpt2_medium --out experiments/v9_modern_arch/v9_6_gpt2_medium_5seed_results.json",
+      "sha256": "f8175e2c607ad6e2b2e28c8d743eefcd46c710de4df3de7980de203a4875a7cb"
+    },
+    {
+      "id": "C20",
+      "section": "\u00a74.6 V9.6b",
+      "text": "GPT-2-large pretrained (774M params): T1/T3 = 1.11e3 (deep-sequential band)",
+      "script": "experiments/v9_modern_arch/gpt2_medium_fim.py",
+      "result_json": "experiments/v9_modern_arch/v9_6b_gpt2_large_results.json",
+      "figure": "Tab. \u00a74.6 + \u00a74.8",
+      "repro": "python3 -m experiments.v9_modern_arch.gpt2_medium_fim --model gpt2-large",
+      "sha256": "3617cd09e834affae29752f9cd37bf3f1f528db3e7ea1f9f57cc0a89b7a54a02"
+    },
+    {
+      "id": "C21",
+      "section": "\u00a74.6 V9.8",
+      "text": "Pythia-1.4B pretrained: T1/T3 = 4.25e3 (first billion-parameter LM data point)",
+      "script": "experiments/v11_runpod_pythia_moe/pythia_6_9b_fim.py",
+      "result_json": "experiments/v9_modern_arch/v9_8_pythia_1.4b_results.json",
+      "figure": "Tab. \u00a74.6 + \u00a74.8",
+      "repro": "python3 experiments/v11_runpod_pythia_moe/pythia_6_9b_fim.py --model EleutherAI/pythia-1.4b",
+      "sha256": "8be9efe764450b6889dae4d38ba5f8b2166c2665d0dcf12b89faf37119eb702c"
+    },
+    {
+      "id": "C22",
+      "section": "\u00a74.6 V11.3",
+      "text": "Pythia-2.8B pretrained: log10(T1/T3) = 3.30 (second billion-parameter LM data point)",
+      "script": "experiments/v11_runpod_pythia_moe/pythia_6_9b_fim.py",
+      "result_json": "experiments/v9_modern_arch/v9_10_pythia_2.8b_results.json",
+      "figure": "Tab. \u00a74.6 + \u00a74.8",
+      "repro": "python3 experiments/v11_runpod_pythia_moe/pythia_6_9b_fim.py --model EleutherAI/pythia-2.8b",
+      "sha256": "d6af9de271d406eeca27b9557d1461d4d82eb927bd7b7d82658a5533c52cae74"
+    },
+    {
+      "id": "C23",
+      "section": "\u00a71.5 + \u00a74.6 V11.5",
+      "text": "ImageNet-1K ResNet-50 90-epoch from-scratch trajectory: final T1/T3 = 778 at 74.56% top-1; init\u2192final drop factor 4366\u00d7 (Pattern A at canonical scale)",
+      "script": "experiments/v9_modern_arch/v9_5c_imagenet_resnet50_local.py",
+      "result_json": "experiments/v9_modern_arch/v9_5c_imagenet_resnet50_fromscratch_results.json",
+      "figure": "\u00a74.6 V11.5 + Appendix E",
+      "repro": "python3 -m experiments.v9_modern_arch.v9_5c_imagenet_resnet50_local  # ~90 epochs ImageNet-1K; H200-scale",
+      "sha256": "46cdf12b6fa02a72d85a027d0eb39672df449287e8a4e2c8e96d52273be1e3d5"
+    },
+    {
+      "id": "C24",
+      "section": "\u00a74.6 V9.5b",
+      "text": "Imagenette ResNet-50 from-scratch trajectory (Pattern B: increase + transient peak; re-framed small-data-regime outlier)",
+      "script": "experiments/v9_modern_arch/imagenette_resnet50_trajectory.py",
+      "result_json": "experiments/v9_modern_arch/v9_5b_imagenette_resnet50_trajectory_results.json",
+      "figure": "\u00a74.6 V9.5b + Appendix E",
+      "repro": "python3 -m experiments.v9_modern_arch.imagenette_resnet50_trajectory",
+      "sha256": "35262b33cc9cfe01191e8f021c42433e9e17313eef0082ddded1a0a834bae1f5"
+    },
+    {
+      "id": "C25",
+      "section": "\u00a74.6 V11.3 (ViT-B/16 trajectory)",
+      "text": "Imagenette ViT-B/16 from-scratch trajectory (Pattern C: jump-from-below-threshold, random init T1/T3 = 0.37 \u2192 epoch 10 at 2.9e4)",
+      "script": null,
+      "result_json": "experiments/v9_modern_arch/v9_8b_vit_imagenette_trajectory_results.json",
+      "figure": "\u00a74.6 + Appendix E",
+      "repro": null,
+      "note": "Generating script not yet committed to experiments/; artifact JSON is anchored here and the trajectory protocol matches imagenette_resnet50_trajectory.py. Restore the script before camera-ready.",
+      "sha256": "8643331d9ddff317db66eaee246e34ef936634638f7c5419945a7b000253b424"
+    },
+    {
+      "id": "C26",
+      "section": "\u00a71.5 (6) V11.6",
+      "text": "Pythia-6.9B single-seed: log10(T1/T3) = 3.759 (T1/T3 = 5.74e3) \u2014 dense-LM anchor",
+      "script": "experiments/v11_runpod_pythia_moe/pythia_6_9b_fim.py",
+      "result_json": "experiments/v11_runpod_pythia_moe/results/v11_pythia_6_9b_results.json",
+      "figure": "Tab. \u00a74.6 + \u00a74.8",
+      "repro": "python3 experiments/v11_runpod_pythia_moe/pythia_6_9b_fim.py",
+      "sha256": "fecf7800ec930a65c87e2cc0f841830cbc086e8866d9cffc9907da4a1835c04d"
+    },
+    {
+      "id": "C27",
+      "section": "\u00a71.5 (6) V11.6",
+      "text": "OLMoE-1B-7B-0924 single-seed: log10(T1/T3) = 5.629 (T1/T3 = 4.26e5) \u2014 MoE anchor",
+      "script": "experiments/v11_runpod_pythia_moe/olmoe_1b_7b_fim.py",
+      "result_json": "experiments/v11_runpod_pythia_moe/results/v11_olmoe_1b_7b_results.json",
+      "figure": "Tab. \u00a74.6 + \u00a74.8",
+      "repro": "python3 experiments/v11_runpod_pythia_moe/olmoe_1b_7b_fim.py",
+      "sha256": "be846d6c6b00e564d480f0be5780a2e83990b457ceb091bd7e8da78c2754dbd8"
+    },
+    {
+      "id": "C28",
+      "section": "\u00a73.5 falsifier 3 + \u00a71.6 row 11 (V11.7)",
+      "text": "Mamba-790M-HF: log10(T1/T3) = 4.914 (T1/T3 = 8.20e4), gini = 0.996, top-1% mass = 0.984, n=200 probes, seed 42 \u2014 gated-SSM band at production scale",
+      "script": "experiments/v11_runpod_pythia_moe/mamba_2_8b_fim.py",
+      "result_json": "experiments/v11_runpod_pythia_moe/results/v11_mamba_790m_results.json",
+      "figure": "\u00a74.6 V11.7",
+      "repro": "python3 experiments/v11_runpod_pythia_moe/mamba_2_8b_fim.py --model state-spaces/mamba-790m-hf",
+      "sha256": "670ba03596d10381d3bda35bff2516059948eab07a7d8199739b4db982d5fee6"
+    },
+    {
+      "id": "C29",
+      "section": "\u00a71.5 (6) + \u00a71.6 row 11 (V11.8)",
+      "text": "V11.8 5-seed dense-vs-MoE reproducibility: Pythia-6.9B log10(T1/T3) = 3.484 \u00b1 0.012 (CV 0.34%) vs OLMoE 5.083 \u00b1 0.195 (CV 3.83%); Welch t = 18.32, one-sided p << 1e-6; gap \u0394 = 1.599 dex \u2248 39.7\u00d7",
+      "script": "experiments/v11_runpod_pythia_moe/pythia_6_9b_fim.py + experiments/v11_runpod_pythia_moe/olmoe_1b_7b_fim.py (seeds 7 13 42 99 256)",
+      "result_json": "experiments/v11_runpod_pythia_moe/multiseed_v2_iter262_2026-05-07/V11_8_MULTISEED_STATS.md",
+      "figure": "\u00a71.5 + \u00a71.6 row 11",
+      "repro": "for s in 7 13 42 99 256; do python3 experiments/v11_runpod_pythia_moe/pythia_6_9b_fim.py --seed $s; python3 experiments/v11_runpod_pythia_moe/olmoe_1b_7b_fim.py --seed $s; done",
+      "seed_jsons_sha256": {
+        "experiments/v11_runpod_pythia_moe/multiseed_v2_iter262_2026-05-07/pythia/results_pythia_seed_7.json": "80a13a4cccd8cca67dae40bca7ae0f5aaf911bc2ddc47c415e7be2bec35a94ed",
+        "experiments/v11_runpod_pythia_moe/multiseed_v2_iter262_2026-05-07/pythia/results_pythia_seed_13.json": "ceac9bd2533c56c6c3218d7f425f3ebf3046e7589dcebfa2d2cab13c82753af5",
+        "experiments/v11_runpod_pythia_moe/multiseed_v2_iter262_2026-05-07/pythia/results_pythia_seed_42.json": "ce45b6b3bfd9fc016a3e0bc46d2864cc01b839081fe48b357ec89cb69aab801f",
+        "experiments/v11_runpod_pythia_moe/multiseed_v2_iter262_2026-05-07/pythia/results_pythia_seed_99.json": "635bae0198a5ce5019b93041cfdd31384640de8a850713e018973d35e6fe15c1",
+        "experiments/v11_runpod_pythia_moe/multiseed_v2_iter262_2026-05-07/pythia/results_pythia_seed_256.json": "93cadbf2af3c10b1262eab5a15e40f6547af8b067e787df2c3d4390141e8e18a",
+        "experiments/v11_runpod_pythia_moe/multiseed_v2_iter262_2026-05-07/olmoe/results_olmoe_seed_7.json": "7140f8957d9b7443b46520d449679f089e819cafcb5d88a363c121108d529937",
+        "experiments/v11_runpod_pythia_moe/multiseed_v2_iter262_2026-05-07/olmoe/results_olmoe_seed_13.json": "7d8d2c475659794aa1cafb59cd1a9153307c7bd6e6cac1752b04f22816ccf753",
+        "experiments/v11_runpod_pythia_moe/multiseed_v2_iter262_2026-05-07/olmoe/results_olmoe_seed_42.json": "4f9e440f84fd42a7081563d8c867bf5ab2727eba27b7142f74ce6fc86fb49e35",
+        "experiments/v11_runpod_pythia_moe/multiseed_v2_iter262_2026-05-07/olmoe/results_olmoe_seed_99.json": "50b802b1b848ecdb59d01f21f4f37a3914875d4308473d46ee4dc7a859a7429f",
+        "experiments/v11_runpod_pythia_moe/multiseed_v2_iter262_2026-05-07/olmoe/results_olmoe_seed_256.json": "623a03406aad337d829db9817c2e4a47d91323449a44cad159811ac1c3cc803e"
+      },
+      "sha256": "f63294342253f290d187214f9a41aa716e8b72453550d481cb76beee62c1ac5e"
     }
   ],
   "verification": {
