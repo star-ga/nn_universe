@@ -101,6 +101,7 @@ If rejected:
 | Item | Owner | Timeline |
 |---|---|---|
 | Formal Hanin–Nica extension theorem to attention/SSM/residual (V12 item 7) | Theorist collaborator post-acceptance (Hanin / Pennington) | Separate paper, ~6 months |
+| Multiplicative-chaos framing of the depth cascade — see [docs/gmc_multiplicative_cascade_2026-07-22.md](gmc_multiplicative_cascade_2026-07-22.md) | Reading item; feeds the row above | Unscheduled |
 | 4D + Lorentz-signature spacetime emergence | Parent framework, open theoretical question | Indefinite |
 | Real α-drift on UVES + HIRES + SDSS DR18 | Already in `docs/preregistration_v2.md` §2.C | Separate cosmology paper |
 
