@@ -83,6 +83,45 @@ failure, not a *phase-transition* failure. The two are indistinguishable from th
 outside and are entirely different claims. **Conjectured, unresolved, and not to
 be asserted either way.**
 
+## The critical regime — what is genuinely open, and what we could and could not claim
+
+**Established (from the primary source and the authors' own words).** The
+vector-valued martingale method resolves the **sub-critical** case only. The
+authors state the method *fails* at the critical phase-transition point — not
+that it was left undone, but that the technique breaks there. Their own closing
+position is that going further "needs new ideas." Independently: critical GMC
+requires Seneta–Heyde renormalisation to exist as a measure at all, and its
+Fourier dimension has been open since roughly 2014 despite sustained work.
+
+**What we cannot claim.** Solving the open problem. It is posed as the Fourier
+dimension of a random measure on the unit interval at critical γ. We have no
+frequency variable, no domain, and no background measure — the question is not
+stated in a language the FIM spectrum speaks. Anyone claiming to have resolved
+it must produce a Fourier dimension, and we cannot.
+
+**What we could legitimately claim, if the data supports it.** A different
+question, on our side of the wall: *does cascade universality stop at a
+threshold, and does our observed √L failure sit on the far side of it?*
+
+Falsifiable form: compute an effective variance parameter per substrate class;
+check whether the classes that follow √L (R² = 0.94–0.999, six classes) sit
+below a common threshold and the classes that break it (attention, unrolled
+RNN/LSTM) sit above. A clean separation would be an empirical result about where
+the multiplicative-cascade picture stops applying — ours to state, using GMC as
+the frame rather than borrowing its theorem.
+
+**The condition that decides whether this is real.** It only counts if it
+distinguishes the two explanations in the confound above — past-the-threshold
+versus cascade-structure-never-applied. If the effective parameter cannot
+separate them, the outcome is a suggestive picture and must be reported as one.
+An overlap, or a threshold fitted after seeing which classes fail, is not a
+result. **Pre-register the threshold definition before computing it**, per the
+repo's existing preregistration discipline.
+
+Scope: unscheduled, Stage 3. Feeds the Hanin–Nica extension row — the theorist
+question "why does attention leave the cascade family" is the same question from
+the other end.
+
 ## Prior-art position
 
 An arXiv full-text search conjoining "Gaussian multiplicative chaos" with
