@@ -33,9 +33,50 @@ NEXT SUBMISSION-WORK  →  V12 cluster follow-up (camera-ready / journal track)
 | Reproducibility | `docs/neurips_reproducibility_checklist.md` | filled |
 | Pre-registration v2 | `docs/preregistration_v2.md` | σ_min + α-drift |
 | Pre-registration v3 | `docs/preregistration_v3.md` | V12 items 1–5 locked |
-| Anonymity | `bcdde96` commit | passes |
+| Anonymity | `bcdde96` commit | passes **in the local tree only** — see Stage 0-BLOCK |
 
 Pre-submission rigor review complete. Honest-weak-accept territory; gaps that require new compute (not text edits) are enumerated in Stage 1 and pre-registered.
+
+---
+
+## Stage 0-BLOCK — Published history is not anonymous (opened 2026-07-22)
+
+**Highest-priority item in this document. Not a code task; an operator +
+possibly counsel decision.**
+
+**What is live on `origin/main` right now.** The anonymization work exists only
+as a local commit that was never pushed — dated 2026-07-06, unpushed for sixteen
+days as of this entry. Remote `HEAD` is still the 2026-05-13 state. Verified
+against `origin/main`, not inferred:
+
+- **`docs/ROADMAP.md` carries an author first name, "pro se", and the patent
+  number** in a row that also states a hard filing deadline. That is an identity
+  disclosure *and* an IP disclosure on a repository under double-blind review.
+- **`.arch-mind/rules.mind` carries a company copyright header.**
+- **`scripts/scrub_history_NOTE.md` — the document describing how to scrub the
+  history — is itself published.** The remediation plan is public.
+
+The local commit removes all of this from the *tree*. Removing it from the tree
+does not remove it from the *history*, and the deleted scrub note is evidence the
+intended fix was a history rewrite that never happened.
+
+**Decisions required before anything is pushed. None are engineering calls:**
+
+1. **Venue.** Whether NeurIPS 2026 treats a discoverable public repository as an
+   anonymity violation regardless of intent. Some venues desk-reject on this.
+   Read the policy; if ambiguous, ask the PCs rather than guess.
+2. **IP.** Whether the patent number appearing publicly since May affects the
+   provisional → non-provisional conversion. Question for counsel, not for a
+   roadmap.
+3. **Remediation scope.** A force-push cleans the tree going forward. It does
+   **not** clean forks, GitHub's cached blob views, or anything already crawled
+   or indexed. Decide what "fixed" means before doing it, because a rewrite that
+   is believed total but is partial is worse than a known-partial one.
+
+**Constraint on this repo until resolved.** Do not push to `origin` for any
+reason — a routine docs push carries the unpushed anonymization commit with it
+and makes the remediation decision by accident. Local commits are fine and are
+accumulating; see `git log origin/main..HEAD`.
 
 ---
 
