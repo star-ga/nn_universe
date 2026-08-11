@@ -73,22 +73,179 @@ The post further claims that this non-algorithmic layer would be more fundamenta
 
 Again: this is a transcription of the post's framing, **not an accepted nn_universe claim**.
 
-## Potential relevance to nn_universe
+## Interpretation audit: what the cited theorems do and do not obviously establish
 
-If an underlying paper really proves a useful theorem here, the strongest relevance would be at the **substrate / computational-class boundary**:
+The strongest caution is that the screenshots appear to make a larger inference than the named theorems alone justify.
 
-- `nn_universe` currently explores a universe-like system through layered/sequential computation and information geometry.
-- A rigorous theorem limiting what can be represented by an internally complete algorithmic formalism could provide a useful **boundary condition** on what the repo should and should not claim about a computational substrate.
-- It may also give language for separating:
-  - an **algorithmic effective layer** that can be modeled,
-  - from a hypothetical **meta-layer** that cannot be completely captured by that same formal system.
+A useful shorthand is:
 
-This is conceptually complementary to `docs/beane_simulation_resolution_limits_2026-06-03.md`:
+> **incomplete knowledge of a computation ≠ impossibility of the computation**
 
-- **Beane-type lead:** finite spatial/lattice resolution → possible empirical UV signatures.
-- **This lead:** logical / algorithmic completeness limits → possible formal limits on a total computational description.
+### Gödel
 
-These are different objections and should not be conflated.
+Gödel-style incompleteness concerns limits of proof inside sufficiently expressive formal systems. It does **not, by itself, imply** that a physical universe cannot be generated or evolved by an algorithm.
+
+A system may be computationally generated while containing propositions that an observer/formal theory inside that system cannot prove.
+
+Therefore the inference
+
+> “there are truths unprovable inside a formal system”  
+> → “that system cannot be computed”
+
+requires an additional bridge theorem.
+
+### Tarski
+
+Tarski-style undefinability concerns the inability of a sufficiently expressive formal language to define its own full truth predicate internally.
+
+This does not immediately rule out an **external** meta-system describing or simulating the lower-level system. In fact, the internal/meta-language distinction naturally raises the possibility of a hierarchy:
+
+> simulated/effective system  
+> ⊂ stronger external meta-system.
+
+So an argument from Tarski to “no simulation is possible” must show why an external simulator or meta-theory is excluded.
+
+### Chaitin
+
+Chaitin-style incompleteness / algorithmic-information results place limits on what a fixed formal system can prove about algorithmic complexity beyond certain thresholds.
+
+That is not equivalent to saying that sufficiently complex objects cannot be represented, generated, or evolved by algorithms. Again, a bridge from proof-theoretic limitation to physical non-simulability is required.
+
+### Core logical vulnerability to audit
+
+The social-media chain appears to rely on something like:
+
+> formal incompleteness  
+> → computational incompleteness  
+> → physical non-algorithmicity  
+> → impossibility of simulation.
+
+Each arrow must be independently justified. The screenshots do not supply those justifications.
+
+## Three-level claim hierarchy for nn_universe
+
+To keep the paper scientifically safe, distinguish three claims that are often conflated in simulation discussions.
+
+### Level 1 — measured computational-class claim
+
+> Deep layered sequential computation produces a characteristic Fisher-information hierarchy across the tested panel.
+
+This is the actual empirical/theoretical subject of `nn_universe`.
+
+### Level 2 — possible physical-class mapping
+
+> Some physical system might exhibit information-geometric properties associated with that computational class.
+
+This would be a hypothesis requiring physical evidence and explicit mapping assumptions.
+
+### Level 3 — ontological simulation claim
+
+> All of reality is literally an algorithm, program, or digital simulation.
+
+`nn_universe` does **not** establish this claim and should not depend on it.
+
+The Faizal/incompleteness lead, if ultimately valid, would primarily constrain or attack **Level 3**, not the core Level-1 result.
+
+## Effect on the current nn_universe paper
+
+### Main result: no direct change
+
+The core paper is framed as a **panel-bounded empirical regularity of deep layered sequential computation**. Its load-bearing claims concern the FIM tier hierarchy, scaling with depth, cross-substrate comparisons, and the scope of the tested computational class.
+
+Therefore even a rigorous theorem showing that **reality cannot be completely captured by one algorithmic formalism** would not invalidate the measured FIM results.
+
+### Existing scope discipline already protects the paper
+
+The current manuscript explicitly treats cosmological / holographic interpretations of the substrate class as **out of scope**, with no main-paper claim depending on them.
+
+That means this intel belongs, at most, in Appendix-D / substrate-boundary discussion after verification.
+
+### Potentially stronger future framing
+
+If the underlying source is rigorous, it may help sharpen the paper's boundary language:
+
+> **The FIM hierarchy characterizes an effective class of deep layered sequential computation; it does not imply that the total ontology generating that effective dynamics is itself completely algorithmic or finitely simulable.**
+
+This wording would preserve the empirical result while avoiding the unnecessary stronger claim that “reality is code.”
+
+## Possible synthesis if the source survives review
+
+A useful conceptual hierarchy could be:
+
+> meta / substrate layer  
+> ↓  
+> effective algorithmic dynamics  
+> ↓  
+> deep sequential computation  
+> ↓  
+> observable information geometry / FIM hierarchy.
+
+Under this framing, `nn_universe` operates on the **effective-computation and observable-information-geometry layers**. It need not identify the ultimate substrate as algorithmic.
+
+This could actually strengthen the paper by separating:
+
+- what is empirically measured,
+- what computational class that measurement identifies,
+- and what remains open about the ontology beneath that class.
+
+## Relationship to the existing Beane simulation-resolution note
+
+These two leads concern different kinds of simulation limits and should remain separate.
+
+### Beane-type route
+
+> finite spatial/lattice resolution  
+> → UV cutoff / discretisation artefacts  
+> → potentially observable physical signatures.
+
+This is a **resolution / implementation constraint** on a lattice-style simulation hypothesis.
+
+### Incompleteness route
+
+> formal incompleteness / undefinability / algorithmic-information limits  
+> → ?  
+> → limits on complete algorithmic description of reality.
+
+This is a **logical / description-completeness constraint**.
+
+The `?` is the load-bearing unresolved bridge. Until it is formally supplied, the incompleteness route must remain speculative.
+
+## Questions that matter specifically for an external-simulator interpretation
+
+A future audit should distinguish at least the following cases:
+
+1. **Self-simulation:** can a universe perfectly simulate itself from within?
+2. **Internal prediction:** can an observer inside the universe derive/predict every truth about the universe?
+3. **External simulation:** can a stronger external system generate the universe's dynamics even if internal observers cannot prove every fact about those dynamics?
+4. **Approximate simulation:** does the argument rule out only exact total simulation, or also finite-precision / approximate simulation?
+5. **Digital/Turing simulation:** does it apply only to classical algorithmic computation?
+6. **Probabilistic/quantum/oracle/analog/hypercomputational models:** are these within or outside the assumptions?
+
+A result about (1) or (2) must not be reported as if it automatically proves impossibility of (3)–(6).
+
+## Potential nn_universe research directions if the source is substantive
+
+If the underlying paper contains a rigorous theorem, possible follow-up questions include:
+
+- Can the theorem be translated into a **formal boundary condition** on computational substrate claims?
+- Does it connect to **finite description length**, model capacity, or observer-inside-system limits?
+- Is there a rigorous relation to **computational depth** rather than mere computability?
+- Could an effective deep-sequential layer be algorithmic even if the total ontology is not?
+- Does the theorem predict any **observable information-geometric signature**, or is it purely meta-mathematical?
+- Is there any principled connection to FIM tier hierarchy, or would such a link be speculative and therefore out of scope?
+
+## What should NOT be added to the paper without verification
+
+Do not claim:
+
+- “Gödel proves the universe is not a simulation.”
+- “Tarski proves reality is beyond mathematics.”
+- “Chaitin proves physics cannot be computed.”
+- “Reality is proven to contain a non-algorithmic consciousness layer.”
+- “Meta Theory of Everything is established physics.”
+- “nn_universe proves or requires a non-algorithmic substrate.”
+
+These are either stronger than the screenshots establish or not supported by the current repo evidence.
 
 ## Review checklist before this can influence the paper
 
@@ -128,6 +285,14 @@ These are different objections and should not be conflated.
 **KEEP AS INTEL; DO NOT PROMOTE.**
 
 The screenshots contain a potentially relevant research lead but not enough bibliographic or mathematical detail to support any scientific claim. Before reuse, locate and read the underlying paper and audit the exact theorem-to-physics inference.
+
+For the current manuscript:
+
+- **no abstract change;**
+- **no theorem/result change;**
+- **no experimental change;**
+- **no main-text claim change;**
+- possible future Appendix-D boundary note **only after source verification**.
 
 ## See also
 
