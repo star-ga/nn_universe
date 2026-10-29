@@ -188,3 +188,11 @@ If rejected:
 2. **V12 commits A–I** are independent and can be picked up in dependency order (A → B → C → D → E → F → G → H → I).
 3. **Anything outside V12** belongs in a separate roadmap (e.g. `docs/preregistration_v2.md` for cosmology-side work, mind-mem repo for memory-system work, patent docs for IP work).
 4. Pre-submission rigor review notes are stored locally only; this public repo carries the locked predictions + falsifiers (`docs/preregistration_v3.md`), not the review correspondence.
+
+<!-- NUMERIC-REVIEW-REVISION-20261029:BEGIN -->
+## Separately preregistered optimizer follow-up (not V12)
+- [ ] Preserve V12's pre-registered FIM mechanism and frozen measurements. No inference that FIM hierarchy depends on training: repository evidence covers untrained and non-neural systems.
+- [ ] If scientifically justified, create an independent preregistration for SGD/AdamW/curvature-preconditioner ablations with matched data, parameterization, seeds and compute, explicit falsifiers and null results.
+- [ ] Use Jensen/Cauchy–Schwarz/Chebyshev only for identified estimator bounds with specified distribution and moment assumptions.
+**Gate:** separate protocol/independent review; no change to in-paper claims.
+<!-- NUMERIC-REVIEW-REVISION-20261029:END -->
