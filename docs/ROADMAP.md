@@ -189,15 +189,10 @@ If rejected:
 3. **Anything outside V12** belongs in a separate roadmap (e.g. `docs/preregistration_v2.md` for cosmology-side work, mind-mem repo for memory-system work, patent docs for IP work).
 4. Pre-submission rigor review notes are stored locally only; this public repo carries the locked predictions + falsifiers (`docs/preregistration_v3.md`), not the review correspondence.
 
-<!-- MIND-NUMERICAL-OPTIMIZATION-REVIEW:BEGIN -->
-## Numerical optimization — review only (2026-10-29)
-- [ ] Run controlled optimizer ablations against Fisher-curvature findings (SGD, AdamW, L-BFGS, Hessian-vector and preconditioning), with matched seeds, data and compute.
-- [ ] Evaluate GD, SGD, momentum, Adam/AdamW, L-BFGS and optional BFGS, Newton-CG, SQP, interior-point, Nelder–Mead only on relevant workloads with matched baselines, independent correctness gates and explicit numeric profiles.
-<!-- MIND-NUMERICAL-OPTIMIZATION-REVIEW:END -->
-
-<!-- MIND-ANALYTIC-INEQUALITIES-REVIEW:BEGIN -->
-## Inequality and stability bounds — review only (2026-10-29)
-- [ ] Explore Cauchy–Schwarz, Jensen and Chebyshev uncertainty controls with preregistered assumptions, error bars and negative controls; do not confuse bounds with statistical discoveries.
-- [ ] Review Young, triangle, Markov, Chebyshev, Cauchy–Schwarz, AM–GM, Minkowski, Grönwall, Hölder, Poincaré, Sobolev and Jensen selectively, with stated domain hypotheses and independently checkable finite-precision counterexamples.
-- [ ] No shipping or proof claims until numerical tests, reproducibility, and architecture review pass; existing gates and governance remain authoritative.
-<!-- MIND-ANALYTIC-INEQUALITIES-REVIEW:END -->
+<!-- NUMERIC-REVIEW-REVISION-20261029:BEGIN -->
+## Separately preregistered optimizer follow-up (not V12)
+- [ ] Preserve V12's pre-registered FIM mechanism and frozen measurements. No inference that FIM hierarchy depends on training: repository evidence covers untrained and non-neural systems.
+- [ ] If scientifically justified, create an independent preregistration for SGD/AdamW/curvature-preconditioner ablations with matched data, parameterization, seeds and compute, explicit falsifiers and null results.
+- [ ] Use Jensen/Cauchy–Schwarz/Chebyshev only for identified estimator bounds with specified distribution and moment assumptions.
+**Gate:** separate protocol/independent review; no change to in-paper claims.
+<!-- NUMERIC-REVIEW-REVISION-20261029:END -->
